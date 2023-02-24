@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formapp/contractReview/bloc/bloc/contract_review_bloc.dart';
 import 'package:formapp/contractReview/view/widgets/Acknoledementdate.dart';
 import 'package:formapp/contractReview/view/widgets/PoDueDate.dart';
 import 'package:formapp/contractReview/view/widgets/ReviewedDate.dart';
@@ -45,16 +47,31 @@ class CreateContractReview extends StatelessWidget {
         child: Wrap(
           children: [
             KTextField(
+              onChanged: (value) {
+                context
+                    .read<ContractReviewBloc>()
+                    .add(CustomerNameEvent(name: value));
+              },
               initialText: '',
               hintText: 'Customer Name',
             ),
             PoRecWidget(),
             KTextField(
+              onChanged: (value) {
+                context
+                    .read<ContractReviewBloc>()
+                    .add(PoNumberEvent(no: value));
+              },
               initialText: '',
               hintText: 'PO No',
             ),
             PoNoDateWidget(),
             KTextField(
+              onChanged: (value) {
+                context
+                    .read<ContractReviewBloc>()
+                    .add(EnquiryNoEvent(num: value));
+              },
               initialText: '',
               hintText: 'Enquiry No',
             ),
@@ -64,43 +81,85 @@ class CreateContractReview extends StatelessWidget {
             PoDueDateWidget(),
             TermsandConditionsWidget(),
             KTextField(
+              onChanged: (value) {
+                context
+                    .read<ContractReviewBloc>()
+                    .add(MaterialEvent(material: value));
+              },
               initialText: '',
               hintText: 'Material',
             ),
             KTextField(
+              onChanged: (value) {
+                context.read<ContractReviewBloc>().add(
+                    MaterialSpecificationEvent(materialSpecification: value));
+              },
               initialText: '',
               hintText: 'Material Specificattion',
             ),
             KTextField(
+              onChanged: (value) {
+                context
+                    .read<ContractReviewBloc>()
+                    .add(PaymentEvent(payment: value));
+              },
               initialText: '',
               hintText: 'Payment',
             ),
             KTextField(
+              onChanged: (value) {
+                context
+                    .read<ContractReviewBloc>()
+                    .add(DeliveryAt(deliveryAt: value));
+              },
               initialText: '',
               hintText: 'Delivery At',
             ),
             KTextField(
+              onChanged: (value) {
+                context.read<ContractReviewBloc>().add(LdEvent(ldEvent: value));
+              },
               initialText: '',
               hintText: 'LD',
             ),
             ThirdPartyInspectionWidget(),
             AnySpecialRequirementsWidget(),
             KTextField(
+              onChanged: (value) {
+                context
+                    .read<ContractReviewBloc>()
+                    .add(TransportEvent(transport: value));
+              },
               initialText: '',
               hintText: 'Transport',
             ),
             InsuranceWidget(),
             KTextField(
+              onChanged: (value) {
+                context
+                    .read<ContractReviewBloc>()
+                    .add(AcknowledgementNoEvent(acknowledgementNo: value));
+              },
               initialText: '',
               hintText: 'Acknowledgement No',
             ),
             AcknoledementdateWidget(),
             KTextField(
+              onChanged: (value) {
+                context
+                    .read<ContractReviewBloc>()
+                    .add(ReviewedByEvent(reviewedBy: value));
+              },
               initialText: '',
               hintText: 'Reviewed By',
             ),
             ReviewedDateWidget(),
             KTextField(
+              onChanged: (value) {
+                context
+                    .read<ContractReviewBloc>()
+                    .add(ApprovelByEvent(approvedBy: value));
+              },
               initialText: '',
               hintText: 'Approvel By',
             ),
@@ -108,15 +167,30 @@ class CreateContractReview extends StatelessWidget {
             AmandmentWidget(),
             AmmandmentdateWidget(),
             KTextField(
+              onChanged: (value) {
+                context
+                    .read<ContractReviewBloc>()
+                    .add(DetailsofAmandmentEvent(detailsofAmandment: value));
+              },
               initialText: '',
               hintText: 'Details of Amandment',
             ),
             KTextField(
+              onChanged: (value) {
+                context
+                    .read<ContractReviewBloc>()
+                    .add(AmandmentReviewedByEvent(reviewedBy: value));
+              },
               initialText: '',
               hintText: 'Amandment Review By',
             ),
             AmmandmentReviewdateWidget(),
             KTextField(
+              onChanged: (value) {
+                context
+                    .read<ContractReviewBloc>()
+                    .add(ApprovedByEvent(approvedBy: value));
+              },
               initialText: '',
               hintText: 'Approved By',
             ),

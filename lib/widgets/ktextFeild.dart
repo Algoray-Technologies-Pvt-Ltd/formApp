@@ -9,11 +9,13 @@ class KTextField extends StatefulWidget {
       this.hintText,
       this.readonly = false,
       this.validation,
+      this.multiline = false,
       this.textcontrollerextra,
       this.onChanged});
   final IconData? icon;
   String? hintText;
   bool? readonly;
+  bool? multiline;
   double? width;
   String initialText;
   TextEditingController? textcontrollerextra;
@@ -56,6 +58,10 @@ class _KTextFieldState extends State<KTextField> {
           width: 400,
           child: Builder(builder: (context) {
             return TextFormField(
+              keyboardType: widget.multiline == true
+                  ? TextInputType.multiline
+                  : TextInputType.none,
+              maxLines: null,
               readOnly: widget.readonly!,
               validator: widget.validation,
               onTap: widget.onTap,

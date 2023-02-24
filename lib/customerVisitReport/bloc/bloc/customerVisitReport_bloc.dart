@@ -38,7 +38,7 @@ class CustomerVisitReportBloc
     on<AmendmentEvent>((event, emit) {
       emit(state.copyWith(
           customerVisitReport:
-              state.customerVisitReport?.copyWith(amendment: event.amendment)));
+              state.customerVisitReport?.copyWith(audit: event.amendment)));
     });
     on<OrderEvent>((event, emit) {
       emit(state.copyWith(

@@ -1,10 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:formapp/main.dart';
+import 'package:formapp/marketingVisitReport/view/marketVisitReportCreate.dart';
 
 class MarketingVisitReportScreen extends StatelessWidget {
   const MarketingVisitReportScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Market Visit Report'),
+        centerTitle: true,
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: primaryColor,
+        onPressed: () {
+          Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
+            return MarketVisitReportCreate();
+          }));
+        },
+        child: Icon(Icons.add),
+      ),
+    );
   }
 }

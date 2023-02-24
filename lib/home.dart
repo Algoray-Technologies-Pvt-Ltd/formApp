@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formapp/contractReview/bloc/bloc/contract_review_bloc.dart';
 import 'package:formapp/contractReview/view/contractReviewScreen.dart';
 import 'package:formapp/customerOrderReg/view/customerOrderReg.dart';
 import 'package:formapp/customerVisitReport/view/customerVisitReport.dart';
@@ -22,7 +24,10 @@ class HomePage extends StatelessWidget {
               color: Color.fromARGB(255, 187, 229, 250),
               onPressed: () {
                 Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
-                  return ContractReviewScreen();
+                  return BlocProvider(
+                    create: (context) => ContractReviewBloc(),
+                    child: ContractReviewScreen(),
+                  );
                 }));
               },
               child: Text('ContractReview'),

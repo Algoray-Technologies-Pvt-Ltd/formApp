@@ -9,7 +9,7 @@ class CustomerOrderRegScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Customer Complaint'),
+        title: Text('Customer Order Register'),
         centerTitle: true,
       ),
       floatingActionButton: FloatingActionButton(

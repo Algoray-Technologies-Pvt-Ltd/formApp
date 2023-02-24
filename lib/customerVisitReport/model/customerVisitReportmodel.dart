@@ -16,13 +16,13 @@ class CustomerVisitReport extends Equatable {
   bool? enquiry;
   bool? approval;
   bool? order;
-  bool? amendment;
+  bool? audit;
   String? customerVisitDetails;
 
   String? feedback;
   String? remarks;
   DateTime? OrderReceivedDate;
-  String? Remarks;
+
   CustomerVisitReport({
     this.formName,
     this.ftNumber,
@@ -33,13 +33,30 @@ class CustomerVisitReport extends Equatable {
     this.enquiry,
     this.approval,
     this.order,
-    this.amendment,
+    this.audit,
     this.customerVisitDetails,
     this.feedback,
     this.remarks,
     this.OrderReceivedDate,
-    this.Remarks,
   });
+
+  @override
+  List get props => [
+        formName,
+        ftNumber,
+        revNumber,
+        date,
+        address,
+        coordinator,
+        enquiry,
+        approval,
+        order,
+        audit,
+        customerVisitDetails,
+        feedback,
+        remarks,
+        OrderReceivedDate,
+      ];
 
   CustomerVisitReport copyWith({
     String? formName,
@@ -51,12 +68,11 @@ class CustomerVisitReport extends Equatable {
     bool? enquiry,
     bool? approval,
     bool? order,
-    bool? amendment,
+    bool? audit,
     String? customerVisitDetails,
     String? feedback,
     String? remarks,
     DateTime? OrderReceivedDate,
-    String? Remarks,
   }) {
     return CustomerVisitReport(
       formName: formName ?? this.formName,
@@ -68,12 +84,11 @@ class CustomerVisitReport extends Equatable {
       enquiry: enquiry ?? this.enquiry,
       approval: approval ?? this.approval,
       order: order ?? this.order,
-      amendment: amendment ?? this.amendment,
+      audit: audit ?? this.audit,
       customerVisitDetails: customerVisitDetails ?? this.customerVisitDetails,
       feedback: feedback ?? this.feedback,
       remarks: remarks ?? this.remarks,
       OrderReceivedDate: OrderReceivedDate ?? this.OrderReceivedDate,
-      Remarks: Remarks ?? this.Remarks,
     );
   }
 
@@ -88,12 +103,11 @@ class CustomerVisitReport extends Equatable {
       'enquiry': enquiry,
       'approval': approval,
       'order': order,
-      'amendment': amendment,
+      'audit': audit,
       'customerVisitDetails': customerVisitDetails,
       'feedback': feedback,
       'remarks': remarks,
-      'OrderReceivedDate': OrderReceivedDate,
-      'Remarks': Remarks,
+      'OrderReceivedDate': OrderReceivedDate?.millisecondsSinceEpoch,
     };
   }
 
@@ -111,14 +125,15 @@ class CustomerVisitReport extends Equatable {
       enquiry: map['enquiry'] != null ? map['enquiry'] as bool : null,
       approval: map['approval'] != null ? map['approval'] as bool : null,
       order: map['order'] != null ? map['order'] as bool : null,
-      amendment: map['amendment'] != null ? map['amendment'] as bool : null,
+      audit: map['audit'] != null ? map['audit'] as bool : null,
       customerVisitDetails: map['customerVisitDetails'] != null
           ? map['customerVisitDetails'] as String
           : null,
       feedback: map['feedback'] != null ? map['feedback'] as String : null,
       remarks: map['remarks'] != null ? map['remarks'] as String : null,
-      OrderReceivedDate: map['OrderReceivedDate'],
-      Remarks: map['Remarks'] != null ? map['Remarks'] as String : null,
+      OrderReceivedDate: map['OrderReceivedDate'] != null
+          ? DateTime.fromMillisecondsSinceEpoch(map['OrderReceivedDate'] as int)
+          : null,
     );
   }
 
@@ -126,23 +141,4 @@ class CustomerVisitReport extends Equatable {
 
   factory CustomerVisitReport.fromJson(String source) =>
       CustomerVisitReport.fromMap(json.decode(source) as Map<String, dynamic>);
-
-  @override
-  List get props => [
-        formName,
-        ftNumber,
-        revNumber,
-        date,
-        address,
-        coordinator,
-        enquiry,
-        approval,
-        order,
-        amendment,
-        customerVisitDetails,
-        feedback,
-        remarks,
-        OrderReceivedDate,
-        Remarks,
-      ];
 }

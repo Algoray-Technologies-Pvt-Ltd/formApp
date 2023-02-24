@@ -1,7 +1,6 @@
-import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:formapp/contractReview/model/contractReviewmodel.dart';
-
+import 'package:flutter_bloc/flutter_bloc.dart';
 part 'contract_review_event.dart';
 part 'contract_review_state.dart';
 
@@ -13,7 +12,7 @@ class ContractReviewBloc
           contractReview:
               state.contractReview?.copyWith(POrecDate: event.date)));
     });
-  
+
     on<EnquiryNoEvent>((event, emit) {
       emit(state.copyWith(
           contractReview:

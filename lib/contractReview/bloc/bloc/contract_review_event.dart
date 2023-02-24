@@ -22,10 +22,15 @@ class PoRecDateEvent extends ContractReviewEvent {
   });
 }
 
-// class PoNumberEvent extends ContractReviewEvent {}
+class PoNumberEvent extends ContractReviewEvent {
+  String no;
+  PoNumberEvent({
+    required this.no,
+  });
+}
 
 class EnquiryNoEvent extends ContractReviewEvent {
-  int num;
+  String num;
   EnquiryNoEvent({
     required this.num,
   });
@@ -80,6 +85,20 @@ class MaterialSpecificationEvent extends ContractReviewEvent {
   });
 }
 
+class DeliveryAt extends ContractReviewEvent {
+  String deliveryAt;
+  DeliveryAt({
+    required this.deliveryAt,
+  });
+}
+
+class LdEvent extends ContractReviewEvent {
+  String ldEvent;
+  LdEvent({
+    required this.ldEvent,
+  });
+}
+
 class PaymentEvent extends ContractReviewEvent {
   String payment;
   PaymentEvent({
@@ -116,7 +135,7 @@ class InsuranceEvent extends ContractReviewEvent {
 }
 
 class AcknowledgementNoEvent extends ContractReviewEvent {
-  int acknowledgementNo;
+  String acknowledgementNo;
   AcknowledgementNoEvent({
     required this.acknowledgementNo,
   });
@@ -140,6 +159,20 @@ class ReviewedDateEvent extends ContractReviewEvent {
   DateTime reviewedDate;
   ReviewedDateEvent({
     required this.reviewedDate,
+  });
+}
+
+class ApprovelByEvent extends ContractReviewEvent {
+  String approvedBy;
+  ApprovelByEvent({
+    required this.approvedBy,
+  });
+}
+
+class ApprovelDateEvent extends ContractReviewEvent {
+  DateTime approvedDate;
+  ApprovelDateEvent({
+    required this.approvedDate,
   });
 }
 

@@ -11,7 +11,7 @@ class ContractReview extends Equatable {
   DateTime? date;
   AddressBook? address;
   DateTime? POrecDate;
-  int? enquiryNo;
+  String? enquiryNo;
   DateTime? enquiryDate;
   bool? productDescription;
   bool? Qty;
@@ -24,7 +24,7 @@ class ContractReview extends Equatable {
   bool? AnySpecialRequirements;
   String? Transport;
   bool? Insurance;
-  int? AcknowledgementNo;
+  String? AcknowledgementNo;
   DateTime? AcknowledgementDate;
   String? ReviewedBy;
   DateTime? ReviewedDate;
@@ -79,7 +79,7 @@ class ContractReview extends Equatable {
     DateTime? date,
     AddressBook? address,
     DateTime? POrecDate,
-    int? enquiryNo,
+    String? enquiryNo,
     DateTime? enquiryDate,
     bool? productDescription,
     bool? Qty,
@@ -92,7 +92,7 @@ class ContractReview extends Equatable {
     bool? AnySpecialRequirements,
     String? Transport,
     bool? Insurance,
-    int? AcknowledgementNo,
+    String? AcknowledgementNo,
     DateTime? AcknowledgementDate,
     String? ReviewedBy,
     DateTime? ReviewedDate,
@@ -230,7 +230,7 @@ class ContractReview extends Equatable {
       POrecDate: map['POrecDate'] != null
           ? DateTime.fromMillisecondsSinceEpoch(map['POrecDate'] as int)
           : null,
-      enquiryNo: map['enquiryNo'] != null ? map['enquiryNo'] as int : null,
+      enquiryNo: map['enquiryNo'],
       enquiryDate: map['enquiryDate'] != null
           ? DateTime.fromMillisecondsSinceEpoch(map['enquiryDate'] as int)
           : null,
@@ -257,9 +257,7 @@ class ContractReview extends Equatable {
           : null,
       Transport: map['Transport'] != null ? map['Transport'] as String : null,
       Insurance: map['Insurance'] != null ? map['Insurance'] as bool : null,
-      AcknowledgementNo: map['AcknowledgementNo'] != null
-          ? map['AcknowledgementNo'] as int
-          : null,
+      AcknowledgementNo: map['AcknowledgementNo'],
       AcknowledgementDate: map['AcknowledgementDate'] != null
           ? DateTime.fromMillisecondsSinceEpoch(
               map['AcknowledgementDate'] as int)

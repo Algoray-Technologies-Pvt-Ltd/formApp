@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:formapp/contractReview/bloc/bloc/contract_review_bloc.dart';
 
-class AmmandmentReviewdateWidget extends StatelessWidget {
-  AmmandmentReviewdateWidget({super.key});
+class ReviewedDateWidgetEn extends StatelessWidget {
+  ReviewedDateWidgetEn({super.key});
   TextEditingController dateController = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -14,13 +12,12 @@ class AmmandmentReviewdateWidget extends StatelessWidget {
         child: Builder(builder: (context) {
           return TextFormField(
             controller: dateController
-              ..text = context.select((ContractReviewBloc bloc) =>
-                  bloc.state.contractReview?.AmandmentReviewDate.toString() ??
-                  ''),
+            // ..text = context.select((OderDetailsBloc bloc) =>
+            //             bloc.state.orderDetailsState?.deliveryDate?.hour)
+            ,
             decoration: InputDecoration(
-              fillColor: Colors.white,
-              label: Text('AmmandmentReview'),
-              hintText: 'AmmandmentReview',
+              hintText: 'Reviewed Date',
+
               prefixIcon: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 16 * 0.75),
                 child: Icon(
@@ -41,11 +38,6 @@ class AmmandmentReviewdateWidget extends StatelessWidget {
                 lastDate: DateTime(2101),
               );
 
-              // DateTime? pickedDate = await Showdat(
-              //     context: context,
-              //     initialDate: DateTime.now(),
-              //     firstDate: DateTime(1947),
-              //     lastDate: DateTime(2050));
 
               if (pickedDate != null) {
                 DateTime selectedDate = DateTime(
@@ -53,9 +45,9 @@ class AmmandmentReviewdateWidget extends StatelessWidget {
                   pickedDate.month,
                   pickedDate.day,
                 );
-                context
-                    .read<ContractReviewBloc>()
-                    .add(AmandmentDateEvent(amandmentDate: selectedDate));
+                // context
+                //     .read<OderDetailsBloc>()
+                //     .add(DeliveryDateEvent(date: selectedDate));
 
                 print(" date:= ");
               } else {

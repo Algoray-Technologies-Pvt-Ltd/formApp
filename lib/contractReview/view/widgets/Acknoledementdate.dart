@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formapp/contractReview/bloc/bloc/contract_review_bloc.dart';
 
 class AcknoledementdateWidget extends StatelessWidget {
   AcknoledementdateWidget({super.key});
@@ -12,9 +14,9 @@ class AcknoledementdateWidget extends StatelessWidget {
         child: Builder(builder: (context) {
           return TextFormField(
             controller: dateController
-            // ..text = context.select((OderDetailsBloc bloc) =>
-            //             bloc.state.orderDetailsState?.deliveryDate?.hour)
-            ,
+              ..text = context.select((ContractReviewBloc bloc) =>
+                  bloc.state.contractReview?.AcknowledgementDate.toString() ??
+                  ''),
             decoration: InputDecoration(
               fillColor: Colors.white,
               label: Text('Acknoledement'),
@@ -51,9 +53,8 @@ class AcknoledementdateWidget extends StatelessWidget {
                   pickedDate.month,
                   pickedDate.day,
                 );
-                // context
-                //     .read<OderDetailsBloc>()
-                //     .add(DeliveryDateEvent(date: selectedDate));
+                context.read<ContractReviewBloc>().add(AcknowledgementDateEvent(
+                    acknowledgementDate: selectedDate));
 
                 print(" date:= ");
               } else {

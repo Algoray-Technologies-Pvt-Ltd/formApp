@@ -1,4 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:formapp/customerOrderReg/view/widget/DelDate.dart';
+import 'package:formapp/customerOrderReg/view/widget/InvDate.dart';
+import 'package:formapp/customerOrderReg/view/widget/PaymentReceivedDate.dart';
+import 'package:formapp/customerOrderReg/view/widget/delDueDate.dart';
+import 'package:formapp/customerOrderReg/view/widget/orderReceivedDate.dart';
+import 'package:formapp/customerOrderReg/view/widget/purchaseOrderDate.dart';
+import 'package:formapp/customerOrderReg/view/widget/quoDate.dart';
 import 'package:formapp/widgets/ktextFeild.dart';
 
 class CreateOrderReg extends StatelessWidget {
@@ -25,18 +32,17 @@ class CreateOrderReg extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Wrap(children: [
+          OrderRecivedDateCORWidget(),
           KTextField(
             initialText: '',
-            hintText: 'Order Received Date',
+            hintText: 'Quo.No',
           ),
+          QuotationDateCORWidget(),
           KTextField(
             initialText: '',
-            hintText: 'Quo.No. & Date',
+            hintText: 'Purchase Order No',
           ),
-          KTextField(
-            initialText: '',
-            hintText: 'Purchase Order No. & Date',
-          ),
+          PurchaseDateCORWidget(),
           KTextField(
             initialText: '',
             hintText: 'Customer Name',
@@ -57,26 +63,18 @@ class CreateOrderReg extends StatelessWidget {
             initialText: '',
             hintText: 'Tax',
           ),
-          KTextField(
-            initialText: '',
-            hintText: 'Del. Due Date',
-          ),
+          DelDueDateCORWidget(),
           KTextField(
             initialText: '',
             hintText: 'Qty Supplied',
           ),
+          DelDateCORWidget(),
           KTextField(
             initialText: '',
-            hintText: 'Del. Date',
+            hintText: 'Inv. No',
           ),
-          KTextField(
-            initialText: '',
-            hintText: 'Inv. No. & Date',
-          ),
-          KTextField(
-            initialText: '',
-            hintText: 'Payment Received  Date',
-          ),
+          InvDateCORWidget(),
+          PaymentReceivedDateCORWidget(),
           KTextField(
             initialText: '',
             hintText: 'Coordinator Name ',
