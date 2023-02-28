@@ -17,9 +17,18 @@ class ContractReviewScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         backgroundColor: primaryColor,
         onPressed: () {
-          Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
-            BlocProvider.value(value: context.read<ContractReviewBloc>());
-            return CreateContractReview();
+          print(
+              'status:   ${BlocProvider.of<ContractReviewBloc>(context).state.status}');
+
+          context.read<ContractReviewBloc>().add(FetchingEvent());
+          print(
+              'status:   ${BlocProvider.of<ContractReviewBloc>(context).state.status}');
+
+          Navigator.of(context).push(MaterialPageRoute(builder: (contex) {
+            return BlocProvider.value(
+              value: context.read<ContractReviewBloc>(),
+              child: CreateContractReview(),
+            );
           }));
         },
         child: Icon(Icons.add),

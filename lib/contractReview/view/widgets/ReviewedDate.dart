@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formapp/contractReview/bloc/bloc/contract_review_bloc.dart';
 
 class ReviewedDateWidget extends StatelessWidget {
   ReviewedDateWidget({super.key});
@@ -8,13 +10,11 @@ class ReviewedDateWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
-        width: 400,
-        child: Builder(builder: (context) {
-          return TextFormField(
+          width: 400,
+          child: TextFormField(
             controller: dateController
-            // ..text = context.select((OderDetailsBloc bloc) =>
-            //             bloc.state.orderDetailsState?.deliveryDate?.hour)
-            ,
+              ..text = context.select((ContractReviewBloc bloc) =>
+                  bloc.state.contractReview?.ReviewedDate.toString() ?? ""),
             decoration: InputDecoration(
               hintText: 'PO Rec.Date',
               prefixIcon: Padding(
@@ -49,9 +49,9 @@ class ReviewedDateWidget extends StatelessWidget {
                   pickedDate.month,
                   pickedDate.day,
                 );
-                // context
-                //     .read<OderDetailsBloc>()
-                //     .add(DeliveryDateEvent(date: selectedDate));
+                context
+                    .read<ContractReviewBloc>()
+                    .add(ReviewedDateEvent(reviewedDate: selectedDate));
 
                 print(" date:= ");
               } else {
@@ -65,9 +65,7 @@ class ReviewedDateWidget extends StatelessWidget {
               }
               return null;
             },
-          );
-        }),
-      ),
+          )),
     );
   }
 }

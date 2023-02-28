@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formapp/contractReview/bloc/bloc/contract_review_bloc.dart';
 
 class TermsandConditionsWidget extends StatefulWidget {
   const TermsandConditionsWidget({super.key});
@@ -45,9 +47,9 @@ class _TermsandConditionsWidgetState extends State<TermsandConditionsWidget> {
                     setState(() {
                       selectedShape = value;
                     });
-                    // context
-                    //     .read<OderDetailsBloc>()
-                    //     .add(PhotoPrintEvent(photoPrint: true));
+                    context
+                        .read<ContractReviewBloc>()
+                        .add(TermsConditions(terms: true));
                   },
                 ),
                 Text("Yes"),
@@ -59,9 +61,9 @@ class _TermsandConditionsWidgetState extends State<TermsandConditionsWidget> {
                       selectedShape = value;
                     });
 
-                    // context
-                    //     .read<OderDetailsBloc>()
-                    //     .add(PhotoPrintEvent(photoPrint: false));
+                    context
+                        .read<ContractReviewBloc>()
+                        .add(TermsConditions(terms: false));
                   },
                 ),
                 Text("No"),

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formapp/contractReview/bloc/bloc/contract_review_bloc.dart';
 
 class AnySpecialRequirementsWidget extends StatefulWidget {
   const AnySpecialRequirementsWidget({super.key});
@@ -46,9 +48,9 @@ class _AnySpecialRequirementsWidgetState
                     setState(() {
                       selectedShape = value;
                     });
-                    // context
-                    //     .read<OderDetailsBloc>()
-                    //     .add(PhotoPrintEvent(photoPrint: true));
+
+                    context.read<ContractReviewBloc>().add(
+                        AnySpecialRequirementsEvent(SpecialRequirement: true));
                   },
                 ),
                 Text("Yes"),
@@ -60,9 +62,8 @@ class _AnySpecialRequirementsWidgetState
                       selectedShape = value;
                     });
 
-                    // context
-                    //     .read<OderDetailsBloc>()
-                    //     .add(PhotoPrintEvent(photoPrint: false));
+                    context.read<ContractReviewBloc>().add(
+                        AnySpecialRequirementsEvent(SpecialRequirement: false));
                   },
                 ),
                 Text("No"),

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formapp/contractReview/bloc/bloc/contract_review_bloc.dart';
 
 class AmmandmentdateWidget extends StatelessWidget {
   AmmandmentdateWidget({super.key});
@@ -8,13 +10,11 @@ class AmmandmentdateWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
-        width: 400,
-        child: Builder(builder: (context) {
-          return TextFormField(
+          width: 400,
+          child: TextFormField(
             controller: dateController
-            // ..text = context.select((OderDetailsBloc bloc) =>
-            //             bloc.state.orderDetailsState?.deliveryDate?.hour)
-            ,
+              ..text = context.select((ContractReviewBloc bloc) =>
+                  bloc.state.contractReview?.AmandmentDate.toString() ?? ''),
             decoration: InputDecoration(
               fillColor: Colors.white,
               label: Text('Ammandment'),
@@ -51,9 +51,9 @@ class AmmandmentdateWidget extends StatelessWidget {
                   pickedDate.month,
                   pickedDate.day,
                 );
-                // context
-                //     .read<OderDetailsBloc>()
-                //     .add(DeliveryDateEvent(date: selectedDate));
+                context
+                    .read<ContractReviewBloc>()
+                    .add(AmandmentDateEvent(amandmentDate: selectedDate));
 
                 print(" date:= ");
               } else {
@@ -67,9 +67,7 @@ class AmmandmentdateWidget extends StatelessWidget {
               }
               return null;
             },
-          );
-        }),
-      ),
+          )),
     );
   }
 }

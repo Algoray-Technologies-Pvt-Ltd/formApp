@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formapp/contractReview/bloc/bloc/contract_review_bloc.dart';
 
 class ApprovelByDateWidget extends StatelessWidget {
   ApprovelByDateWidget({super.key});
@@ -9,9 +11,17 @@ class ApprovelByDateWidget extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: Container(
         width: 400,
-        child: Builder(builder: (context) {
-          return TextFormField(
+        child: TextFormField(
             controller: dateController
+              ..text = context
+                      .read<ContractReviewBloc>()
+                      .state
+                      .contractReview
+                      ?.ApprovelBy
+                      .toString() ??
+                  ''
+
+
             // ..text = context.select((OderDetailsBloc bloc) =>
             //             bloc.state.orderDetailsState?.deliveryDate?.hour)
             ,
@@ -67,8 +77,7 @@ class ApprovelByDateWidget extends StatelessWidget {
               }
               return null;
             },
-          );
-        }),
+          )
       ),
     );
   }

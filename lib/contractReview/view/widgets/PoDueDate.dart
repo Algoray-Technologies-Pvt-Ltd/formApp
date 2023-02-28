@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formapp/contractReview/bloc/bloc/contract_review_bloc.dart';
 
 class PoDueDateWidget extends StatelessWidget {
   PoDueDateWidget({super.key});
@@ -12,9 +14,15 @@ class PoDueDateWidget extends StatelessWidget {
         child: Builder(builder: (context) {
           return TextFormField(
             controller: dateController
-            // ..text = context.select((OderDetailsBloc bloc) =>
-            //             bloc.state.orderDetailsState?.deliveryDate?.hour)
-            ,
+              ..text = context
+                      .read<ContractReviewBloc>()
+                      .state
+                      .contractReview
+                      ?.poDueDate
+                      .toString() ??
+                  ''
+              ..text = context.select((ContractReviewBloc bloc) =>
+                  bloc.state.contractReview?.poDueDate.toString() ?? ''),
             decoration: InputDecoration(
               fillColor: Colors.white,
               hintText: 'PO Due Date',
@@ -51,9 +59,9 @@ class PoDueDateWidget extends StatelessWidget {
                   pickedDate.month,
                   pickedDate.day,
                 );
-                // context
-                //     .read<OderDetailsBloc>()
-                //     .add(DeliveryDateEvent(date: selectedDate));
+                context
+                    .read<ContractReviewBloc>()
+                    .add(PODueDate(date: selectedDate));
 
                 print(" date:= ");
               } else {

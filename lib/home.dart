@@ -23,7 +23,8 @@ class HomePage extends StatelessWidget {
             MaterialButton(
               color: Color.fromARGB(255, 187, 229, 250),
               onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) {
                   return BlocProvider(
                     create: (context) => ContractReviewBloc(),
                     child: ContractReviewScreen(),

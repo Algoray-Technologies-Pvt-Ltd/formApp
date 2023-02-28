@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formapp/contractReview/bloc/bloc/contract_review_bloc.dart';
 
 class ApprovedDateWidget extends StatelessWidget {
   ApprovedDateWidget({super.key});
@@ -12,9 +14,8 @@ class ApprovedDateWidget extends StatelessWidget {
         child: Builder(builder: (context) {
           return TextFormField(
             controller: dateController
-            // ..text = context.select((OderDetailsBloc bloc) =>
-            //             bloc.state.orderDetailsState?.deliveryDate?.hour)
-            ,
+              ..text = context.select((ContractReviewBloc bloc) =>
+                  bloc.state.contractReview?.ApprovelDate.toString() ?? ''),
             decoration: InputDecoration(
               fillColor: Colors.white,
               hintText: 'Approved Date',
@@ -51,10 +52,9 @@ class ApprovedDateWidget extends StatelessWidget {
                   pickedDate.month,
                   pickedDate.day,
                 );
-                // context
-                //     .read<OderDetailsBloc>()
-                //     .add(DeliveryDateEvent(date: selectedDate));
-
+                context
+                    .read<ContractReviewBloc>()
+                    .add(ApprovedDateEvent(approvedDate: selectedDate));
                 print(" date:= ");
               } else {
                 print('error');

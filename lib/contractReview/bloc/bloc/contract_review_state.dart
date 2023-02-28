@@ -3,18 +3,27 @@ part of 'contract_review_bloc.dart';
 
 class ContractReviewState extends Equatable {
   ContractReview? contractReview;
-  ContractReviewState({
-    this.contractReview,
-  });
+  ContractReviewStatus? status;
+  ContractReviewState({this.contractReview, this.status});
 
   @override
-  List get props => [contractReview];
+  List get props => [contractReview, status];
 
-  ContractReviewState copyWith({
-    ContractReview? contractReview,
-  }) {
+  ContractReviewState copyWith(
+      {ContractReview? contractReview, ContractReviewStatus? status}) {
     return ContractReviewState(
-      contractReview: contractReview ?? this.contractReview,
-    );
+        contractReview: contractReview ?? this.contractReview,
+        status: status ?? this.status);
   }
+}
+
+enum ContractReviewStatus {
+  init,
+  fetching,
+  ready,
+  fetchError,
+  sending,
+  sent,
+  webService,
+  sendError,
 }

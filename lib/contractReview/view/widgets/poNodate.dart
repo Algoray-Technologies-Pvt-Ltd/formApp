@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formapp/contractReview/bloc/bloc/contract_review_bloc.dart';
 
 class PoNoDateWidget extends StatelessWidget {
   PoNoDateWidget({super.key});
@@ -12,8 +14,8 @@ class PoNoDateWidget extends StatelessWidget {
         child: Builder(builder: (context) {
           return TextFormField(
             controller: dateController
-            // ..text = context.select((OderDetailsBloc bloc) =>
-            //             bloc.state.orderDetailsState?.deliveryDate?.hour)
+            // ..text = context.select((ContractReviewBloc bloc) =>
+            //     bloc.state.contractReview?.p??"")
             ,
             decoration: InputDecoration(
               fillColor: Colors.white,
@@ -51,9 +53,6 @@ class PoNoDateWidget extends StatelessWidget {
                   pickedDate.month,
                   pickedDate.day,
                 );
-                // context
-                //     .read<OderDetailsBloc>()
-                //     .add(DeliveryDateEvent(date: selectedDate));
 
                 print(" date:= ");
               } else {

@@ -14,8 +14,8 @@ class PoRecWidget extends StatelessWidget {
         child: Builder(builder: (context) {
           return TextFormField(
             controller: dateController
-              ..text = context.select((ContractReviewBloc bloc) =>
-                  bloc.state.contractReview?.POrecDate.toString() ?? ""),
+              ..text = context.select((ContractReviewBloc value) =>
+                  value.state.contractReview?.POrecDate.toString() ?? ''),
             decoration: InputDecoration(
               fillColor: Colors.white,
               hintText: 'PO Rec.Date',

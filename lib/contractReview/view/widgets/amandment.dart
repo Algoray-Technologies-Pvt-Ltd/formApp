@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formapp/contractReview/bloc/bloc/contract_review_bloc.dart';
 
 class AmandmentWidget extends StatefulWidget {
   const AmandmentWidget({super.key});
@@ -44,9 +46,10 @@ class _AmandmentWidgetState extends State<AmandmentWidget> {
                     setState(() {
                       selectedShape = value;
                     });
-                    // context
-                    //     .read<OderDetailsBloc>()
-                    //     .add(PhotoPrintEvent(photoPrint: true));
+
+                    context
+                        .read<ContractReviewBloc>()
+                        .add(AmandmentEvent(Amandment: true));
                   },
                 ),
                 Text("Yes"),
@@ -58,9 +61,9 @@ class _AmandmentWidgetState extends State<AmandmentWidget> {
                       selectedShape = value;
                     });
 
-                    // context
-                    //     .read<OderDetailsBloc>()
-                    //     .add(PhotoPrintEvent(photoPrint: false));
+                    context
+                        .read<ContractReviewBloc>()
+                        .add(AmandmentEvent(Amandment: false));
                   },
                 ),
                 Text("No"),

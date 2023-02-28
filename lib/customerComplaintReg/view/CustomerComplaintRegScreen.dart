@@ -36,7 +36,6 @@ class DataTableWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DataTable(
-
       border: TableBorder.all(),
       columns: const <DataColumn>[
         DataColumn(
@@ -124,7 +123,6 @@ class DataTableWidget extends StatelessWidget {
         ),
       ],
       rows: const [
-
         DataRow(
           cells: <DataCell>[
             DataCell(Text('1')),

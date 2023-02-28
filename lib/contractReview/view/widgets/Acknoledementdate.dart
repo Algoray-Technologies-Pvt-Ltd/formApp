@@ -10,9 +10,8 @@ class AcknoledementdateWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
-        width: 400,
-        child: Builder(builder: (context) {
-          return TextFormField(
+          width: 400,
+          child: TextFormField(
             controller: dateController
               ..text = context.select((ContractReviewBloc bloc) =>
                   bloc.state.contractReview?.AcknowledgementDate.toString() ??
@@ -68,9 +67,7 @@ class AcknoledementdateWidget extends StatelessWidget {
               }
               return null;
             },
-          );
-        }),
-      ),
+          )),
     );
   }
 }

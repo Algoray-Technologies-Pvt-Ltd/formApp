@@ -10,9 +10,8 @@ class AmmandmentReviewdateWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
-        width: 400,
-        child: Builder(builder: (context) {
-          return TextFormField(
+          width: 400,
+          child: TextFormField(
             controller: dateController
               ..text = context.select((ContractReviewBloc bloc) =>
                   bloc.state.contractReview?.AmandmentReviewDate.toString() ??
@@ -53,9 +52,9 @@ class AmmandmentReviewdateWidget extends StatelessWidget {
                   pickedDate.month,
                   pickedDate.day,
                 );
-                context
-                    .read<ContractReviewBloc>()
-                    .add(AmandmentDateEvent(amandmentDate: selectedDate));
+                // context
+                //     .read<ContractReviewBloc>()
+                //     .add(amma(amandmentDate: selectedDate));
 
                 print(" date:= ");
               } else {
@@ -69,9 +68,7 @@ class AmmandmentReviewdateWidget extends StatelessWidget {
               }
               return null;
             },
-          );
-        }),
-      ),
+          )),
     );
   }
 }

@@ -238,3 +238,7 @@ class AmandmentApprovedDateEvent extends ContractReviewEvent {
     required this.approvedDate,
   });
 }
+
+class FetchingEvent extends ContractReviewEvent {}
+
+class SaveEvent extends ContractReviewEvent {}

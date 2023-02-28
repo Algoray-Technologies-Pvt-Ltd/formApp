@@ -6,13 +6,20 @@ part 'contract_review_state.dart';
 
 class ContractReviewBloc
     extends Bloc<ContractReviewEvent, ContractReviewState> {
-  ContractReviewBloc() : super(ContractReviewState()) {
+  ContractReviewBloc()
+      : super(ContractReviewState(
+            status: ContractReviewStatus.init,
+            contractReview: ContractReview())) {
     on<PoRecDateEvent>((event, emit) {
       emit(state.copyWith(
           contractReview:
               state.contractReview?.copyWith(POrecDate: event.date)));
-    });
 
+      print(state.contractReview?.POrecDate);
+    });
+    on<FetchingEvent>((event, emit) {
+      emit(state.copyWith(status: ContractReviewStatus.fetching));
+    });
     on<EnquiryNoEvent>((event, emit) {
       emit(state.copyWith(
           contractReview:

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formapp/contractReview/bloc/bloc/contract_review_bloc.dart';
 
 class InsuranceWidget extends StatefulWidget {
   const InsuranceWidget({super.key});
@@ -44,9 +46,9 @@ class _InsuranceWidgetState extends State<InsuranceWidget> {
                     setState(() {
                       selectedShape = value;
                     });
-                    // context
-                    //     .read<OderDetailsBloc>()
-                    //     .add(PhotoPrintEvent(photoPrint: true));
+                    context
+                        .read<ContractReviewBloc>()
+                        .add(InsuranceEvent(insurance: true));
                   },
                 ),
                 Text("Yes"),
@@ -58,9 +60,9 @@ class _InsuranceWidgetState extends State<InsuranceWidget> {
                       selectedShape = value;
                     });
 
-                    // context
-                    //     .read<OderDetailsBloc>()
-                    //     .add(PhotoPrintEvent(photoPrint: false));
+                    context
+                        .read<ContractReviewBloc>()
+                        .add(InsuranceEvent(insurance: false));
                   },
                 ),
                 Text("No"),
