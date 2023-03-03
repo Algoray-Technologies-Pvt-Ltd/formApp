@@ -37,7 +37,7 @@ class _ProductDescriptionWidgetState extends State<ProductDescriptionWidget> {
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Text(
                     'ProductDescription',
-                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                   
                   ),
                 ),
                 Radio(

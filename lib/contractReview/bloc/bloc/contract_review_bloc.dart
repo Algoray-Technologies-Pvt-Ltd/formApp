@@ -10,9 +10,10 @@ class ContractReviewBloc
     extends Bloc<ContractReviewEvent, ContractReviewState> {
   ContractReviewBloc()
       : super(ContractReviewState(
-            allledger: [],
-            status: ContractReviewStatus.init,
-            contractReview: ContractReview())) {
+          allledger: [],
+          status: ContractReviewStatus.init,
+          contractReview: ContractReview(),
+        )) {
     on<PoRecDateEvent>((event, emit) {
       emit(state.copyWith(
           contractReview:
@@ -20,6 +21,14 @@ class ContractReviewBloc
 
       print(state.contractReview?.POrecDate);
     });
+
+    on<PoDateEvent>((event, emit) {
+      emit(state.copyWith(
+          contractReview: state.contractReview?.copyWith(PODate: event.date)));
+
+      print(state.contractReview?.POrecDate);
+    });
+
     on<FetchingEvent>((event, emit) async {
       emit(state.copyWith(status: ContractReviewStatus.fetching));
       print('#######################');
@@ -33,6 +42,11 @@ class ContractReviewBloc
       emit(state.copyWith(
           contractReview:
               state.contractReview?.copyWith(enquiryNo: event.num)));
+    });
+    on<EnquiryDateEvent>((event, emit) {
+      emit(state.copyWith(
+          contractReview:
+              state.contractReview?.copyWith(enquiryDate: event.date)));
     });
     on<QtyEvent>((event, emit) {
       emit(state.copyWith(
@@ -105,16 +119,25 @@ class ContractReviewBloc
           contractReview: state.contractReview
               ?.copyWith(ReviewedDate: event.reviewedDate)));
     });
-
-    on<ApprovedByEvent>((event, emit) {
+    on<ApprovelByEvent>((event, emit) {
       emit(state.copyWith(
           contractReview:
               state.contractReview?.copyWith(ApprovelBy: event.approvedBy)));
     });
+    on<ApprovelDateEvent>((event, emit) {
+      emit(state.copyWith(
+          contractReview: state.contractReview
+              ?.copyWith(ApprovelByDate: event.approvedDate)));
+    });
+    on<ApprovedByEvent>((event, emit) {
+      emit(state.copyWith(
+          contractReview:
+              state.contractReview?.copyWith(ApprovedBy: event.approvedBy)));
+    });
     on<ApprovedDateEvent>((event, emit) {
       emit(state.copyWith(
           contractReview: state.contractReview
-              ?.copyWith(ApprovelDate: event.approvedDate)));
+              ?.copyWith(ApprovedByDate: event.approvedDate)));
     });
     on<AmandmentEvent>((event, emit) {
       emit(state.copyWith(

@@ -36,7 +36,6 @@ class _TermsandConditionsWidgetEnState
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Text(
                     'Terms & Conditions',
-                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                   ),
                 ),
                 Radio(

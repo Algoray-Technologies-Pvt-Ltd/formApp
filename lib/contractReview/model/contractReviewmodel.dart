@@ -2,6 +2,7 @@
 import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
+import 'package:formapp/contractReview/bloc/bloc/contract_review_bloc.dart';
 import 'package:formapp/main.dart';
 
 class ContractReview extends Equatable {
@@ -10,6 +11,8 @@ class ContractReview extends Equatable {
   String? revNumber;
   DateTime? date;
   AddressBook? address;
+  String? poNo;
+  DateTime? PODate;
   DateTime? POrecDate;
   String? enquiryNo;
   DateTime? enquiryDate;
@@ -29,7 +32,9 @@ class ContractReview extends Equatable {
   String? ReviewedBy;
   DateTime? ReviewedDate;
   String? ApprovelBy;
-  DateTime? ApprovelDate;
+  DateTime? ApprovelByDate;
+  String? ApprovedBy;
+  DateTime? ApprovedByDate;
   bool? Amandmentifany;
   DateTime? AmandmentDate;
   String? DetailsofAmandment;
@@ -43,6 +48,8 @@ class ContractReview extends Equatable {
     this.revNumber,
     this.date,
     this.address,
+    this.poNo,
+    this.PODate,
     this.POrecDate,
     this.enquiryNo,
     this.enquiryDate,
@@ -62,7 +69,9 @@ class ContractReview extends Equatable {
     this.ReviewedBy,
     this.ReviewedDate,
     this.ApprovelBy,
-    this.ApprovelDate,
+    this.ApprovelByDate,
+    this.ApprovedBy,
+    this.ApprovedByDate,
     this.Amandmentifany,
     this.AmandmentDate,
     this.DetailsofAmandment,
@@ -77,6 +86,8 @@ class ContractReview extends Equatable {
     String? ftNumber,
     String? revNumber,
     DateTime? date,
+    String? poNo,
+    DateTime? PODate,
     AddressBook? address,
     DateTime? POrecDate,
     String? enquiryNo,
@@ -97,7 +108,9 @@ class ContractReview extends Equatable {
     String? ReviewedBy,
     DateTime? ReviewedDate,
     String? ApprovelBy,
-    DateTime? ApprovelDate,
+    DateTime? ApprovelByDate,
+    String? ApprovedBy,
+    DateTime? ApprovedByDate,
     bool? Amandmentifany,
     DateTime? AmandmentDate,
     String? DetailsofAmandment,
@@ -108,6 +121,8 @@ class ContractReview extends Equatable {
   }) {
     return ContractReview(
       formName: formName ?? this.formName,
+      PODate: PODate ?? this.PODate,
+      poNo: poNo ?? this.poNo,
       ftNumber: ftNumber ?? this.ftNumber,
       revNumber: revNumber ?? this.revNumber,
       date: date ?? this.date,
@@ -133,7 +148,9 @@ class ContractReview extends Equatable {
       ReviewedBy: ReviewedBy ?? this.ReviewedBy,
       ReviewedDate: ReviewedDate ?? this.ReviewedDate,
       ApprovelBy: ApprovelBy ?? this.ApprovelBy,
-      ApprovelDate: ApprovelDate ?? this.ApprovelDate,
+      ApprovelByDate: ApprovelByDate ?? this.ApprovelByDate,
+      ApprovedBy: ApprovedBy ?? this.ApprovedBy,
+      ApprovedByDate: ApprovedByDate ?? this.ApprovedByDate,
       Amandmentifany: Amandmentifany ?? this.Amandmentifany,
       AmandmentDate: AmandmentDate ?? this.AmandmentDate,
       DetailsofAmandment: DetailsofAmandment ?? this.DetailsofAmandment,
@@ -151,6 +168,8 @@ class ContractReview extends Equatable {
         ftNumber,
         revNumber,
         date,
+        poNo,
+        PODate,
         address,
         POrecDate,
         enquiryNo,
@@ -171,7 +190,9 @@ class ContractReview extends Equatable {
         ReviewedBy,
         ReviewedDate,
         ApprovelBy,
-        ApprovelDate,
+        ApprovelByDate,
+        ApprovedBy,
+        ApprovedByDate,
         Amandmentifany,
         AmandmentDate,
         DetailsofAmandment,
@@ -207,7 +228,7 @@ class ContractReview extends Equatable {
       'ReviewedBy': ReviewedBy,
       'ReviewedDate': ReviewedDate?.millisecondsSinceEpoch,
       'ApprovelBy': ApprovelBy,
-      'ApprovelDate': ApprovelDate?.millisecondsSinceEpoch,
+      'ApprovelDate': ApprovelByDate?.millisecondsSinceEpoch,
       'Amandmentifany': Amandmentifany,
       'AmandmentDate': AmandmentDate?.millisecondsSinceEpoch,
       'DetailsofAmandment': DetailsofAmandment,
@@ -269,7 +290,7 @@ class ContractReview extends Equatable {
           : null,
       ApprovelBy:
           map['ApprovelBy'] != null ? map['ApprovelBy'] as String : null,
-      ApprovelDate: map['ApprovelDate'] != null
+      ApprovelByDate: map['ApprovelDate'] != null
           ? DateTime.fromMillisecondsSinceEpoch(map['ApprovelDate'] as int)
           : null,
       Amandmentifany:

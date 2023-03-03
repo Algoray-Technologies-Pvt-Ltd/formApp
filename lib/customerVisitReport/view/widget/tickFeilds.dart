@@ -36,7 +36,7 @@ class _EnquiryApprovalWidgetState extends State<EnquiryApprovalWidget> {
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Text(
                     'Enquiry',
-                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                
                   ),
                 ),
                 Checkbox(
@@ -55,7 +55,7 @@ class _EnquiryApprovalWidgetState extends State<EnquiryApprovalWidget> {
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Text(
                     'Approval',
-                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+             
                   ),
                 ),
                 Checkbox(
@@ -112,7 +112,7 @@ class _OrderAuditWidgetState extends State<OrderAuditWidget> {
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Text(
                     'Order',
-                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+              
                   ),
                 ),
                 Checkbox(
@@ -131,7 +131,7 @@ class _OrderAuditWidgetState extends State<OrderAuditWidget> {
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Text(
                     'Audit',
-                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+
                   ),
                 ),
                 Checkbox(

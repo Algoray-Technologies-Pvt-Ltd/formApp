@@ -36,7 +36,7 @@ class _ProductDescriptionWidgetEnState
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Text(
                     'Product Description',
-                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+               
                   ),
                 ),
                 Radio(

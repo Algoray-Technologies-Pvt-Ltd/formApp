@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formapp/contractReview/bloc/bloc/contract_review_bloc.dart';
+import 'package:intl/intl.dart';
 
 class ApprovelByDateWidget extends StatelessWidget {
   ApprovelByDateWidget({super.key});
@@ -10,21 +11,14 @@ class ApprovelByDateWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
-        width: 400,
-        child: TextFormField(
+          width: 400,
+          child: TextFormField(
             controller: dateController
-              ..text = context
-                      .read<ContractReviewBloc>()
-                      .state
-                      .contractReview
-                      ?.ApprovelBy
-                      .toString() ??
-                  ''
-
-
-            // ..text = context.select((OderDetailsBloc bloc) =>
-            //             bloc.state.orderDetailsState?.deliveryDate?.hour)
-            ,
+              ..text = context.select((ContractReviewBloc bloc) =>
+                  bloc.state.contractReview?.ApprovelByDate != null
+                      ? DateFormat('yyyy-MM-dd')
+                          .format(bloc.state.contractReview!.ApprovelByDate!)
+                      : ''),
             decoration: InputDecoration(
               fillColor: Colors.white,
               hintText: 'ApprovelBy Date',
@@ -49,21 +43,15 @@ class ApprovelByDateWidget extends StatelessWidget {
                 lastDate: DateTime(2101),
               );
 
-              // DateTime? pickedDate = await Showdat(
-              //     context: context,
-              //     initialDate: DateTime.now(),
-              //     firstDate: DateTime(1947),
-              //     lastDate: DateTime(2050));
-
               if (pickedDate != null) {
                 DateTime selectedDate = DateTime(
                   pickedDate.year,
                   pickedDate.month,
                   pickedDate.day,
                 );
-                // context
-                //     .read<OderDetailsBloc>()
-                //     .add(DeliveryDateEvent(date: selectedDate));
+                context
+                    .read<ContractReviewBloc>()
+                    .add(ApprovelDateEvent(approvedDate: selectedDate));
 
                 print(" date:= ");
               } else {
@@ -77,8 +65,7 @@ class ApprovelByDateWidget extends StatelessWidget {
               }
               return null;
             },
-          )
-      ),
+          )),
     );
   }
 }

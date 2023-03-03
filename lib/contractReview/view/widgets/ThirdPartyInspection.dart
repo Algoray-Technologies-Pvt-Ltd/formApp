@@ -38,7 +38,7 @@ class _ThirdPartyInspectionWidgetState
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Text(
                     'Third Party Inspection',
-                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                    
                   ),
                 ),
                 Radio(

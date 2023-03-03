@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formapp/contractReview/bloc/bloc/contract_review_bloc.dart';
+import 'package:intl/intl.dart';
 
 class AmmandmentdateWidget extends StatelessWidget {
   AmmandmentdateWidget({super.key});
@@ -14,7 +15,10 @@ class AmmandmentdateWidget extends StatelessWidget {
           child: TextFormField(
             controller: dateController
               ..text = context.select((ContractReviewBloc bloc) =>
-                  bloc.state.contractReview?.AmandmentDate.toString() ?? ''),
+                  bloc.state.contractReview?.AmandmentDate != null
+                      ? DateFormat('yyyy-MM-dd')
+                          .format(bloc.state.contractReview!.AmandmentDate!)
+                      : ''),
             decoration: InputDecoration(
               fillColor: Colors.white,
               label: Text('Ammandment'),

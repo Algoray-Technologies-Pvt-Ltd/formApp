@@ -15,6 +15,12 @@ class CustomerNmaeWidget extends StatefulWidget {
 TextEditingController phoneNo = TextEditingController();
 
 class _CustomerNmaeWidgetState extends State<CustomerNmaeWidget> {
+  // @override
+  // void dispose() {
+  //   phoneNo.dispose();
+  //   super.dispose();
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -24,7 +30,6 @@ class _CustomerNmaeWidgetState extends State<CustomerNmaeWidget> {
             child: TypeAheadFormField(
               onSuggestionSelected: (suggestion) {
                 phoneNo.text = suggestion.toString();
-
                 context
                     .read<ContractReviewBloc>()
                     .add(CustomerNameEvent(name: phoneNo.text));

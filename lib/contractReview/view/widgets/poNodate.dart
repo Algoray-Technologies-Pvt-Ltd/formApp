@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formapp/contractReview/bloc/bloc/contract_review_bloc.dart';
+import 'package:intl/intl.dart';
 
 class PoNoDateWidget extends StatelessWidget {
   PoNoDateWidget({super.key});
@@ -14,9 +15,11 @@ class PoNoDateWidget extends StatelessWidget {
         child: Builder(builder: (context) {
           return TextFormField(
             controller: dateController
-            // ..text = context.select((ContractReviewBloc bloc) =>
-            //     bloc.state.contractReview?.p??"")
-            ,
+              ..text = context.select((ContractReviewBloc bloc) =>
+                  bloc.state.contractReview?.PODate != null
+                      ? DateFormat('yyyy-MM-dd')
+                          .format(bloc.state.contractReview!.PODate!)
+                      : ''),
             decoration: InputDecoration(
               fillColor: Colors.white,
               hintText: 'PO Date',
@@ -53,6 +56,9 @@ class PoNoDateWidget extends StatelessWidget {
                   pickedDate.month,
                   pickedDate.day,
                 );
+                context
+                    .read<ContractReviewBloc>()
+                    .add(PoDateEvent(date: selectedDate));
 
                 print(" date:= ");
               } else {

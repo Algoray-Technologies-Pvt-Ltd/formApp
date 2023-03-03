@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formapp/contractReview/bloc/bloc/contract_review_bloc.dart';
+import 'package:intl/intl.dart';
 
 class AcknoledementdateWidget extends StatelessWidget {
   AcknoledementdateWidget({super.key});
@@ -14,8 +15,10 @@ class AcknoledementdateWidget extends StatelessWidget {
           child: TextFormField(
             controller: dateController
               ..text = context.select((ContractReviewBloc bloc) =>
-                  bloc.state.contractReview?.AcknowledgementDate.toString() ??
-                  ''),
+                  bloc.state.contractReview?.AcknowledgementDate != null
+                      ? DateFormat('yyyy-MM-dd').format(
+                          bloc.state.contractReview!.AcknowledgementDate!)
+                      : ''),
             decoration: InputDecoration(
               fillColor: Colors.white,
               label: Text('Acknoledement'),

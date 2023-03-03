@@ -38,7 +38,7 @@ class _AnySpecialRequirementsWidgetState
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Text(
                     'Any Special Requirements',
-                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                    
                   ),
                 ),
                 Radio(

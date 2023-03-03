@@ -36,7 +36,7 @@ class _AmandmentWidgetState extends State<AmandmentWidget> {
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Text(
                     'Amandment if any',
-                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                  
                   ),
                 ),
                 Radio(

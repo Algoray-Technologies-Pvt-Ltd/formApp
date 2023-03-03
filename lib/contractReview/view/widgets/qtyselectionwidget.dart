@@ -36,7 +36,7 @@ class _QtyWidgetState extends State<QtyWidget> {
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Text(
                     'Qty',
-                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+             
                   ),
                 ),
                 Radio(

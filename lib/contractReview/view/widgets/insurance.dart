@@ -36,7 +36,7 @@ class _InsuranceWidgetState extends State<InsuranceWidget> {
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Text(
                     'Insurance',
-                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                  
                   ),
                 ),
                 Radio(

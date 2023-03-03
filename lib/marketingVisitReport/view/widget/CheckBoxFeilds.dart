@@ -38,7 +38,7 @@ class _EnquiryNegotationApprovalWidgetState
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Text(
                     'Enquiry',
-                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                 
                   ),
                 ),
                 Checkbox(
@@ -57,7 +57,7 @@ class _EnquiryNegotationApprovalWidgetState
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Text(
                     'Negotation',
-                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+
                   ),
                 ),
                 Checkbox(
@@ -76,7 +76,7 @@ class _EnquiryNegotationApprovalWidgetState
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Text(
                     'Order ',
-                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+            
                   ),
                 ),
                 Checkbox(
@@ -133,7 +133,7 @@ class _AmendmentPaymentWidgetState extends State<AmendmentPaymentWidget> {
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Text(
                     'Amendment',
-                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                 
                   ),
                 ),
                 Checkbox(
@@ -152,7 +152,7 @@ class _AmendmentPaymentWidgetState extends State<AmendmentPaymentWidget> {
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Text(
                     'Payment Collection',
-                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                  
                   ),
                 ),
                 Checkbox(

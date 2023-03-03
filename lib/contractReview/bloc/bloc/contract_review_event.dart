@@ -22,6 +22,13 @@ class PoRecDateEvent extends ContractReviewEvent {
   });
 }
 
+class PoDateEvent extends ContractReviewEvent {
+  DateTime date;
+  PoDateEvent({
+    required this.date,
+  });
+}
+
 class PoNumberEvent extends ContractReviewEvent {
   String no;
   PoNumberEvent({
