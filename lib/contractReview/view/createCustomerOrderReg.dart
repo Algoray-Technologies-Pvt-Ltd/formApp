@@ -12,6 +12,7 @@ import 'package:formapp/contractReview/view/widgets/ammandmentdate.dart';
 import 'package:formapp/contractReview/view/widgets/anySpecialRequirementsWidget.dart';
 import 'package:formapp/contractReview/view/widgets/approvalbydate.dart';
 import 'package:formapp/contractReview/view/widgets/approveddate.dart';
+import 'package:formapp/contractReview/view/widgets/customernameWidget.dart';
 import 'package:formapp/contractReview/view/widgets/enquiryDate.dart';
 import 'package:formapp/contractReview/view/widgets/insurance.dart';
 import 'package:formapp/contractReview/view/widgets/poNodate.dart';
@@ -48,15 +49,7 @@ class CreateContractReview extends StatelessWidget {
       body: SingleChildScrollView(
         child: Wrap(
           children: [
-            KTextField(
-              onChanged: (value) {
-                context
-                    .read<ContractReviewBloc>()
-                    .add(CustomerNameEvent(name: value));
-              },
-              initialText: '',
-              hintText: 'Customer Name',
-            ),
+            CustomerNmaeWidget(),
             PoRecWidget(),
             KTextField(
               onChanged: (value) {

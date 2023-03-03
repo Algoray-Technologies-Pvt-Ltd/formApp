@@ -1,6 +1,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:formapp/contractReview/model/contractReviewmodel.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formapp/model/allLedgerModel.dart';
+import 'package:formapp/webService/weservice.dart';
 part 'contract_review_event.dart';
 part 'contract_review_state.dart';
 
@@ -8,6 +10,7 @@ class ContractReviewBloc
     extends Bloc<ContractReviewEvent, ContractReviewState> {
   ContractReviewBloc()
       : super(ContractReviewState(
+            allledger: [],
             status: ContractReviewStatus.init,
             contractReview: ContractReview())) {
     on<PoRecDateEvent>((event, emit) {
@@ -17,8 +20,14 @@ class ContractReviewBloc
 
       print(state.contractReview?.POrecDate);
     });
-    on<FetchingEvent>((event, emit) {
+    on<FetchingEvent>((event, emit) async {
       emit(state.copyWith(status: ContractReviewStatus.fetching));
+      print('#######################');
+      var s = await allLedgers();
+      print(s.length);
+      print('#######################');
+
+      emit(state.copyWith(status: ContractReviewStatus.ready, allledger: s));
     });
     on<EnquiryNoEvent>((event, emit) {
       emit(state.copyWith(
