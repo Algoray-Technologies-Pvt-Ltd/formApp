@@ -174,5 +174,6 @@ class ContractReviewBloc
           contractReview: state.contractReview
               ?.copyWith(AmandmentApprovedDate: event.approvedDate)));
     });
+    on<SaveEvent>((event, emit) {});
   }
 }

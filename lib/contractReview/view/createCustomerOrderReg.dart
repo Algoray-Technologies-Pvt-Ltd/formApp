@@ -33,23 +33,11 @@ class CreateContractReview extends StatelessWidget {
         backgroundColor: primaryColor,
         onPressed: () {
           context.read<ContractReviewBloc>().add(SaveEvent());
+          Navigator.of(context).pop();
         },
         child: const Icon(Icons.save),
       ),
       appBar: AppBar(
-        actions: [
-          // Padding(
-          //   padding: const EdgeInsets.all(8.0),
-          //   child: ElevatedButton(
-          //       onPressed: () {
-          //         context.read<ContractReviewBloc>().add(SaveEvent());
-          //       },
-          //       child: Padding(
-          //         padding: const EdgeInsets.all(5),
-          //         child: Text('Save ContractReview '),
-          //       )),
-          // ),
-        ],
         elevation: 0,
         title: Text('Create Contract Review'),
         centerTitle: true,
@@ -204,4 +192,3 @@ class CreateContractReview extends StatelessWidget {
     );
   }
 }
-
