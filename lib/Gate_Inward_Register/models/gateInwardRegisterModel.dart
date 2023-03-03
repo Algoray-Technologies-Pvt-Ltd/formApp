@@ -19,7 +19,7 @@ class GateInwardRegisterModel extends Equatable {
   int? quantity;
   String? purpose;
   String? checkedBy;
-  bool? returnableOrNonReturnable;
+  String? returnableOrNonReturnable;
   String? remarks;
   GateInwardRegisterModel({
     this.ftNumber,
@@ -78,7 +78,7 @@ class GateInwardRegisterModel extends Equatable {
     int? quantity,
     String? purpose,
     String? checkedBy,
-    bool? returnableOrNonReturnable,
+    String? returnableOrNonReturnable,
     String? remarks,
   }) {
     return GateInwardRegisterModel(
@@ -141,7 +141,7 @@ class GateInwardRegisterModel extends Equatable {
       quantity: map['quantity'] != null ? map['quantity'] as int : null,
       purpose: map['purpose'] != null ? map['purpose'] as String : null,
       checkedBy: map['checkedBy'] != null ? map['checkedBy'] as String : null,
-      returnableOrNonReturnable: map['returnableOrNonReturnable'] != null ? map['returnableOrNonReturnable'] as bool : null,
+      returnableOrNonReturnable: map['returnableOrNonReturnable'],
       remarks: map['remarks'] != null ? map['remarks'] as String : null,
     );
   }

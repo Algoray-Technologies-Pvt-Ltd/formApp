@@ -19,7 +19,7 @@ class GateOutWardRegisterModel extends Equatable {
   int? quantity;
   String? purpose;
   String? signature;
-  bool? returnableOrNonReturnable;
+  String? returnableOrNonReturnable;
   String? remarks;
   GateOutWardRegisterModel({
     this.ftNumber,
@@ -78,7 +78,7 @@ class GateOutWardRegisterModel extends Equatable {
     int? quantity,
     String? purpose,
     String? signature,
-    bool? returnableOrNonReturnable,
+    String? returnableOrNonReturnable,
     String? remarks,
   }) {
     return GateOutWardRegisterModel(
@@ -97,7 +97,8 @@ class GateOutWardRegisterModel extends Equatable {
       quantity: quantity ?? this.quantity,
       purpose: purpose ?? this.purpose,
       signature: signature ?? this.signature,
-      returnableOrNonReturnable: returnableOrNonReturnable ?? this.returnableOrNonReturnable,
+      returnableOrNonReturnable:
+          returnableOrNonReturnable ?? this.returnableOrNonReturnable,
       remarks: remarks ?? this.remarks,
     );
   }
@@ -128,25 +129,43 @@ class GateOutWardRegisterModel extends Equatable {
     return GateOutWardRegisterModel(
       ftNumber: map['ftNumber'] != null ? map['ftNumber'] as String : null,
       revNumber: map['revNumber'] != null ? map['revNumber'] as String : null,
-      date: map['date'] != null ? DateTime.fromMillisecondsSinceEpoch(map['date'] as int) : null,
-      pageNumber: map['pageNumber'] != null ? map['pageNumber'] as String : null,
-      gateOutwardNumber: map['gateOutwardNumber'] != null ? map['gateOutwardNumber'] as String : null,
-      gateOutwardDateTime: map['gateOutwardDateTime'] != null ? DateTime.fromMillisecondsSinceEpoch(map['gateOutwardDateTime'] as int) : null,
-      gatePassNumber: map['gatePassNumber'] != null ? map['gatePassNumber'] as String : null,
-      gatePassDate: map['gatePassDate'] != null ? DateTime.fromMillisecondsSinceEpoch(map['gatePassDate'] as int) : null,
+      date: map['date'] != null
+          ? DateTime.fromMillisecondsSinceEpoch(map['date'] as int)
+          : null,
+      pageNumber:
+          map['pageNumber'] != null ? map['pageNumber'] as String : null,
+      gateOutwardNumber: map['gateOutwardNumber'] != null
+          ? map['gateOutwardNumber'] as String
+          : null,
+      gateOutwardDateTime: map['gateOutwardDateTime'] != null
+          ? DateTime.fromMillisecondsSinceEpoch(
+              map['gateOutwardDateTime'] as int)
+          : null,
+      gatePassNumber: map['gatePassNumber'] != null
+          ? map['gatePassNumber'] as String
+          : null,
+      gatePassDate: map['gatePassDate'] != null
+          ? DateTime.fromMillisecondsSinceEpoch(map['gatePassDate'] as int)
+          : null,
       to: map['to'] != null ? map['to'] as String : null,
-      modeOfTransport: map['modeOfTransport'] != null ? map['modeOfTransport'] as String : null,
-      vehicleNumber: map['vehicleNumber'] != null ? map['vehicleNumber'] as String : null,
-      description: map['description'] != null ? map['description'] as String : null,
+      modeOfTransport: map['modeOfTransport'] != null
+          ? map['modeOfTransport'] as String
+          : null,
+      vehicleNumber:
+          map['vehicleNumber'] != null ? map['vehicleNumber'] as String : null,
+      description:
+          map['description'] != null ? map['description'] as String : null,
       quantity: map['quantity'] != null ? map['quantity'] as int : null,
       purpose: map['purpose'] != null ? map['purpose'] as String : null,
       signature: map['signature'] != null ? map['signature'] as String : null,
-      returnableOrNonReturnable: map['returnableOrNonReturnable'] != null ? map['returnableOrNonReturnable'] as bool : null,
+      returnableOrNonReturnable: map['returnableOrNonReturnable'],
       remarks: map['remarks'] != null ? map['remarks'] as String : null,
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory GateOutWardRegisterModel.fromJson(String source) => GateOutWardRegisterModel.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory GateOutWardRegisterModel.fromJson(String source) =>
+      GateOutWardRegisterModel.fromMap(
+          json.decode(source) as Map<String, dynamic>);
 }
