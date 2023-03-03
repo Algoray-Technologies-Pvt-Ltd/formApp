@@ -1,24 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formapp/Gate_Inward_Register/bloc/gate_inward_register_bloc.dart';
 import 'package:intl/intl.dart';
 
 import '../../../widgets/kDateSet.dart';
-import '../../bloc/daily_stock_statement_bloc.dart';
 
-class StockDate extends StatelessWidget {
-  const StockDate({
+class GateInwardDateTime extends StatelessWidget {
+  const GateInwardDateTime({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController stockDateController = TextEditingController();
+    TextEditingController gateInwardDateController = TextEditingController();
     return KDateSet(
-      controller: stockDateController
-        ..text = context.select((DailyStockStatementBloc value) =>
-            value.state.dailyStockStatementModel?.stockDate != null
-                ? DateFormat('yyyy-MM-dd')
-                    .format(value.state.dailyStockStatementModel!.stockDate!)
+      controller: gateInwardDateController
+        ..text = context.select((GateInwardRegisterBloc value) =>
+            value.state.gateInwardRegisterModel?.gateInwardDateTime != null
+                ? DateFormat('yyyy-MM-dd').format(
+                    value.state.gateInwardRegisterModel!.gateInwardDateTime!)
                 : ''),
       onTap: () async {
         DateTime? pickedDate = await showDatePicker(
@@ -34,8 +34,8 @@ class StockDate extends StatelessWidget {
             pickedDate.day,
           );
           context
-              .read<DailyStockStatementBloc>()
-              .add(StockDateEvent(stockDate: selectedDate));
+              .read<GateInwardRegisterBloc>()
+              .add(GateInwardDateTimeEvent(gateInwardDateTime: selectedDate));
         } else {
           print('error');
         }

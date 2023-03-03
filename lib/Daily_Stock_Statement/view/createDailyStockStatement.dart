@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formapp/Daily_Stock_Statement/bloc/daily_stock_statement_bloc.dart';
+import 'package:intl/intl.dart';
 import '../../main.dart';
+import '../../widgets/kDateSet.dart';
 import '../../widgets/ktextFeild.dart';
 import 'widgets/stockDate.dart';
 
@@ -23,7 +25,8 @@ class CreateDailyStockStatement extends StatelessWidget {
         child: const Icon(Icons.save),
       ),
       body: SingleChildScrollView(
-        child: SizedBox(
+        child: Container(
+          alignment: Alignment.center,
           width: MediaQuery.of(context).size.width,
           child: Wrap(
             alignment: WrapAlignment.spaceBetween,
@@ -38,6 +41,7 @@ class CreateDailyStockStatement extends StatelessWidget {
                 hintText: 'Sl.No',
               ),
               const StockDate(),
+              // const StockDate(),
               KTextField(
                 onChanged: (value) {
                   context
@@ -113,3 +117,5 @@ class CreateDailyStockStatement extends StatelessWidget {
     );
   }
 }
+
+

@@ -1,26 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:formapp/Gate_Inward_Register/bloc/gate_inward_register_bloc.dart';
+import 'package:formapp/Gate_Outward_Register/bloc/gate_outward_register_bloc.dart';
+import 'package:formapp/Gate_Outward_Register/view/widgets/gateOutwardDateTime.dart';
 
 import '../../main.dart';
 import '../../widgets/ktextFeild.dart';
-import 'widgets/gateInwardDateTime.dart';
 import 'widgets/gatePassDate.dart';
 
-class CreateGateInwardRegister extends StatelessWidget {
-  const CreateGateInwardRegister({super.key});
+class CreateGateOutwardRegister extends StatelessWidget {
+  const CreateGateOutwardRegister({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Create Gate Inward Register'),
+        title: const Text('Create Gate Outward Register'),
         centerTitle: true,
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: primaryColor,
         onPressed: () {
-          context.read<GateInwardRegisterBloc>().add(SaveEvent());
+          context.read<GateOutwardRegisterBloc>().add(SaveEvent());
         },
         child: const Icon(Icons.save),
       ),
@@ -34,17 +34,17 @@ class CreateGateInwardRegister extends StatelessWidget {
               KTextField(
                 onChanged: (value) {
                   context
-                      .read<GateInwardRegisterBloc>()
-                      .add(GateInwardNumberEvent(gateInwardNumber: value));
+                      .read<GateOutwardRegisterBloc>()
+                      .add(GateOutwardNumberEvent(gateOutwardNumber: value));
                 },
                 initialText: '',
-                hintText: 'GI.No',
+                hintText: 'GO.No',
               ),
-              const GateInwardDateTime(),
+              const GateOutwardDateTime(),
               KTextField(
                 onChanged: (value) {
                   context
-                      .read<GateInwardRegisterBloc>()
+                      .read<GateOutwardRegisterBloc>()
                       .add(GatePassNumberEvent(gatePassNumber: value));
                 },
                 initialText: '',
@@ -54,16 +54,16 @@ class CreateGateInwardRegister extends StatelessWidget {
               KTextField(
                 onChanged: (value) {
                   context
-                      .read<GateInwardRegisterBloc>()
-                      .add(FromEvent(from: value));
+                      .read<GateOutwardRegisterBloc>()
+                      .add(ToEvent(to: value));
                 },
                 initialText: '',
-                hintText: 'From',
+                hintText: 'To',
               ),
               KTextField(
                 onChanged: (value) {
                   context
-                      .read<GateInwardRegisterBloc>()
+                      .read<GateOutwardRegisterBloc>()
                       .add(ModeOfTransportEvent(modeOfTransport: value));
                 },
                 initialText: '',
@@ -72,7 +72,7 @@ class CreateGateInwardRegister extends StatelessWidget {
               KTextField(
                 onChanged: (value) {
                   context
-                      .read<GateInwardRegisterBloc>()
+                      .read<GateOutwardRegisterBloc>()
                       .add(VehicleNumberEvent(vehicleNumber: value));
                 },
                 initialText: '',
@@ -81,7 +81,7 @@ class CreateGateInwardRegister extends StatelessWidget {
               KTextField(
                 onChanged: (value) {
                   context
-                      .read<GateInwardRegisterBloc>()
+                      .read<GateOutwardRegisterBloc>()
                       .add(DescriptionEvent(description: value));
                 },
                 initialText: '',
@@ -91,7 +91,7 @@ class CreateGateInwardRegister extends StatelessWidget {
                 onChanged: (value) {
                   int quantity = int.tryParse(value) ?? 0;
                   context
-                      .read<GateInwardRegisterBloc>()
+                      .read<GateOutwardRegisterBloc>()
                       .add(QuantityEvent(quantity: quantity));
                 },
                 initialText: '',
@@ -100,7 +100,7 @@ class CreateGateInwardRegister extends StatelessWidget {
               KTextField(
                 onChanged: (value) {
                   context
-                      .read<GateInwardRegisterBloc>()
+                      .read<GateOutwardRegisterBloc>()
                       .add(PurposeEvent(purpose: value));
                 },
                 initialText: '',
@@ -109,15 +109,15 @@ class CreateGateInwardRegister extends StatelessWidget {
               KTextField(
                 onChanged: (value) {
                   context
-                      .read<GateInwardRegisterBloc>()
-                      .add(CheckedByEvent(checkedBy: value));
+                      .read<GateOutwardRegisterBloc>()
+                      .add(SignatureEvent(signature: value));
                 },
                 initialText: '',
-                hintText: 'Checked By',
+                hintText: 'Signature',
               ),
               KTextField(
                 onChanged: (value) {
-                  context.read<GateInwardRegisterBloc>().add(
+                  context.read<GateOutwardRegisterBloc>().add(
                       ReturnableOrNonReturnableEvent(
                           returnableOrNonReturnable: value));
                 },
@@ -127,7 +127,7 @@ class CreateGateInwardRegister extends StatelessWidget {
               KTextField(
                 onChanged: (value) {
                   context
-                      .read<GateInwardRegisterBloc>()
+                      .read<GateOutwardRegisterBloc>()
                       .add(RemarksEvent(remarks: value));
                 },
                 initialText: '',
