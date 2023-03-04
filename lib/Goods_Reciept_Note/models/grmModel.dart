@@ -16,28 +16,29 @@ class GrnModel extends Equatable {
   String? slNumber;
   String? materialDescriotion;
   int? orderQty;
+  int? recievedQty;
   int? acceptedQty;
   String? inspectionDetails;
   String? IFRejectionDetails;
   String? remarks;
-  GrnModel({
-    this.ftNumber,
-    this.revNumber,
-    this.date,
-    this.pageNumber,
-    this.grnNumber,
-    this.supplierName,
-    this.grnDate,
-    this.billNumber,
-    this.billDate,
-    this.slNumber,
-    this.materialDescriotion,
-    this.orderQty,
-    this.acceptedQty,
-    this.inspectionDetails,
-    this.IFRejectionDetails,
-    this.remarks,
-  });
+  GrnModel(
+      {this.ftNumber,
+      this.revNumber,
+      this.date,
+      this.pageNumber,
+      this.grnNumber,
+      this.supplierName,
+      this.grnDate,
+      this.billNumber,
+      this.billDate,
+      this.slNumber,
+      this.materialDescriotion,
+      this.orderQty,
+      this.acceptedQty,
+      this.inspectionDetails,
+      this.IFRejectionDetails,
+      this.remarks,
+      this.recievedQty});
 
   GrnModel copyWith({
     String? ftNumber,
@@ -56,25 +57,26 @@ class GrnModel extends Equatable {
     String? inspectionDetails,
     String? IFRejectionDetails,
     String? remarks,
+    int? recievedQty,
   }) {
     return GrnModel(
-      ftNumber: ftNumber ?? this.ftNumber,
-      revNumber: revNumber ?? this.revNumber,
-      date: date ?? this.date,
-      pageNumber: pageNumber ?? this.pageNumber,
-      grnNumber: grnNumber ?? this.grnNumber,
-      supplierName: supplierName ?? this.supplierName,
-      grnDate: grnDate ?? this.grnDate,
-      billNumber: billNumber ?? this.billNumber,
-      billDate: billDate ?? this.billDate,
-      slNumber: slNumber ?? this.slNumber,
-      materialDescriotion: materialDescriotion ?? this.materialDescriotion,
-      orderQty: orderQty ?? this.orderQty,
-      acceptedQty: acceptedQty ?? this.acceptedQty,
-      inspectionDetails: inspectionDetails ?? this.inspectionDetails,
-      IFRejectionDetails: IFRejectionDetails ?? this.IFRejectionDetails,
-      remarks: remarks ?? this.remarks,
-    );
+        ftNumber: ftNumber ?? this.ftNumber,
+        revNumber: revNumber ?? this.revNumber,
+        date: date ?? this.date,
+        pageNumber: pageNumber ?? this.pageNumber,
+        grnNumber: grnNumber ?? this.grnNumber,
+        supplierName: supplierName ?? this.supplierName,
+        grnDate: grnDate ?? this.grnDate,
+        billNumber: billNumber ?? this.billNumber,
+        billDate: billDate ?? this.billDate,
+        slNumber: slNumber ?? this.slNumber,
+        materialDescriotion: materialDescriotion ?? this.materialDescriotion,
+        orderQty: orderQty ?? this.orderQty,
+        acceptedQty: acceptedQty ?? this.acceptedQty,
+        inspectionDetails: inspectionDetails ?? this.inspectionDetails,
+        IFRejectionDetails: IFRejectionDetails ?? this.IFRejectionDetails,
+        remarks: remarks ?? this.remarks,
+        recievedQty: recievedQty ?? this.recievedQty);
   }
 
   @override
@@ -93,7 +95,8 @@ class GrnModel extends Equatable {
         orderQty,
         acceptedQty,
         inspectionDetails,
-        IFRejectionDetails
+        IFRejectionDetails,
+        recievedQty
       ];
 
   Map<String, dynamic> toMap() {
@@ -114,6 +117,7 @@ class GrnModel extends Equatable {
       'inspectionDetails': inspectionDetails,
       'IFRejectionDetails': IFRejectionDetails,
       'remarks': remarks,
+      'recievedQty': recievedQty
     };
   }
 
@@ -141,6 +145,8 @@ class GrnModel extends Equatable {
       materialDescriotion: map['materialDescriotion'] != null
           ? map['materialDescriotion'] as String
           : null,
+      recievedQty:
+          map['recievedQty'] != null ? map['recievedQty'] as int : null,
       orderQty: map['orderQty'] != null ? map['orderQty'] as int : null,
       acceptedQty:
           map['acceptedQty'] != null ? map['acceptedQty'] as int : null,

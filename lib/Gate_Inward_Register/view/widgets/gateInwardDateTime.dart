@@ -14,6 +14,7 @@ class GateInwardDateTime extends StatelessWidget {
   Widget build(BuildContext context) {
     TextEditingController gateInwardDateController = TextEditingController();
     return KDateSet(
+      label: const Text('GI. Date'),
       controller: gateInwardDateController
         ..text = context.select((GateInwardRegisterBloc value) =>
             value.state.gateInwardRegisterModel?.gateInwardDateTime != null

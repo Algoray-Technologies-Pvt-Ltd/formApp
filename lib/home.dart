@@ -4,6 +4,15 @@ import 'package:formapp/Daily_Stock_Statement/bloc/daily_stock_statement_bloc.da
 import 'package:formapp/Gate_Inward_Register/bloc/gate_inward_register_bloc.dart';
 import 'package:formapp/Gate_Inward_Register/view/gateInwardRegister.dart';
 import 'package:formapp/Gate_Outward_Register/bloc/gate_outward_register_bloc.dart';
+import 'package:formapp/Goods_Reciept_Note/bloc/goods_reciept_note_bloc.dart';
+import 'package:formapp/Goods_Reciept_Note/view/goodsRecieptNote.dart';
+import 'package:formapp/Issue&Return_Register/bloc/issue_and_return_register_bloc.dart';
+import 'package:formapp/Issue&Return_Register/view/issueCumReturnSlipScreen.dart';
+import 'package:formapp/Material_Required_Form/bloc/material_required_form_bloc.dart';
+import 'package:formapp/Re-order_Level_Chart/bloc/re_order_level_chart_bloc.dart';
+import 'package:formapp/Re-order_Level_Chart/view/reorderLevelChartScreen.dart';
+import 'package:formapp/Tools_List/bloc/tools_list_bloc.dart';
+import 'package:formapp/Tools_List/view/toolsListScreen.dart';
 import 'package:formapp/contractReview/bloc/bloc/contract_review_bloc.dart';
 import 'package:formapp/contractReview/view/contractReviewScreen.dart';
 import 'package:formapp/customerComplaintReg/bloc/bloc/customer_complaint_reg_bloc.dart';
@@ -18,6 +27,7 @@ import 'package:formapp/marketingVisitReport/view/marketingVisitReport.dart';
 
 import 'Daily_Stock_Statement/view/dailyStockStatementScreen.dart';
 import 'Gate_Outward_Register/view/gateOutwardRegister.dart';
+import 'Material_Required_Form/view/materialRequiredFormScreen.dart';
 import 'customerComplaintReg/view/CustomerComplaintRegScreen.dart';
 
 class HomePage extends StatelessWidget {
@@ -147,6 +157,71 @@ class HomePage extends StatelessWidget {
                 }));
               },
               child: const Text('Gate Outward Register'),
+            ),
+            MaterialButton(
+              color: const Color.fromARGB(255, 187, 229, 250),
+              onPressed: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) {
+                  return BlocProvider(
+                    create: (context) => GoodsRecieptNoteBloc(),
+                    child: const GoodsRecieptNoteScreen(),
+                  );
+                }));
+              },
+              child: const Text('Goods Reciept Note'),
+            ),
+            MaterialButton(
+              color: const Color.fromARGB(255, 187, 229, 250),
+              onPressed: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) {
+                  return BlocProvider(
+                    create: (context) => IssueAndReturnRegisterBloc(),
+                    child: const IssueCumReturnSlipScreen(),
+                  );
+                }));
+              },
+              child: const Text('Issue Cum Return Slip'),
+            ),
+            MaterialButton(
+              color: const Color.fromARGB(255, 187, 229, 250),
+              onPressed: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) {
+                  return BlocProvider(
+                    create: (context) => MaterialRequiredFormBloc(),
+                    child: const MaterialRequiredFormScreen(),
+                  );
+                }));
+              },
+              child: const Text('Material Required Form'),
+            ),
+            MaterialButton(
+              color: const Color.fromARGB(255, 187, 229, 250),
+              onPressed: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) {
+                  return BlocProvider(
+                    create: (context) => ReOrderLevelChartBloc(),
+                    child: const ReorderLevelChartScreen(),
+                  );
+                }));
+              },
+              child: const Text('Reorder Level Chart'),
+            ),
+            MaterialButton(
+              color: const Color.fromARGB(255, 187, 229, 250),
+              onPressed: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) {
+                  return BlocProvider(
+                    create: (context) => ToolsListBloc(),
+                    child: const ToolListScreen(),
+                  );
+                }));
+              },
+              child: const Text('Tools List'),
             ),
           ],
         ),
