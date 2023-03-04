@@ -6,10 +6,14 @@ import 'package:formapp/Gate_Inward_Register/view/gateInwardRegister.dart';
 import 'package:formapp/Gate_Outward_Register/bloc/gate_outward_register_bloc.dart';
 import 'package:formapp/contractReview/bloc/bloc/contract_review_bloc.dart';
 import 'package:formapp/contractReview/view/contractReviewScreen.dart';
+import 'package:formapp/customerComplaintReg/bloc/bloc/customer_complaint_reg_bloc.dart';
+import 'package:formapp/customerOrderReg/bloc/bloc/customer_order_reg_bloc.dart';
 import 'package:formapp/customerOrderReg/view/customerOrderReg.dart';
+import 'package:formapp/customerVisitReport/bloc/bloc/customerVisitReport_bloc.dart';
 import 'package:formapp/customerVisitReport/view/customerVisitReport.dart';
 import 'package:formapp/enquiryCumQuatation/view/enquiryCumQuatation.dart';
 import 'package:formapp/enquiryReview/view/enquiryReview.dart';
+import 'package:formapp/marketingVisitReport/bloc/bloc/marketing_visit_report_bloc.dart';
 import 'package:formapp/marketingVisitReport/view/marketingVisitReport.dart';
 
 import 'Daily_Stock_Statement/view/dailyStockStatementScreen.dart';
@@ -43,7 +47,10 @@ class HomePage extends StatelessWidget {
               color: Color.fromARGB(255, 187, 229, 250),
               onPressed: () {
                 Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
-                  return CustomerComplaintRegScreen();
+                  return BlocProvider(
+                    create: (context) => CustomerComplaintRegBloc(),
+                    child: CustomerComplaintRegScreen(),
+                  );
                 }));
               },
               child: Text('CustomerComplaintReg'),
@@ -52,7 +59,10 @@ class HomePage extends StatelessWidget {
               color: Color.fromARGB(255, 187, 229, 250),
               onPressed: () {
                 Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
-                  return CustomerOrderRegScreen();
+                  return BlocProvider(
+                    create: (context) => CustomerOrderRegBloc(),
+                    child: CustomerOrderRegScreen(),
+                  );
                 }));
               },
               child: Text('CustomerOrderRegScreen'),
@@ -61,7 +71,10 @@ class HomePage extends StatelessWidget {
               color: Color.fromARGB(255, 187, 229, 250),
               onPressed: () {
                 Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
-                  return customerVisitReportScreen();
+                  return BlocProvider(
+                    create: (context) => CustomerVisitReportBloc(),
+                    child: customerVisitReportScreen(),
+                  );
                 }));
               },
               child: Text('customerVisitReport'),
@@ -88,7 +101,10 @@ class HomePage extends StatelessWidget {
               color: Color.fromARGB(255, 187, 229, 250),
               onPressed: () {
                 Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
-                  return MarketingVisitReportScreen();
+                  return BlocProvider(
+                    create: (context) => MarketingVisitReportBloc(),
+                    child: MarketingVisitReportScreen(),
+                  );
                 }));
               },
               child: Text('MarketingVisitReport'),

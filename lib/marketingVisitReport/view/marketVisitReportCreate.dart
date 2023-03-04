@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formapp/main.dart';
+import 'package:formapp/marketingVisitReport/bloc/bloc/marketing_visit_report_bloc.dart';
 import 'package:formapp/marketingVisitReport/view/widget/CheckBoxFeilds.dart';
 import 'package:formapp/widgets/ktextFeild.dart';
 
@@ -8,18 +11,15 @@ class MarketVisitReportCreate extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: primaryColor,
+          onPressed: () {
+            context.read<MarketingVisitReportBloc>().add(SaveEvent());
+            Navigator.of(context).pop();
+          },
+          child: const Icon(Icons.save),
+        ),
         appBar: AppBar(
-          actions: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ElevatedButton(
-                  onPressed: () {},
-                  child: Padding(
-                    padding: const EdgeInsets.all(5),
-                    child: Text('Save Details'),
-                  )),
-            ),
-          ],
           elevation: 0,
           title: Text('Create Marketing Visit Details'),
           centerTitle: true,
@@ -31,22 +31,42 @@ class MarketVisitReportCreate extends StatelessWidget {
             hintText: 'Customer Name',
           ),
           KTextField(
+            onChanged: (value) {
+              context
+                  .read<MarketingVisitReportBloc>()
+                  .add(PersonMeetEvent(personMeet: value));
+            },
             initialText: '',
             hintText: 'Person Meet',
           ),
           EnquiryNegotationApprovalWidget(),
           AmendmentPaymentWidget(),
           KTextField(
+            onChanged: (value) {
+              context
+                  .read<MarketingVisitReportBloc>()
+                  .add(DetailsMeetingEvent(detailsMeeting: value));
+            },
             multiline: true,
             initialText: '',
             hintText: 'Details of Meeting',
           ),
           KTextField(
+            onChanged: (value) {
+              context
+                  .read<MarketingVisitReportBloc>()
+                  .add(FollowupDetailsEvent(followupDetails: value));
+            },
             multiline: true,
             initialText: '',
             hintText: 'Follow-up Details',
           ),
           KTextField(
+            onChanged: (value) {
+              context
+                  .read<MarketingVisitReportBloc>()
+                  .add(RemarksEvent(Remarks: value));
+            },
             multiline: true,
             initialText: '',
             hintText: 'Remarks',

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formapp/customerVisitReport/bloc/bloc/customerVisitReport_bloc.dart';
 
 class EnquiryApprovalWidget extends StatefulWidget {
   const EnquiryApprovalWidget({super.key});
@@ -8,9 +10,6 @@ class EnquiryApprovalWidget extends StatefulWidget {
 }
 
 class _EnquiryApprovalWidgetState extends State<EnquiryApprovalWidget> {
-  bool? approval = false;
-  bool? enquiry = false;
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -36,38 +35,32 @@ class _EnquiryApprovalWidgetState extends State<EnquiryApprovalWidget> {
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Text(
                     'Enquiry',
-                
                   ),
                 ),
                 Checkbox(
-                  value: enquiry,
+                  value: context.select((CustomerVisitReportBloc bloc) =>
+                          bloc.state.customerVisitReport?.enquiry) ??
+                      false,
                   onChanged: (value) {
-                    setState(() {
-                      enquiry = value;
-
-                      // context
-                      //     .read<OderDetailsBloc>()
-                      //     .add(PhotoPrintEvent(photoPrint: true));
-                    });
+                    context
+                        .read<CustomerVisitReportBloc>()
+                        .add(EnquiryEvent(enquiry: value!));
                   },
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Text(
                     'Approval',
-             
                   ),
                 ),
                 Checkbox(
-                  value: approval,
+                  value: context.select((CustomerVisitReportBloc bloc) =>
+                          bloc.state.customerVisitReport?.approval) ??
+                      false,
                   onChanged: (value) {
-                    setState(() {
-                      approval = value;
-
-                      // context
-                      //     .read<OderDetailsBloc>()
-                      //     .add(PhotoPrintEvent(photoPrint: true));
-                    });
+                    context
+                        .read<CustomerVisitReportBloc>()
+                        .add(ApprovalEvent(approval: value!));
                   },
                 ),
               ],
@@ -85,8 +78,6 @@ class OrderAuditWidget extends StatefulWidget {
 }
 
 class _OrderAuditWidgetState extends State<OrderAuditWidget> {
-  bool? order = false;
-  bool? audit = false;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -112,38 +103,32 @@ class _OrderAuditWidgetState extends State<OrderAuditWidget> {
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Text(
                     'Order',
-              
                   ),
                 ),
                 Checkbox(
-                  value: order,
+                  value: context.select((CustomerVisitReportBloc bloc) =>
+                          bloc.state.customerVisitReport?.order) ??
+                      false,
                   onChanged: (value) {
-                    setState(() {
-                      order = value;
-
-                      // context
-                      //     .read<OderDetailsBloc>()
-                      //     .add(PhotoPrintEvent(photoPrint: true));
-                    });
+                    context
+                        .read<CustomerVisitReportBloc>()
+                        .add(OrderEvent(order: value!));
                   },
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Text(
                     'Audit',
-
                   ),
                 ),
                 Checkbox(
-                  value: audit,
+                  value: context.select((CustomerVisitReportBloc bloc) =>
+                          bloc.state.customerVisitReport?.audit) ??
+                      false,
                   onChanged: (value) {
-                    setState(() {
-                      audit = value;
-
-                      // context
-                      //     .read<OderDetailsBloc>()
-                      //     .add(PhotoPrintEvent(photoPrint: true));
-                    });
+                    context
+                        .read<CustomerVisitReportBloc>()
+                        .add(AuditEvent(Audit: value!));
                   },
                 ),
               ],

@@ -8,7 +8,9 @@ part 'customer_complaint_reg_state.dart';
 
 class CustomerComplaintRegBloc
     extends Bloc<CustomerComplaintRegEvent, CustomerComplaintRegState> {
-  CustomerComplaintRegBloc() : super(CustomerComplaintRegState()) {
+  CustomerComplaintRegBloc()
+      : super(CustomerComplaintRegState(
+            customerComplaintReg: CustomerComplaintReg())) {
     on<RemarksEvent>((event, emit) {
       emit(state.copyWith(
           customerComplaintReg:
@@ -23,6 +25,11 @@ class CustomerComplaintRegBloc
       emit(state.copyWith(
           customerComplaintReg: state.customerComplaintReg
               ?.copyWith(InformDate: event.InformDate)));
+    });
+    on<IsInformtocustomerEvent>((event, emit) {
+      emit(state.copyWith(
+          customerComplaintReg: state.customerComplaintReg
+              ?.copyWith(Informtocustomer: event.Informtocustomer)));
     });
     on<ActionDateEvent>((event, emit) {
       emit(state.copyWith(
@@ -79,10 +86,11 @@ class CustomerComplaintRegBloc
           customerComplaintReg:
               state.customerComplaintReg?.copyWith(ftNumber: event.ftNumber)));
     });
-    on<FormNameEvent>((event, emit) { 
+    on<FormNameEvent>((event, emit) {
       emit(state.copyWith(
           customerComplaintReg:
               state.customerComplaintReg?.copyWith(formName: event.formName)));
     });
+    on<SaveEvent>((event, emit) {});
   }
 }

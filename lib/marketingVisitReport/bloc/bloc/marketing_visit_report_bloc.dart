@@ -8,7 +8,9 @@ part 'marketing_visit_report_state.dart';
 
 class MarketingVisitReportBloc
     extends Bloc<MarketingVisitReportEvent, MarketingVisitReportState> {
-  MarketingVisitReportBloc() : super(MarketingVisitReportState()) {
+  MarketingVisitReportBloc()
+      : super(MarketingVisitReportState(
+            marketingVisitReport: MarketingVisitReport())) {
     on<RemarksEvent>((event, emit) {
       emit(state.copyWith(
           marketingVisitReport:
@@ -94,5 +96,6 @@ class MarketingVisitReportBloc
           marketingVisitReport:
               state.marketingVisitReport?.copyWith(formName: event.formName)));
     });
+    on<SaveEvent>((event, emit) {});
   }
 }

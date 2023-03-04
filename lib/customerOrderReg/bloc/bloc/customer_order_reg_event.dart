@@ -77,6 +77,13 @@ class TotalValueEvent extends CustomerOrderRegEvent {
   });
 }
 
+class RateEvent extends CustomerOrderRegEvent {
+  int Rate;
+  RateEvent({
+    required this.Rate,
+  });
+}
+
 class OrderQtyEvent extends CustomerOrderRegEvent {
   int OrderQty;
   OrderQtyEvent({
@@ -109,6 +116,20 @@ class PurchaseOrderNoEvent extends CustomerOrderRegEvent {
   int PurchaseOrderNo;
   PurchaseOrderNoEvent({
     required this.PurchaseOrderNo,
+  });
+}
+
+class OrderReceivedDateEvent extends CustomerOrderRegEvent {
+  DateTime OrderReceivedDate;
+  OrderReceivedDateEvent({
+    required this.OrderReceivedDate,
+  });
+}
+
+class QuoDateEvent extends CustomerOrderRegEvent {
+  DateTime QuoDate;
+  QuoDateEvent({
+    required this.QuoDate,
   });
 }
 
@@ -153,3 +174,4 @@ class FormNameEvent extends CustomerOrderRegEvent {
     required this.formName,
   });
 }
+class SaveEvent extends CustomerOrderRegEvent {}

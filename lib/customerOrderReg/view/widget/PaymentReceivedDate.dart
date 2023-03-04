@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formapp/customerOrderReg/bloc/bloc/customer_order_reg_bloc.dart';
+import 'package:intl/intl.dart';
 
 class PaymentReceivedDateCORWidget extends StatelessWidget {
   PaymentReceivedDateCORWidget({super.key});
@@ -12,9 +15,11 @@ class PaymentReceivedDateCORWidget extends StatelessWidget {
         child: Builder(builder: (context) {
           return TextFormField(
             controller: dateController
-            // ..text = context.select((OderDetailsBloc bloc) =>
-            //             bloc.state.orderDetailsState?.deliveryDate?.hour)
-            ,
+              ..text = context.select((CustomerOrderRegBloc bloc) =>
+                  bloc.state.customerOrderReg?.PaymentReceivedDate != null
+                      ? DateFormat('yyyy-MM-dd').format(
+                          bloc.state.customerOrderReg!.PaymentReceivedDate!)
+                      : ''),
             decoration: InputDecoration(
               fillColor: Colors.white,
               label: Text('Payment Received Date'),
@@ -51,9 +56,9 @@ class PaymentReceivedDateCORWidget extends StatelessWidget {
                   pickedDate.month,
                   pickedDate.day,
                 );
-                // context
-                //     .read<OderDetailsBloc>()
-                //     .add(DeliveryDateEvent(date: selectedDate));
+                context
+                    .read<CustomerOrderRegBloc>()
+                    .add(PaymentReceivedDateEvent(date: selectedDate));
 
                 print(" date:= ");
               } else {

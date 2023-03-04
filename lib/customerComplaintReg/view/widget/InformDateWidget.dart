@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:formapp/customerOrderReg/bloc/bloc/customer_order_reg_bloc.dart';
+import 'package:formapp/customerComplaintReg/bloc/bloc/customer_complaint_reg_bloc.dart';
 import 'package:intl/intl.dart';
 
-class QuotationDateCORWidget extends StatelessWidget {
-  QuotationDateCORWidget({super.key});
+class InformDateWidget extends StatelessWidget {
+  InformDateWidget({super.key});
   TextEditingController dateController = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -15,15 +15,15 @@ class QuotationDateCORWidget extends StatelessWidget {
         child: Builder(builder: (context) {
           return TextFormField(
             controller: dateController
-              ..text = context.select((CustomerOrderRegBloc bloc) =>
-                  bloc.state.customerOrderReg?.QuoDate != null
+              ..text = context.select((CustomerComplaintRegBloc bloc) =>
+                  bloc.state.customerComplaintReg?.InformDate != null
                       ? DateFormat('yyyy-MM-dd')
-                          .format(bloc.state.customerOrderReg!.QuoDate!)
+                          .format(bloc.state.customerComplaintReg!.InformDate!)
                       : ''),
             decoration: InputDecoration(
               fillColor: Colors.white,
-              label: Text('Quotation Date'),
-              hintText: 'Quotation Date',
+              label: Text('Inform Date'),
+              hintText: 'Inform Date',
               prefixIcon: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 16 * 0.75),
                 child: Icon(
@@ -57,8 +57,9 @@ class QuotationDateCORWidget extends StatelessWidget {
                   pickedDate.day,
                 );
                 context
-                    .read<CustomerOrderRegBloc>()
-                    .add(QuoDateEvent(QuoDate: selectedDate));
+                    .read<CustomerComplaintRegBloc>()
+                    .add(InformDateEvent(InformDate: selectedDate));
+
                 print(" date:= ");
               } else {
                 print('error');

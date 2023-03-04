@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formapp/marketingVisitReport/bloc/bloc/marketing_visit_report_bloc.dart';
 
 class EnquiryNegotationApprovalWidget extends StatefulWidget {
   const EnquiryNegotationApprovalWidget({super.key});
@@ -10,9 +12,6 @@ class EnquiryNegotationApprovalWidget extends StatefulWidget {
 
 class _EnquiryNegotationApprovalWidgetState
     extends State<EnquiryNegotationApprovalWidget> {
-  bool? approval = false;
-  bool? enquiry = false;
-  bool? order = false;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -38,57 +37,48 @@ class _EnquiryNegotationApprovalWidgetState
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Text(
                     'Enquiry',
-                 
                   ),
                 ),
                 Checkbox(
-                  value: enquiry,
+                  value: context.select((MarketingVisitReportBloc bloc) =>
+                          bloc.state.marketingVisitReport?.enquiry) ??
+                      false,
                   onChanged: (value) {
-                    setState(() {
-                      enquiry = value;
-
-                      // context
-                      //     .read<OderDetailsBloc>()
-                      //     .add(PhotoPrintEvent(photoPrint: true));
-                    });
+                    context
+                        .read<MarketingVisitReportBloc>()
+                        .add(EnquiryEvent(enquiry: value!));
                   },
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Text(
                     'Negotation',
-
                   ),
                 ),
                 Checkbox(
-                  value: approval,
+                  value: context.select((MarketingVisitReportBloc bloc) =>
+                          bloc.state.marketingVisitReport?.negotation) ??
+                      false,
                   onChanged: (value) {
-                    setState(() {
-                      approval = value;
-
-                      // context
-                      //     .read<OderDetailsBloc>()
-                      //     .add(PhotoPrintEvent(photoPrint: true));
-                    });
+                    context
+                        .read<MarketingVisitReportBloc>()
+                        .add(NegotationEvent(negotation: value!));
                   },
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Text(
                     'Order ',
-            
                   ),
                 ),
                 Checkbox(
-                  value: order,
+                  value: context.select((MarketingVisitReportBloc bloc) =>
+                          bloc.state.marketingVisitReport?.order) ??
+                      false,
                   onChanged: (value) {
-                    setState(() {
-                      order = value;
-
-                      // context
-                      //     .read<OderDetailsBloc>()
-                      //     .add(PhotoPrintEvent(photoPrint: true));
-                    });
+                    context
+                        .read<MarketingVisitReportBloc>()
+                        .add(OrderEvent(order: value!));
                   },
                 ),
               ],
@@ -106,8 +96,6 @@ class AmendmentPaymentWidget extends StatefulWidget {
 }
 
 class _AmendmentPaymentWidgetState extends State<AmendmentPaymentWidget> {
-  bool? amendment = false;
-  bool? paymentCollection = false;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -133,38 +121,32 @@ class _AmendmentPaymentWidgetState extends State<AmendmentPaymentWidget> {
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Text(
                     'Amendment',
-                 
                   ),
                 ),
                 Checkbox(
-                  value: amendment,
+                  value: context.select((MarketingVisitReportBloc bloc) =>
+                          bloc.state.marketingVisitReport?.amendment) ??
+                      false,
                   onChanged: (value) {
-                    setState(() {
-                      amendment = value;
-
-                      // context
-                      //     .read<OderDetailsBloc>()
-                      //     .add(PhotoPrintEvent(photoPrint: true));
-                    });
+                    context
+                        .read<MarketingVisitReportBloc>()
+                        .add(AmendmentEvent(amendment: value!));
                   },
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Text(
                     'Payment Collection',
-                  
                   ),
                 ),
                 Checkbox(
-                  value: paymentCollection,
+                  value: context.select((MarketingVisitReportBloc bloc) =>
+                          bloc.state.marketingVisitReport?.paymentCollection) ??
+                      false,
                   onChanged: (value) {
-                    setState(() {
-                      paymentCollection = value;
-
-                      // context
-                      //     .read<OderDetailsBloc>()
-                      //     .add(PhotoPrintEvent(photoPrint: true));
-                    });
+                    context
+                        .read<MarketingVisitReportBloc>()
+                        .add(PaymentCollectionEvent(paymentCollection: value!));
                   },
                 ),
               ],

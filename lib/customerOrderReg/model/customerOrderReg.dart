@@ -10,6 +10,7 @@ class CustomerOrderReg extends Equatable {
   DateTime? date;
   int? siNumber;
   DateTime? OrderReceivedDate;
+  DateTime? QuoDate;
   int? QuoNumber;
   int? PurchaseOrderNo;
   DateTime? PurchaseOrderDate;
@@ -34,6 +35,7 @@ class CustomerOrderReg extends Equatable {
     this.siNumber,
     this.OrderReceivedDate,
     this.QuoNumber,
+    this.QuoDate,
     this.PurchaseOrderNo,
     this.PurchaseOrderDate,
     this.CustomerName,
@@ -60,6 +62,7 @@ class CustomerOrderReg extends Equatable {
         siNumber,
         OrderReceivedDate,
         QuoNumber,
+        QuoDate,
         PurchaseOrderNo,
         PurchaseOrderDate,
         CustomerName,
@@ -85,6 +88,7 @@ class CustomerOrderReg extends Equatable {
     int? siNumber,
     DateTime? OrderReceivedDate,
     int? QuoNumber,
+    DateTime? QuoDate,
     int? PurchaseOrderNo,
     DateTime? PurchaseOrderDate,
     String? CustomerName,
@@ -108,6 +112,7 @@ class CustomerOrderReg extends Equatable {
       date: date ?? this.date,
       siNumber: siNumber ?? this.siNumber,
       OrderReceivedDate: OrderReceivedDate ?? this.OrderReceivedDate,
+      QuoDate: QuoDate ?? this.QuoDate,
       QuoNumber: QuoNumber ?? this.QuoNumber,
       PurchaseOrderNo: PurchaseOrderNo ?? this.PurchaseOrderNo,
       PurchaseOrderDate: PurchaseOrderDate ?? this.PurchaseOrderDate,

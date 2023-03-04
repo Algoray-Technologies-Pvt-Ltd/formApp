@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formapp/customerOrderReg/bloc/bloc/customer_order_reg_bloc.dart';
+import 'package:intl/intl.dart';
 
 class DelDueDateCORWidget extends StatelessWidget {
   DelDueDateCORWidget({super.key});
@@ -12,9 +15,11 @@ class DelDueDateCORWidget extends StatelessWidget {
         child: Builder(builder: (context) {
           return TextFormField(
             controller: dateController
-            // ..text = context.select((OderDetailsBloc bloc) =>
-            //             bloc.state.orderDetailsState?.deliveryDate?.hour)
-            ,
+              ..text = context.select((CustomerOrderRegBloc bloc) =>
+                  bloc.state.customerOrderReg?.DelDueDate != null
+                      ? DateFormat('yyyy-MM-dd')
+                          .format(bloc.state.customerOrderReg!.DelDueDate!)
+                      : ''),
             decoration: InputDecoration(
               fillColor: Colors.white,
               label: Text('Del Due Date '),
@@ -51,10 +56,9 @@ class DelDueDateCORWidget extends StatelessWidget {
                   pickedDate.month,
                   pickedDate.day,
                 );
-                // context
-                //     .read<OderDetailsBloc>()
-                //     .add(DeliveryDateEvent(date: selectedDate));
-
+                context
+                    .read<CustomerOrderRegBloc>()
+                    .add(DelDueDateEvent(DelDueDate: selectedDate));
                 print(" date:= ");
               } else {
                 print('error');

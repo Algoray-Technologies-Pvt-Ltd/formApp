@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formapp/customerOrderReg/bloc/bloc/customer_order_reg_bloc.dart';
 import 'package:formapp/customerOrderReg/view/createCustomerOrderReg.dart';
 import 'package:formapp/main.dart';
 
@@ -16,7 +18,9 @@ class CustomerOrderRegScreen extends StatelessWidget {
         backgroundColor: primaryColor,
         onPressed: () {
           Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
-            return CreateOrderReg();
+            return BlocProvider.value(
+                value: context.read<CustomerOrderRegBloc>(),
+                child: CreateOrderReg());
           }));
         },
         child: Icon(Icons.add),

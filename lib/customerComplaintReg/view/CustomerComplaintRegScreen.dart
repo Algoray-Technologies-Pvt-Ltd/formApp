@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formapp/customerComplaintReg/bloc/bloc/customer_complaint_reg_bloc.dart';
 import 'package:formapp/customerComplaintReg/view/createCustomercmplaintReg.dart';
 import 'package:editable/editable.dart';
 import 'package:formapp/main.dart';
@@ -17,7 +19,10 @@ class CustomerComplaintRegScreen extends StatelessWidget {
         backgroundColor: primaryColor,
         onPressed: () {
           Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
-            return CreateComplainrReg();
+            return BlocProvider.value(
+              value: context.read<CustomerComplaintRegBloc>(),
+              child: CreateComplainrReg(),
+            );
           }));
         },
         child: Icon(Icons.add),
@@ -155,4 +160,3 @@ class DataTableWidget extends StatelessWidget {
     );
   }
 }
-

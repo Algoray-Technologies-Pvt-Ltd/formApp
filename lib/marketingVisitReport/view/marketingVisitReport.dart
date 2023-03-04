@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formapp/main.dart';
+import 'package:formapp/marketingVisitReport/bloc/bloc/marketing_visit_report_bloc.dart';
 import 'package:formapp/marketingVisitReport/view/marketVisitReportCreate.dart';
 
 class MarketingVisitReportScreen extends StatelessWidget {
@@ -16,7 +18,9 @@ class MarketingVisitReportScreen extends StatelessWidget {
         backgroundColor: primaryColor,
         onPressed: () {
           Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
-            return MarketVisitReportCreate();
+            return BlocProvider.value(
+                value: context.read<MarketingVisitReportBloc>(),
+                child: MarketVisitReportCreate());
           }));
         },
         child: Icon(Icons.add),

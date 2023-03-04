@@ -111,3 +111,5 @@ class FormNameEvent extends MarketingVisitReportEvent {
     required this.formName,
   });
 }
+
+class SaveEvent extends MarketingVisitReportEvent {}

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formapp/customerOrderReg/bloc/bloc/customer_order_reg_bloc.dart';
+import 'package:intl/intl.dart';
 
 class InvDateCORWidget extends StatelessWidget {
   InvDateCORWidget({super.key});
@@ -12,9 +15,11 @@ class InvDateCORWidget extends StatelessWidget {
         child: Builder(builder: (context) {
           return TextFormField(
             controller: dateController
-            // ..text = context.select((OderDetailsBloc bloc) =>
-            //             bloc.state.orderDetailsState?.deliveryDate?.hour)
-            ,
+              ..text = context.select((CustomerOrderRegBloc bloc) =>
+                  bloc.state.customerOrderReg?.InvDate != null
+                      ? DateFormat('yyyy-MM-dd')
+                          .format(bloc.state.customerOrderReg!.InvDate!)
+                      : ''),
             decoration: InputDecoration(
               fillColor: Colors.white,
               label: Text('Inv Date '),
@@ -51,10 +56,9 @@ class InvDateCORWidget extends StatelessWidget {
                   pickedDate.month,
                   pickedDate.day,
                 );
-                // context
-                //     .read<OderDetailsBloc>()
-                //     .add(DeliveryDateEvent(date: selectedDate));
-
+                context
+                    .read<CustomerOrderRegBloc>()
+                    .add(InvDateEvent(date: selectedDate));
                 print(" date:= ");
               } else {
                 print('error');

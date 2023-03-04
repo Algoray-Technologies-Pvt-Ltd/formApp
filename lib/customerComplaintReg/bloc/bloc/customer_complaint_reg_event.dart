@@ -28,12 +28,13 @@ class InformDateEvent extends CustomerComplaintRegEvent {
   });
 }
 
-class InformtocustomerEvent extends CustomerComplaintRegEvent {
+class IsInformtocustomerEvent extends CustomerComplaintRegEvent {
   bool Informtocustomer;
-  InformtocustomerEvent({
+  IsInformtocustomerEvent({
     required this.Informtocustomer,
   });
 }
+
 
 class ActionDateEvent extends CustomerComplaintRegEvent {
   DateTime ActionDate;
@@ -118,3 +119,5 @@ class FormNameEvent extends CustomerComplaintRegEvent {
     required this.formName,
   });
 }
+
+class SaveEvent extends CustomerComplaintRegEvent {}

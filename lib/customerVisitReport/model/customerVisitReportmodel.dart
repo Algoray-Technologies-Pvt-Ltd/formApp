@@ -11,7 +11,7 @@ class CustomerVisitReport extends Equatable {
   String? revNumber;
   DateTime? date;
   AddressBook? address;
-
+  String? name;
   String? coordinator;
   bool? enquiry;
   bool? approval;
@@ -29,6 +29,7 @@ class CustomerVisitReport extends Equatable {
     this.revNumber,
     this.date,
     this.address,
+    this.name,
     this.coordinator,
     this.enquiry,
     this.approval,
@@ -48,6 +49,7 @@ class CustomerVisitReport extends Equatable {
         date,
         address,
         coordinator,
+        name,
         enquiry,
         approval,
         order,
@@ -65,6 +67,7 @@ class CustomerVisitReport extends Equatable {
     DateTime? date,
     AddressBook? address,
     String? coordinator,
+    String? name,
     bool? enquiry,
     bool? approval,
     bool? order,
@@ -81,6 +84,7 @@ class CustomerVisitReport extends Equatable {
       date: date ?? this.date,
       address: address ?? this.address,
       coordinator: coordinator ?? this.coordinator,
+      name: name ?? this.name,
       enquiry: enquiry ?? this.enquiry,
       approval: approval ?? this.approval,
       order: order ?? this.order,

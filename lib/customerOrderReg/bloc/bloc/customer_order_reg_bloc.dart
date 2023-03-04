@@ -8,7 +8,8 @@ part 'customer_order_reg_state.dart';
 
 class CustomerOrderRegBloc
     extends Bloc<CustomerOrderRegEvent, CustomerOrderRegState> {
-  CustomerOrderRegBloc() : super(CustomerOrderRegState()) {
+  CustomerOrderRegBloc()
+      : super(CustomerOrderRegState(customerOrderReg: CustomerOrderReg())) {
     on<RemarksEvent>((event, emit) {
       emit(state.copyWith(
           customerOrderReg:
@@ -94,7 +95,16 @@ class CustomerOrderRegBloc
           customerOrderReg:
               state.customerOrderReg?.copyWith(QuoNumber: event.QuoNumber)));
     });
-
+    on<QuoDateEvent>((event, emit) {
+      emit(state.copyWith(
+          customerOrderReg:
+              state.customerOrderReg?.copyWith(QuoDate: event.QuoDate)));
+    });
+    on<OrderReceivedDateEvent>((event, emit) {
+      emit(state.copyWith(
+          customerOrderReg: state.customerOrderReg
+              ?.copyWith(OrderReceivedDate: event.OrderReceivedDate)));
+    });
     on<SiNumberEvent>((event, emit) {
       emit(state.copyWith(
           customerOrderReg:
@@ -106,6 +116,7 @@ class CustomerOrderRegBloc
           customerOrderReg:
               state.customerOrderReg?.copyWith(date: event.date)));
     });
+
     on<RevNumberEvent>((event, emit) {
       emit(state.copyWith(
           customerOrderReg:
@@ -121,5 +132,6 @@ class CustomerOrderRegBloc
           customerOrderReg:
               state.customerOrderReg?.copyWith(formName: event.formName)));
     });
+    on<SaveEvent>((event, emit) {});
   }
 }

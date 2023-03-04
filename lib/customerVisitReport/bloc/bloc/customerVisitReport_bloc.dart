@@ -8,7 +8,9 @@ part 'customerVisitReport_state.dart';
 
 class CustomerVisitReportBloc
     extends Bloc<CustomerVisitReportEvent, CustomerVisitReportState> {
-  CustomerVisitReportBloc() : super(CustomerVisitReportState()) {
+  CustomerVisitReportBloc()
+      : super(CustomerVisitReportState(
+            customerVisitReport: CustomerVisitReport())) {
     on<RemarksEvent>((event, emit) {
       emit(state.copyWith(
           customerVisitReport:
@@ -35,10 +37,10 @@ class CustomerVisitReportBloc
     //       customerVisitReport:
     //           state.customerVisitReport?.copyWith(   : event.SiNumber)));
     // });
-    on<AmendmentEvent>((event, emit) {
+    on<AuditEvent>((event, emit) {
       emit(state.copyWith(
           customerVisitReport:
-              state.customerVisitReport?.copyWith(audit: event.amendment)));
+              state.customerVisitReport?.copyWith(audit: event.Audit)));
     });
     on<OrderEvent>((event, emit) {
       emit(state.copyWith(
@@ -48,8 +50,9 @@ class CustomerVisitReportBloc
     on<ApprovalEvent>((event, emit) {
       emit(state.copyWith(
           customerVisitReport:
-              state.customerVisitReport?.copyWith(remarks: event.approval)));
+              state.customerVisitReport?.copyWith(approval: event.approval)));
     });
+
     on<EnquiryEvent>((event, emit) {
       emit(state.copyWith(
           customerVisitReport:
@@ -59,6 +62,11 @@ class CustomerVisitReportBloc
       emit(state.copyWith(
           customerVisitReport: state.customerVisitReport
               ?.copyWith(coordinator: event.coordinator)));
+    });
+    on<CustomerEvent>((event, emit) {
+      emit(state.copyWith(
+          customerVisitReport:
+              state.customerVisitReport?.copyWith(name: event.customer)));
     });
     on<AddressEvent>((event, emit) {
       emit(state.copyWith(
@@ -85,5 +93,6 @@ class CustomerVisitReportBloc
           customerVisitReport:
               state.customerVisitReport?.copyWith(formName: event.formName)));
     });
+    on<SaveEvent>((event, emit) {});
   }
 }

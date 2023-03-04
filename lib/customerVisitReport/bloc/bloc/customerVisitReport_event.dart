@@ -57,9 +57,16 @@ class OrderEvent extends CustomerVisitReportEvent {
 }
 
 class ApprovalEvent extends CustomerVisitReportEvent {
-  String approval;
+  bool approval;
   ApprovalEvent({
     required this.approval,
+  });
+}
+
+class AuditEvent extends CustomerVisitReportEvent {
+  bool Audit;
+  AuditEvent({
+    required this.Audit,
   });
 }
 
@@ -74,6 +81,13 @@ class CoordinatorEvent extends CustomerVisitReportEvent {
   String coordinator;
   CoordinatorEvent({
     required this.coordinator,
+  });
+}
+
+class CustomerEvent extends CustomerVisitReportEvent {
+  String customer;
+  CustomerEvent({
+    required this.customer,
   });
 }
 
@@ -111,3 +125,5 @@ class FormNameEvent extends CustomerVisitReportEvent {
     required this.formName,
   });
 }
+
+class SaveEvent extends CustomerVisitReportEvent {}
