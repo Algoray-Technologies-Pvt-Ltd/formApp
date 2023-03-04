@@ -1,27 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:formapp/Goods_Reciept_Note/bloc/goods_reciept_note_bloc.dart';
-import '../../main.dart';
-import 'createGoodsRecieptNote.dart';
+import 'package:formapp/Tools_List/bloc/tools_list_bloc.dart';
+import 'package:formapp/Tools_List/view/createToolsList.dart';
 
-class GoodsRecieptNoteScreen extends StatelessWidget {
-  const GoodsRecieptNoteScreen({super.key});
+import '../../main.dart';
+
+class ToolListScreen extends StatelessWidget {
+  const ToolListScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Goods Reciept Note'),
+        title: const Text('Tool List'),
         centerTitle: true,
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: primaryColor,
         onPressed: () {
-          // context.read<GoodsRecieptNoteBloc>().add(FetchingEvent());
+          // context.read<ToolsListBloc>().add(FetchingEvent());
           Navigator.of(context).push(MaterialPageRoute(builder: (contex) {
             return BlocProvider.value(
-              value: context.read<GoodsRecieptNoteBloc>(),
-              child: const CreateGoodsRecieptNote(),
+              value: context.read<ToolsListBloc>(),
+              child: const CreateToolsList(),
             );
           }));
         },

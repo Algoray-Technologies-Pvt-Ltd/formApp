@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formapp/Gate_Outward_Register/bloc/gate_outward_register_bloc.dart';
 import 'package:formapp/Gate_Outward_Register/view/widgets/gateOutwardDateTime.dart';
-
 import '../../main.dart';
 import '../../widgets/ktextFeild.dart';
 import 'widgets/gatePassDate.dart';

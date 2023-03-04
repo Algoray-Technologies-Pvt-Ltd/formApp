@@ -125,3 +125,7 @@ class PeSignEvent extends MaterialRequiredFormEvent {
     required this.peSign,
   });
 }
+
+class FetchingEvent extends MaterialRequiredFormEvent {}
+
+class SaveEvent extends MaterialRequiredFormEvent {}

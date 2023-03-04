@@ -63,9 +63,9 @@ class BillNumberEvent extends GoodsRecieptNoteEvent {
   });
 }
 
-class billDateEvent extends GoodsRecieptNoteEvent {
+class BillDateEvent extends GoodsRecieptNoteEvent {
   DateTime billDate;
-  billDateEvent({
+  BillDateEvent({
     required this.billDate,
   });
 }
@@ -88,6 +88,13 @@ class OrderQtyEvent extends GoodsRecieptNoteEvent {
   int orderQty;
   OrderQtyEvent({
     required this.orderQty,
+  });
+}
+
+class RecievedQtyEvent extends GoodsRecieptNoteEvent {
+  int recievedQty;
+  RecievedQtyEvent({
+    required this.recievedQty,
   });
 }
 
@@ -118,3 +125,7 @@ class RemarksEvent extends GoodsRecieptNoteEvent {
     required this.remarks,
   });
 }
+
+class FetchingEvent extends GoodsRecieptNoteEvent {}
+
+class SaveEvent extends GoodsRecieptNoteEvent {}

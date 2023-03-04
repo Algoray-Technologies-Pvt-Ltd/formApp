@@ -45,7 +45,7 @@ class GoodsRecieptNoteBloc
       emit(state.copyWith(
           grnModel: state.grnModel?.copyWith(billNumber: event.billNumber)));
     });
-    on<billDateEvent>((event, emit) {
+    on<BillDateEvent>((event, emit) {
       emit(state.copyWith(
           grnModel: state.grnModel?.copyWith(billDate: event.billDate)));
     });
@@ -61,6 +61,10 @@ class GoodsRecieptNoteBloc
     on<OrderQtyEvent>((event, emit) {
       emit(state.copyWith(
           grnModel: state.grnModel?.copyWith(orderQty: event.orderQty)));
+    });
+    on<RecievedQtyEvent>((event, emit) {
+      emit(state.copyWith(
+          grnModel: state.grnModel?.copyWith(recievedQty: event.recievedQty)));
     });
     on<AcceptedQtyEvent>((event, emit) {
       emit(state.copyWith(

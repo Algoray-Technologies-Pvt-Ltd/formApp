@@ -1,27 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:formapp/Goods_Reciept_Note/bloc/goods_reciept_note_bloc.dart';
-import '../../main.dart';
-import 'createGoodsRecieptNote.dart';
+import 'package:formapp/Issue&Return_Register/bloc/issue_and_return_register_bloc.dart';
+import 'package:formapp/Issue&Return_Register/view/createIssueCumReturnSlip.dart';
 
-class GoodsRecieptNoteScreen extends StatelessWidget {
-  const GoodsRecieptNoteScreen({super.key});
+import '../../main.dart';
+
+class IssueCumReturnSlipScreen extends StatelessWidget {
+  const IssueCumReturnSlipScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Goods Reciept Note'),
+        title: const Text('Issue Cum Return Slip'),
         centerTitle: true,
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: primaryColor,
         onPressed: () {
-          // context.read<GoodsRecieptNoteBloc>().add(FetchingEvent());
+          // context.read<IssueAndReturnRegisterBloc>().add(FetchingEvent());
           Navigator.of(context).push(MaterialPageRoute(builder: (contex) {
             return BlocProvider.value(
-              value: context.read<GoodsRecieptNoteBloc>(),
-              child: const CreateGoodsRecieptNote(),
+              value: context.read<IssueAndReturnRegisterBloc>(),
+              child: const CreateIssueCumReturnSlip(),
             );
           }));
         },

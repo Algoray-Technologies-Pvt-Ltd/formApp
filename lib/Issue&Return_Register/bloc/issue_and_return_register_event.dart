@@ -97,3 +97,7 @@ class RemarksEvent extends IssueAndReturnRegisterEvent {
     required this.remarks,
   });
 }
+
+class FetchingEvent extends IssueAndReturnRegisterEvent {}
+
+class SaveEvent extends IssueAndReturnRegisterEvent {}

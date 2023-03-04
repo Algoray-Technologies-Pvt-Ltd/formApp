@@ -1,25 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formapp/Gate_Outward_Register/bloc/gate_outward_register_bloc.dart';
+import 'package:formapp/widgets/kDateSet.dart';
 import 'package:intl/intl.dart';
 
-import '../../../widgets/kDateSet.dart';
-import '../../bloc/daily_stock_statement_bloc.dart';
+import '../../bloc/goods_reciept_note_bloc.dart';
 
-class StockDate extends StatelessWidget {
-  const StockDate({
+class GRNDate extends StatelessWidget {
+  const GRNDate({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController stockDateController = TextEditingController();
+    TextEditingController grnDateController = TextEditingController();
     return KDateSet(
-      label: const Text('Stock Date'),
-      controller: stockDateController
-        ..text = context.select((DailyStockStatementBloc value) =>
-            value.state.dailyStockStatementModel?.stockDate != null
-                ? DateFormat('yyyy-MM-dd')
-                    .format(value.state.dailyStockStatementModel!.stockDate!)
+      label: const Text('GRN Date'),
+      controller: grnDateController
+        ..text = context.select((GoodsRecieptNoteBloc value) =>
+            value.state.grnModel?.grnDate != null
+                ? DateFormat('yyyy-MM-dd').format(
+                    value.state.grnModel!.grnDate!)
                 : ''),
       onTap: () async {
         DateTime? pickedDate = await showDatePicker(
@@ -35,8 +36,8 @@ class StockDate extends StatelessWidget {
             pickedDate.day,
           );
           context
-              .read<DailyStockStatementBloc>()
-              .add(StockDateEvent(stockDate: selectedDate));
+              .read<GoodsRecieptNoteBloc>()
+              .add(GrnDateEvent(grnDate: selectedDate));
         } else {
           print('error');
         }
