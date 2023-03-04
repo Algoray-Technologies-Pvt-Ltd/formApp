@@ -76,3 +76,7 @@ class RemarksEvent extends ToolsListEvent {
     required this.remarks,
   });
 }
+
+class FetchingEvent extends ToolsListEvent {}
+
+class SaveEvent extends ToolsListEvent {}

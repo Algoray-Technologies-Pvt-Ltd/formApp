@@ -69,3 +69,7 @@ class RemarksEvent extends ReOrderLevelChartEvent {
     required this.remarks,
   });
 }
+
+class FetchingEvent extends ReOrderLevelChartEvent {}
+
+class SaveEvent extends ReOrderLevelChartEvent {}
