@@ -37,8 +37,10 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        child: Wrap(
+          spacing: 13,
+          runSpacing: 10,
+          // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             MaterialButton(
               color: Color.fromARGB(255, 187, 229, 250),
