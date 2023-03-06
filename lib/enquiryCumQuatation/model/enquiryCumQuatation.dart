@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
@@ -8,6 +9,7 @@ class EnquiryCumQuatation extends Equatable {
   String? revNumber;
   DateTime? date;
   int? siNumber;
+  DateTime? EnquiryDate;
   DateTime? EnquiryRecDate;
   int? enqNumber;
   String? ModeofEnquiry;
@@ -26,6 +28,7 @@ class EnquiryCumQuatation extends Equatable {
     this.ftNumber,
     this.revNumber,
     this.date,
+    this.EnquiryDate,
     this.siNumber,
     this.EnquiryRecDate,
     this.enqNumber,
@@ -48,6 +51,7 @@ class EnquiryCumQuatation extends Equatable {
         ftNumber,
         revNumber,
         date,
+        EnquiryDate,
         siNumber,
         EnquiryRecDate,
         enqNumber,
@@ -63,6 +67,50 @@ class EnquiryCumQuatation extends Equatable {
         OrderReceivedDate,
         Remarks,
       ];
+
+  EnquiryCumQuatation copyWith({
+    String? formName,
+    String? ftNumber,
+    String? revNumber,
+    DateTime? date,
+    int? siNumber,
+    DateTime? EnquiryDate,
+    DateTime? EnquiryRecDate,
+    int? enqNumber,
+    String? ModeofEnquiry,
+    String? CoordinatorName,
+    String? CustomerName,
+    String? DescriptionofJob,
+    int? EnqQty,
+    String? QuoNo,
+    DateTime? QuoDate,
+    DateTime? QuoDueDate,
+    String? ReasonQuoNotSent,
+    DateTime? OrderReceivedDate,
+    String? Remarks,
+  }) {
+    return EnquiryCumQuatation(
+      formName: formName ?? this.formName,
+      EnquiryDate: EnquiryDate ?? this.EnquiryDate,
+      ftNumber: ftNumber ?? this.ftNumber,
+      revNumber: revNumber ?? this.revNumber,
+      date: date ?? this.date,
+      siNumber: siNumber ?? this.siNumber,
+      EnquiryRecDate: EnquiryRecDate ?? this.EnquiryRecDate,
+      enqNumber: enqNumber ?? this.enqNumber,
+      ModeofEnquiry: ModeofEnquiry ?? this.ModeofEnquiry,
+      CoordinatorName: CoordinatorName ?? this.CoordinatorName,
+      CustomerName: CustomerName ?? this.CustomerName,
+      DescriptionofJob: DescriptionofJob ?? this.DescriptionofJob,
+      EnqQty: EnqQty ?? this.EnqQty,
+      QuoNo: QuoNo ?? this.QuoNo,
+      QuoDate: QuoDate ?? this.QuoDate,
+      QuoDueDate: QuoDueDate ?? this.QuoDueDate,
+      ReasonQuoNotSent: ReasonQuoNotSent ?? this.ReasonQuoNotSent,
+      OrderReceivedDate: OrderReceivedDate ?? this.OrderReceivedDate,
+      Remarks: Remarks ?? this.Remarks,
+    );
+  }
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -121,7 +169,9 @@ class EnquiryCumQuatation extends Equatable {
       ReasonQuoNotSent: map['ReasonQuoNotSent'] != null
           ? map['ReasonQuoNotSent'] as String
           : null,
-      OrderReceivedDate: map['OrderReceivedDate'],
+      OrderReceivedDate: map['OrderReceivedDate'] != null
+          ? DateTime.fromMillisecondsSinceEpoch(map['OrderReceivedDate'] as int)
+          : null,
       Remarks: map['Remarks'] != null ? map['Remarks'] as String : null,
     );
   }
@@ -130,46 +180,4 @@ class EnquiryCumQuatation extends Equatable {
 
   factory EnquiryCumQuatation.fromJson(String source) =>
       EnquiryCumQuatation.fromMap(json.decode(source) as Map<String, dynamic>);
-
-  EnquiryCumQuatation copyWith({
-    String? formName,
-    String? ftNumber,
-    String? revNumber,
-    DateTime? date,
-    int? siNumber,
-    DateTime? EnquiryRecDate,
-    int? enqNumber,
-    String? ModeofEnquiry,
-    String? CoordinatorName,
-    String? CustomerName,
-    String? DescriptionofJob,
-    int? EnqQty,
-    String? QuoNo,
-    DateTime? QuoDate,
-    DateTime? QuoDueDate,
-    String? ReasonQuoNotSent,
-    DateTime? OrderReceivedDate,
-    String? Remarks,
-  }) {
-    return EnquiryCumQuatation(
-      formName: formName ?? this.formName,
-      ftNumber: ftNumber ?? this.ftNumber,
-      revNumber: revNumber ?? this.revNumber,
-      date: date ?? this.date,
-      siNumber: siNumber ?? this.siNumber,
-      EnquiryRecDate: EnquiryRecDate ?? this.EnquiryRecDate,
-      enqNumber: enqNumber ?? this.enqNumber,
-      ModeofEnquiry: ModeofEnquiry ?? this.ModeofEnquiry,
-      CoordinatorName: CoordinatorName ?? this.CoordinatorName,
-      CustomerName: CustomerName ?? this.CustomerName,
-      DescriptionofJob: DescriptionofJob ?? this.DescriptionofJob,
-      EnqQty: EnqQty ?? this.EnqQty,
-      QuoNo: QuoNo ?? this.QuoNo,
-      QuoDate: QuoDate ?? this.QuoDate,
-      QuoDueDate: QuoDueDate ?? this.QuoDueDate,
-      ReasonQuoNotSent: ReasonQuoNotSent ?? this.ReasonQuoNotSent,
-      OrderReceivedDate: OrderReceivedDate ?? this.OrderReceivedDate,
-      Remarks: Remarks ?? this.Remarks,
-    );
-  }
 }

@@ -82,6 +82,7 @@ class DailyStockStatementModel extends Equatable {
         remarks
       ];
 
+
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'ftNumber': ftNumber,
@@ -104,31 +105,21 @@ class DailyStockStatementModel extends Equatable {
     return DailyStockStatementModel(
       ftNumber: map['ftNumber'] != null ? map['ftNumber'] as String : null,
       revNumber: map['revNumber'] != null ? map['revNumber'] as String : null,
-      date: map['date'] != null
-          ? DateTime.fromMillisecondsSinceEpoch(map['date'] as int)
-          : null,
-      pageNumber:
-          map['pageNumber'] != null ? map['pageNumber'] as String : null,
-      stockDate: map['stockDate'] != null
-          ? DateTime.fromMillisecondsSinceEpoch(map['stockDate'] as int)
-          : null,
+      date: map['date'] != null ? DateTime.fromMillisecondsSinceEpoch(map['date'] as int) : null,
+      pageNumber: map['pageNumber'] != null ? map['pageNumber'] as String : null,
+      stockDate: map['stockDate'] != null ? DateTime.fromMillisecondsSinceEpoch(map['stockDate'] as int) : null,
       slNumber: map['slNumber'] != null ? map['slNumber'] as String : null,
-      description:
-          map['description'] != null ? map['description'] as String : null,
-      openingStock:
-          map['openingStock'] != null ? map['openingStock'] as int : null,
+      description: map['description'] != null ? map['description'] as String : null,
+      openingStock: map['openingStock'] != null ? map['openingStock'] as int : null,
       purchase: map['purchase'] != null ? map['purchase'] as int : null,
       total: map['total'] != null ? map['total'] as int : null,
       issue: map['issue'] != null ? map['issue'] as int : null,
-      closingStock:
-          map['closingStock'] != null ? map['closingStock'] as int : null,
+      closingStock: map['closingStock'] != null ? map['closingStock'] as int : null,
       remarks: map['remarks'] != null ? map['remarks'] as String : null,
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory DailyStockStatementModel.fromJson(String source) =>
-      DailyStockStatementModel.fromMap(
-          json.decode(source) as Map<String, dynamic>);
+  factory DailyStockStatementModel.fromJson(String source) => DailyStockStatementModel.fromMap(json.decode(source) as Map<String, dynamic>);
 }

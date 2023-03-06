@@ -2,6 +2,7 @@
 import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
+
 import 'package:formapp/contractReview/bloc/bloc/contract_review_bloc.dart';
 import 'package:formapp/main.dart';
 
@@ -202,6 +203,7 @@ class ContractReview extends Equatable {
         AmandmentApprovedDate
       ];
 
+
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'formName': formName,
@@ -209,6 +211,8 @@ class ContractReview extends Equatable {
       'revNumber': revNumber,
       'date': date?.millisecondsSinceEpoch,
       'address': address,
+      'poNo': poNo,
+      'PODate': PODate?.millisecondsSinceEpoch,
       'POrecDate': POrecDate?.millisecondsSinceEpoch,
       'enquiryNo': enquiryNo,
       'enquiryDate': enquiryDate?.millisecondsSinceEpoch,
@@ -228,7 +232,9 @@ class ContractReview extends Equatable {
       'ReviewedBy': ReviewedBy,
       'ReviewedDate': ReviewedDate?.millisecondsSinceEpoch,
       'ApprovelBy': ApprovelBy,
-      'ApprovelDate': ApprovelByDate?.millisecondsSinceEpoch,
+      'ApprovelByDate': ApprovelByDate?.millisecondsSinceEpoch,
+      'ApprovedBy': ApprovedBy,
+      'ApprovedByDate': ApprovedByDate?.millisecondsSinceEpoch,
       'Amandmentifany': Amandmentifany,
       'AmandmentDate': AmandmentDate?.millisecondsSinceEpoch,
       'DetailsofAmandment': DetailsofAmandment,
@@ -244,82 +250,43 @@ class ContractReview extends Equatable {
       formName: map['formName'] != null ? map['formName'] as String : null,
       ftNumber: map['ftNumber'] != null ? map['ftNumber'] as String : null,
       revNumber: map['revNumber'] != null ? map['revNumber'] as String : null,
-      date: map['date'] != null
-          ? DateTime.fromMillisecondsSinceEpoch(map['date'] as int)
-          : null,
-      address: map['address'],
-      POrecDate: map['POrecDate'] != null
-          ? DateTime.fromMillisecondsSinceEpoch(map['POrecDate'] as int)
-          : null,
-      enquiryNo: map['enquiryNo'],
-      enquiryDate: map['enquiryDate'] != null
-          ? DateTime.fromMillisecondsSinceEpoch(map['enquiryDate'] as int)
-          : null,
-      productDescription: map['productDescription'] != null
-          ? map['productDescription'] as bool
-          : null,
+      date: map['date'] != null ? DateTime.fromMillisecondsSinceEpoch(map['date'] as int) : null,
+      address: map['address'] ,
+      poNo: map['poNo'] != null ? map['poNo'] as String : null,
+      PODate: map['PODate'] != null ? DateTime.fromMillisecondsSinceEpoch(map['PODate'] as int) : null,
+      POrecDate: map['POrecDate'] != null ? DateTime.fromMillisecondsSinceEpoch(map['POrecDate'] as int) : null,
+      enquiryNo: map['enquiryNo'] != null ? map['enquiryNo'] as String : null,
+      enquiryDate: map['enquiryDate'] != null ? DateTime.fromMillisecondsSinceEpoch(map['enquiryDate'] as int) : null,
+      productDescription: map['productDescription'] != null ? map['productDescription'] as bool : null,
       Qty: map['Qty'] != null ? map['Qty'] as bool : null,
-      poDueDate: map['poDueDate'] != null
-          ? DateTime.fromMillisecondsSinceEpoch(map['poDueDate'] as int)
-          : null,
-      TermsConditions: map['TermsConditions'] != null
-          ? map['TermsConditions'] as bool
-          : null,
+      poDueDate: map['poDueDate'] != null ? DateTime.fromMillisecondsSinceEpoch(map['poDueDate'] as int) : null,
+      TermsConditions: map['TermsConditions'] != null ? map['TermsConditions'] as bool : null,
       Material: map['Material'] != null ? map['Material'] as String : null,
-      MaterialSpecification: map['MaterialSpecification'] != null
-          ? map['MaterialSpecification'] as String
-          : null,
+      MaterialSpecification: map['MaterialSpecification'] != null ? map['MaterialSpecification'] as String : null,
       Payment: map['Payment'] != null ? map['Payment'] as String : null,
-      ThirdPartyInspection: map['ThirdPartyInspection'] != null
-          ? map['ThirdPartyInspection'] as bool
-          : null,
-      AnySpecialRequirements: map['AnySpecialRequirements'] != null
-          ? map['AnySpecialRequirements'] as bool
-          : null,
+      ThirdPartyInspection: map['ThirdPartyInspection'] != null ? map['ThirdPartyInspection'] as bool : null,
+      AnySpecialRequirements: map['AnySpecialRequirements'] != null ? map['AnySpecialRequirements'] as bool : null,
       Transport: map['Transport'] != null ? map['Transport'] as String : null,
       Insurance: map['Insurance'] != null ? map['Insurance'] as bool : null,
-      AcknowledgementNo: map['AcknowledgementNo'],
-      AcknowledgementDate: map['AcknowledgementDate'] != null
-          ? DateTime.fromMillisecondsSinceEpoch(
-              map['AcknowledgementDate'] as int)
-          : null,
-      ReviewedBy:
-          map['ReviewedBy'] != null ? map['ReviewedBy'] as String : null,
-      ReviewedDate: map['ReviewedDate'] != null
-          ? DateTime.fromMillisecondsSinceEpoch(map['ReviewedDate'] as int)
-          : null,
-      ApprovelBy:
-          map['ApprovelBy'] != null ? map['ApprovelBy'] as String : null,
-      ApprovelByDate: map['ApprovelDate'] != null
-          ? DateTime.fromMillisecondsSinceEpoch(map['ApprovelDate'] as int)
-          : null,
-      Amandmentifany:
-          map['Amandmentifany'] != null ? map['Amandmentifany'] as bool : null,
-      AmandmentDate: map['AmandmentDate'] != null
-          ? DateTime.fromMillisecondsSinceEpoch(map['AmandmentDate'] as int)
-          : null,
-      DetailsofAmandment: map['DetailsofAmandment'] != null
-          ? map['DetailsofAmandment'] as String
-          : null,
-      AmandmentReviewBy: map['AmandmentReviewBy'] != null
-          ? map['AmandmentReviewBy'] as String
-          : null,
-      AmandmentReviewDate: map['AmandmentReviewDate'] != null
-          ? DateTime.fromMillisecondsSinceEpoch(
-              map['AmandmentReviewDate'] as int)
-          : null,
-      AmandmentApprovedBy: map['AmandmentApprovedBy'] != null
-          ? map['AmandmentApprovedBy'] as String
-          : null,
-      AmandmentApprovedDate: map['AmandmentApprovedDate'] != null
-          ? DateTime.fromMillisecondsSinceEpoch(
-              map['AmandmentApprovedDate'] as int)
-          : null,
+      AcknowledgementNo: map['AcknowledgementNo'] != null ? map['AcknowledgementNo'] as String : null,
+      AcknowledgementDate: map['AcknowledgementDate'] != null ? DateTime.fromMillisecondsSinceEpoch(map['AcknowledgementDate'] as int) : null,
+      ReviewedBy: map['ReviewedBy'] != null ? map['ReviewedBy'] as String : null,
+      ReviewedDate: map['ReviewedDate'] != null ? DateTime.fromMillisecondsSinceEpoch(map['ReviewedDate'] as int) : null,
+      ApprovelBy: map['ApprovelBy'] != null ? map['ApprovelBy'] as String : null,
+      ApprovelByDate: map['ApprovelByDate'] != null ? DateTime.fromMillisecondsSinceEpoch(map['ApprovelByDate'] as int) : null,
+      ApprovedBy: map['ApprovedBy'] != null ? map['ApprovedBy'] as String : null,
+      ApprovedByDate: map['ApprovedByDate'] != null ? DateTime.fromMillisecondsSinceEpoch(map['ApprovedByDate'] as int) : null,
+      Amandmentifany: map['Amandmentifany'] != null ? map['Amandmentifany'] as bool : null,
+      AmandmentDate: map['AmandmentDate'] != null ? DateTime.fromMillisecondsSinceEpoch(map['AmandmentDate'] as int) : null,
+      DetailsofAmandment: map['DetailsofAmandment'] != null ? map['DetailsofAmandment'] as String : null,
+      AmandmentReviewBy: map['AmandmentReviewBy'] != null ? map['AmandmentReviewBy'] as String : null,
+      AmandmentReviewDate: map['AmandmentReviewDate'] != null ? DateTime.fromMillisecondsSinceEpoch(map['AmandmentReviewDate'] as int) : null,
+      AmandmentApprovedBy: map['AmandmentApprovedBy'] != null ? map['AmandmentApprovedBy'] as String : null,
+      AmandmentApprovedDate: map['AmandmentApprovedDate'] != null ? DateTime.fromMillisecondsSinceEpoch(map['AmandmentApprovedDate'] as int) : null,
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory ContractReview.fromJson(String source) =>
-      ContractReview.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory ContractReview.fromJson(String source) => ContractReview.fromMap(json.decode(source) as Map<String, dynamic>);
 }

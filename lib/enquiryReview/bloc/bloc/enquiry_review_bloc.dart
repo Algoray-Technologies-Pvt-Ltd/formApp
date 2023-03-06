@@ -7,7 +7,8 @@ part 'enquiry_review_event.dart';
 part 'enquiry_review_state.dart';
 
 class EnquiryReviewBloc extends Bloc<EnquiryReviewEvent, EnquiryReviewState> {
-  EnquiryReviewBloc() : super(EnquiryReviewState()) {
+  EnquiryReviewBloc()
+      : super(EnquiryReviewState(enquiryReview: EnquiryReview())) {
     on<ProductDescriptionEvent>((event, emit) {
       emit(state.copyWith(
           enquiryReview: state.enquiryReview
@@ -41,6 +42,7 @@ class EnquiryReviewBloc extends Bloc<EnquiryReviewEvent, EnquiryReviewState> {
       emit(state.copyWith(
           enquiryReview:
               state.enquiryReview?.copyWith(ReviewedDate: event.date)));
+      print(state.enquiryReview?.ReviewedDate);
     });
 
     on<ApprovelByEvent>((event, emit) {
@@ -78,7 +80,11 @@ class EnquiryReviewBloc extends Bloc<EnquiryReviewEvent, EnquiryReviewState> {
           enquiryReview: state.enquiryReview
               ?.copyWith(AmandmentReviewBy: event.AmandmentReviewBy)));
     });
-
+    on<RecDateEvent>((event, emit) {
+      emit(state.copyWith(
+          enquiryReview:
+              state.enquiryReview?.copyWith(recDate: event.RecDate)));
+    });
     on<AmandmentReviewDateEvent>((event, emit) {
       emit(state.copyWith(
           enquiryReview:
@@ -99,10 +105,14 @@ class EnquiryReviewBloc extends Bloc<EnquiryReviewEvent, EnquiryReviewState> {
 
     on<EnquiryNOEvent>((event, emit) {
       emit(state.copyWith(
-          enquiryReview:
-              state.enquiryReview?.copyWith(enquiryNo: event.enquiry)));
+          enquiryReview: state.enquiryReview
+              ?.copyWith(enquiryNo: int.parse(event.enquiry))));
     });
-
+    on<EnquiryDateEvent>((event, emit) {
+      emit(state.copyWith(
+          enquiryReview:
+              state.enquiryReview?.copyWith(enquiryDate: event.date)));
+    });
     on<AddressEvent>((event, emit) {
       emit(state.copyWith(
           enquiryReview:
@@ -127,5 +137,6 @@ class EnquiryReviewBloc extends Bloc<EnquiryReviewEvent, EnquiryReviewState> {
           enquiryReview:
               state.enquiryReview?.copyWith(formName: event.formName)));
     });
+    on<SaveEvent>((event, emit) {});
   }
 }

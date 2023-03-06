@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formapp/enquiryReview/bloc/bloc/enquiry_review_bloc.dart';
+import 'package:intl/intl.dart';
 
 class OfferDueTimeDateWidget extends StatelessWidget {
   OfferDueTimeDateWidget({super.key});
@@ -12,9 +15,11 @@ class OfferDueTimeDateWidget extends StatelessWidget {
         child: Builder(builder: (context) {
           return TextFormField(
             controller: dateController
-            // ..text = context.select((OderDetailsBloc bloc) =>
-            //             bloc.state.orderDetailsState?.deliveryDate?.hour)
-            ,
+              ..text = context.select((EnquiryReviewBloc bloc) =>
+                  bloc.state.enquiryReview?.OfferDueDate != null
+                      ? DateFormat('yyyy-MM-dd   hh : mm')
+                          .format(bloc.state.enquiryReview!.OfferDueDate!)
+                      : ''),
             decoration: InputDecoration(
               fillColor: Colors.white,
               hintText: 'Offer Due Date & Time',
@@ -51,9 +56,9 @@ class OfferDueTimeDateWidget extends StatelessWidget {
                   pickedTime!.hour,
                   pickedTime.minute,
                 );
-                // context
-                //     .read<OderDetailsBloc>()
-                //     .add(DeliveryDateEvent(date: selectedDate));
+                context
+                    .read<EnquiryReviewBloc>()
+                    .add(OfferDueDateEvent(date: selectedDate));
 
                 print(" date:= ");
               } else {

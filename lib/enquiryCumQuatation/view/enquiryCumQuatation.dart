@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formapp/enquiryCumQuatation/bloc/bloc/enquiry_cum_quatation_bloc.dart';
 import 'package:formapp/enquiryCumQuatation/view/createEnquiryCumQuatation.dart';
 import 'package:formapp/main.dart';
 
@@ -16,7 +18,9 @@ class EnquiryCumQuatationScreen extends StatelessWidget {
         backgroundColor: primaryColor,
         onPressed: () {
           Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
-            return EnquiryCumQuatationCreate();
+            return BlocProvider.value(
+                value: context.read<EnquiryCumQuatationBloc>(),
+                child: EnquiryCumQuatationCreate());
           }));
         },
         child: Icon(Icons.add),

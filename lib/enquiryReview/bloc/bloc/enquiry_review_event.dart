@@ -113,9 +113,16 @@ class AmandmentApprovedDateEvent extends EnquiryReviewEvent {
 }
 
 class EnquiryNOEvent extends EnquiryReviewEvent {
-  int enquiry;
+  String enquiry;
   EnquiryNOEvent({
     required this.enquiry,
+  });
+}
+
+class EnquiryDateEvent extends EnquiryReviewEvent {
+  DateTime date;
+  EnquiryDateEvent({
+    required this.date,
   });
 }
 
@@ -160,3 +167,5 @@ class FormNameEvent extends EnquiryReviewEvent {
     required this.formName,
   });
 }
+
+class SaveEvent extends EnquiryReviewEvent {}

@@ -103,6 +103,7 @@ class CustomerVisitReport extends Equatable {
       'revNumber': revNumber,
       'date': date?.millisecondsSinceEpoch,
       'address': address,
+      'name': name,
       'coordinator': coordinator,
       'enquiry': enquiry,
       'approval': approval,
@@ -120,29 +121,22 @@ class CustomerVisitReport extends Equatable {
       formName: map['formName'] != null ? map['formName'] as String : null,
       ftNumber: map['ftNumber'] != null ? map['ftNumber'] as String : null,
       revNumber: map['revNumber'] != null ? map['revNumber'] as String : null,
-      date: map['date'] != null
-          ? DateTime.fromMillisecondsSinceEpoch(map['date'] as int)
-          : null,
-      address: map['address'],
-      coordinator:
-          map['coordinator'] != null ? map['coordinator'] as String : null,
+      date: map['date'] != null ? DateTime.fromMillisecondsSinceEpoch(map['date'] as int) : null,
+      address: map['address'] ,
+      name: map['name'] != null ? map['name'] as String : null,
+      coordinator: map['coordinator'] != null ? map['coordinator'] as String : null,
       enquiry: map['enquiry'] != null ? map['enquiry'] as bool : null,
       approval: map['approval'] != null ? map['approval'] as bool : null,
       order: map['order'] != null ? map['order'] as bool : null,
       audit: map['audit'] != null ? map['audit'] as bool : null,
-      customerVisitDetails: map['customerVisitDetails'] != null
-          ? map['customerVisitDetails'] as String
-          : null,
+      customerVisitDetails: map['customerVisitDetails'] != null ? map['customerVisitDetails'] as String : null,
       feedback: map['feedback'] != null ? map['feedback'] as String : null,
       remarks: map['remarks'] != null ? map['remarks'] as String : null,
-      OrderReceivedDate: map['OrderReceivedDate'] != null
-          ? DateTime.fromMillisecondsSinceEpoch(map['OrderReceivedDate'] as int)
-          : null,
+      OrderReceivedDate: map['OrderReceivedDate'] != null ? DateTime.fromMillisecondsSinceEpoch(map['OrderReceivedDate'] as int) : null,
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory CustomerVisitReport.fromJson(String source) =>
-      CustomerVisitReport.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory CustomerVisitReport.fromJson(String source) => CustomerVisitReport.fromMap(json.decode(source) as Map<String, dynamic>);
 }

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formapp/enquiryReview/bloc/bloc/enquiry_review_bloc.dart';
 import 'package:formapp/enquiryReview/view/createEnquiryReview.dart';
 import 'package:formapp/main.dart';
 
@@ -16,7 +18,10 @@ class EnquiryReviewScreen extends StatelessWidget {
         backgroundColor: primaryColor,
         onPressed: () {
           Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
-            return CreateEnquiryReview();
+            return BlocProvider.value(
+              value: context.read<EnquiryReviewBloc>(),
+              child: CreateEnquiryReview(),
+            );
           }));
         },
         child: Icon(Icons.add),

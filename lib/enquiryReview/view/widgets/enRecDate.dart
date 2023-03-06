@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formapp/enquiryReview/bloc/bloc/enquiry_review_bloc.dart';
+import 'package:intl/intl.dart';
 
 class EnquiryRecDateWidget extends StatelessWidget {
   EnquiryRecDateWidget({super.key});
@@ -12,9 +15,11 @@ class EnquiryRecDateWidget extends StatelessWidget {
         child: Builder(builder: (context) {
           return TextFormField(
             controller: dateController
-            // ..text = context.select((OderDetailsBloc bloc) =>
-            //             bloc.state.orderDetailsState?.deliveryDate?.hour)
-            ,
+              ..text = context.select((EnquiryReviewBloc bloc) =>
+                  bloc.state.enquiryReview?.recDate != null
+                      ? DateFormat('yyyy-MM-dd')
+                          .format(bloc.state.enquiryReview!.recDate!)
+                      : ''),
             decoration: InputDecoration(
               fillColor: Colors.white,
               hintText: 'Rec. Date',
@@ -38,17 +43,16 @@ class EnquiryRecDateWidget extends StatelessWidget {
                 firstDate: DateTime(2015, 8),
                 lastDate: DateTime(2101),
               );
-            
+
               if (pickedDate != null) {
                 DateTime selectedDate = DateTime(
                   pickedDate.year,
                   pickedDate.month,
                   pickedDate.day,
-             
                 );
-                // context
-                //     .read<OderDetailsBloc>()
-                //     .add(DeliveryDateEvent(date: selectedDate));
+                context
+                    .read<EnquiryReviewBloc>()
+                    .add(RecDateEvent(RecDate: selectedDate));
 
                 print(" date:= ");
               } else {
