@@ -78,5 +78,11 @@ class IssueAndReturnRegisterBloc
           issueAndReturnRegisterModel: state.issueAndReturnRegisterModel
               ?.copyWith(remarks: event.remarks)));
     });
+        on<SaveEvent>((event, emit) {
+      var s = state.issueAndReturnRegisterModel!.toJson();
+      print('*************');
+      print(s);
+      print('*************');
+    });
   }
 }

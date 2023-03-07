@@ -1,0 +1,19 @@
+{
+    "ftNumber": null,
+    "revNumber": null,
+    "date": 1678127400000,
+    "pageNumber": null,
+    "PONumber": null,
+    "poSlNumber": null,
+    "customerName": "Advance Payment",
+    "materialrequiredDate": null,
+    "slNumber": "5",
+    "materialDescription": "foods",
+    "inHand": 100,
+    "requiredQuantity": 50,
+    "issuedQuantity": 30,
+    "remarks": "New Order",
+    "requisitionedBy": "Ladeed",
+    "skSign": "Approved",
+    "peSign": "Approved"
+}

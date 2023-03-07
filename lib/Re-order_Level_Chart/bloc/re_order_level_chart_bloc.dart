@@ -57,5 +57,11 @@ class ReOrderLevelChartBloc
           reorderLevelModel:
               state.reorderLevelModel?.copyWith(remarks: event.remarks)));
     });
+    on<SaveEvent>((event, emit) {
+      var s = state.reorderLevelModel!.toJson();
+      print('*************');
+      print(s);
+      print('*************');
+    });
   }
 }

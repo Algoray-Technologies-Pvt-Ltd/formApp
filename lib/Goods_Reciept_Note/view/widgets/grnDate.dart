@@ -16,6 +16,7 @@ class GRNDate extends StatelessWidget {
     TextEditingController grnDateController = TextEditingController();
     return KDateSet(
       label: const Text('GRN Date'),
+      
       controller: grnDateController
         ..text = context.select((GoodsRecieptNoteBloc value) =>
             value.state.grnModel?.grnDate != null

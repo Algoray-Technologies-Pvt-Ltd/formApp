@@ -21,7 +21,7 @@ class KDateSet extends StatelessWidget {
               decoration: InputDecoration(
                 fillColor: Colors.white,
                 hintText: 'Date',
-                label: const Text('Date'),
+                label: label,
                 prefixIcon: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 16 * 0.75),
                   child: Icon(

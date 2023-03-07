@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
 import '../../status.dart';
-import '../models/grmModel.dart';
+import '../models/goodsRecieptNoteModel.dart';
 
 part 'goods_reciept_note_event.dart';
 part 'goods_reciept_note_state.dart';
@@ -11,7 +11,7 @@ class GoodsRecieptNoteBloc
     extends Bloc<GoodsRecieptNoteEvent, GoodsRecieptNoteState> {
   GoodsRecieptNoteBloc()
       : super(
-            GoodsRecieptNoteState(grnModel: GrnModel(), status: Status.init)) {
+            GoodsRecieptNoteState(grnModel: GoodsRecieptNoteModel(), status: Status.init)) {
     on<FtNumberEvent>((event, emit) {
       emit(state.copyWith(
           grnModel: state.grnModel?.copyWith(ftNumber: event.ftNumber)));
@@ -83,6 +83,12 @@ class GoodsRecieptNoteBloc
     on<RemarksEvent>((event, emit) {
       emit(state.copyWith(
           grnModel: state.grnModel?.copyWith(remarks: event.remarks)));
+    });
+        on<SaveEvent>((event, emit) {
+      var s = state.grnModel!.toJson();
+      print('*************');
+      print(s);
+      print('*************');
     });
   }
 }

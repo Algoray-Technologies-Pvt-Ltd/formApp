@@ -26,8 +26,8 @@ class GatePassDate extends StatelessWidget {
                         : ''),
               decoration: InputDecoration(
                 fillColor: Colors.white,
-                hintText: 'Date',
-                label: const Text('Date'),
+                hintText: 'GP Date',
+                label: const Text('GP Date'),
                 prefixIcon: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 16 * 0.75),
                   child: Icon(

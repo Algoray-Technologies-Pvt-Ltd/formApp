@@ -98,5 +98,11 @@ class GateOutwardRegisterBloc
           gateOutwardRegisterModel: state.gateOutwardRegisterModel
               ?.copyWith(remarks: event.remarks)));
     });
+    on<SaveEvent>((event, emit) {
+      var s = state.gateOutwardRegisterModel!.toJson();
+      print('*************');
+      print(s);
+      print('*************');
+    });
   }
 }

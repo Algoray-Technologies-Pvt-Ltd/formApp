@@ -1,0 +1,19 @@
+{
+    "ftNumber": null,
+    "revNumber": null,
+    "date": null,
+    "pageNumber": null,
+    "grnNumber": "25",
+    "supplierName": "Bismi",
+    "grnDate": 1678127400000,
+    "billNumber": "2",
+    "billDate": 1678213800000,
+    "slNumber": "1",
+    "materialDescriotion": "food",
+    "orderQty": 100,
+    "acceptedQty": 80,
+    "inspectionDetails": "Approved",
+    "IFRejectionDetails": "No",
+    "remarks": null,
+    "recievedQty": 50
+}

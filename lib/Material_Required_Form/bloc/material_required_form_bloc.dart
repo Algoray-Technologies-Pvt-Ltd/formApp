@@ -1,7 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
+import '../../model/allLedgerModel.dart';
 import '../../status.dart';
+import '../../webService/weservice.dart';
 import '../models/materialRequiredFormModel.dart';
 
 part 'material_required_form_event.dart';
@@ -11,6 +13,7 @@ class MaterialRequiredFormBloc
     extends Bloc<MaterialRequiredFormEvent, MaterialRequiredFormState> {
   MaterialRequiredFormBloc()
       : super(MaterialRequiredFormState(
+            allledger: [],
             materialrequiredFormModel: MaterialrequiredFormModel(),
             status: Status.init)) {
     on<FtNumberEvent>((event, emit) {
@@ -43,7 +46,12 @@ class MaterialRequiredFormBloc
           materialrequiredFormModel: state.materialrequiredFormModel
               ?.copyWith(poSlNumber: event.poSlNumber)));
     });
-    on<CustomerNameEvent>((event, emit) {
+    on<FetchingEvent>((event, emit) async {
+      emit(state.copyWith(status: Status.fetching));
+      var s = await allLedgers();
+      emit(state.copyWith(status: Status.ready, allledger: s));
+    });
+    on<CustomerNameEvent>((event, emit) async {
       emit(state.copyWith(
           materialrequiredFormModel: state.materialrequiredFormModel
               ?.copyWith(customerName: event.customerName)));
@@ -97,6 +105,12 @@ class MaterialRequiredFormBloc
       emit(state.copyWith(
           materialrequiredFormModel:
               state.materialrequiredFormModel?.copyWith(peSign: event.peSign)));
+    });
+        on<SaveEvent>((event, emit) {
+      var s = state.materialrequiredFormModel!.toJson();
+      print('*************');
+      print(s);
+      print('*************');
     });
   }
 }
