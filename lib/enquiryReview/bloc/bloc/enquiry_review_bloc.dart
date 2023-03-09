@@ -137,6 +137,11 @@ class EnquiryReviewBloc extends Bloc<EnquiryReviewEvent, EnquiryReviewState> {
           enquiryReview:
               state.enquiryReview?.copyWith(formName: event.formName)));
     });
-    on<SaveEvent>((event, emit) {});
+    on<SaveEvent>((event, emit) {
+      var s = state.enquiryReview?.toJson();
+      print('********************');
+      print(s);
+      print('********************');
+    });
   }
 }

@@ -119,7 +119,10 @@ class EnquiryCumQuatationBloc
               state.enquiryCumQuatation?.copyWith(formName: event.formName)));
     });
     on<SaveEvent>((event, emit) {
-      
+      var s = state.enquiryCumQuatation?.toJson();
+      print('********************');
+      print(s);
+      print('********************');
     });
   }
 }

@@ -14,13 +14,6 @@ class RemarksEvent extends MarketingVisitReportEvent {
   });
 }
 
-class OrderReceivedDateEvent extends MarketingVisitReportEvent {
-  DateTime OrderReceivedDate;
-  OrderReceivedDateEvent({
-    required this.OrderReceivedDate,
-  });
-}
-
 class FollowupDetailsEvent extends MarketingVisitReportEvent {
   String followupDetails;
   FollowupDetailsEvent({

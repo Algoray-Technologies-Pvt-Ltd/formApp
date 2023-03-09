@@ -17,11 +17,7 @@ class MarketingVisitReportBloc
               state.marketingVisitReport?.copyWith(remarks: event.Remarks)));
     });
 
-    on<OrderReceivedDateEvent>((event, emit) {
-      emit(state.copyWith(
-          marketingVisitReport: state.marketingVisitReport
-              ?.copyWith(OrderReceivedDate: event.OrderReceivedDate)));
-    });
+
 
     on<FollowupDetailsEvent>((event, emit) {
       emit(state.copyWith(
@@ -96,6 +92,11 @@ class MarketingVisitReportBloc
           marketingVisitReport:
               state.marketingVisitReport?.copyWith(formName: event.formName)));
     });
-    on<SaveEvent>((event, emit) {});
+    on<SaveEvent>((event, emit) {
+      var s = state.marketingVisitReport?.toJson();
+      print('********************');
+      print(s);
+      print('********************');
+    });
   }
 }

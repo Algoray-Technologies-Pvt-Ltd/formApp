@@ -174,6 +174,11 @@ class ContractReviewBloc
           contractReview: state.contractReview
               ?.copyWith(AmandmentApprovedDate: event.approvedDate)));
     });
-    on<SaveEvent>((event, emit) {});
+    on<SaveEvent>((event, emit) {
+      var s = state.contractReview?.toJson();
+      print('********************');
+      print(s);
+      print('********************');
+    });
   }
 }
