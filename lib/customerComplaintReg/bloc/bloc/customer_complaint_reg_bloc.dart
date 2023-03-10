@@ -2,6 +2,8 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:formapp/customerComplaintReg/model/customerComplaintRegmodel.dart';
 import 'package:formapp/main.dart';
+import 'package:formapp/model/allLedgerModel.dart';
+import 'package:formapp/webService/weservice.dart';
 
 part 'customer_complaint_reg_event.dart';
 part 'customer_complaint_reg_state.dart';
@@ -10,7 +12,7 @@ class CustomerComplaintRegBloc
     extends Bloc<CustomerComplaintRegEvent, CustomerComplaintRegState> {
   CustomerComplaintRegBloc()
       : super(CustomerComplaintRegState(
-            customerComplaintReg: CustomerComplaintReg())) {
+            allledger: [], customerComplaintReg: CustomerComplaintReg())) {
     on<RemarksEvent>((event, emit) {
       emit(state.copyWith(
           customerComplaintReg:
@@ -90,6 +92,14 @@ class CustomerComplaintRegBloc
       emit(state.copyWith(
           customerComplaintReg:
               state.customerComplaintReg?.copyWith(formName: event.formName)));
+    });
+    on<FetchEvent>((event, emit) async {
+      print('#######################');
+      var s = await allLedgers();
+      print(s.length);
+      print('#######################');
+
+      emit(state.copyWith(allledger: s));
     });
     on<SaveEvent>((event, emit) {
       var s = state.customerComplaintReg?.toJson();

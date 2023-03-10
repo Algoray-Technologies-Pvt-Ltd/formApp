@@ -5,16 +5,18 @@ import 'package:formapp/contractReview/bloc/bloc/contract_review_bloc.dart';
 import 'package:formapp/contractReview/model/contractReviewmodel.dart';
 import 'package:formapp/model/allLedgerModel.dart';
 
-class CustomerNmaeWidget extends StatefulWidget {
-  CustomerNmaeWidget({super.key});
+class CustomerComplaintNmaeWidget extends StatefulWidget {
+  CustomerComplaintNmaeWidget({super.key});
 
   @override
-  State<CustomerNmaeWidget> createState() => _CustomerNmaeWidgetState();
+  State<CustomerComplaintNmaeWidget> createState() =>
+      _CustomerComplaintNmaeWidgetState();
 }
 
 TextEditingController phoneNo = TextEditingController();
 
-class _CustomerNmaeWidgetState extends State<CustomerNmaeWidget> {
+class _CustomerComplaintNmaeWidgetState
+    extends State<CustomerComplaintNmaeWidget> {
   // @override
   // void dispose() {
   //   phoneNo.dispose();

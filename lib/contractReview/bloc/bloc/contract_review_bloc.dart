@@ -29,7 +29,7 @@ class ContractReviewBloc
       print(state.contractReview?.POrecDate);
     });
 
-    on<FetchingEvent>((event, emit) async {
+    on<FetchCrEvent>((event, emit) async {
       emit(state.copyWith(status: ContractReviewStatus.fetching));
       print('#######################');
       var s = await allLedgers();

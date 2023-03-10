@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:formapp/Daily_Stock_Statement/bloc/daily_stock_statement_bloc.dart';
 import 'package:formapp/Gate_Inward_Register/bloc/gate_inward_register_bloc.dart';
 import 'package:formapp/Gate_Inward_Register/view/gateInwardRegister.dart';
@@ -26,7 +26,7 @@ import 'package:formapp/enquiryReview/bloc/bloc/enquiry_review_bloc.dart';
 import 'package:formapp/enquiryReview/view/enquiryReview.dart';
 import 'package:formapp/marketingVisitReport/bloc/bloc/marketing_visit_report_bloc.dart';
 import 'package:formapp/marketingVisitReport/view/marketingVisitReport.dart';
-
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'Daily_Stock_Statement/view/dailyStockStatementScreen.dart';
 import 'Gate_Outward_Register/view/gateOutwardRegister.dart';
 import 'Material_Required_Form/view/materialRequiredFormScreen.dart';
@@ -50,7 +50,8 @@ class HomePage extends StatelessWidget {
                 Navigator.of(context)
                     .push(MaterialPageRoute(builder: (context) {
                   return BlocProvider(
-                    create: (context) => ContractReviewBloc(),
+                    create: (context) =>
+                        ContractReviewBloc()..add(FetchCrEvent()),
                     child: ContractReviewScreen(),
                   );
                 }));
@@ -62,7 +63,8 @@ class HomePage extends StatelessWidget {
               onPressed: () {
                 Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
                   return BlocProvider(
-                    create: (context) => CustomerComplaintRegBloc(),
+                    create: (context) =>
+                        CustomerComplaintRegBloc()..add(FetchEvent()),
                     child: CustomerComplaintRegScreen(),
                   );
                 }));

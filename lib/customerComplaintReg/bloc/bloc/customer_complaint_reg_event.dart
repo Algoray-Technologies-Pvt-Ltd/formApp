@@ -35,7 +35,6 @@ class IsInformtocustomerEvent extends CustomerComplaintRegEvent {
   });
 }
 
-
 class ActionDateEvent extends CustomerComplaintRegEvent {
   DateTime ActionDate;
   ActionDateEvent({
@@ -121,3 +120,5 @@ class FormNameEvent extends CustomerComplaintRegEvent {
 }
 
 class SaveEvent extends CustomerComplaintRegEvent {}
+
+class FetchEvent extends CustomerComplaintRegEvent {}

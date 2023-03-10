@@ -246,7 +246,7 @@ class AmandmentApprovedDateEvent extends ContractReviewEvent {
   });
 }
 
-class FetchingEvent extends ContractReviewEvent {}
+class FetchCrEvent extends ContractReviewEvent {}
 
 class SaveEvent extends ContractReviewEvent {
   

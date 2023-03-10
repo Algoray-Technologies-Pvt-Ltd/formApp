@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formapp/customerComplaintReg/view/widget/ActionDateWidget.dart';
 import 'package:formapp/customerComplaintReg/view/widget/InformDateWidget.dart';
 import 'package:formapp/customerComplaintReg/view/widget/IsInformedWidget.dart';
+import 'package:formapp/customerComplaintReg/view/widget/customernameWidget.dart';
 import 'package:formapp/main.dart';
 
 import 'package:formapp/widgets/ktextFeild.dart';
@@ -18,7 +19,7 @@ class CreateComplainrReg extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         backgroundColor: primaryColor,
         onPressed: () {
-          context.read<CustomerComplaintRegBloc>().add(SaveEvent());
+          // context.read<CustomerComplaintRegBloc>().add(SaveEvent());
           Navigator.of(context).pop();
         },
         child: const Icon(Icons.save),
@@ -30,15 +31,7 @@ class CreateComplainrReg extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Wrap(children: [
-          KTextField(
-            initialText: '',
-            hintText: 'Name',
-            onChanged: (value) {
-              context
-                  .read<CustomerComplaintRegBloc>()
-                  .add(FormNameEvent(formName: value));
-            },
-          ),
+          CustomerComplaintNmaeWidget(),
           KTextField(
             initialText: '',
             hintText: 'Address',

@@ -1,13 +1,13 @@
 class AllLedgers {
-  List<Data>? data;
+  List<AllLedgersData>? data;
 
   AllLedgers({this.data});
 
   AllLedgers.fromJson(Map<String, dynamic> json) {
     if (json['data'] != null) {
-      data = <Data>[];
+      data = <AllLedgersData>[];
       json['data'].forEach((v) {
-        data!.add(Data.fromJson(v));
+        data!.add(AllLedgersData.fromJson(v));
       });
     }
   }
@@ -21,7 +21,7 @@ class AllLedgers {
   }
 }
 
-class Data {
+class AllLedgersData {
   String? ledgerId;
   String? ledgerName;
   String? groupId;
@@ -36,7 +36,7 @@ class Data {
   String? creditLimit;
   String? defaultSalesman;
 
-  Data(
+  AllLedgersData(
       {this.ledgerId,
       this.ledgerName,
       this.groupId,
@@ -51,7 +51,7 @@ class Data {
       this.creditLimit,
       this.defaultSalesman});
 
-  Data.fromJson(Map<String, dynamic> json) {
+  AllLedgersData.fromJson(Map<String, dynamic> json) {
     ledgerId = json['Ledger_Id'];
     ledgerName = json['Ledger_Name'];
     groupId = json['Group_Id'];

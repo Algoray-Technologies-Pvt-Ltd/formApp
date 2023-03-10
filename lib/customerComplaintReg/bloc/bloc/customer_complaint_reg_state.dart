@@ -3,17 +3,18 @@ part of 'customer_complaint_reg_bloc.dart';
 
 class CustomerComplaintRegState extends Equatable {
   CustomerComplaintReg? customerComplaintReg;
+  List<AllLedgersData>? allledger;
   CustomerComplaintRegState({
     this.customerComplaintReg,
+    this.allledger,
   });
   @override
-  List get props => [customerComplaintReg];
+  List get props => [customerComplaintReg, allledger];
 
-  CustomerComplaintRegState copyWith({
-    CustomerComplaintReg? customerComplaintReg,
-  }) {
+  CustomerComplaintRegState copyWith(
+      {CustomerComplaintReg? customerComplaintReg, List<AllLedgersData>? allledger}) {
     return CustomerComplaintRegState(
-      customerComplaintReg: customerComplaintReg ?? this.customerComplaintReg,
-    );
+        customerComplaintReg: customerComplaintReg ?? this.customerComplaintReg,
+        allledger: allledger ?? this.allledger);
   }
 }
