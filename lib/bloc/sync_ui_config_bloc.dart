@@ -3,7 +3,7 @@ import 'package:equatable/equatable.dart';
 import 'package:formapp/constants.dart';
 import 'package:formapp/model/Ledgers/LedMasterHiveModel.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import '../model/HiveModels/InventoryItems/InventoryItemDataModel.dart';
+import '../model/HiveModels/InventoryItems/InvetoryItemDataModel.dart';
 import '../webService/webServicePHP.dart';
 part 'sync_ui_config_event.dart';
 part 'sync_ui_config_state.dart';
