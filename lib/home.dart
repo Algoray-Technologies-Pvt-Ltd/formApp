@@ -20,7 +20,9 @@ import 'package:formapp/customerOrderReg/bloc/bloc/customer_order_reg_bloc.dart'
 import 'package:formapp/customerOrderReg/view/customerOrderReg.dart';
 import 'package:formapp/customerVisitReport/bloc/bloc/customerVisitReport_bloc.dart';
 import 'package:formapp/customerVisitReport/view/customerVisitReport.dart';
+import 'package:formapp/enquiryCumQuatation/bloc/bloc/enquiry_cum_quatation_bloc.dart';
 import 'package:formapp/enquiryCumQuatation/view/enquiryCumQuatation.dart';
+import 'package:formapp/enquiryReview/bloc/bloc/enquiry_review_bloc.dart';
 import 'package:formapp/enquiryReview/view/enquiryReview.dart';
 import 'package:formapp/marketingVisitReport/bloc/bloc/marketing_visit_report_bloc.dart';
 import 'package:formapp/marketingVisitReport/view/marketingVisitReport.dart';
@@ -95,7 +97,10 @@ class HomePage extends StatelessWidget {
               color: Color.fromARGB(255, 187, 229, 250),
               onPressed: () {
                 Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
-                  return EnquiryCumQuatationScreen();
+                  return BlocProvider(
+                    create: (context) => EnquiryCumQuatationBloc(),
+                    child: EnquiryCumQuatationScreen(),
+                  );
                 }));
               },
               child: Text('enquiryCumQuatation'),
@@ -104,7 +109,10 @@ class HomePage extends StatelessWidget {
               color: Color.fromARGB(255, 187, 229, 250),
               onPressed: () {
                 Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
-                  return EnquiryReviewScreen();
+                  return BlocProvider(
+                    create: (context) => EnquiryReviewBloc(),
+                    child: EnquiryReviewScreen(),
+                  );
                 }));
               },
               child: Text('enquiryReview'),

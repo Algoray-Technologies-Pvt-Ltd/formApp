@@ -20,7 +20,7 @@ class MarketingVisitReport extends Equatable {
 
   String? detailsMeeting;
   String? followupDetails;
-  DateTime? OrderReceivedDate;
+
   String? Remarks;
   MarketingVisitReport({
     this.formName,
@@ -36,7 +36,7 @@ class MarketingVisitReport extends Equatable {
     this.paymentCollection,
     this.detailsMeeting,
     this.followupDetails,
-    this.OrderReceivedDate,
+
     this.Remarks,
   });
 
@@ -56,7 +56,7 @@ class MarketingVisitReport extends Equatable {
         paymentCollection,
         detailsMeeting,
         followupDetails,
-        OrderReceivedDate,
+
         Remarks,
       ];
 
@@ -75,7 +75,7 @@ class MarketingVisitReport extends Equatable {
     String? detailsMeeting,
     String? followupDetails,
     String? remarks,
-    DateTime? OrderReceivedDate,
+
     String? Remarks,
   }) {
     return MarketingVisitReport(
@@ -92,7 +92,7 @@ class MarketingVisitReport extends Equatable {
       paymentCollection: paymentCollection ?? this.paymentCollection,
       detailsMeeting: detailsMeeting ?? this.detailsMeeting,
       followupDetails: followupDetails ?? this.followupDetails,
-      OrderReceivedDate: OrderReceivedDate ?? this.OrderReceivedDate,
+
       Remarks: Remarks ?? this.Remarks,
     );
   }
@@ -112,7 +112,7 @@ class MarketingVisitReport extends Equatable {
       'paymentCollection': paymentCollection,
       'detailsMeeting': detailsMeeting,
       'followupDetails': followupDetails,
-      'OrderReceivedDate': OrderReceivedDate,
+
       'Remarks': Remarks,
     };
   }
@@ -141,7 +141,7 @@ class MarketingVisitReport extends Equatable {
       followupDetails: map['followupDetails'] != null
           ? map['followupDetails'] as String
           : null,
-      OrderReceivedDate: map['OrderReceivedDate'],
+
       Remarks: map['Remarks'] != null ? map['Remarks'] as String : null,
     );
   }

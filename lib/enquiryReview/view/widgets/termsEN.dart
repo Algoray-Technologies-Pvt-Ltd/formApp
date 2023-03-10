@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formapp/enquiryReview/bloc/bloc/enquiry_review_bloc.dart';
 
 class TermsandConditionsWidgetEn extends StatefulWidget {
   const TermsandConditionsWidgetEn({super.key});
@@ -45,9 +47,10 @@ class _TermsandConditionsWidgetEnState
                     setState(() {
                       selectedShape = value;
                     });
-                    // context
-                    //     .read<OderDetailsBloc>()
-                    //     .add(PhotoPrintEvent(photoPrint: true));
+
+                    context
+                        .read<EnquiryReviewBloc>()
+                        .add(ProductDescriptionEvent(productDescription: true));
                   },
                 ),
                 Text("Yes"),
@@ -59,9 +62,8 @@ class _TermsandConditionsWidgetEnState
                       selectedShape = value;
                     });
 
-                    // context
-                    //     .read<OderDetailsBloc>()
-                    //     .add(PhotoPrintEvent(photoPrint: false));
+                    context.read<EnquiryReviewBloc>().add(
+                        ProductDescriptionEvent(productDescription: false));
                   },
                 ),
                 Text("No"),

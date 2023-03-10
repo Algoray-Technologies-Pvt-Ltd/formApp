@@ -50,7 +50,7 @@ class QuoNoEvent extends EnquiryCumQuatationEvent {
 }
 
 class EnqQtyEvent extends EnquiryCumQuatationEvent {
-  int qty;
+  String qty;
   EnqQtyEvent({
     required this.qty,
   });
@@ -92,8 +92,15 @@ class SiNumberEvent extends EnquiryCumQuatationEvent {
 }
 
 class EnquiryNOEvent extends EnquiryCumQuatationEvent {
-  int enquiry;
+  String enquiry;
   EnquiryNOEvent({
+    required this.enquiry,
+  });
+}
+
+class EnquiryDatevent extends EnquiryCumQuatationEvent {
+  DateTime enquiry;
+  EnquiryDatevent({
     required this.enquiry,
   });
 }
@@ -132,3 +139,5 @@ class FormNameEvent extends EnquiryCumQuatationEvent {
     required this.formName,
   });
 }
+
+class SaveEvent extends EnquiryCumQuatationEvent {}

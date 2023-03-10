@@ -248,4 +248,6 @@ class AmandmentApprovedDateEvent extends ContractReviewEvent {
 
 class FetchingEvent extends ContractReviewEvent {}
 
-class SaveEvent extends ContractReviewEvent {}
+class SaveEvent extends ContractReviewEvent {
+  
+}

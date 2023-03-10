@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formapp/enquiryReview/bloc/bloc/enquiry_review_bloc.dart';
 
 class AmandmentWidgetEn extends StatefulWidget {
   const AmandmentWidgetEn({super.key});
@@ -34,7 +36,6 @@ class _AmandmentWidgetEnState extends State<AmandmentWidgetEn> {
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Text(
                     'Amandment if any',
-                
                   ),
                 ),
                 Radio(
@@ -44,9 +45,9 @@ class _AmandmentWidgetEnState extends State<AmandmentWidgetEn> {
                     setState(() {
                       selectedShape = value;
                     });
-                    // context
-                    //     .read<OderDetailsBloc>()
-                    //     .add(PhotoPrintEvent(photoPrint: true));
+                    context
+                        .read<EnquiryReviewBloc>()
+                        .add(AmandmentifanyEvent(Amandment: true));
                   },
                 ),
                 Text("Yes"),
@@ -57,10 +58,9 @@ class _AmandmentWidgetEnState extends State<AmandmentWidgetEn> {
                     setState(() {
                       selectedShape = value;
                     });
-
-                    // context
-                    //     .read<OderDetailsBloc>()
-                    //     .add(PhotoPrintEvent(photoPrint: false));
+                    context
+                        .read<EnquiryReviewBloc>()
+                        .add(AmandmentifanyEvent(Amandment: false));
                   },
                 ),
                 Text("No"),
