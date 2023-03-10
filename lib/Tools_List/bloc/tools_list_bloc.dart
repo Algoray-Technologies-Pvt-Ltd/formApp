@@ -57,5 +57,11 @@ class ToolsListBloc extends Bloc<ToolsListEvent, ToolsListState> {
           toolsListModel:
               state.toolsListModel?.copyWith(remarks: event.remarks)));
     });
+    on<SaveEvent>((event, emit) {
+      var s = state.toolsListModel!.toJson();
+      print('*************');
+      print(s);
+      print('*************');
+    });
   }
 }

@@ -1,0 +1,19 @@
+{
+    "ftNumber": null,
+    "revNumber": null,
+    "date": null,
+    "pageNumber": null,
+    "gateInwardNumber": null,
+    "gateInwardDateTime": 1678127400000,
+    "gatePassNumber": null,
+    "gpNumberDate": 1678213800000,
+    "from": "Kozhikode",
+    "modeOfTransport": "Auto",
+    "vehicleNumber": "KL11AX4545",
+    "description": "Item",
+    "quantity": 200,
+    "purpose": "Delivery",
+    "checkedBy": "Security",
+    "returnableOrNonReturnable": null,
+    "remarks": "Reached"
+}

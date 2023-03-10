@@ -1,0 +1,15 @@
+{
+    "ftNumber": null,
+    "revNumber": null,
+    "date": null,
+    "pageNumber": null,
+    "stockDate": 1678127400000,
+    "slNumber": null,
+    "description": "Item",
+    "openingStock": 100,
+    "purchase": 200,
+    "total": 300,
+    "issue": 50,
+    "closingStock": 250,
+    "remarks": "stock check done"
+}

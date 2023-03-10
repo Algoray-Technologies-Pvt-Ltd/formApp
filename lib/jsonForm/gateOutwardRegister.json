@@ -1,0 +1,19 @@
+{
+    "ftNumber": null,
+    "revNumber": null,
+    "date": null,
+    "pageNumber": null,
+    "gateOutwardNumber": "1",
+    "gateOutwardDateTime": 1678127400000,
+    "gatePassNumber": "25",
+    "gpNumberDate": 1678213800000,
+    "to": "Mallapuram",
+    "modeOfTransport": "Auto",
+    "vehicleNumber": "KL11AX2525",
+    "description": "ITEM",
+    "quantity": 100,
+    "purpose": "Delivery",
+    "signature": "Security",
+    "returnableOrNonReturnable": null,
+    "remarks": "Delivery"
+}
