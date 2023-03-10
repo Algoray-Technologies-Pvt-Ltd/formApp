@@ -1,6 +1,10 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:formapp/webService/webServicePHP.dart';
+import 'package:hive/hive.dart';
 
+import '../../constants.dart';
+import '../../model/HiveModels/InventoryItems/InventoryItemDataModel.dart';
 import '../../status.dart';
 import '../models/dailyStockStatementModel.dart';
 
@@ -43,10 +47,12 @@ class DailyStockStatementBloc
           dailyStockStatementModel: state.dailyStockStatementModel
               ?.copyWith(slNumber: event.slNumber)));
     });
-    on<DescriptionEvent>((event, emit) {
-      emit(state.copyWith(
-          dailyStockStatementModel: state.dailyStockStatementModel
-              ?.copyWith(description: event.description)));
+    on<DescriptionEvent>((event, emit) async {
+      bool n = await fetchItems();
+      print('Items Fetched');
+      // emit(state.copyWith(
+      //     dailyStockStatementModel: state.dailyStockStatementModel
+      //         ?.copyWith(description: event.description)));
     });
     on<OpeningStockEvent>((event, emit) {
       emit(state.copyWith(
@@ -84,5 +90,37 @@ class DailyStockStatementBloc
       print(s);
       print('*************');
     });
+  }
+  Future<bool> fetchItems() async {
+    print('fetching inventory items');
+    bool flag = false;
+    String qry = '';
+    DateTime last = DateTime(2021);
+
+    final dataResponse = await WebServicePHPHelper.getAllInventoryItems(
+      lastUpdatedTimestamp: last,
+    );
+    if (dataResponse == false) {
+      print('Fetch Eroor');
+    }
+    Box<InventoryItemHive> box = Hive.box(HiveTagNames.Items_Hive_Tag);
+    await box.clear();
+
+    try {
+      dataResponse.forEach((element) async {
+        // print('${element}');
+        try {
+          // print('Type ele : ${element.runtimeType}');
+          InventoryItemHive item = InventoryItemHive.fromMap(element);
+          await box.put(item.Item_ID, item);
+        } catch (e) {
+          print('Conv error : ${e.toString()}');
+        }
+      });
+    } catch (e) {
+      print('Erro : ${e.toString()}  ${box.getAt(0)}');
+    }
+      print('Inventory Items FETCHED : ${box.length}');
+    return flag;
   }
 }
