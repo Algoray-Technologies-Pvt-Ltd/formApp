@@ -20,7 +20,7 @@ class ContractReviewScreen extends StatelessWidget {
           print(
               'status:   ${BlocProvider.of<ContractReviewBloc>(context).state.status}');
 
-          context.read<ContractReviewBloc>().add(FetchCrEvent());
+          // context.read<ContractReviewBloc>().add(FetchCrEvent());
           print(
               'status:   ${BlocProvider.of<ContractReviewBloc>(context).state.status}');
 

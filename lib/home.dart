@@ -50,8 +50,9 @@ class HomePage extends StatelessWidget {
                 Navigator.of(context)
                     .push(MaterialPageRoute(builder: (context) {
                   return BlocProvider(
+                    lazy: false,
                     create: (context) =>
-                        ContractReviewBloc()..add(FetchCrEvent()),
+                        ContractReviewBloc()..add(FetchCEvent()),
                     child: ContractReviewScreen(),
                   );
                 }));

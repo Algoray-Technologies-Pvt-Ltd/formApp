@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:formapp/contractReview/bloc/bloc/contract_review_bloc.dart';
 import 'package:formapp/contractReview/model/contractReviewmodel.dart';
+import 'package:formapp/model/Ledgers/LedMasterHiveModel.dart';
 import 'package:formapp/model/allLedgerModel.dart';
 
 class CustomerNmaeWidget extends StatefulWidget {
@@ -66,13 +67,13 @@ class _CustomerNmaeWidgetState extends State<CustomerNmaeWidget> {
 }
 
 getSuggestions(String query, BuildContext context) {
-  List<AllLedgersData?>? matches =
+  List<LedgerMasterHiveModel?>? matches =
       context.read<ContractReviewBloc>().state.allledger;
   print('*****************');
   print(matches?.length);
   print('*****************');
   matches?.retainWhere(
-      (s) => s!.ledgerName!.toLowerCase().contains(query.toLowerCase()));
+      (s) => s!.Ledger_Name!.toLowerCase().contains(query.toLowerCase()));
 
-  return matches?.map((e) => e?.ledgerName) ?? [];
+  return matches?.map((e) => e?.Ledger_Name) ?? [];
 }

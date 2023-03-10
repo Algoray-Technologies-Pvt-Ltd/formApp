@@ -1,8 +1,11 @@
 import 'package:equatable/equatable.dart';
+import 'package:formapp/constants.dart';
 import 'package:formapp/contractReview/model/contractReviewmodel.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formapp/model/Ledgers/LedMasterHiveModel.dart';
 import 'package:formapp/model/allLedgerModel.dart';
 import 'package:formapp/webService/weservice.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 part 'contract_review_event.dart';
 part 'contract_review_state.dart';
 
@@ -29,11 +32,19 @@ class ContractReviewBloc
       print(state.contractReview?.POrecDate);
     });
 
-    on<FetchCrEvent>((event, emit) async {
+    on<FetchCEvent>((event, emit) async {
+      print('*************###############');
       emit(state.copyWith(status: ContractReviewStatus.fetching));
       print('#######################');
-      var s = await allLedgers();
-      print(s.length);
+      Box<LedgerMasterHiveModel> ledger = Hive.box<LedgerMasterHiveModel>(
+        HiveTagNames.Ledgers_Hive_Tag,
+      );
+      var s = ledger.values.toList();
+      ledger.values.where((element) {
+        print('${element.Ledger_Name} - ${element.Group_Id}}');
+        return true;
+      }).toList();
+
       print('#######################');
 
       emit(state.copyWith(status: ContractReviewStatus.ready, allledger: s));

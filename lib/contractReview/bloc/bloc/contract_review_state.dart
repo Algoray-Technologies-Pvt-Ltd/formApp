@@ -4,7 +4,7 @@ part of 'contract_review_bloc.dart';
 class ContractReviewState extends Equatable {
   ContractReview? contractReview;
   ContractReviewStatus? status;
-  List<AllLedgersData>? allledger;
+  List<LedgerMasterHiveModel>? allledger;
   ContractReviewState({this.contractReview, this.status, this.allledger});
 
   @override
@@ -13,7 +13,7 @@ class ContractReviewState extends Equatable {
   ContractReviewState copyWith(
       {ContractReview? contractReview,
       ContractReviewStatus? status,
-      List<AllLedgersData>? allledger}) {
+      List<LedgerMasterHiveModel>? allledger}) {
     return ContractReviewState(
         contractReview: contractReview ?? this.contractReview,
         allledger: allledger ?? this.allledger,
