@@ -6,6 +6,7 @@ import '../../widgets/KAutoDateSet.dart';
 import '../../widgets/KNumberTextField.dart';
 import '../../widgets/kautoGenerateTextField.dart';
 import '../../widgets/ktextFeild.dart';
+import 'widgets/description.dart';
 import 'widgets/stockDate.dart';
 
 class CreateDailyStockStatement extends StatelessWidget {
@@ -76,16 +77,16 @@ class CreateDailyStockStatement extends StatelessWidget {
                 hintText: 'Sl.No',
               ),
               const StockDate(),
-              // const StockDate(),
-              KTextField(
-                onChanged: (value) {
-                  context
-                      .read<DailyStockStatementBloc>()
-                      .add(DescriptionEvent(description: value));
-                },
-                initialText: '',
-                hintText: 'Description',
-              ),
+              Description(),
+              // KTextField(
+              //   onChanged: (value) {
+              //     context
+              //         .read<DailyStockStatementBloc>()
+              //         .add(DescriptionEvent(description: value));
+              //   },
+              //   initialText: '',
+              //   hintText: 'Description',
+              // ),
               KNumberTextField(
                 onChanged: (value) {
                   int openingStock = int.tryParse(value) ?? 0;

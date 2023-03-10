@@ -138,7 +138,8 @@ class HomePage extends StatelessWidget {
                 Navigator.of(context)
                     .push(MaterialPageRoute(builder: (context) {
                   return BlocProvider(
-                    create: (context) => DailyStockStatementBloc(),
+                    lazy: false,
+                    create: (context) => DailyStockStatementBloc()..add(FetchingDailyStockEvent()),
                     child: const DailyStockStatementScreen(),
                   );
                 }));
