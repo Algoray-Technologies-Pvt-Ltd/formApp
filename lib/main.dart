@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formapp/home.dart';
 import 'package:formapp/model/Ledgers/LedMasterHiveModel.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+
+import 'bloc/sync_ui_config_bloc.dart';
 
 const primaryColor = Color.fromRGBO(32, 115, 152, 1);
 
@@ -51,7 +54,10 @@ class MyApp extends StatelessWidget {
             )),
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
-        home: HomePage());
+        home: BlocProvider(
+          create: (context) => SyncServiceBloc()..add(FetchLedgersEvent()),
+          child: HomePage(),
+        ));
   }
 }
 
