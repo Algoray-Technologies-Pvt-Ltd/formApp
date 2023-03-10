@@ -93,6 +93,11 @@ class CustomerVisitReportBloc
           customerVisitReport:
               state.customerVisitReport?.copyWith(formName: event.formName)));
     });
-    on<SaveEvent>((event, emit) {});
+    on<SaveEvent>((event, emit) {
+      var s = state.customerVisitReport?.toJson();
+      print('********************');
+      print(s);
+      print('********************');
+    });
   }
 }

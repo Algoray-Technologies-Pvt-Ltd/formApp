@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formapp/enquiryReview/bloc/bloc/enquiry_review_bloc.dart';
 
 class ProductDescriptionWidgetEn extends StatefulWidget {
   const ProductDescriptionWidgetEn({super.key});
@@ -36,7 +38,6 @@ class _ProductDescriptionWidgetEnState
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Text(
                     'Product Description',
-               
                   ),
                 ),
                 Radio(
@@ -46,9 +47,9 @@ class _ProductDescriptionWidgetEnState
                     setState(() {
                       selectedShape = value;
                     });
-                    // context
-                    //     .read<OderDetailsBloc>()
-                    //     .add(PhotoPrintEvent(photoPrint: true));
+                    context
+                        .read<EnquiryReviewBloc>()
+                        .add(ProductDescriptionEvent(productDescription: true));
                   },
                 ),
                 Text("Yes"),
@@ -60,9 +61,8 @@ class _ProductDescriptionWidgetEnState
                       selectedShape = value;
                     });
 
-                    // context
-                    //     .read<OderDetailsBloc>()
-                    //     .add(PhotoPrintEvent(photoPrint: false));
+                    context.read<EnquiryReviewBloc>().add(
+                        ProductDescriptionEvent(productDescription: false));
                   },
                 ),
                 Text("No"),

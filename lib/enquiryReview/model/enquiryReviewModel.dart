@@ -13,6 +13,7 @@ class EnquiryReview extends Equatable {
   AddressBook? address;
   DateTime? recDate;
   int? enquiryNo;
+  DateTime? enquiryDate;
   bool? productDescription;
   bool? Qty;
   DateTime? OfferDueDate;
@@ -21,6 +22,7 @@ class EnquiryReview extends Equatable {
   DateTime? ReviewedDate;
   String? ApprovelBy;
   DateTime? ApprovelDate;
+
   bool? Amandmentifany;
   DateTime? AmandmentDate;
   String? DetailsofAmandment;
@@ -36,6 +38,7 @@ class EnquiryReview extends Equatable {
     this.address,
     this.recDate,
     this.enquiryNo,
+    this.enquiryDate,
     this.productDescription,
     this.Qty,
     this.OfferDueDate,
@@ -53,10 +56,6 @@ class EnquiryReview extends Equatable {
     this.AmandmentApprovedDate,
   });
 
-  @override
-  // TODO: implement props
-  List<Object?> get props => throw UnimplementedError();
-
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'formName': formName,
@@ -66,6 +65,7 @@ class EnquiryReview extends Equatable {
       'address': address,
       'recDate': recDate?.millisecondsSinceEpoch,
       'enquiryNo': enquiryNo,
+      'enquiryDate': enquiryDate?.millisecondsSinceEpoch,
       'productDescription': productDescription,
       'Qty': Qty,
       'OfferDueDate': OfferDueDate?.millisecondsSinceEpoch,
@@ -97,6 +97,9 @@ class EnquiryReview extends Equatable {
           ? DateTime.fromMillisecondsSinceEpoch(map['recDate'] as int)
           : null,
       enquiryNo: map['enquiryNo'] != null ? map['enquiryNo'] as int : null,
+      enquiryDate: map['enquiryDate'] != null
+          ? DateTime.fromMillisecondsSinceEpoch(map['enquiryDate'] as int)
+          : null,
       productDescription: map['productDescription'] != null
           ? map['productDescription'] as bool
           : null,
@@ -147,6 +150,33 @@ class EnquiryReview extends Equatable {
   factory EnquiryReview.fromJson(String source) =>
       EnquiryReview.fromMap(json.decode(source) as Map<String, dynamic>);
 
+  @override
+  List get props => [
+        formName,
+        ftNumber,
+        revNumber,
+        date,
+        address,
+        recDate,
+        enquiryNo,
+        enquiryDate,
+        productDescription,
+        Qty,
+        OfferDueDate,
+        TermsConditions,
+        ReviewedBy,
+        ReviewedDate,
+        ApprovelBy,
+        ApprovelDate,
+        Amandmentifany,
+        AmandmentDate,
+        DetailsofAmandment,
+        AmandmentReviewBy,
+        AmandmentReviewDate,
+        AmandmentApprovedBy,
+        AmandmentApprovedDate,
+      ];
+
   EnquiryReview copyWith({
     String? formName,
     String? ftNumber,
@@ -155,6 +185,7 @@ class EnquiryReview extends Equatable {
     AddressBook? address,
     DateTime? recDate,
     int? enquiryNo,
+    DateTime? enquiryDate,
     bool? productDescription,
     bool? Qty,
     DateTime? OfferDueDate,
@@ -179,6 +210,7 @@ class EnquiryReview extends Equatable {
       address: address ?? this.address,
       recDate: recDate ?? this.recDate,
       enquiryNo: enquiryNo ?? this.enquiryNo,
+      enquiryDate: enquiryDate ?? this.enquiryDate,
       productDescription: productDescription ?? this.productDescription,
       Qty: Qty ?? this.Qty,
       OfferDueDate: OfferDueDate ?? this.OfferDueDate,

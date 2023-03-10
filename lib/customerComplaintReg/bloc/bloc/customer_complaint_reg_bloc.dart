@@ -91,6 +91,11 @@ class CustomerComplaintRegBloc
           customerComplaintReg:
               state.customerComplaintReg?.copyWith(formName: event.formName)));
     });
-    on<SaveEvent>((event, emit) {});
+    on<SaveEvent>((event, emit) {
+      var s = state.customerComplaintReg?.toJson();
+      print('********************');
+      print(s);
+      print('********************');
+    });
   }
 }

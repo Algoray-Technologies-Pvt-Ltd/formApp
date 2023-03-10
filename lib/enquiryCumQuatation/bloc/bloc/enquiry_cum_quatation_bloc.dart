@@ -7,7 +7,9 @@ part 'enquiry_cum_quatation_state.dart';
 
 class EnquiryCumQuatationBloc
     extends Bloc<EnquiryCumQuatationEvent, EnquiryCumQuatationState> {
-  EnquiryCumQuatationBloc() : super(EnquiryCumQuatationState()) {
+  EnquiryCumQuatationBloc()
+      : super(EnquiryCumQuatationState(
+            enquiryCumQuatation: EnquiryCumQuatation())) {
     on<RemarksEvent>((event, emit) {
       emit(state.copyWith(
           enquiryCumQuatation:
@@ -46,8 +48,8 @@ class EnquiryCumQuatationBloc
 
     on<EnqQtyEvent>((event, emit) {
       emit(state.copyWith(
-          enquiryCumQuatation:
-              state.enquiryCumQuatation?.copyWith(EnqQty: event.qty)));
+          enquiryCumQuatation: state.enquiryCumQuatation
+              ?.copyWith(EnqQty: int.parse(event.qty))));
     });
 
     on<DescriptionofJobEvent>((event, emit) {
@@ -79,11 +81,16 @@ class EnquiryCumQuatationBloc
           enquiryCumQuatation:
               state.enquiryCumQuatation?.copyWith(siNumber: event.numb)));
     });
+    on<EnquiryDatevent>((event, emit) {
+      emit(state.copyWith(
+          enquiryCumQuatation:
+              state.enquiryCumQuatation?.copyWith(EnquiryDate: event.enquiry)));
+    });
 
     on<EnquiryNOEvent>((event, emit) {
       emit(state.copyWith(
-          enquiryCumQuatation:
-              state.enquiryCumQuatation?.copyWith(enqNumber: event.enquiry)));
+          enquiryCumQuatation: state.enquiryCumQuatation
+              ?.copyWith(enqNumber: int.parse(event.enquiry))));
     });
 
     on<EnqRecDateEvent>((event, emit) {
@@ -110,6 +117,12 @@ class EnquiryCumQuatationBloc
       emit(state.copyWith(
           enquiryCumQuatation:
               state.enquiryCumQuatation?.copyWith(formName: event.formName)));
+    });
+    on<SaveEvent>((event, emit) {
+      var s = state.enquiryCumQuatation?.toJson();
+      print('********************');
+      print(s);
+      print('********************');
     });
   }
 }

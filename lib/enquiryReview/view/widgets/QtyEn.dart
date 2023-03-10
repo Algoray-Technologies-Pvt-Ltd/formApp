@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formapp/enquiryReview/bloc/bloc/enquiry_review_bloc.dart';
 
 class QtyWidgetEn extends StatefulWidget {
   const QtyWidgetEn({super.key});
@@ -34,7 +36,6 @@ class _QtyWidgetEnState extends State<QtyWidgetEn> {
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Text(
                     'Qty ',
-                    
                   ),
                 ),
                 Radio(
@@ -44,9 +45,7 @@ class _QtyWidgetEnState extends State<QtyWidgetEn> {
                     setState(() {
                       selectedShape = value;
                     });
-                    // context
-                    //     .read<OderDetailsBloc>()
-                    //     .add(PhotoPrintEvent(photoPrint: true));
+                    context.read<EnquiryReviewBloc>().add(QtyEvent(Qty: false));
                   },
                 ),
                 Text("Yes"),
@@ -58,9 +57,8 @@ class _QtyWidgetEnState extends State<QtyWidgetEn> {
                       selectedShape = value;
                     });
 
-                    // context
-                    //     .read<OderDetailsBloc>()
-                    //     .add(PhotoPrintEvent(photoPrint: false));
+             
+                    context.read<EnquiryReviewBloc>().add(QtyEvent(Qty: false));
                   },
                 ),
                 Text("No"),

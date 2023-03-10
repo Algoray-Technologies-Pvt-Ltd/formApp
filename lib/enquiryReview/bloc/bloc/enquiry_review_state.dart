@@ -8,7 +8,7 @@ class EnquiryReviewState extends Equatable {
   });
 
   @override
-  List<Object> get props => [];
+  List get props => [enquiryReview];
 
   EnquiryReviewState copyWith({
     EnquiryReview? enquiryReview,

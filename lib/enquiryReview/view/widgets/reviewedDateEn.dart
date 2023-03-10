@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formapp/enquiryReview/bloc/bloc/enquiry_review_bloc.dart';
+import 'package:intl/intl.dart';
 
 class ReviewedDateWidgetEn extends StatelessWidget {
   ReviewedDateWidgetEn({super.key});
@@ -12,12 +15,14 @@ class ReviewedDateWidgetEn extends StatelessWidget {
         child: Builder(builder: (context) {
           return TextFormField(
             controller: dateController
-            // ..text = context.select((OderDetailsBloc bloc) =>
-            //             bloc.state.orderDetailsState?.deliveryDate?.hour)
-            ,
+              ..text = context.select((EnquiryReviewBloc bloc) =>
+                  bloc.state.enquiryReview?.ReviewedDate != null
+                      ? DateFormat('yyyy-MM-dd')
+                          .format(bloc.state.enquiryReview!.ReviewedDate!)
+                      : ''),
             decoration: InputDecoration(
               hintText: 'Reviewed Date',
-
+              label: Text('Reviewed Date'),
               prefixIcon: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 16 * 0.75),
                 child: Icon(
@@ -38,16 +43,15 @@ class ReviewedDateWidgetEn extends StatelessWidget {
                 lastDate: DateTime(2101),
               );
 
-
               if (pickedDate != null) {
                 DateTime selectedDate = DateTime(
                   pickedDate.year,
                   pickedDate.month,
                   pickedDate.day,
                 );
-                // context
-                //     .read<OderDetailsBloc>()
-                //     .add(DeliveryDateEvent(date: selectedDate));
+                context
+                    .read<EnquiryReviewBloc>()
+                    .add(ReviewedDateEvent(date: selectedDate));
 
                 print(" date:= ");
               } else {

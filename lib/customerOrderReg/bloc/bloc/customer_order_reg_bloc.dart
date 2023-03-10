@@ -132,6 +132,11 @@ class CustomerOrderRegBloc
           customerOrderReg:
               state.customerOrderReg?.copyWith(formName: event.formName)));
     });
-    on<SaveEvent>((event, emit) {});
+    on<SaveEvent>((event, emit) {
+      var s = state.customerOrderReg?.toJson();
+      print('********************');
+      print(s);
+      print('********************');
+    });
   }
 }

@@ -28,15 +28,17 @@ class DailyStockStatementScreen extends StatelessWidget {
         },
         child: const Icon(Icons.add),
       ),
+
       body: const Padding(
         padding: EdgeInsets.all(5),
         child: SingleChildScrollView(
           child: DailyStockDataTable(),
         ),
-      ),
+
     );
   }
 }
+
 
 class DailyStockDataTable extends StatefulWidget {
   const DailyStockDataTable({super.key});
@@ -166,6 +168,7 @@ class _DailyStockDataTableState extends State<DailyStockDataTable> {
             )
             .toList(),
       ),
+
     );
   }
 }

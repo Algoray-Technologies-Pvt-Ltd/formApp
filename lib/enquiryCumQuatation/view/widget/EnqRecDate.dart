@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formapp/enquiryCumQuatation/bloc/bloc/enquiry_cum_quatation_bloc.dart';
+import 'package:intl/intl.dart';
 
 class EnqRecDateECQWidget extends StatelessWidget {
   EnqRecDateECQWidget({super.key});
@@ -12,9 +15,11 @@ class EnqRecDateECQWidget extends StatelessWidget {
         child: Builder(builder: (context) {
           return TextFormField(
             controller: dateController
-            // ..text = context.select((OderDetailsBloc bloc) =>
-            //             bloc.state.orderDetailsState?.deliveryDate?.hour)
-            ,
+              ..text = context.select((EnquiryCumQuatationBloc bloc) =>
+                  bloc.state.enquiryCumQuatation?.EnquiryRecDate != null
+                      ? DateFormat('yyyy-MM-dd').format(
+                          bloc.state.enquiryCumQuatation!.EnquiryRecDate!)
+                      : ''),
             decoration: InputDecoration(
               fillColor: Colors.white,
               label: Text('Enquiry Rec Date'),
@@ -51,9 +56,9 @@ class EnqRecDateECQWidget extends StatelessWidget {
                   pickedDate.month,
                   pickedDate.day,
                 );
-                // context
-                //     .read<OderDetailsBloc>()
-                //     .add(DeliveryDateEvent(date: selectedDate));
+                context
+                    .read<EnquiryCumQuatationBloc>()
+                    .add(EnqRecDateEvent(RecDate: selectedDate));
 
                 print(" date:= ");
               } else {
