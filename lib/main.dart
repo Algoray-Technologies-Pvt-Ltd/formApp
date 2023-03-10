@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:formapp/home.dart';
+import 'package:formapp/model/Ledgers/LedMasterHiveModel.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 const primaryColor = Color.fromRGBO(32, 115, 152, 1);
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
+  Hive.registerAdapter<LedgerMasterHiveModel>(LedgerMasterHiveModelAdapter());
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {                                              
+class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
