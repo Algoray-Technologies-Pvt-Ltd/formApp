@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:equatable/equatable.dart';
 import 'package:hive/hive.dart';
 
+part 'PriceListMasterHive.g.dart';
 
 @HiveType(typeId: 41)
 class PriceListMasterHive extends HiveObject with EquatableMixin {

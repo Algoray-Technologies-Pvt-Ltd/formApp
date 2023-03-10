@@ -39,43 +39,41 @@ class WebServicePHPHelper {
       return false;
   }
 
-  // static Future<dynamic> getAllInventoryItems(
-  //     {required DateTime lastUpdatedTimestamp})
+  static Future<dynamic> getAllInventoryItems(
+      {required DateTime lastUpdatedTimestamp}) async {
+    print('DT : $lastUpdatedTimestamp');
+    final DateFormat formatter = DateFormat('yyyy-MM-dd HH:mm:ss');
+    String dateF = formatter.format(lastUpdatedTimestamp);
+    String fullURl =
+        "https://www.algoray.in/test_app_water/inventory_webservice.php?action=getAllItemsNew&timestamp=$dateF&offset=0&limit=10000";
 
-  //     async {
-  //   print('DT : $lastUpdatedTimestamp');
-  //   final DateFormat formatter = DateFormat('yyyy-MM-dd HH:mm:ss');
-  //   String dateF = formatter.format(lastUpdatedTimestamp);
-  //   String fullURl =
-  //       "${getBaseURL()}inventory_webservice.php?action=getAllItemsNew&timestamp=$dateF&offset=0&limit=10000";
-
-  //   print('Url : $fullURl');
-  //   print('123');
-  //   dynamic data;
-  //   Response? response;
-  //   try {
-  //     String dBName = getDBName();
-  //     // Hive.box('settings').get('DBName');
-  //     Dio dio = Dio(); //BaseOptions(headers: {'dbname': dBName}));
-  //     dio.options.headers['dbname'] = dBName;
-  //     dio.options.headers['Content-Type'] = 'application/json';
-  //     response = await dio.get(
-  //       fullURl,
-  //       // headers: {"Accept": "application/json"},
-  //     );
-  //     // data = json.decode(response.body);
-  //     // print(response.data);
-  //     data = response.data;
-  //     // print('allitems ${data['data']}');
-  //   } catch (ex) {
-  //     print('Inventory Error');
-  //     print('Inventory Error Status ${response?.statusCode}');
-  //     print(ex.toString());
-  //     return false;
-  //   }
-  //   if (data['success'] == 1 || data['success'] == '1')
-  //     return data['data'];
-  //   else
-  //     return false;
-  // }
+    print('Url : $fullURl');
+    print('123');
+    dynamic data;
+    Response? response;
+    try {
+      String dBName = "cake_studio_ho";
+      // Hive.box('settings').get('DBName');
+      Dio dio = Dio(); //BaseOptions(headers: {'dbname': dBName}));
+      dio.options.headers['dbname'] = dBName;
+      dio.options.headers['Content-Type'] = 'application/json';
+      response = await dio.get(
+        fullURl,
+        // headers: {"Accept": "application/json"},
+      );
+      // data = json.decode(response.body);
+      // print(response.data);
+      data = response.data;
+      // print('allitems ${data['data']}');
+    } catch (ex) {
+      print('Inventory Error');
+      print('Inventory Error Status ${response?.statusCode}');
+      print(ex.toString());
+      return false;
+    }
+    if (data['success'] == 1 || data['success'] == '1')
+      return data['data'];
+    else
+      return false;
+  }
 }
