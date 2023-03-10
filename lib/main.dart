@@ -6,6 +6,7 @@ import 'package:formapp/model/Ledgers/LedMasterHiveModel.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import 'bloc/sync_ui_config_bloc.dart';
+import 'constants.dart';
 
 const primaryColor = Color.fromRGBO(32, 115, 152, 1);
 
@@ -14,6 +15,8 @@ void main() async {
   await Hive.initFlutter();
   Hive.registerAdapter<LedgerMasterHiveModel>(LedgerMasterHiveModelAdapter());
   Hive.registerAdapter<InventoryItemHive>(InventoryItemHiveAdapter());
+  await Hive.openBox<LedgerMasterHiveModel>(HiveTagNames.Ledgers_Hive_Tag);
+
   runApp(const MyApp());
 }
 
@@ -22,6 +25,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('naguleee');
     return MaterialApp(
         theme: ThemeData(
             elevatedButtonTheme: ElevatedButtonThemeData(
@@ -57,7 +61,11 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         home: BlocProvider(
-          create: (context) => SyncServiceBloc()..add(FetchLedgersEvent()),
+          lazy: false,
+          create: (context) {
+            print("hery ladee");
+            return SyncServiceBloc()..add(FetchLedgersEvent());
+          },
           child: HomePage(),
         ));
   }

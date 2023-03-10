@@ -5,7 +5,7 @@ import 'package:hive/hive.dart';
 
 part 'LedMasterHiveModel.g.dart';
 
-@HiveType(typeId: 21)
+@HiveType(typeId: 0)
 class LedgerMasterHiveModel extends HiveObject with EquatableMixin {
   @HiveField(0)
   String? LEDGER_ID;

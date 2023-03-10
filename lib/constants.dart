@@ -86,7 +86,7 @@ class HiveTagNames {
   static String get Items_Hive_Tag => dbname + 'items';
   static String get ItemGroups_Hive_Tag => dbname + 'item_groups';
 
-  static String get Ledgers_Hive_Tag => dbname + 'ledgers';
+  static String get Ledgers_Hive_Tag => 'ledgers';
   static String get AccountGroups_Hive_Tag => dbname + 'acc_groups';
 
   static String get Uom_Hive_Tag => dbname + 'uoms';
@@ -105,4 +105,3 @@ class HiveTagNames {
 
   static String get Values_Hive_Tag => 'values';
 }
-
