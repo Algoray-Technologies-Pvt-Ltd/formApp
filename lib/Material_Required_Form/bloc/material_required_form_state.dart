@@ -4,7 +4,7 @@ part of 'material_required_form_bloc.dart';
 class MaterialRequiredFormState extends Equatable {
   MaterialrequiredFormModel? materialrequiredFormModel;
   Status? status;
-  List<Data>? allledger;
+  List<AllLedgersData>? allledger;
 
   MaterialRequiredFormState({this.materialrequiredFormModel, this.status,this.allledger});
 
@@ -14,7 +14,7 @@ class MaterialRequiredFormState extends Equatable {
   MaterialRequiredFormState copyWith({
     MaterialrequiredFormModel? materialrequiredFormModel,
     Status? status,
-      List<Data>? allledger,
+      List<AllLedgersData>? allledger,
   }) {
     return MaterialRequiredFormState(
       materialrequiredFormModel:

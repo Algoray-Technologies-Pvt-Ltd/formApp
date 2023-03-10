@@ -59,7 +59,7 @@ class _CustomerNameState extends State<CustomerName> {
 }
 
 getSuggestions(String query, BuildContext context) {
-  List<Data?>? matches = context.read<MaterialRequiredFormBloc>().state.allledger;
+  List<AllLedgersData?>? matches = context.read<MaterialRequiredFormBloc>().state.allledger;
   print('*****************');
   print(matches?.length);
   print('*****************');
