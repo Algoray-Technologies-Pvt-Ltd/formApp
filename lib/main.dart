@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:formapp/bloc/sync_ui_config_bloc.dart';
 import 'package:formapp/home.dart';
 import 'package:formapp/model/HiveModels/InventoryItems/InvetoryItemDataModel.dart';
 import 'package:formapp/model/Ledgers/LedMasterHiveModel.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
+import 'bloc/sync_ui_config_bloc.dart';
 import 'constants.dart';
 
 const primaryColor = Color.fromRGBO(32, 115, 152, 1);
@@ -15,9 +15,7 @@ void main() async {
   await Hive.initFlutter();
   Hive.registerAdapter<LedgerMasterHiveModel>(LedgerMasterHiveModelAdapter());
   Hive.registerAdapter<InventoryItemHive>(InventoryItemHiveAdapter());
-  // Box<InventoryItemHive> itemsbox =
-  await Hive.openBox(HiveTagNames.Items_Hive_Tag);
-  await Hive.openBox(HiveTagNames.Ledgers_Hive_Tag);
+  await Hive.openBox<LedgerMasterHiveModel>(HiveTagNames.Ledgers_Hive_Tag);
 
   runApp(const MyApp());
 }
@@ -27,6 +25,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('naguleee');
     return MaterialApp(
         theme: ThemeData(
             elevatedButtonTheme: ElevatedButtonThemeData(
@@ -64,8 +63,11 @@ class MyApp extends StatelessWidget {
         title: 'Flutter Demo',
         home: BlocProvider(
           lazy: false,
-          create: (context) => SyncServiceBloc()..add(const FetchItemsEvent()),
-          child: const HomePage(),
+          create: (context) {
+            print("hery ladee");
+            return SyncServiceBloc()..add(FetchLedgersEvent());
+          },
+          child: HomePage(),
         ));
   }
 }
