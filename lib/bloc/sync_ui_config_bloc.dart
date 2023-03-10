@@ -1,21 +1,24 @@
 import 'package:bloc/bloc.dart';
-
 import 'package:equatable/equatable.dart';
 import 'package:formapp/constants.dart';
 import 'package:formapp/model/Ledgers/LedMasterHiveModel.dart';
-import 'package:formapp/webService/servises.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-
+import '../model/HiveModels/InventoryItems/InventoryItemDataModel.dart';
+import '../webService/webServicePHP.dart';
 part 'sync_ui_config_event.dart';
 part 'sync_ui_config_state.dart';
 
 class SyncServiceBloc extends Bloc<SyncServiceEvent, SyncServiceState> {
   SyncServiceBloc()
-      : super(SyncServiceState(
+      : super(const SyncServiceState(
           status: SyncUiConfigStatus.init,
         )) {
     on<FetchLedgersEvent>((event, emit) async {
       await syncLedgers();
+    });
+    on<FetchItemsEvent>((event, emit) async {
+      await syncItems();
+      print('Items Fetched');
     });
   }
 }
@@ -25,7 +28,7 @@ Future<bool> syncLedgers() async {
   bool flag = false;
   String qry = "";
   DateTime last = DateTime(2021);
-  final dataResponse = await WebservicePHPHelper.getAllLedgers(
+  final dataResponse = await WebServicePHPHelper.getAllLedgers(
     lastUpdated: last,
   );
   if (dataResponse == false) {
@@ -44,5 +47,38 @@ Future<bool> syncLedgers() async {
     print('Ledgers : ${box.length}');
   }
 
+  return flag;
+}
+
+Future<bool> syncItems() async {
+  print('fetching inventory items');
+  bool flag = false;
+  String qry = '';
+  DateTime last = DateTime(2021);
+
+  final dataResponse = await WebServicePHPHelper.getAllInventoryItems(
+    lastUpdatedTimestamp: last,
+  );
+  if (dataResponse == false) {
+    print('Fetch Eroor');
+  }
+  Box<InventoryItemHive> box = Hive.box(HiveTagNames.Items_Hive_Tag);
+  await box.clear();
+
+  try {
+    dataResponse.forEach((element) async {
+      // print('${element}');
+      try {
+        // print('Type ele : ${element.runtimeType}');
+        InventoryItemHive item = InventoryItemHive.fromMap(element);
+        await box.put(item.Item_ID, item);
+      } catch (e) {
+        print('Conv error : ${e.toString()}');
+      }
+    });
+  } catch (e) {
+    print('Erro : ${e.toString()}  ${box.getAt(0)}');
+  }
+  print('Inventory Items FETCHED : ${box.length}');
   return flag;
 }
