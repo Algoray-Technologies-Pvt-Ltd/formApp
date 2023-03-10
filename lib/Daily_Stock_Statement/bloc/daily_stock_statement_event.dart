@@ -99,7 +99,7 @@ class RemarksEvent extends DailyStockStatementEvent {
   });
 }
 
-class FetchingEvent extends DailyStockStatementEvent{}
+class FetchingDailyStockEvent extends DailyStockStatementEvent{}
 
 class SaveEvent extends DailyStockStatementEvent{}
 
