@@ -1,9 +1,12 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:formapp/constants.dart';
 import 'package:formapp/customerComplaintReg/model/customerComplaintRegmodel.dart';
 import 'package:formapp/main.dart';
+import 'package:formapp/model/Ledgers/LedMasterHiveModel.dart';
 import 'package:formapp/model/allLedgerModel.dart';
 import 'package:formapp/webService/weservice.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 part 'customer_complaint_reg_event.dart';
 part 'customer_complaint_reg_state.dart';
@@ -18,10 +21,11 @@ class CustomerComplaintRegBloc
           customerComplaintReg:
               state.customerComplaintReg?.copyWith(Remarks: event.remarks)));
     });
-    on<InformDetailsEvent>((event, emit) {
+
+    on<LedNameEvent>((event, emit) {
       emit(state.copyWith(
-          customerComplaintReg: state.customerComplaintReg
-              ?.copyWith(InformDetails: event.InformDetails)));
+          customerComplaintReg:
+              state.customerComplaintReg?.copyWith(name: event.name)));
     });
     on<InformDateEvent>((event, emit) {
       emit(state.copyWith(
@@ -94,10 +98,11 @@ class CustomerComplaintRegBloc
               state.customerComplaintReg?.copyWith(formName: event.formName)));
     });
     on<FetchEvent>((event, emit) async {
-      print('#######################');
-      var s = await allLedgers();
-      print(s.length);
-      print('#######################');
+      Box<LedgerMasterHiveModel> ledger = Hive.box<LedgerMasterHiveModel>(
+        HiveTagNames.Ledgers_Hive_Tag,
+      );
+      var s = ledger.values.toList();
+      ;
 
       emit(state.copyWith(allledger: s));
     });

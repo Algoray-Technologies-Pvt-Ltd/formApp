@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:formapp/contractReview/bloc/bloc/contract_review_bloc.dart';
 import 'package:formapp/contractReview/model/contractReviewmodel.dart';
+import 'package:formapp/customerComplaintReg/bloc/bloc/customer_complaint_reg_bloc.dart';
 import 'package:formapp/model/Ledgers/LedMasterHiveModel.dart';
 import 'package:formapp/model/allLedgerModel.dart';
 
@@ -34,8 +35,8 @@ class _CustomerComplaintNmaeWidgetState
               onSuggestionSelected: (suggestion) {
                 phoneNo.text = suggestion.toString();
                 context
-                    .read<ContractReviewBloc>()
-                    .add(CustomerNameEvent(name: phoneNo.text));
+                    .read<CustomerComplaintRegBloc>()
+                    .add(LedNameEvent(name: phoneNo.text));
               },
               textFieldConfiguration: TextFieldConfiguration(
                 textInputAction: TextInputAction.next,
@@ -57,7 +58,7 @@ class _CustomerComplaintNmaeWidgetState
                 controller: phoneNo,
               ),
               suggestionsCallback: (pattern) {
-                return getSuggestions(pattern, context);
+                return getSuggestionscustomerComplaintReg(pattern, context);
               },
               itemBuilder: (context, suggestion) {
                 return ListTile(title: Text(suggestion.toString()));
@@ -68,9 +69,9 @@ class _CustomerComplaintNmaeWidgetState
   }
 }
 
-getSuggestions(String query, BuildContext context) {
+getSuggestionscustomerComplaintReg(String query, BuildContext context) {
   List<LedgerMasterHiveModel?>? matches =
-      context.read<ContractReviewBloc>().state.allledger;
+      context.read<CustomerComplaintRegBloc>().state.allledger;
   print('*****************');
   print(matches?.length);
   print('*****************');
