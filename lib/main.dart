@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:formapp/home.dart';
+import 'package:formapp/model/HiveModels/InventoryItems/InvetoryItemDataModel.dart';
 import 'package:formapp/model/Ledgers/LedMasterHiveModel.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -9,6 +10,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   Hive.registerAdapter<LedgerMasterHiveModel>(LedgerMasterHiveModelAdapter());
+  Hive.registerAdapter<InventoryItemHive>(InventoryItemHiveAdapter());
   runApp(const MyApp());
 }
 
