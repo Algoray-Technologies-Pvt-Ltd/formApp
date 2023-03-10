@@ -19,10 +19,10 @@ class SyncServiceBloc extends Bloc<SyncServiceEvent, SyncServiceState> {
       log('Hi bloc');
       await syncLedgers();
     });
-    // on<FetchItemsEvent>((event, emit) async {
-    //   await syncItems();
-    //   print('Items Fetched');
-    // });
+    on<FetchItemsEvent>((event, emit) async {
+      await syncItems();
+      print('Items Fetched');
+    });
   }
 }
 
@@ -54,37 +54,35 @@ Future<bool> syncLedgers() async {
   return flag;
 }
 
-// Future<bool> syncItems() async {
-//   print('fetching inventory items');
-//   bool flag = false;
-//   String qry = '';
-//   DateTime last = DateTime(2021);
+Future<bool> syncItems() async {
+  print('fetching inventory items');
+  bool flag = false;
+  String qry = '';
+  DateTime last = DateTime(2021);
 
-//   final dataResponse = await WebServicePHPHelper.getAllInventoryItems(
-//     lastUpdatedTimestamp: last,
-//   );
-//   if (dataResponse == false) {
-//     print('Fetch Eroor');
-//   }
-//   Box<InventoryItemHive> box = Hive.box(HiveTagNames.Items_Hive_Tag);
-//   await box.clear();
+  final dataResponse = await WebServicePHPHelper.getAllInventoryItems(
+    lastUpdatedTimestamp: last,
+  );
+  if (dataResponse == false) {
+    print('Fetch Error');
+  }
+  Box<InventoryItemHive> box = Hive.box(HiveTagNames.Items_Hive_Tag);
+  await box.clear();
 
-//   try {
-//     dataResponse.forEach((element) async {
-//       // print('${element}');
-//       try {
-//         // print('Type ele : ${element.runtimeType}');
-//         InventoryItemHive item = InventoryItemHive.fromMap(element);
-//         await box.put(item.Item_ID, item);
-//       } catch (e) {
-//         print('Conv error : ${e.toString()}');
-//       }
-//     });
-//   } catch (e) {
-//     print('Erro : ${e.toString()}  ${box.getAt(0)}');
-//   }
-//   print('Inventory Items FETCHED : ${box.length}');
-//   return flag;
-// }
-
-
+  try {
+    dataResponse.forEach((element) async {
+      // print('${element}');
+      try {
+        // print('Type ele : ${element.runtimeType}');
+        InventoryItemHive item = InventoryItemHive.fromMap(element);
+        await box.put(item.Item_ID, item);
+      } catch (e) {
+        print('Conv error : ${e.toString()}');
+      }
+    });
+  } catch (e) {
+    print('Erro : ${e.toString()}  ${box.getAt(0)}');
+  }
+  print('Inventory Items FETCHED : ${box.length}');
+  return flag;
+}

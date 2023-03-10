@@ -4,9 +4,10 @@ import 'package:formapp/home.dart';
 import 'package:formapp/model/HiveModels/InventoryItems/InvetoryItemDataModel.dart';
 import 'package:formapp/model/Ledgers/LedMasterHiveModel.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-
 import 'bloc/sync_ui_config_bloc.dart';
 import 'constants.dart';
+import 'model/HiveModels/PriceList/PriceListEntriesHive.dart';
+import 'model/HiveModels/UOM/UOMHiveModel.dart';
 
 const primaryColor = Color.fromRGBO(32, 115, 152, 1);
 
@@ -15,7 +16,13 @@ void main() async {
   await Hive.initFlutter();
   Hive.registerAdapter<LedgerMasterHiveModel>(LedgerMasterHiveModelAdapter());
   Hive.registerAdapter<InventoryItemHive>(InventoryItemHiveAdapter());
+  Hive.registerAdapter<UOMHiveMOdel>(UOMHiveMOdelAdapter());
+  Hive.registerAdapter<PriceListEntriesHive>(PriceListEntriesHiveAdapter());
+
   await Hive.openBox<LedgerMasterHiveModel>(HiveTagNames.Ledgers_Hive_Tag);
+  await Hive.openBox<InventoryItemHive>(HiveTagNames.Items_Hive_Tag);
+  // await Hive.openBox<UOMHiveMOdel>(HiveTagNames.Uom_Hive_Tag);
+  // await Hive.openBox<PriceListEntriesHive>(HiveTagNames.PriceLists_Hive_Tag);
 
   runApp(const MyApp());
 }
@@ -61,13 +68,22 @@ class MyApp extends StatelessWidget {
             )),
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
-        home: BlocProvider(
-          lazy: false,
-          create: (context) {
-            print("hery ladee");
-            return SyncServiceBloc()..add(FetchLedgersEvent());
-          },
-          child: HomePage(),
+        home: MultiBlocProvider(
+          providers: [
+            BlocProvider(
+              lazy: false,
+              create: (context) {
+                print("hery ladee");
+                return SyncServiceBloc()..add(const FetchLedgersEvent());
+              },
+            ),
+            BlocProvider(
+              lazy: false,
+              create: (context) =>
+                  SyncServiceBloc()..add(const FetchItemsEvent()),
+            ),
+          ],
+          child: const HomePage(),
         ));
   }
 }
