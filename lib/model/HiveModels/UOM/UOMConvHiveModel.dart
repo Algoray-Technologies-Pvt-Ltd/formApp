@@ -5,6 +5,8 @@ import 'dart:convert';
 import 'package:equatable/equatable.dart';
 import 'package:hive/hive.dart';
 
+part 'UOMConvHiveModel.g.dart';
+
 @HiveType(typeId: 32)
 class UOMConvHiveModel extends HiveObject with EquatableMixin {
   int? id;

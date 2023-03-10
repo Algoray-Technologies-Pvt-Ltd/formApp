@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:equatable/equatable.dart';
 import 'package:hive/hive.dart';
 
-import '../PriceList/PriceListEntries.dart';
+import '../PriceList/PriceListEntriesHive.dart';
 import '../UOM/UOMHiveModel.dart';
 
 

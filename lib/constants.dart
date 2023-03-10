@@ -83,7 +83,7 @@ class HiveTagNames {
     dbname = db + '_';
   }
 
-  static String get Items_Hive_Tag => dbname + 'items';
+  static String get Items_Hive_Tag => 'items';
   static String get ItemGroups_Hive_Tag => dbname + 'item_groups';
 
   static String get Ledgers_Hive_Tag => 'ledgers';

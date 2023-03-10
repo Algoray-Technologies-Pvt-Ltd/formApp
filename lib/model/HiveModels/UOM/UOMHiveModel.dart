@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:equatable/equatable.dart';
 import 'package:hive/hive.dart';
 
+part 'UOMHiveModel.g.dart';
 
 @HiveType(typeId: 31)
 class UOMHiveMOdel extends HiveObject with EquatableMixin {
