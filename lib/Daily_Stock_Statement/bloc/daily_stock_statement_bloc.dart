@@ -78,5 +78,11 @@ class DailyStockStatementBloc
           dailyStockStatementModel: state.dailyStockStatementModel
               ?.copyWith(remarks: event.remarks)));
     });
+    on<SaveEvent>((event, emit) {
+      var s = state.dailyStockStatementModel!.toJson();
+      print('*************');
+      print(s);
+      print('*************');
+    });
   }
 }

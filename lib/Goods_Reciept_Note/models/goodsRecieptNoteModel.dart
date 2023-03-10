@@ -3,7 +3,7 @@ import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
 
-class GrnModel extends Equatable {
+class GoodsRecieptNoteModel extends Equatable {
   String? ftNumber;
   String? revNumber;
   DateTime? date;
@@ -21,7 +21,7 @@ class GrnModel extends Equatable {
   String? inspectionDetails;
   String? IFRejectionDetails;
   String? remarks;
-  GrnModel(
+  GoodsRecieptNoteModel(
       {this.ftNumber,
       this.revNumber,
       this.date,
@@ -40,7 +40,7 @@ class GrnModel extends Equatable {
       this.remarks,
       this.recievedQty});
 
-  GrnModel copyWith({
+  GoodsRecieptNoteModel copyWith({
     String? ftNumber,
     String? revNumber,
     DateTime? date,
@@ -59,7 +59,7 @@ class GrnModel extends Equatable {
     String? remarks,
     int? recievedQty,
   }) {
-    return GrnModel(
+    return GoodsRecieptNoteModel(
         ftNumber: ftNumber ?? this.ftNumber,
         revNumber: revNumber ?? this.revNumber,
         date: date ?? this.date,
@@ -121,8 +121,8 @@ class GrnModel extends Equatable {
     };
   }
 
-  factory GrnModel.fromMap(Map<String, dynamic> map) {
-    return GrnModel(
+  factory GoodsRecieptNoteModel.fromMap(Map<String, dynamic> map) {
+    return GoodsRecieptNoteModel(
       ftNumber: map['ftNumber'] != null ? map['ftNumber'] as String : null,
       revNumber: map['revNumber'] != null ? map['revNumber'] as String : null,
       date: map['date'] != null
@@ -162,6 +162,6 @@ class GrnModel extends Equatable {
 
   String toJson() => json.encode(toMap());
 
-  factory GrnModel.fromJson(String source) =>
-      GrnModel.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory GoodsRecieptNoteModel.fromJson(String source) =>
+      GoodsRecieptNoteModel.fromMap(json.decode(source) as Map<String, dynamic>);
 }

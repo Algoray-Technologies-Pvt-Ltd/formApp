@@ -37,7 +37,6 @@ class _TermsandConditionsWidgetState extends State<TermsandConditionsWidget> {
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Text(
                     'Terms & Conditions',
-               
                   ),
                 ),
                 Radio(

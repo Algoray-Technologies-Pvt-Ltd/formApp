@@ -2,7 +2,7 @@
 part of 'goods_reciept_note_bloc.dart';
 
 class GoodsRecieptNoteState extends Equatable {
-  GrnModel? grnModel;
+  GoodsRecieptNoteModel? grnModel;
   Status? status;
   GoodsRecieptNoteState({this.grnModel, this.status});
 
@@ -10,7 +10,7 @@ class GoodsRecieptNoteState extends Equatable {
   List<Object?> get props => [grnModel, status];
 
   GoodsRecieptNoteState copyWith({
-    GrnModel? grnModel,
+    GoodsRecieptNoteModel? grnModel,
     Status? status,
   }) {
     return GoodsRecieptNoteState(
