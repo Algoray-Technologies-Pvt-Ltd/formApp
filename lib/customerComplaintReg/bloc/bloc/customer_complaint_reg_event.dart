@@ -105,6 +105,13 @@ class RevNumberEvent extends CustomerComplaintRegEvent {
   });
 }
 
+class LedNameEvent extends CustomerComplaintRegEvent {
+  String name;
+  LedNameEvent({
+    required this.name,
+  });
+}
+
 class FtNumberEvent extends CustomerComplaintRegEvent {
   String ftNumber;
   FtNumberEvent({

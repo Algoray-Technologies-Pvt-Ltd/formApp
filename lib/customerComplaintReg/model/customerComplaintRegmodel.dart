@@ -13,6 +13,7 @@ class CustomerComplaintReg extends Equatable {
   int? siNumber;
   DateTime? ComplaintDate;
   AddressBook? address;
+  String? name;
   String? NatureofComplaint;
   String? RootCause;
   String? CorrectiveAction;
@@ -30,6 +31,7 @@ class CustomerComplaintReg extends Equatable {
     this.siNumber,
     this.ComplaintDate,
     this.address,
+    this.name,
     this.NatureofComplaint,
     this.RootCause,
     this.CorrectiveAction,
@@ -50,6 +52,7 @@ class CustomerComplaintReg extends Equatable {
         siNumber,
         ComplaintDate,
         address,
+        name,
         NatureofComplaint,
         RootCause,
         CorrectiveAction,
@@ -69,6 +72,7 @@ class CustomerComplaintReg extends Equatable {
     int? siNumber,
     DateTime? ComplaintDate,
     AddressBook? address,
+    String? name,
     String? NatureofComplaint,
     String? RootCause,
     String? CorrectiveAction,
@@ -84,6 +88,7 @@ class CustomerComplaintReg extends Equatable {
       ftNumber: ftNumber ?? this.ftNumber,
       revNumber: revNumber ?? this.revNumber,
       date: date ?? this.date,
+      name: name ?? this.name,
       siNumber: siNumber ?? this.siNumber,
       ComplaintDate: ComplaintDate ?? this.ComplaintDate,
       address: address ?? this.address,
@@ -98,8 +103,6 @@ class CustomerComplaintReg extends Equatable {
       Remarks: Remarks ?? this.Remarks,
     );
   }
-
-
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -127,23 +130,41 @@ class CustomerComplaintReg extends Equatable {
       formName: map['formName'] != null ? map['formName'] as String : null,
       ftNumber: map['ftNumber'] != null ? map['ftNumber'] as String : null,
       revNumber: map['revNumber'] != null ? map['revNumber'] as String : null,
-      date: map['date'] != null ? DateTime.fromMillisecondsSinceEpoch(map['date'] as int) : null,
+      date: map['date'] != null
+          ? DateTime.fromMillisecondsSinceEpoch(map['date'] as int)
+          : null,
       siNumber: map['siNumber'] != null ? map['siNumber'] as int : null,
-      ComplaintDate: map['ComplaintDate'] != null ? DateTime.fromMillisecondsSinceEpoch(map['ComplaintDate'] as int) : null,
-      address: map['address'] ,
-      NatureofComplaint: map['NatureofComplaint'] != null ? map['NatureofComplaint'] as String : null,
+      ComplaintDate: map['ComplaintDate'] != null
+          ? DateTime.fromMillisecondsSinceEpoch(map['ComplaintDate'] as int)
+          : null,
+      address: map['address'],
+      NatureofComplaint: map['NatureofComplaint'] != null
+          ? map['NatureofComplaint'] as String
+          : null,
       RootCause: map['RootCause'] != null ? map['RootCause'] as String : null,
-      CorrectiveAction: map['CorrectiveAction'] != null ? map['CorrectiveAction'] as String : null,
-      PreventiveAction: map['PreventiveAction'] != null ? map['PreventiveAction'] as String : null,
-      ActionDate: map['ActionDate'] != null ? DateTime.fromMillisecondsSinceEpoch(map['ActionDate'] as int) : null,
-      Informtocustomer: map['Informtocustomer'] != null ? map['Informtocustomer'] as bool : null,
-      InformDate: map['InformDate'] != null ? DateTime.fromMillisecondsSinceEpoch(map['InformDate'] as int) : null,
-      InformDetails: map['InformDetails'] != null ? map['InformDetails'] as String : null,
+      CorrectiveAction: map['CorrectiveAction'] != null
+          ? map['CorrectiveAction'] as String
+          : null,
+      PreventiveAction: map['PreventiveAction'] != null
+          ? map['PreventiveAction'] as String
+          : null,
+      ActionDate: map['ActionDate'] != null
+          ? DateTime.fromMillisecondsSinceEpoch(map['ActionDate'] as int)
+          : null,
+      Informtocustomer: map['Informtocustomer'] != null
+          ? map['Informtocustomer'] as bool
+          : null,
+      InformDate: map['InformDate'] != null
+          ? DateTime.fromMillisecondsSinceEpoch(map['InformDate'] as int)
+          : null,
+      InformDetails:
+          map['InformDetails'] != null ? map['InformDetails'] as String : null,
       Remarks: map['Remarks'] != null ? map['Remarks'] as String : null,
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory CustomerComplaintReg.fromJson(String source) => CustomerComplaintReg.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory CustomerComplaintReg.fromJson(String source) =>
+      CustomerComplaintReg.fromMap(json.decode(source) as Map<String, dynamic>);
 }
