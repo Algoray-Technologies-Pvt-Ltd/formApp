@@ -35,7 +35,7 @@ class DailyStockStatementScreen extends StatelessWidget {
           child: DailyStockDataTable(),
         ),
 
-    );
+    ));
   }
 }
 
@@ -167,8 +167,6 @@ class _DailyStockDataTableState extends State<DailyStockDataTable> {
               ]),
             )
             .toList(),
-      ),
-
-    );
+      ));
   }
 }
