@@ -126,6 +126,6 @@ class RemarksEvent extends GateOutwardRegisterEvent {
   });
 }
 
-class FetchingEvent extends GateOutwardRegisterEvent {}
+class FetchingGateOutwardEvent extends GateOutwardRegisterEvent {}
 
 class SaveEvent extends GateOutwardRegisterEvent {}

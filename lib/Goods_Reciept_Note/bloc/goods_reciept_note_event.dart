@@ -126,6 +126,6 @@ class RemarksEvent extends GoodsRecieptNoteEvent {
   });
 }
 
-class FetchingEvent extends GoodsRecieptNoteEvent {}
+class FetchingGRNEvent extends GoodsRecieptNoteEvent {}
 
 class SaveEvent extends GoodsRecieptNoteEvent {}
