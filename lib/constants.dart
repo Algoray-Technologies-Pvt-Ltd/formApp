@@ -93,7 +93,7 @@ class HiveTagNames {
   static String get PriceLists_Hive_Tag => dbname + 'prices';
   static String get Godowns_Hive_Tag => dbname + 'godowns';
 
-  static String get Employee_Hive_Tag => dbname + 'employees';
+  static String get Employee_Hive_Tag => 'employees';
   static String get UserGroups_Hive_Tag => dbname + 'user_groups';
   static String get UserPermissions_Hive_Tag => dbname + 'user_perms';
 

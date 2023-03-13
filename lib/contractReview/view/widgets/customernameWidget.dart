@@ -67,6 +67,7 @@ class _CustomerNmaeWidgetState extends State<CustomerNmaeWidget> {
 }
 
 getSuggestions(String query, BuildContext context) {
+
   List<LedgerMasterHiveModel?>? matches =
       context.read<ContractReviewBloc>().state.allledger;
   print('*****************');

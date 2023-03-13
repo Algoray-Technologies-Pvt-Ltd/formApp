@@ -3,6 +3,7 @@ import 'package:equatable/equatable.dart';
 import 'package:formapp/constants.dart';
 import 'package:formapp/customerComplaintReg/model/customerComplaintRegmodel.dart';
 import 'package:formapp/main.dart';
+import 'package:formapp/model/Employee/EmployeeHiveModel.dart';
 import 'package:formapp/model/Ledgers/LedMasterHiveModel.dart';
 import 'package:formapp/model/allLedgerModel.dart';
 import 'package:formapp/webService/weservice.dart';
@@ -102,9 +103,8 @@ class CustomerComplaintRegBloc
         HiveTagNames.Ledgers_Hive_Tag,
       );
       var s = ledger.values.toList();
-      ;
+      
 
-      emit(state.copyWith(allledger: s));
     });
     on<SaveEvent>((event, emit) {
       var s = state.customerComplaintReg?.toJson();

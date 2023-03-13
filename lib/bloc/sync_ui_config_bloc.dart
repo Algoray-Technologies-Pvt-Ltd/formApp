@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:formapp/constants.dart';
+import 'package:formapp/model/Employee/EmployeeHiveModel.dart';
 import 'package:formapp/model/HiveModels/InventoryItems/InvetoryItemDataModel.dart';
 import 'package:formapp/model/Ledgers/LedMasterHiveModel.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -15,6 +16,10 @@ class SyncServiceBloc extends Bloc<SyncServiceEvent, SyncServiceState> {
       : super(const SyncServiceState(
           status: SyncUiConfigStatus.init,
         )) {
+    on<FetchEmployeesEvent>((event, emit) async {
+      log('Deeeeeeeeeeeeeeeeo');
+      await syncEmployees();
+    });
     on<FetchLedgersEvent>((event, emit) async {
       log('Hi bloc');
       await syncLedgers();
@@ -26,6 +31,35 @@ class SyncServiceBloc extends Bloc<SyncServiceEvent, SyncServiceState> {
   }
 }
 
+Future<bool> syncEmployees() async {
+  print('Fetching Emps');
+  bool flag = false;
+
+  DateTime last = DateTime(2021);
+  final dataResponse = await WebServicePHPHelper.getAllEmployees(
+    lastUpdated: last,
+  );
+  log("<<<<<<<<<>>>>>>>>>" + dataResponse.toString());
+  Box<EmployeeHiveModel> box = Hive.box(HiveTagNames.Employee_Hive_Tag);
+  if (dataResponse == false) {
+    print('Fetch Eroor');
+  } else {
+    await box.clear();
+
+    try {
+      dataResponse.forEach((element) async {
+        EmployeeHiveModel emp = EmployeeHiveModel.fromMap(element);
+        await box.put(int.parse(element['_id'] ?? "0"), emp);
+      });
+    } catch (e) {
+      print('Error Adding to Hive : ${e.toString()}');
+    }
+  }
+  print('Emps : ${box.length}');
+
+  return flag;
+}
+
 Future<bool> syncLedgers() async {
   print('Fetching Leds');
   bool flag = false;
@@ -34,24 +68,24 @@ Future<bool> syncLedgers() async {
   final dataResponse = await WebServicePHPHelper.getAllLedgers(
     lastUpdated: last,
   );
-  if (dataResponse == false) {
-    print('Fetch Eroor');
-  }
   Box<LedgerMasterHiveModel> box =
       Hive.box<LedgerMasterHiveModel>(HiveTagNames.Ledgers_Hive_Tag);
-  try {
-    await box.clear();
-    dataResponse.forEach((element) async {
-      LedgerMasterHiveModel ledger = LedgerMasterHiveModel.fromMap(element);
-      print(element);
-      await box.put(element['Ledger_Id'], ledger);
-    });
-  } catch (e) {
-    print('Error Adding to Hive : ${e.toString()}');
-  } finally {
-    print('Ledgers : ${box.length}');
+  if (dataResponse == false) {
+    print('Fetch Eroor');
+  } else {
+    try {
+      await box.clear();
+      dataResponse.forEach((element) async {
+        LedgerMasterHiveModel ledger = LedgerMasterHiveModel.fromMap(element);
+        print(element);
+        await box.put(element['Ledger_Id'], ledger);
+      });
+    } catch (e) {
+      print('Error Adding to Hive : ${e.toString()}');
+    } finally {
+      print('Ledgers : ${box.length}');
+    }
   }
-
   return flag;
 }
 

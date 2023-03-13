@@ -5,18 +5,22 @@ class ContractReviewState extends Equatable {
   ContractReview? contractReview;
   ContractReviewStatus? status;
   List<LedgerMasterHiveModel>? allledger;
-  ContractReviewState({this.contractReview, this.status, this.allledger});
+  List<EmployeeHiveModel>? allEmloyees;
+  ContractReviewState(
+      {this.contractReview, this.status, this.allledger, this.allEmloyees});
 
   @override
-  List get props => [contractReview, status, allledger];
+  List get props => [contractReview, status, allledger, allEmloyees];
 
   ContractReviewState copyWith(
       {ContractReview? contractReview,
+      List<EmployeeHiveModel>? allEmloyees,
       ContractReviewStatus? status,
       List<LedgerMasterHiveModel>? allledger}) {
     return ContractReviewState(
         contractReview: contractReview ?? this.contractReview,
         allledger: allledger ?? this.allledger,
+        allEmloyees: allEmloyees ?? this.allEmloyees,
         status: status ?? this.status);
   }
 }

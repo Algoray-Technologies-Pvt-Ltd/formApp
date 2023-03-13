@@ -1,7 +1,10 @@
+import 'dart:developer';
+
 import 'package:equatable/equatable.dart';
 import 'package:formapp/constants.dart';
 import 'package:formapp/contractReview/model/contractReviewmodel.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formapp/model/Employee/EmployeeHiveModel.dart';
 import 'package:formapp/model/Ledgers/LedMasterHiveModel.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 part 'contract_review_event.dart';
@@ -12,6 +15,7 @@ class ContractReviewBloc
   ContractReviewBloc()
       : super(ContractReviewState(
           allledger: [],
+          allEmloyees: [],
           status: ContractReviewStatus.init,
           contractReview: ContractReview(),
         )) {
@@ -44,8 +48,18 @@ class ContractReviewBloc
       }).toList();
 
       print('#######################');
+      Box<EmployeeHiveModel> eployee = Hive.box<EmployeeHiveModel>(
+        HiveTagNames.Employee_Hive_Tag,
+      );
+      var emp = eployee.values.toList();
 
-      emit(state.copyWith(status: ContractReviewStatus.ready, allledger: s));
+      emit(state.copyWith(
+        allledger: s,
+      ));
+      emit(state.copyWith(
+          status: ContractReviewStatus.ready, allledger: s, allEmloyees: emp));
+
+      log(state.allEmloyees.toString());
     });
     on<EnquiryNoEvent>((event, emit) {
       emit(state.copyWith(
