@@ -139,7 +139,8 @@ class HomePage extends StatelessWidget {
                     .push(MaterialPageRoute(builder: (context) {
                   return BlocProvider(
                     lazy: false,
-                    create: (context) => DailyStockStatementBloc()..add(FetchingDailyStockEvent()),
+                    create: (context) => DailyStockStatementBloc()
+                      ..add(FetchingDailyStockEvent()),
                     child: const DailyStockStatementScreen(),
                   );
                 }));
@@ -152,7 +153,9 @@ class HomePage extends StatelessWidget {
                 Navigator.of(context)
                     .push(MaterialPageRoute(builder: (context) {
                   return BlocProvider(
-                    create: (context) => GateInwardRegisterBloc(),
+                    lazy: false,
+                    create: (context) => GateInwardRegisterBloc()
+                      ..add(FetchingGateInwardEvent()),
                     child: const GateInwardRegisterScreen(),
                   );
                 }));

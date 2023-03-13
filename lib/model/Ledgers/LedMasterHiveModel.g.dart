@@ -8,7 +8,7 @@ part of 'LedMasterHiveModel.dart';
 
 class LedgerMasterHiveModelAdapter extends TypeAdapter<LedgerMasterHiveModel> {
   @override
-  final int typeId = 21;
+  final int typeId = 0;
 
   @override
   LedgerMasterHiveModel read(BinaryReader reader) {
