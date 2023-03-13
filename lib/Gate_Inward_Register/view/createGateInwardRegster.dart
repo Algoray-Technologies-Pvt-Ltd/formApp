@@ -8,6 +8,7 @@ import '../../widgets/KNumberTextField.dart';
 import '../../widgets/kautoGenerateTextField.dart';
 import '../../widgets/ktextFeild.dart';
 import 'widgets/gateInwardDateTime.dart';
+import 'widgets/gateInwardDescription.dart';
 import 'widgets/gatePassDate.dart';
 import 'widgets/returnorNonReturnable.dart';
 
@@ -117,15 +118,16 @@ class CreateGateInwardRegister extends StatelessWidget {
                 initialText: '',
                 hintText: 'Vehicle Number',
               ),
-              KTextField(
-                onChanged: (value) {
-                  context
-                      .read<GateInwardRegisterBloc>()
-                      .add(DescriptionEvent(description: value));
-                },
-                initialText: '',
-                hintText: 'Description',
-              ),
+              const GateInwardDescription(),
+              // KTextField(
+              //   onChanged: (value) {
+              //     context
+              //         .read<GateInwardRegisterBloc>()
+              //         .add(DescriptionEvent(description: value));
+              //   },
+              //   initialText: '',
+              //   hintText: 'Description',
+              // ),
               KNumberTextField(
                 onChanged: (value) {
                   int quantity = int.tryParse(value) ?? 0;
