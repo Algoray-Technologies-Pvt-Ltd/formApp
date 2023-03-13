@@ -102,7 +102,7 @@ Future<bool> syncItems() async {
     print('Fetch Error');
   }
   Box<InventoryItemHive> box = Hive.box(HiveTagNames.Items_Hive_Tag);
-  await box.clear();
+  // await box.clear();
 
   try {
     dataResponse.forEach((element) async {

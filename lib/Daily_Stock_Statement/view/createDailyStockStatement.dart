@@ -77,7 +77,7 @@ class CreateDailyStockStatement extends StatelessWidget {
                 hintText: 'Sl.No',
               ),
               const StockDate(),
-              Description(),
+             const Description(),
               // KTextField(
               //   onChanged: (value) {
               //     context

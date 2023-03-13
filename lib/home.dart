@@ -154,7 +154,9 @@ class HomePage extends StatelessWidget {
                 Navigator.of(context)
                     .push(MaterialPageRoute(builder: (context) {
                   return BlocProvider(
-                    create: (context) => GateInwardRegisterBloc(),
+                    lazy: false,
+                    create: (context) => GateInwardRegisterBloc()
+                      ..add(FetchingGateInwardEvent()),
                     child: const GateInwardRegisterScreen(),
                   );
                 }));
