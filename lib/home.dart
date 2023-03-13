@@ -197,7 +197,8 @@ class HomePage extends StatelessWidget {
                 Navigator.of(context)
                     .push(MaterialPageRoute(builder: (context) {
                   return BlocProvider(
-                    create: (context) => IssueAndReturnRegisterBloc(),
+                    create: (context) => IssueAndReturnRegisterBloc()
+                      ..add(FetchingIssueCumEvent()),
                     child: const IssueCumReturnSlipScreen(),
                   );
                 }));

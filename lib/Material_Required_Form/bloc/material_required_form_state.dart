@@ -4,23 +4,31 @@ part of 'material_required_form_bloc.dart';
 class MaterialRequiredFormState extends Equatable {
   MaterialrequiredFormModel? materialrequiredFormModel;
   Status? status;
-  List<AllLedgersData>? allledger;
+  List<LedgerMasterHiveModel>? allledger;
+  List<InventoryItemHive>? allItems;
 
-  MaterialRequiredFormState({this.materialrequiredFormModel, this.status,this.allledger});
+  MaterialRequiredFormState(
+      {this.materialrequiredFormModel,
+      this.status,
+      this.allledger,
+      this.allItems});
 
   @override
-  List<Object?> get props => [materialrequiredFormModel, status,allledger];
+  List<Object?> get props =>
+      [materialrequiredFormModel, status, allledger, allItems];
 
   MaterialRequiredFormState copyWith({
     MaterialrequiredFormModel? materialrequiredFormModel,
     Status? status,
-      List<AllLedgersData>? allledger,
+    List<LedgerMasterHiveModel>? allledger,
+    List<InventoryItemHive>? allItems,
   }) {
     return MaterialRequiredFormState(
       materialrequiredFormModel:
           materialrequiredFormModel ?? this.materialrequiredFormModel,
       status: status ?? this.status,
-      allledger: allledger ?? this.allledger
+      allledger: allledger ?? this.allledger,
+      allItems: allItems ?? this.allItems,
     );
   }
 }

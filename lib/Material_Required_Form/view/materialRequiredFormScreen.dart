@@ -20,7 +20,9 @@ class MaterialRequiredFormScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         backgroundColor: primaryColor,
         onPressed: () {
-          context.read<MaterialRequiredFormBloc>().add(FetchingEvent());
+          context
+              .read<MaterialRequiredFormBloc>()
+              .add(FetchingMaterialReqEvent());
           Navigator.of(context).push(MaterialPageRoute(builder: (contex) {
             return BlocProvider.value(
               value: context.read<MaterialRequiredFormBloc>(),

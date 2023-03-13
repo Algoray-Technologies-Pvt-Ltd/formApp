@@ -4,6 +4,8 @@ import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:formapp/Material_Required_Form/bloc/material_required_form_bloc.dart';
 import 'package:formapp/model/allLedgerModel.dart';
 
+import '../../../model/Ledgers/LedMasterHiveModel.dart';
+
 class CustomerName extends StatefulWidget {
   const CustomerName({super.key});
 
@@ -23,14 +25,15 @@ class _CustomerNameState extends State<CustomerName> {
             child: TypeAheadFormField(
               onSuggestionSelected: (suggestion) {
                 phoneNo.text = suggestion.toString();
-                context
-                    .read<MaterialRequiredFormBloc>()
-                    .add(CustomerNameEvent(customerName: phoneNo.text,));
+                context.read<MaterialRequiredFormBloc>().add(CustomerNameEvent(
+                      customerName: phoneNo.text,
+                    ));
               },
               textFieldConfiguration: TextFieldConfiguration(
                 textInputAction: TextInputAction.next,
                 decoration: InputDecoration(
-                  label:const Text('Customer Name'),
+                  fillColor: Colors.white,
+                  label: const Text('Customer Name'),
                   hintText: 'Customer Name',
                   prefixIcon: Padding(
                     padding: const EdgeInsets.symmetric(vertical: 16 * 0.75),
@@ -59,12 +62,13 @@ class _CustomerNameState extends State<CustomerName> {
 }
 
 getSuggestions(String query, BuildContext context) {
-  List<AllLedgersData?>? matches = context.read<MaterialRequiredFormBloc>().state.allledger;
+  List<LedgerMasterHiveModel?>? matches =
+      context.read<MaterialRequiredFormBloc>().state.allledger;
   print('*****************');
   print(matches?.length);
   print('*****************');
   matches?.retainWhere(
-      (s) => s!.ledgerName!.toLowerCase().contains(query.toLowerCase()));
+      (s) => s!.Ledger_Name!.toLowerCase().contains(query.toLowerCase()));
 
-  return matches?.map((e) => e?.ledgerName) ?? [];
+  return matches?.map((e) => e?.Ledger_Name) ?? [];
 }
