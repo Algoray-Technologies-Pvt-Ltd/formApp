@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
-import 'package:formapp/Gate_Inward_Register/bloc/gate_inward_register_bloc.dart';
+import 'package:formapp/Material_Required_Form/bloc/material_required_form_bloc.dart';
 import 'package:formapp/model/HiveModels/InventoryItems/InvetoryItemDataModel.dart';
 
-class GateInwardDescription extends StatefulWidget {
-  const GateInwardDescription({super.key});
+
+class MaterialReqDescription extends StatefulWidget {
+  const MaterialReqDescription({super.key});
 
   @override
-  State<GateInwardDescription> createState() => _GateInwardDescriptionState();
+  State<MaterialReqDescription> createState() => _MaterialReqDescriptionState();
 }
 
 TextEditingController desc = TextEditingController();
 
-class _GateInwardDescriptionState extends State<GateInwardDescription> {
+class _MaterialReqDescriptionState extends State<MaterialReqDescription> {
   // @override
   // void dispose() {
   //   phoneNo.dispose();
@@ -30,14 +31,14 @@ class _GateInwardDescriptionState extends State<GateInwardDescription> {
               onSuggestionSelected: (suggestion) {
                 desc.text = suggestion.toString();
                 context
-                    .read<GateInwardRegisterBloc>()
-                    .add(DescriptionEvent(description: desc.text));
+                    .read<MaterialRequiredFormBloc>()
+                    .add(MaterialDescriptionEvent(materialDescription: desc.text));
               },
               textFieldConfiguration: TextFieldConfiguration(
                 textInputAction: TextInputAction.next,
                 decoration: const InputDecoration(
-                  label: Text('Description'),
-                  hintText: 'Description',
+                  label: Text('Material Description'),
+                  hintText: 'Material Description',
                   fillColor: Colors.white,
                 ),
                 controller: desc,
@@ -56,7 +57,7 @@ class _GateInwardDescriptionState extends State<GateInwardDescription> {
 
 getSuggestionsItems(String query, BuildContext context) {
   List<InventoryItemHive?>? matches =
-      context.read<GateInwardRegisterBloc>().state.allItems;
+      context.read<MaterialRequiredFormBloc>().state.allItems;
   print('*****************');
   print(matches?.length);
   print('*****************');

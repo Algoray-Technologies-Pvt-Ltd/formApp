@@ -1,8 +1,13 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:hive/hive.dart';
 
+import '../../constants.dart';
+import '../../model/HiveModels/InventoryItems/InvetoryItemDataModel.dart';
+import '../../model/Ledgers/LedMasterHiveModel.dart';
 import '../../model/allLedgerModel.dart';
 import '../../status.dart';
+import '../../webService/webServicePHP.dart';
 import '../../webService/weservice.dart';
 import '../models/materialRequiredFormModel.dart';
 
@@ -45,11 +50,6 @@ class MaterialRequiredFormBloc
       emit(state.copyWith(
           materialrequiredFormModel: state.materialrequiredFormModel
               ?.copyWith(poSlNumber: event.poSlNumber)));
-    });
-    on<FetchingEvent>((event, emit) async {
-      emit(state.copyWith(status: Status.fetching));
-      var s = await allLedgers();
-      emit(state.copyWith(status: Status.ready, allledger: s));
     });
     on<CustomerNameEvent>((event, emit) async {
       emit(state.copyWith(
@@ -106,11 +106,35 @@ class MaterialRequiredFormBloc
           materialrequiredFormModel:
               state.materialrequiredFormModel?.copyWith(peSign: event.peSign)));
     });
-        on<SaveEvent>((event, emit) {
+    on<SaveEvent>((event, emit) {
       var s = state.materialrequiredFormModel!.toJson();
       print('*************');
       print(s);
       print('*************');
+    });
+    on<FetchingMaterialReqEvent>((event, emit) async {
+      print('###############');
+      emit(state.copyWith(status: Status.fetching));
+      print('#######################');
+      Box<InventoryItemHive> items = Hive.box<InventoryItemHive>(
+        HiveTagNames.Items_Hive_Tag,
+      );
+      var s = items.values.toList();
+      items.values.where((element) {
+        print('${element.Item_Name} - ${element.Group_Id}}');
+        return true;
+      }).toList();
+      print('#######################');
+      Box<LedgerMasterHiveModel> ledger = Hive.box<LedgerMasterHiveModel>(
+        HiveTagNames.Ledgers_Hive_Tag,
+      );
+      var v = ledger.values.toList();
+      ledger.values.where((element) {
+        print('${element.Ledger_Name} - ${element.Group_Id}}');
+        return true;
+      }).toList();
+
+      emit(state.copyWith(status: Status.ready, allItems: s, allledger: v));
     });
   }
 }

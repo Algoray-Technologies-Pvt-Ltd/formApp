@@ -55,7 +55,16 @@ class GoodsReciepDataTable extends StatelessWidget {
             DataColumn(
               label: Expanded(
                 child: Text(
-                  'GI.No',
+                  'Sl. No.',
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+              ),
+            ),
+            DataColumn(
+              label: Expanded(
+                child: Text(
+                  'GRN No.',
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
@@ -73,7 +82,7 @@ class GoodsReciepDataTable extends StatelessWidget {
             DataColumn(
               label: Expanded(
                 child: Text(
-                  'GP No.',
+                  'Supplier Name',
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
@@ -82,7 +91,7 @@ class GoodsReciepDataTable extends StatelessWidget {
             DataColumn(
               label: Expanded(
                 child: Text(
-                  'GP Date',
+                  'Bill No. & Date',
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
@@ -91,7 +100,7 @@ class GoodsReciepDataTable extends StatelessWidget {
             DataColumn(
               label: Expanded(
                 child: Text(
-                  'From',
+                  'Material  Description',
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
@@ -100,7 +109,7 @@ class GoodsReciepDataTable extends StatelessWidget {
             DataColumn(
               label: Expanded(
                 child: Text(
-                  'Mode of Transport',
+                  'Order Qty',
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
@@ -109,7 +118,7 @@ class GoodsReciepDataTable extends StatelessWidget {
             DataColumn(
               label: Expanded(
                 child: Text(
-                  'Vehicle No.',
+                  'Rec Qty',
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
@@ -118,7 +127,7 @@ class GoodsReciepDataTable extends StatelessWidget {
             DataColumn(
               label: Expanded(
                 child: Text(
-                  'Description',
+                  'Accepted Qty',
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
@@ -129,7 +138,7 @@ class GoodsReciepDataTable extends StatelessWidget {
             DataColumn(
               label: Expanded(
                 child: Text(
-                  'Qty',
+                  'Inspection Details',
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
@@ -138,25 +147,7 @@ class GoodsReciepDataTable extends StatelessWidget {
             DataColumn(
               label: Expanded(
                 child: Text(
-                  'Purpose',
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-              ),
-            ),
-            DataColumn(
-              label: Expanded(
-                child: Text(
-                  'Checked By',
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-              ),
-            ),
-            DataColumn(
-              label: Expanded(
-                child: Text(
-                  'Returnable/Non Returnable',
+                  'If Rejection Details',
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
@@ -170,7 +161,7 @@ class GoodsReciepDataTable extends StatelessWidget {
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
               ),
-            ),
+            )
           ],
           rows: _dataList
               .map(

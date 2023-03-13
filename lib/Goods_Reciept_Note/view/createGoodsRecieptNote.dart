@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formapp/Goods_Reciept_Note/bloc/goods_reciept_note_bloc.dart';
+import 'package:formapp/Goods_Reciept_Note/view/widgets/GRNDescription.dart';
 import 'package:formapp/Goods_Reciept_Note/view/widgets/billDate.dart';
 import 'package:formapp/Goods_Reciept_Note/view/widgets/grnDate.dart';
 
@@ -105,14 +106,15 @@ class CreateGoodsRecieptNote extends StatelessWidget {
                 initialText: '',
                 hintText: 'Sl.No',
               ),
-              KTextField(
-                onChanged: (value) {
-                  context.read<GoodsRecieptNoteBloc>().add(
-                      MaterialDescriotionEvent(materialDescriotion: value));
-                },
-                initialText: '',
-                hintText: 'Material Description',
-              ),
+              const GRNDescription(),
+              // KTextField(
+              //   onChanged: (value) {
+              //     context.read<GoodsRecieptNoteBloc>().add(
+              //         MaterialDescriotionEvent(materialDescriotion: value));
+              //   },
+              //   initialText: '',
+              //   hintText: 'Material Description',
+              // ),
               KNumberTextField(
                 onChanged: (value) {
                   int orderQty = int.tryParse(value) ?? 0;

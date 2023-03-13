@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
-import 'package:formapp/Gate_Inward_Register/bloc/gate_inward_register_bloc.dart';
 import 'package:formapp/model/HiveModels/InventoryItems/InvetoryItemDataModel.dart';
 
-class GateInwardDescription extends StatefulWidget {
-  const GateInwardDescription({super.key});
+import '../../bloc/gate_outward_register_bloc.dart';
+
+class GateOutwardDescription extends StatefulWidget {
+  const GateOutwardDescription({super.key});
 
   @override
-  State<GateInwardDescription> createState() => _GateInwardDescriptionState();
+  State<GateOutwardDescription> createState() => _GateOutwardDescriptionState();
 }
 
 TextEditingController desc = TextEditingController();
 
-class _GateInwardDescriptionState extends State<GateInwardDescription> {
+class _GateOutwardDescriptionState extends State<GateOutwardDescription> {
   // @override
   // void dispose() {
   //   phoneNo.dispose();
@@ -30,7 +31,7 @@ class _GateInwardDescriptionState extends State<GateInwardDescription> {
               onSuggestionSelected: (suggestion) {
                 desc.text = suggestion.toString();
                 context
-                    .read<GateInwardRegisterBloc>()
+                    .read<GateOutwardRegisterBloc>()
                     .add(DescriptionEvent(description: desc.text));
               },
               textFieldConfiguration: TextFieldConfiguration(
@@ -56,7 +57,7 @@ class _GateInwardDescriptionState extends State<GateInwardDescription> {
 
 getSuggestionsItems(String query, BuildContext context) {
   List<InventoryItemHive?>? matches =
-      context.read<GateInwardRegisterBloc>().state.allItems;
+      context.read<GateOutwardRegisterBloc>().state.allItems;
   print('*****************');
   print(matches?.length);
   print('*****************');

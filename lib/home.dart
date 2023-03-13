@@ -169,7 +169,8 @@ class HomePage extends StatelessWidget {
                 Navigator.of(context)
                     .push(MaterialPageRoute(builder: (context) {
                   return BlocProvider(
-                    create: (context) => GateOutwardRegisterBloc(),
+                    create: (context) => GateOutwardRegisterBloc()
+                      ..add(FetchingGateOutwardEvent()),
                     child: const GateOutwardRegisterScreen(),
                   );
                 }));
@@ -182,7 +183,8 @@ class HomePage extends StatelessWidget {
                 Navigator.of(context)
                     .push(MaterialPageRoute(builder: (context) {
                   return BlocProvider(
-                    create: (context) => GoodsRecieptNoteBloc(),
+                    create: (context) =>
+                        GoodsRecieptNoteBloc()..add(FetchingGRNEvent()),
                     child: const GoodsRecieptNoteScreen(),
                   );
                 }));
@@ -195,7 +197,8 @@ class HomePage extends StatelessWidget {
                 Navigator.of(context)
                     .push(MaterialPageRoute(builder: (context) {
                   return BlocProvider(
-                    create: (context) => IssueAndReturnRegisterBloc(),
+                    create: (context) => IssueAndReturnRegisterBloc()
+                      ..add(FetchingIssueCumEvent()),
                     child: const IssueCumReturnSlipScreen(),
                   );
                 }));

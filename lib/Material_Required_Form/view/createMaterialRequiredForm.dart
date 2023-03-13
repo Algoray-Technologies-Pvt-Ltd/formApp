@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formapp/Material_Required_Form/bloc/material_required_form_bloc.dart';
 import 'package:formapp/Material_Required_Form/view/widgets/customerName.dart';
+import 'package:formapp/Material_Required_Form/view/widgets/materialReqDescription.dart';
 import 'package:formapp/Material_Required_Form/view/widgets/materialreqDate.dart';
 
 import '../../main.dart';
@@ -59,14 +60,15 @@ class CreateMaterialRequiredForm extends StatelessWidget {
               //   hintText: 'Customer Name',
               // ),
               const MaterialReqDate(),
-              KTextField(
-                onChanged: (value) {
-                  context.read<MaterialRequiredFormBloc>().add(
-                      MaterialDescriptionEvent(materialDescription: value));
-                },
-                initialText: '',
-                hintText: 'Material Description',
-              ),
+              const MaterialReqDescription(),
+              // KTextField(
+              //   onChanged: (value) {
+              //     context.read<MaterialRequiredFormBloc>().add(
+              //         MaterialDescriptionEvent(materialDescription: value));
+              //   },
+              //   initialText: '',
+              //   hintText: 'Material Description',
+              // ),
               KTextField(
                 onChanged: (value) {
                   int inHand = int.tryParse(value) ?? 0;
