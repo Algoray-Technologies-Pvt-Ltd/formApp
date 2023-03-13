@@ -13,6 +13,7 @@ import 'package:formapp/contractReview/view/widgets/anySpecialRequirementsWidget
 import 'package:formapp/contractReview/view/widgets/approvalbydate.dart';
 import 'package:formapp/contractReview/view/widgets/approveddate.dart';
 import 'package:formapp/contractReview/view/widgets/customernameWidget.dart';
+import 'package:formapp/contractReview/view/widgets/employeeFeild.dart';
 import 'package:formapp/contractReview/view/widgets/enquiryDate.dart';
 import 'package:formapp/contractReview/view/widgets/insurance.dart';
 import 'package:formapp/contractReview/view/widgets/poNodate.dart';
@@ -134,7 +135,7 @@ class CreateContractReview extends StatelessWidget {
               initialText: '',
               hintText: 'Acknowledgement No',
             ),
-            AcknoledementdateWidget(),
+            AcknoledementdateWidget(),ReviewedByWidget(),
             KTextField(
               onChanged: (value) {
                 context

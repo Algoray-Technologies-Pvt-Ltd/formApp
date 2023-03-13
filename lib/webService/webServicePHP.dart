@@ -1,8 +1,36 @@
+import 'dart:math';
+
 import 'package:dio/dio.dart';
 import 'package:hive/hive.dart';
 import 'package:intl/intl.dart';
 
 class WebServicePHPHelper {
+  static Future<dynamic> getAllEmployees({DateTime? lastUpdated}) async {
+    final DateFormat formatter = DateFormat('yyyy-MM-dd HH:mm:ss');
+    String dateF = formatter.format(lastUpdated!);
+    String fullURl =
+        "https://www.algoray.in/test_app_water/masters_webservice.php?action=getAllEmployees";
+
+    print('Url : $fullURl');
+    dynamic data;
+    try {
+      String dBName = "cake_studio_ho";
+      Dio dio = Dio(BaseOptions(headers: {'dbname': dBName}));
+      final Response response = await dio.get(
+        fullURl,
+      );
+
+      data = response.data;
+    } catch (ex) {
+      print(ex.toString());
+      return false;
+    }
+    if (data['success'] == "1")
+      return data['data'];
+    else
+      return false;
+  }
+
   static Future<dynamic> getAllLedgers({DateTime? lastUpdated}) async {
     final DateFormat formatter = DateFormat('yyyy-MM-dd HH:mm:ss');
     String dateF = formatter.format(lastUpdated!);

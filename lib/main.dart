@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formapp/home.dart';
+import 'package:formapp/model/Employee/EmployeeHiveModel.dart';
 import 'package:formapp/model/HiveModels/InventoryItems/InvetoryItemDataModel.dart';
 import 'package:formapp/model/Ledgers/LedMasterHiveModel.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -14,6 +15,7 @@ const primaryColor = Color.fromRGBO(32, 115, 152, 1);
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
+  Hive.registerAdapter<EmployeeHiveModel>(EmployeeHiveModelAdapter());
   Hive.registerAdapter<LedgerMasterHiveModel>(LedgerMasterHiveModelAdapter());
   Hive.registerAdapter<InventoryItemHive>(InventoryItemHiveAdapter());
   Hive.registerAdapter<UOMHiveMOdel>(UOMHiveMOdelAdapter());
@@ -23,7 +25,7 @@ void main() async {
   await Hive.openBox<InventoryItemHive>(HiveTagNames.Items_Hive_Tag);
   // await Hive.openBox<UOMHiveMOdel>(HiveTagNames.Uom_Hive_Tag);
   // await Hive.openBox<PriceListEntriesHive>(HiveTagNames.PriceLists_Hive_Tag);
-
+  await Hive.openBox<EmployeeHiveModel>(HiveTagNames.Employee_Hive_Tag);
   runApp(const MyApp());
 }
 
@@ -74,13 +76,11 @@ class MyApp extends StatelessWidget {
               lazy: false,
               create: (context) {
                 print("hery ladee");
-                return SyncServiceBloc()..add(const FetchLedgersEvent());
+                return SyncServiceBloc()
+                  ..add(const FetchLedgersEvent())
+                  ..add(const FetchEmployeesEvent())
+                  ..add(const FetchItemsEvent());
               },
-            ),
-            BlocProvider(
-              lazy: false,
-              create: (context) =>
-                  SyncServiceBloc()..add(const FetchItemsEvent()),
             ),
           ],
           child: const HomePage(),
