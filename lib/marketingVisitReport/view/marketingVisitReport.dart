@@ -19,7 +19,7 @@ class MarketingVisitReportScreen extends StatelessWidget {
         onPressed: () {
           Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
             return BlocProvider.value(
-                value: context.read<MarketingVisitReportBloc>(),
+                value: context.read<MarketingVisitReportBloc>()..add(FetchingEvent()),
                 child: MarketVisitReportCreate());
           }));
         },

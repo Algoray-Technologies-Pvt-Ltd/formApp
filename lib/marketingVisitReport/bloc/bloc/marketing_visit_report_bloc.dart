@@ -1,7 +1,10 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:formapp/constants.dart';
 import 'package:formapp/main.dart';
 import 'package:formapp/marketingVisitReport/model/marketingVisitReport.dart';
+import 'package:formapp/model/Ledgers/LedMasterHiveModel.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 part 'marketing_visit_report_event.dart';
 part 'marketing_visit_report_state.dart';
@@ -10,14 +13,12 @@ class MarketingVisitReportBloc
     extends Bloc<MarketingVisitReportEvent, MarketingVisitReportState> {
   MarketingVisitReportBloc()
       : super(MarketingVisitReportState(
-            marketingVisitReport: MarketingVisitReport())) {
+            allledger: [], marketingVisitReport: MarketingVisitReport())) {
     on<RemarksEvent>((event, emit) {
       emit(state.copyWith(
           marketingVisitReport:
               state.marketingVisitReport?.copyWith(remarks: event.Remarks)));
     });
-
-
 
     on<FollowupDetailsEvent>((event, emit) {
       emit(state.copyWith(
@@ -97,6 +98,15 @@ class MarketingVisitReportBloc
       print('********************');
       print(s);
       print('********************');
+    });
+    on<FetchingEvent>((event, emit) async {
+      Box<LedgerMasterHiveModel> ledger = Hive.box<LedgerMasterHiveModel>(
+        HiveTagNames.Ledgers_Hive_Tag,
+      );
+      var s = ledger.values.toList();
+      emit(state.copyWith(allledger: s));
+      print('*<<<>>><<>>>>>*' + state.allledger.toString());
+      print(state.allledger);
     });
   }
 }

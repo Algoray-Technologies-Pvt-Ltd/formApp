@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formapp/main.dart';
 import 'package:formapp/marketingVisitReport/bloc/bloc/marketing_visit_report_bloc.dart';
 import 'package:formapp/marketingVisitReport/view/widget/CheckBoxFeilds.dart';
+import 'package:formapp/marketingVisitReport/view/widget/customerName.dart';
 import 'package:formapp/widgets/ktextFeild.dart';
 
 class MarketVisitReportCreate extends StatelessWidget {
@@ -26,10 +27,7 @@ class MarketVisitReportCreate extends StatelessWidget {
         ),
         body: SingleChildScrollView(
             child: Wrap(children: [
-          KTextField(
-            initialText: '',
-            hintText: 'Customer Name',
-          ),
+          CustomerMvNmaeWidget(), 
           KTextField(
             onChanged: (value) {
               context

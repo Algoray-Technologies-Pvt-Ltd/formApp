@@ -18,7 +18,7 @@ class CustomerComplaintRegScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         backgroundColor: primaryColor,
         onPressed: () {
-          Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
+          Navigator.of(context).push(MaterialPageRoute(builder: (contex) {
             return BlocProvider.value(
               value: context.read<CustomerComplaintRegBloc>(),
               child: CreateComplainrReg(),

@@ -4,21 +4,20 @@ import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:formapp/contractReview/bloc/bloc/contract_review_bloc.dart';
 import 'package:formapp/contractReview/model/contractReviewmodel.dart';
 import 'package:formapp/customerComplaintReg/bloc/bloc/customer_complaint_reg_bloc.dart';
+import 'package:formapp/marketingVisitReport/bloc/bloc/marketing_visit_report_bloc.dart';
 import 'package:formapp/model/Ledgers/LedMasterHiveModel.dart';
 import 'package:formapp/model/allLedgerModel.dart';
 
-class CustomerComplaintNmaeWidget extends StatefulWidget {
-  CustomerComplaintNmaeWidget({super.key});
+class CustomerMvNmaeWidget extends StatefulWidget {
+  CustomerMvNmaeWidget({super.key});
 
   @override
-  State<CustomerComplaintNmaeWidget> createState() =>
-      _CustomerComplaintNmaeWidgetState();
+  State<CustomerMvNmaeWidget> createState() => _CustomerMvNmaeWidgetState();
 }
 
 TextEditingController phoneNo = TextEditingController();
 
-class _CustomerComplaintNmaeWidgetState
-    extends State<CustomerComplaintNmaeWidget> {
+class _CustomerMvNmaeWidgetState extends State<CustomerMvNmaeWidget> {
   // @override
   // void dispose() {
   //   phoneNo.dispose();
@@ -41,6 +40,7 @@ class _CustomerComplaintNmaeWidgetState
               textFieldConfiguration: TextFieldConfiguration(
                 textInputAction: TextInputAction.next,
                 decoration: InputDecoration(
+                  fillColor: Colors.white,
                   label: Text('Customer Name'),
                   hintText: 'Customer Name',
                   prefixIcon: Padding(
@@ -71,7 +71,7 @@ class _CustomerComplaintNmaeWidgetState
 
 getSuggestionscustomerComplaintReg(String query, BuildContext context) {
   final List<LedgerMasterHiveModel?>? matches =
-      context.read<CustomerComplaintRegBloc>().state.allledger;
+      context.read<MarketingVisitReportBloc>().state.allledger;
 
   if (matches == null) {
     return [];
