@@ -106,3 +106,5 @@ class FormNameEvent extends MarketingVisitReportEvent {
 }
 
 class SaveEvent extends MarketingVisitReportEvent {}
+
+class FetchingEvent extends MarketingVisitReportEvent {}

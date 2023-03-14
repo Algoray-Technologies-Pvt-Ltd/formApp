@@ -12,7 +12,7 @@ import 'package:formapp/Re-order_Level_Chart/bloc/re_order_level_chart_bloc.dart
 import 'package:formapp/Re-order_Level_Chart/view/reorderLevelChartScreen.dart';
 import 'package:formapp/Tools_List/bloc/tools_list_bloc.dart';
 import 'package:formapp/Tools_List/view/toolsListScreen.dart';
-import 'package:formapp/bloc/sync_ui_config_bloc.dart';
+
 import 'package:formapp/contractReview/bloc/bloc/contract_review_bloc.dart';
 import 'package:formapp/contractReview/view/contractReviewScreen.dart';
 import 'package:formapp/customerComplaintReg/bloc/bloc/customer_complaint_reg_bloc.dart';
@@ -31,9 +31,6 @@ import 'Daily_Stock_Statement/view/dailyStockStatementScreen.dart';
 import 'Gate_Outward_Register/view/gateOutwardRegister.dart';
 import 'Material_Required_Form/view/materialRequiredFormScreen.dart';
 import 'customerComplaintReg/view/CustomerComplaintRegScreen.dart';
-
-
-
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -67,6 +64,7 @@ class HomePage extends StatelessWidget {
               onPressed: () {
                 Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
                   return BlocProvider(
+                    lazy: false,
                     create: (context) =>
                         CustomerComplaintRegBloc()..add(FetchEvent()),
                     child: CustomerComplaintRegScreen(),

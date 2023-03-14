@@ -103,8 +103,9 @@ class CustomerComplaintRegBloc
         HiveTagNames.Ledgers_Hive_Tag,
       );
       var s = ledger.values.toList();
-      
-
+      emit(state.copyWith(allledger: s));
+      print('*<<<>>><<>>>>>*' + state.allledger.toString());
+      print(state.allledger);
     });
     on<SaveEvent>((event, emit) {
       var s = state.customerComplaintReg?.toJson();
