@@ -140,8 +140,7 @@ class HomePage extends StatelessWidget {
                     .push(MaterialPageRoute(builder: (context) {
                   return BlocProvider(
                     lazy: false,
-                    create: (context) => DailyStockStatementBloc()
-                      ..add(FetchingDailyStockEvent()),
+                    create: (context) => DailyStockStatementBloc(),
                     child: const DailyStockStatementScreen(),
                   );
                 }));
@@ -155,8 +154,7 @@ class HomePage extends StatelessWidget {
                     .push(MaterialPageRoute(builder: (context) {
                   return BlocProvider(
                     lazy: false,
-                    create: (context) => GateInwardRegisterBloc()
-                      ..add(FetchingGateInwardEvent()),
+                    create: (context) => GateInwardRegisterBloc(),
                     child: const GateInwardRegisterScreen(),
                   );
                 }));
@@ -169,8 +167,7 @@ class HomePage extends StatelessWidget {
                 Navigator.of(context)
                     .push(MaterialPageRoute(builder: (context) {
                   return BlocProvider(
-                    create: (context) => GateOutwardRegisterBloc()
-                      ..add(FetchingGateOutwardEvent()),
+                    create: (context) => GateOutwardRegisterBloc(),
                     child: const GateOutwardRegisterScreen(),
                   );
                 }));
@@ -183,8 +180,7 @@ class HomePage extends StatelessWidget {
                 Navigator.of(context)
                     .push(MaterialPageRoute(builder: (context) {
                   return BlocProvider(
-                    create: (context) =>
-                        GoodsRecieptNoteBloc()..add(FetchingGRNEvent()),
+                    create: (context) => GoodsRecieptNoteBloc(),
                     child: const GoodsRecieptNoteScreen(),
                   );
                 }));
@@ -197,8 +193,7 @@ class HomePage extends StatelessWidget {
                 Navigator.of(context)
                     .push(MaterialPageRoute(builder: (context) {
                   return BlocProvider(
-                    create: (context) => IssueAndReturnRegisterBloc()
-                      ..add(FetchingIssueCumEvent()),
+                    create: (context) => IssueAndReturnRegisterBloc(),
                     child: const IssueCumReturnSlipScreen(),
                   );
                 }));

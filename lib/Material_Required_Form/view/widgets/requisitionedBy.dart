@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
-import 'package:formapp/Daily_Stock_Statement/bloc/daily_stock_statement_bloc.dart';
-import 'package:formapp/contractReview/bloc/bloc/contract_review_bloc.dart';
+import 'package:formapp/Material_Required_Form/bloc/material_required_form_bloc.dart';
 import 'package:formapp/model/HiveModels/InventoryItems/InvetoryItemDataModel.dart';
-import 'package:formapp/model/Ledgers/LedMasterHiveModel.dart';
 
-class Description extends StatefulWidget {
-  const Description({super.key});
+import '../../../model/Employee/EmployeeHiveModel.dart';
+
+class RequisitionedBy extends StatefulWidget {
+  const RequisitionedBy({super.key});
 
   @override
-  State<Description> createState() => _DescriptionState();
+  State<RequisitionedBy> createState() => _RequisitionedByState();
 }
 
-TextEditingController phoneNo = TextEditingController();
+TextEditingController desc = TextEditingController();
 
-class _DescriptionState extends State<Description> {
+class _RequisitionedByState extends State<RequisitionedBy> {
   // @override
   // void dispose() {
   //   phoneNo.dispose();
@@ -30,19 +30,19 @@ class _DescriptionState extends State<Description> {
             width: 400,
             child: TypeAheadFormField(
               onSuggestionSelected: (suggestion) {
-                phoneNo.text = suggestion.toString();
+                desc.text = suggestion.toString();
                 context
-                    .read<DailyStockStatementBloc>()
-                    .add(DescriptionEvent(description: phoneNo.text));
+                    .read<MaterialRequiredFormBloc>()
+                    .add(RequisitionedByEvent(requisitionedBy: desc.text));
               },
               textFieldConfiguration: TextFieldConfiguration(
                 textInputAction: TextInputAction.next,
                 decoration: const InputDecoration(
-                  label: Text('Description'),
-                  hintText: 'Description',
+                  label: Text('Requisitioned By'),
+                  hintText: 'Requisitioned By',
                   fillColor: Colors.white,
                 ),
-                controller: phoneNo,
+                controller: desc,
               ),
               suggestionsCallback: (pattern) {
                 return getSuggestionsItems(pattern, context);
@@ -57,8 +57,8 @@ class _DescriptionState extends State<Description> {
 }
 
 List<String> getSuggestionsItems(String query, BuildContext context) {
-  final List<InventoryItemHive?>? matches =
-      context.read<DailyStockStatementBloc>().state.allItems;
+  final List<EmployeeHiveModel?>? matches =
+      context.read<MaterialRequiredFormBloc>().state.allEmployees;
 
   if (matches == null) {
     return [];
@@ -67,9 +67,9 @@ List<String> getSuggestionsItems(String query, BuildContext context) {
   final List<String> matchingNames = matches
       .where((item) =>
           item != null &&
-          item.Item_Name != null &&
-          item.Item_Name!.toLowerCase().contains(query.toLowerCase()))
-      .map((item) => item!.Item_Name!)
+          item.UserName != null &&
+          item.UserName!.toLowerCase().contains(query.toLowerCase()))
+      .map((item) => item!.UserName!)
       .toList();
 
   return matchingNames;

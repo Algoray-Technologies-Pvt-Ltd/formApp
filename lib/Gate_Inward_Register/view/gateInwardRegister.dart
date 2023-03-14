@@ -18,7 +18,7 @@ class GateInwardRegisterScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         backgroundColor: primaryColor,
         onPressed: () {
-          // context.read<GateInwardRegisterBloc>().add(FetchingEvent());
+          context.read<GateInwardRegisterBloc>().add(FetchingGateInwardEvent());
           Navigator.of(context).push(MaterialPageRoute(builder: (contex) {
             return BlocProvider.value(
               value: context.read<GateInwardRegisterBloc>(),
