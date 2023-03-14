@@ -17,8 +17,15 @@ class ContractReviewBloc
           allledger: [],
           allEmloyees: [],
           status: ContractReviewStatus.init,
-          contractReview: ContractReview(),
+          contractReview: ContractReview(date: DateTime.now()),
         )) {
+    on<TodayDateEvent>((event, emit) {
+      emit(state.copyWith(
+          contractReview:
+              state.contractReview?.copyWith(date: DateTime.now())));
+
+      print(state.contractReview?.POrecDate);
+    });
     on<PoRecDateEvent>((event, emit) {
       emit(state.copyWith(
           contractReview:

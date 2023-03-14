@@ -66,15 +66,21 @@ class _CustomerNmaeWidgetState extends State<CustomerNmaeWidget> {
   }
 }
 
-getSuggestions(String query, BuildContext context) {
-
-  List<LedgerMasterHiveModel?>? matches =
+List<String> getSuggestions(String query, BuildContext context) {
+  final List<LedgerMasterHiveModel?>? matches =
       context.read<ContractReviewBloc>().state.allledger;
-  print('*****************');
-  print(matches?.length);
-  print('*****************');
-  matches?.retainWhere(
-      (s) => s!.Ledger_Name!.toLowerCase().contains(query.toLowerCase()));
 
-  return matches?.map((e) => e?.Ledger_Name) ?? [];
+  if (matches == null) {
+    return [];
+  }
+
+  final List<String> matchingNames = matches
+      .where((item) =>
+          item != null &&
+          item.Ledger_Name != null &&
+          item.Ledger_Name!.toLowerCase().contains(query.toLowerCase()))
+      .map((item) => item!.Ledger_Name!)
+      .toList();
+
+  return matchingNames;
 }

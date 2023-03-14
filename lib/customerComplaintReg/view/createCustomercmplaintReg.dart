@@ -33,6 +33,7 @@ class CreateComplainrReg extends StatelessWidget {
         child: Wrap(children: [
           CustomerComplaintNmaeWidget(),
           KTextField(
+            multiline: true,
             initialText: '',
             hintText: 'Address',
             onChanged: (value) {
@@ -90,6 +91,7 @@ class CreateComplainrReg extends StatelessWidget {
           ),
           InformDateWidget(),
           KTextField(
+            multiline: true,
             onChanged: (value) {
               context
                   .read<CustomerComplaintRegBloc>()

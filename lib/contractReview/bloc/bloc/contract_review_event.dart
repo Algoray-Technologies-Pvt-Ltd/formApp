@@ -8,6 +8,13 @@ class ContractReviewEvent extends Equatable {
   List<Object> get props => [];
 }
 
+class TodayDateEvent extends ContractReviewEvent {
+  DateTime date;
+  TodayDateEvent({
+    required this.date,
+  });
+}
+
 class CustomerNameEvent extends ContractReviewEvent {
   String name;
   CustomerNameEvent({
