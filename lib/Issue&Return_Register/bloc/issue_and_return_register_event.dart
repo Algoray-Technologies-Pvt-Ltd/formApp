@@ -98,6 +98,6 @@ class RemarksEvent extends IssueAndReturnRegisterEvent {
   });
 }
 
-class FetchingEvent extends IssueAndReturnRegisterEvent {}
+class FetchingIssueCumEvent extends IssueAndReturnRegisterEvent {}
 
 class SaveEvent extends IssueAndReturnRegisterEvent {}

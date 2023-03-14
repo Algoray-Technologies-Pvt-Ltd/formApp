@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formapp/Issue&Return_Register/bloc/issue_and_return_register_bloc.dart';
+import 'package:formapp/Issue&Return_Register/view/widgets/issueCumDescription.dart';
 import 'package:formapp/Issue&Return_Register/view/widgets/returnDate.dart';
 
 import '../../main.dart';
@@ -76,14 +77,15 @@ class CreateIssueCumReturnSlip extends StatelessWidget {
                 initialText: '',
                 hintText: 'Sl.No',
               ),
-              KTextField(
-                onChanged: (value) {
-                  context.read<IssueAndReturnRegisterBloc>().add(
-                      MaterialDescriotionEvent(materialDescriotion: value));
-                },
-                initialText: '',
-                hintText: 'Material Description',
-              ),
+              const IssueCumDescription(),
+              // KTextField(
+              //   onChanged: (value) {
+              //     context.read<IssueAndReturnRegisterBloc>().add(
+              //         MaterialDescriotionEvent(materialDescriotion: value));
+              //   },
+              //   initialText: '',
+              //   hintText: 'Material Description',
+              // ),
               const IssueDate(),
               KNumberTextField(
                 onChanged: (value) {

@@ -4,18 +4,21 @@ part of 'goods_reciept_note_bloc.dart';
 class GoodsRecieptNoteState extends Equatable {
   GoodsRecieptNoteModel? grnModel;
   Status? status;
-  GoodsRecieptNoteState({this.grnModel, this.status});
+  List<InventoryItemHive>? allItems;
+
+  GoodsRecieptNoteState({this.grnModel, this.status, this.allItems});
 
   @override
-  List<Object?> get props => [grnModel, status];
+  List<Object?> get props => [grnModel, status, allItems];
 
-  GoodsRecieptNoteState copyWith({
-    GoodsRecieptNoteModel? grnModel,
-    Status? status,
-  }) {
+  GoodsRecieptNoteState copyWith(
+      {GoodsRecieptNoteModel? grnModel,
+      Status? status,
+      List<InventoryItemHive>? allItems}) {
     return GoodsRecieptNoteState(
       grnModel: grnModel ?? this.grnModel,
       status: status ?? this.status,
+      allItems: allItems ?? this.allItems
     );
   }
 }
