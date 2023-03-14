@@ -70,6 +70,6 @@ class RemarksEvent extends ReOrderLevelChartEvent {
   });
 }
 
-class FetchingEvent extends ReOrderLevelChartEvent {}
+class FetchingReorderEvent extends ReOrderLevelChartEvent {}
 
 class SaveEvent extends ReOrderLevelChartEvent {}

@@ -55,14 +55,21 @@ class _GateOutwardDescriptionState extends State<GateOutwardDescription> {
   }
 }
 
-getSuggestionsItems(String query, BuildContext context) {
-  List<InventoryItemHive?>? matches =
+List<String> getSuggestionsItems(String query, BuildContext context) {
+  final List<InventoryItemHive?>? matches =
       context.read<GateOutwardRegisterBloc>().state.allItems;
-  print('*****************');
-  print(matches?.length);
-  print('*****************');
-  matches?.retainWhere(
-      (s) => s!.Item_Name!.toLowerCase().contains(query.toLowerCase()));
 
-  return matches?.map((e) => e?.Item_Name) ?? [];
+  if (matches == null) {
+    return [];
+  }
+
+  final List<String> matchingNames = matches
+      .where((item) =>
+          item != null &&
+          item.Item_Name != null &&
+          item.Item_Name!.toLowerCase().contains(query.toLowerCase()))
+      .map((item) => item!.Item_Name!)
+      .toList();
+
+  return matchingNames;
 }

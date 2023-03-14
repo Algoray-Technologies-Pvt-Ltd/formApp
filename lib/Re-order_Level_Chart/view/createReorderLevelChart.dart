@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formapp/Re-order_Level_Chart/bloc/re_order_level_chart_bloc.dart';
+import 'package:formapp/Re-order_Level_Chart/view/widgets/reOrderDescription.dart';
 import '../../main.dart';
 import '../../widgets/KAutoDateSet.dart';
 import '../../widgets/KNumberTextField.dart';
@@ -74,15 +75,16 @@ class CreateReorderLevelChart extends StatelessWidget {
                 initialText: '',
                 hintText: 'Sl.No',
               ),
-              KTextField(
-                onChanged: (value) {
-                  context
-                      .read<ReOrderLevelChartBloc>()
-                      .add(DescriptionEvent(description: value));
-                },
-                initialText: '',
-                hintText: 'Description',
-              ),
+              const ReOrderDescription(),
+              // KTextField(
+              //   onChanged: (value) {
+              //     context
+              //         .read<ReOrderLevelChartBloc>()
+              //         .add(DescriptionEvent(description: value));
+              //   },
+              //   initialText: '',
+              //   hintText: 'Description',
+              // ),
               KNumberTextField(
                 onChanged: (value) {
                   context

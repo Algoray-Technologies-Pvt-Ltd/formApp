@@ -10,6 +10,7 @@ import 'package:formapp/Material_Required_Form/view/widgets/materialreqDate.dart
 import '../../main.dart';
 import '../../widgets/kautoGenerateTextField.dart';
 import '../../widgets/ktextFeild.dart';
+import 'widgets/requisitionedBy.dart';
 
 class CreateMaterialRequiredForm extends StatelessWidget {
   const CreateMaterialRequiredForm({super.key});
@@ -111,15 +112,16 @@ class CreateMaterialRequiredForm extends StatelessWidget {
                 initialText: '',
                 hintText: 'Remarks',
               ),
-              KTextField(
-                onChanged: (value) {
-                  context
-                      .read<MaterialRequiredFormBloc>()
-                      .add(RequisitionedByEvent(requisitionedBy: value));
-                },
-                initialText: '',
-                hintText: 'Requisitioned By',
-              ),
+              const RequisitionedBy(),
+              // KTextField(
+              //   onChanged: (value) {
+              //     context
+              //         .read<MaterialRequiredFormBloc>()
+              //         .add(RequisitionedByEvent(requisitionedBy: value));
+              //   },
+              //   initialText: '',
+              //   hintText: 'Requisitioned By',
+              // ),
               KTextField(
                 onChanged: (value) {
                   context

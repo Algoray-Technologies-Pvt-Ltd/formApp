@@ -3,6 +3,7 @@ import 'package:equatable/equatable.dart';
 import 'package:hive/hive.dart';
 
 import '../../constants.dart';
+import '../../model/Employee/EmployeeHiveModel.dart';
 import '../../model/HiveModels/InventoryItems/InvetoryItemDataModel.dart';
 import '../../model/Ledgers/LedMasterHiveModel.dart';
 import '../../model/allLedgerModel.dart';
@@ -130,11 +131,19 @@ class MaterialRequiredFormBloc
       );
       var v = ledger.values.toList();
       ledger.values.where((element) {
-        print('${element.Ledger_Name} - ${element.Group_Id}}');
         return true;
       }).toList();
 
-      emit(state.copyWith(status: Status.ready, allItems: s, allledger: v));
+           Box<EmployeeHiveModel> employee = Hive.box<EmployeeHiveModel>(
+        HiveTagNames.Employee_Hive_Tag,
+      );
+      var e = employee.values.toList();
+      employee.values.where((element) {
+        print('${element.UserName} - ${element.Employee_ID}}');
+        return true;
+      }).toList();
+
+      emit(state.copyWith(status: Status.ready, allItems: s, allledger: v,allEmployees: e));
     });
   }
 }
