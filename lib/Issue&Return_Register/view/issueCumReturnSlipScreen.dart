@@ -19,7 +19,7 @@ class IssueCumReturnSlipScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         backgroundColor: primaryColor,
         onPressed: () {
-          // context.read<IssueAndReturnRegisterBloc>().add(FetchingEvent());
+          context.read<IssueAndReturnRegisterBloc>().add(FetchingIssueCumEvent());
           Navigator.of(context).push(MaterialPageRoute(builder: (contex) {
             return BlocProvider.value(
               value: context.read<IssueAndReturnRegisterBloc>(),

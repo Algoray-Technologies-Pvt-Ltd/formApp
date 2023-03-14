@@ -18,7 +18,7 @@ class GoodsRecieptNoteScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         backgroundColor: primaryColor,
         onPressed: () {
-          // context.read<GoodsRecieptNoteBloc>().add(FetchingEvent());
+          context.read<GoodsRecieptNoteBloc>().add(FetchingGRNEvent());
           Navigator.of(context).push(MaterialPageRoute(builder: (contex) {
             return BlocProvider.value(
               value: context.read<GoodsRecieptNoteBloc>(),

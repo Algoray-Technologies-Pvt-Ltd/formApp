@@ -18,7 +18,7 @@ class DailyStockStatementScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         backgroundColor: primaryColor,
         onPressed: () {
-          // context.read<DailyStockStatementBloc>().add(FetchingEvent());
+          context.read<DailyStockStatementBloc>().add(FetchingDailyStockEvent());
           Navigator.of(context).push(MaterialPageRoute(builder: (contex) {
             return BlocProvider.value(
               value: context.read<DailyStockStatementBloc>(),
