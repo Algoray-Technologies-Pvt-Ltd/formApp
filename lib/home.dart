@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:formapp/Daily_Stock_Statement/bloc/daily_stock_statement_bloc.dart';
 import 'package:formapp/Gate_Inward_Register/bloc/gate_inward_register_bloc.dart';
 import 'package:formapp/Gate_Inward_Register/view/gateInwardRegister.dart';
@@ -32,6 +31,9 @@ import 'Daily_Stock_Statement/view/dailyStockStatementScreen.dart';
 import 'Gate_Outward_Register/view/gateOutwardRegister.dart';
 import 'Material_Required_Form/view/materialRequiredFormScreen.dart';
 import 'customerComplaintReg/view/CustomerComplaintRegScreen.dart';
+
+
+
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});

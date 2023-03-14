@@ -21,6 +21,7 @@ import 'package:formapp/contractReview/view/widgets/porecDate.dart';
 import 'package:formapp/contractReview/view/widgets/productDescriptionWidget.dart';
 import 'package:formapp/main.dart';
 import 'package:formapp/widgets/ktextFeild.dart';
+import 'package:intl/intl.dart';
 
 import 'widgets/qtyselectionwidget.dart';
 
@@ -46,6 +47,25 @@ class CreateContractReview extends StatelessWidget {
       body: SingleChildScrollView(
         child: Wrap(
           children: [
+            KTextField(
+              readonly: true,
+              initialText: DateFormat('yyyy-MM-dd').format(context
+                  .read<ContractReviewBloc>()
+                  .state
+                  .contractReview!
+                  .date!),
+              hintText: 'Date',
+            ),
+            KTextField(
+              readonly: true,
+              initialText: '34',
+              hintText: 'Rev',
+            ),
+            KTextField(
+              readonly: true,
+              initialText: '13',
+              hintText: 'FT .No',
+            ),
             CustomerNmaeWidget(),
             PoRecWidget(),
             KTextField(
@@ -135,7 +155,10 @@ class CreateContractReview extends StatelessWidget {
               initialText: '',
               hintText: 'Acknowledgement No',
             ),
-            AcknoledementdateWidget(),ReviewedByWidget(),
+            AcknoledementdateWidget(),
+            ReviewedByWidget(
+              initialText: '',
+            ),
             KTextField(
               onChanged: (value) {
                 context
