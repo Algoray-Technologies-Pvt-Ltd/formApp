@@ -73,7 +73,7 @@ class WebServicePHPHelper {
     final DateFormat formatter = DateFormat('yyyy-MM-dd HH:mm:ss');
     String dateF = formatter.format(lastUpdatedTimestamp);
     String fullURl =
-        "https://www.algoray.in/test_app_water/invent_webservice.php?action=getAllItemsNew&timestamp=$dateF&offset=0&limit=10000";
+        "https://www.algoray.in/test_app_water/inventory_webservice.php?action=getAllItemsNew&timestamp=$dateF&offset=0&limit=10000";
 
     print('Url : $fullURl');
     print('123');
