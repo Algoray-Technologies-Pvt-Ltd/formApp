@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
+import 'package:formapp/Goods_Reciept_Note/bloc/goods_reciept_note_bloc.dart';
 import 'package:formapp/contractReview/bloc/bloc/contract_review_bloc.dart';
 import 'package:formapp/model/Ledgers/LedMasterHiveModel.dart';
 
-class CustomerNmaeWidget extends StatefulWidget {
-  CustomerNmaeWidget({super.key});
+class SupplierName extends StatefulWidget {
+  SupplierName({super.key});
 
   @override
-  State<CustomerNmaeWidget> createState() => _CustomerNmaeWidgetState();
+  State<SupplierName> createState() => _SupplierNameState();
 }
 
-TextEditingController phoneNo = TextEditingController();
+TextEditingController ledger = TextEditingController();
 
-class _CustomerNmaeWidgetState extends State<CustomerNmaeWidget> {
+class _SupplierNameState extends State<SupplierName> {
   // @override
   // void dispose() {
   //   phoneNo.dispose();
@@ -24,20 +25,21 @@ class _CustomerNmaeWidgetState extends State<CustomerNmaeWidget> {
   Widget build(BuildContext context) {
     return Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Container(
+        child: SizedBox(
             width: 400,
             child: TypeAheadFormField(
               onSuggestionSelected: (suggestion) {
-                phoneNo.text = suggestion.toString();
+                ledger.text = suggestion.toString();
                 context
                     .read<ContractReviewBloc>()
-                    .add(CustomerNameEvent(name: phoneNo.text));
+                    .add(CustomerNameEvent(name: ledger.text));
               },
               textFieldConfiguration: TextFieldConfiguration(
                 textInputAction: TextInputAction.next,
                 decoration: InputDecoration(
-                  label: Text('Customer Name'),
-                  hintText: 'Customer Name',
+                  fillColor: Colors.white,
+                  label: const Text('Supplier Name'),
+                  hintText: 'Supplier Name',
                   prefixIcon: Padding(
                     padding: const EdgeInsets.symmetric(vertical: 16 * 0.75),
                     child: Icon(
@@ -50,7 +52,7 @@ class _CustomerNmaeWidgetState extends State<CustomerNmaeWidget> {
                     ),
                   ),
                 ),
-                controller: phoneNo,
+                controller: ledger,
               ),
               suggestionsCallback: (pattern) {
                 return getSuggestions(pattern, context);
@@ -66,7 +68,7 @@ class _CustomerNmaeWidgetState extends State<CustomerNmaeWidget> {
 
 List<String> getSuggestions(String query, BuildContext context) {
   final List<LedgerMasterHiveModel?>? matches =
-      context.read<ContractReviewBloc>().state.allledger;
+      context.read<GoodsRecieptNoteBloc>().state.allledger;
 
   if (matches == null) {
     return [];
