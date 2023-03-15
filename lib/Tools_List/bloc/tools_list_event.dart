@@ -77,6 +77,6 @@ class RemarksEvent extends ToolsListEvent {
   });
 }
 
-class FetchingEvent extends ToolsListEvent {}
+class FetchingToolsEvent extends ToolsListEvent {}
 
 class SaveEvent extends ToolsListEvent {}

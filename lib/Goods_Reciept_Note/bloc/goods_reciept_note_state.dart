@@ -5,20 +5,24 @@ class GoodsRecieptNoteState extends Equatable {
   GoodsRecieptNoteModel? grnModel;
   Status? status;
   List<InventoryItemHive>? allItems;
+  List<LedgerMasterHiveModel>? allledger;
 
-  GoodsRecieptNoteState({this.grnModel, this.status, this.allItems});
+
+  GoodsRecieptNoteState({this.grnModel, this.status, this.allItems,this.allledger});
 
   @override
-  List<Object?> get props => [grnModel, status, allItems];
+  List<Object?> get props => [grnModel, status, allItems,allledger];
 
   GoodsRecieptNoteState copyWith(
       {GoodsRecieptNoteModel? grnModel,
       Status? status,
-      List<InventoryItemHive>? allItems}) {
+      List<InventoryItemHive>? allItems,
+  List<LedgerMasterHiveModel>? allledger,}) {
     return GoodsRecieptNoteState(
       grnModel: grnModel ?? this.grnModel,
       status: status ?? this.status,
-      allItems: allItems ?? this.allItems
+      allItems: allItems ?? this.allItems,
+      allledger: allledger ?? this.allledger,
     );
   }
 }

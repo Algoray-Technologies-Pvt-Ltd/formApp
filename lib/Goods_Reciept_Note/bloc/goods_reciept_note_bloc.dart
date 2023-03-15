@@ -4,6 +4,7 @@ import 'package:hive/hive.dart';
 
 import '../../constants.dart';
 import '../../model/HiveModels/InventoryItems/InvetoryItemDataModel.dart';
+import '../../model/Ledgers/LedMasterHiveModel.dart';
 import '../../status.dart';
 import '../models/goodsRecieptNoteModel.dart';
 
@@ -14,7 +15,10 @@ class GoodsRecieptNoteBloc
     extends Bloc<GoodsRecieptNoteEvent, GoodsRecieptNoteState> {
   GoodsRecieptNoteBloc()
       : super(GoodsRecieptNoteState(
-            grnModel: GoodsRecieptNoteModel(), status: Status.init)) {
+            grnModel: GoodsRecieptNoteModel(),
+            status: Status.init,
+            allItems: [],
+            allledger: [])) {
     on<FtNumberEvent>((event, emit) {
       emit(state.copyWith(
           grnModel: state.grnModel?.copyWith(ftNumber: event.ftNumber)));
@@ -105,8 +109,15 @@ class GoodsRecieptNoteBloc
         print('${element.Item_Name} - ${element.Group_Id}}');
         return true;
       }).toList();
-      print('#######################');
-      emit(state.copyWith(status: Status.ready, allItems: s));
+
+      Box<LedgerMasterHiveModel> ledger = Hive.box<LedgerMasterHiveModel>(
+        HiveTagNames.Ledgers_Hive_Tag,
+      );
+      var l = ledger.values.toList();
+      ledger.values.where((element) {
+        return true;
+      }).toList();
+      emit(state.copyWith(status: Status.ready, allItems: s, allledger: l));
     });
   }
 }

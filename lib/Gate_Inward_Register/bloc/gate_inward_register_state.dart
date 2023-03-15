@@ -5,21 +5,25 @@ class GateInwardRegisterState extends Equatable {
   GateInwardRegisterModel? gateInwardRegisterModel;
   Status? status;
   List<InventoryItemHive>? allItems;
+  List<EmployeeHiveModel>? allEmployees;
+
   GateInwardRegisterState(
-      {this.gateInwardRegisterModel, this.status, this.allItems});
+      {this.gateInwardRegisterModel, this.status, this.allItems,this.allEmployees});
 
   @override
-  List<Object?> get props => [gateInwardRegisterModel, status, allItems];
+  List<Object?> get props => [gateInwardRegisterModel, status, allItems,allEmployees];
 
   GateInwardRegisterState copyWith(
       {GateInwardRegisterModel? gateInwardRegisterModel,
       Status? status,
-      List<InventoryItemHive>? allItems}) {
+      List<InventoryItemHive>? allItems,
+  List<EmployeeHiveModel>? allEmployees,}) {
     return GateInwardRegisterState(
       gateInwardRegisterModel:
           gateInwardRegisterModel ?? this.gateInwardRegisterModel,
       status: status ?? this.status,
-      allItems: allItems ?? this.allItems
+      allItems: allItems ?? this.allItems,
+      allEmployees: allEmployees ?? this.allEmployees,
     );
   }
 }

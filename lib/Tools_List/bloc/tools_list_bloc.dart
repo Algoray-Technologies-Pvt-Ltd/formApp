@@ -1,6 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
+import '../../constants.dart';
+import '../../model/HiveModels/InventoryItems/InvetoryItemDataModel.dart';
 import '../../status.dart';
 import '../models/toolsListModel.dart';
 
@@ -62,6 +65,18 @@ class ToolsListBloc extends Bloc<ToolsListEvent, ToolsListState> {
       print('*************');
       print(s);
       print('*************');
+    });
+    on<FetchingToolsEvent>((event, emit) async {
+      emit(state.copyWith(status: Status.fetching));
+      Box<InventoryItemHive> items = Hive.box<InventoryItemHive>(
+        HiveTagNames.Items_Hive_Tag,
+      );
+      var s = items.values.toList();
+      items.values.where((element) {
+        print('${element.Item_Name} - ${element.Group_Id}}');
+        return true;
+      }).toList();
+      emit(state.copyWith(status: Status.ready, allItems: s));
     });
   }
 }

@@ -3,6 +3,7 @@ import 'package:equatable/equatable.dart';
 import 'package:hive/hive.dart';
 
 import '../../constants.dart';
+import '../../model/Employee/EmployeeHiveModel.dart';
 import '../../model/HiveModels/InventoryItems/InvetoryItemDataModel.dart';
 import '../../status.dart';
 import '../models/gateOutwardRegisterModel.dart';
@@ -108,9 +109,7 @@ class GateOutwardRegisterBloc
       print('*************');
     });
     on<FetchingGateOutwardEvent>((event, emit) async {
-      print('###############');
       emit(state.copyWith(status: Status.fetching));
-      print('#######################');
       Box<InventoryItemHive> items = Hive.box<InventoryItemHive>(
         HiveTagNames.Items_Hive_Tag,
       );
@@ -120,9 +119,17 @@ class GateOutwardRegisterBloc
         return true;
       }).toList();
 
-      print('#######################');
+ Box<EmployeeHiveModel> employee = Hive.box<EmployeeHiveModel>(
+        HiveTagNames.Employee_Hive_Tag,
+      );
+      var e = employee.values.toList();
+      employee.values.where((element) {
+        print('${element.UserName} - ${element.Employee_ID}}');
+        return true;
+      }).toList();
 
-      emit(state.copyWith(status: Status.ready, allItems: s));
+
+      emit(state.copyWith(status: Status.ready, allItems: s,allEmployees: e));
     });
   }
 }
