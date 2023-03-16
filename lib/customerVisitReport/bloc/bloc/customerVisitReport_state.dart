@@ -3,18 +3,21 @@ part of 'customerVisitReport_bloc.dart';
 
 class CustomerVisitReportState extends Equatable {
   CustomerVisitReport? customerVisitReport;
-  CustomerVisitReportState({
-    this.customerVisitReport,
-  });
+  List<LedgerMasterHiveModel>? allledger;
+  List<EmployeeHiveModel>? allEmloyees;
+  CustomerVisitReportState(
+      {this.customerVisitReport, this.allledger, this.allEmloyees});
 
   @override
-  List get props => [customerVisitReport];
+  List get props => [customerVisitReport, allledger, allEmloyees];
 
-  CustomerVisitReportState copyWith({
-    CustomerVisitReport? customerVisitReport,
-  }) {
+  CustomerVisitReportState copyWith(
+      {CustomerVisitReport? customerVisitReport,
+      List<LedgerMasterHiveModel>? allledger,
+      List<EmployeeHiveModel>? allEmloyees}) {
     return CustomerVisitReportState(
-      customerVisitReport: customerVisitReport ?? this.customerVisitReport,
-    );
+        customerVisitReport: customerVisitReport ?? this.customerVisitReport,
+        allEmloyees: allEmloyees ?? this.allEmloyees,
+        allledger: allledger ?? this.allledger);
   }
 }

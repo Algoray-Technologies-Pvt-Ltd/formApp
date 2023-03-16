@@ -15,7 +15,11 @@ class CustomerComplaintRegBloc
     extends Bloc<CustomerComplaintRegEvent, CustomerComplaintRegState> {
   CustomerComplaintRegBloc()
       : super(CustomerComplaintRegState(
-            allledger: [], customerComplaintReg: CustomerComplaintReg())) {
+            allledger: [],
+            customerComplaintReg: CustomerComplaintReg(
+                ActionDate: DateTime.now(),
+                InformDate: DateTime.now(),
+                ComplaintDate: DateTime.now()))) {
     on<RemarksEvent>((event, emit) {
       emit(state.copyWith(
           customerComplaintReg:

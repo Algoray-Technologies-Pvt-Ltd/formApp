@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formapp/enquiryReview/view/widgets/AmandmentReviewByName.dart';
 import 'package:formapp/enquiryReview/view/widgets/QtyEn.dart';
+import 'package:formapp/enquiryReview/view/widgets/ReviewedBy.dart';
 import 'package:formapp/enquiryReview/view/widgets/amandmentEn.dart';
 import 'package:formapp/enquiryReview/view/widgets/amandmentReviewdateEn.dart';
 import 'package:formapp/enquiryReview/view/widgets/ammandmentdateEn.dart';
+import 'package:formapp/enquiryReview/view/widgets/approvedBy.dart';
 import 'package:formapp/enquiryReview/view/widgets/approveddateEn.dart';
 import 'package:formapp/enquiryReview/view/widgets/approvelDateEn.dart';
+import 'package:formapp/enquiryReview/view/widgets/approvelbyName.dart';
+import 'package:formapp/enquiryReview/view/widgets/customernameWidget.dart';
 import 'package:formapp/enquiryReview/view/widgets/enRecDate.dart';
 import 'package:formapp/enquiryReview/view/widgets/enquiryDateEn.dart';
 import 'package:formapp/enquiryReview/view/widgets/offerdueDateTime.dart';
@@ -106,13 +111,7 @@ class CreateEnquiryReview extends StatelessWidget {
                     alignment: Alignment.center,
                     width: MediaQuery.of(context).size.width,
                     child: Wrap(children: [
-                      KTextField(
-                        // onChanged: (value) {
-                        //   context.read<EnquiryReviewBloc>().add(Cus(num: value));
-                        // },
-                        initialText: '',
-                        hintText: 'Customer Name',
-                      ),
+                      CustomerEQrReNmaeWidget(),
                       EnquiryRecDateWidget(),
                       KTextField(
                         onChanged: (value) {
@@ -128,25 +127,9 @@ class CreateEnquiryReview extends StatelessWidget {
                       QtyWidgetEn(),
                       OfferDueTimeDateWidget(),
                       TermsandConditionsWidgetEn(),
-                      KTextField(
-                        onChanged: (value) {
-                          context
-                              .read<EnquiryReviewBloc>()
-                              .add(ReviewedByEvent(reviewedBy: value));
-                        },
-                        initialText: '',
-                        hintText: 'Reviewed By',
-                      ),
+                    ReviewedByName(),
                       ReviewedDateWidgetEn(),
-                      KTextField(
-                        onChanged: (value) {
-                          context
-                              .read<EnquiryReviewBloc>()
-                              .add(ApprovelByEvent(approval: value));
-                        },
-                        initialText: '',
-                        hintText: 'Approvel By ',
-                      ),
+                      ApprovelByName(),
                       ApprovelDateWidgetEn(),
                       AmandmentWidgetEn(),
                       AmmandmentdateWidgetEn(),
@@ -159,24 +142,9 @@ class CreateEnquiryReview extends StatelessWidget {
                         initialText: '',
                         hintText: 'Details of Amandment',
                       ),
-                      KTextField(
-                        onChanged: (value) {
-                          context.read<EnquiryReviewBloc>().add(
-                              AmandmentReviewByEvent(AmandmentReviewBy: value));
-                        },
-                        initialText: '',
-                        hintText: 'Amandment Review By',
-                      ),
+                      AmandmentReviewByName(),
                       AmmandmentReviewdateWidgetEn(),
-                      KTextField(
-                        onChanged: (value) {
-                          context
-                              .read<EnquiryReviewBloc>()
-                              .add(AmandmentApprovedByEvent(Amandment: value));
-                        },
-                        initialText: '',
-                        hintText: 'Approved By',
-                      ),
+                      ApproveddByName(),
                       ApprovedDateWidgetEn()
                     ]),
                   ),

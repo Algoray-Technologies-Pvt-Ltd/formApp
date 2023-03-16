@@ -105,6 +105,8 @@ class EnquiryDatevent extends EnquiryCumQuatationEvent {
   });
 }
 
+class FetchEvent extends EnquiryCumQuatationEvent {}
+
 class EnqRecDateEvent extends EnquiryCumQuatationEvent {
   DateTime RecDate;
   EnqRecDateEvent({

@@ -1,24 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
-import 'package:formapp/contractReview/bloc/bloc/contract_review_bloc.dart';
-import 'package:formapp/contractReview/model/contractReviewmodel.dart';
-import 'package:formapp/customerComplaintReg/bloc/bloc/customer_complaint_reg_bloc.dart';
-import 'package:formapp/model/Ledgers/LedMasterHiveModel.dart';
-import 'package:formapp/model/allLedgerModel.dart';
 
-class CustomerComplaintNmaeWidget extends StatefulWidget {
-  CustomerComplaintNmaeWidget({super.key});
+import 'package:formapp/enquiryCumQuatation/bloc/bloc/enquiry_cum_quatation_bloc.dart';
+
+import 'package:formapp/model/Ledgers/LedMasterHiveModel.dart';
+
+class CustomerEcqReNmaeWidget extends StatefulWidget {
+  CustomerEcqReNmaeWidget({super.key});
 
   @override
-  State<CustomerComplaintNmaeWidget> createState() =>
-      _CustomerComplaintNmaeWidgetState();
+  State<CustomerEcqReNmaeWidget> createState() =>
+      _CustomerEcqReNmaeWidgetState();
 }
 
 TextEditingController phoneNo = TextEditingController();
 
-class _CustomerComplaintNmaeWidgetState
-    extends State<CustomerComplaintNmaeWidget> {
+class _CustomerEcqReNmaeWidgetState extends State<CustomerEcqReNmaeWidget> {
   // @override
   // void dispose() {
   //   phoneNo.dispose();
@@ -35,8 +33,8 @@ class _CustomerComplaintNmaeWidgetState
               onSuggestionSelected: (suggestion) {
                 phoneNo.text = suggestion.toString();
                 context
-                    .read<CustomerComplaintRegBloc>()
-                    .add(LedNameEvent(name: phoneNo.text));
+                    .read<EnquiryCumQuatationBloc>()
+                    .add(CustomerNameEvent(CustomerName: phoneNo.text));
               },
               textFieldConfiguration: TextFieldConfiguration(
                 textInputAction: TextInputAction.next,
@@ -59,7 +57,7 @@ class _CustomerComplaintNmaeWidgetState
                 controller: phoneNo,
               ),
               suggestionsCallback: (pattern) {
-                return getSuggestionscustomerComplaintReg(pattern, context);
+                return getSuggestionscustomerEcqReReg(pattern, context);
               },
               itemBuilder: (context, suggestion) {
                 return ListTile(title: Text(suggestion.toString()));
@@ -70,9 +68,9 @@ class _CustomerComplaintNmaeWidgetState
   }
 }
 
-getSuggestionscustomerComplaintReg(String query, BuildContext context) {
+getSuggestionscustomerEcqReReg(String query, BuildContext context) {
   final List<LedgerMasterHiveModel?>? matches =
-      context.read<CustomerComplaintRegBloc>().state.allledger;
+      context.read<EnquiryCumQuatationBloc>().state.allLedger;
 
   if (matches == null) {
     return [];

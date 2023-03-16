@@ -1,6 +1,11 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:formapp/constants.dart';
 import 'package:formapp/enquiryCumQuatation/model/enquiryCumQuatation.dart';
+import 'package:formapp/model/Employee/EmployeeHiveModel.dart';
+import 'package:formapp/model/HiveModels/InventoryItems/InvetoryItemDataModel.dart';
+import 'package:formapp/model/Ledgers/LedMasterHiveModel.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 part 'enquiry_cum_quatation_event.dart';
 part 'enquiry_cum_quatation_state.dart';
@@ -9,7 +14,14 @@ class EnquiryCumQuatationBloc
     extends Bloc<EnquiryCumQuatationEvent, EnquiryCumQuatationState> {
   EnquiryCumQuatationBloc()
       : super(EnquiryCumQuatationState(
-            enquiryCumQuatation: EnquiryCumQuatation())) {
+            allItems: [],
+            allLedger: [],
+            enquiryCumQuatation: EnquiryCumQuatation(
+                QuoDate: DateTime.now(),
+                QuoDueDate: DateTime.now(),
+                EnquiryDate: DateTime.now(),
+                OrderReceivedDate: DateTime.now(),
+                EnquiryRecDate: DateTime.now()))) {
     on<RemarksEvent>((event, emit) {
       emit(state.copyWith(
           enquiryCumQuatation:
@@ -123,6 +135,27 @@ class EnquiryCumQuatationBloc
       print('********************');
       print(s);
       print('********************');
+    });
+    on<FetchEvent>((event, emit) async {
+      Box<LedgerMasterHiveModel> ledger = Hive.box<LedgerMasterHiveModel>(
+        HiveTagNames.Ledgers_Hive_Tag,
+      );
+      var s = ledger.values.toList();
+      ledger.values.where((element) {
+        print('${element.Ledger_Name} - ${element.Group_Id}}');
+        return true;
+      }).toList();
+
+      print('#######################');
+      Box<EmployeeHiveModel> eployee = Hive.box<EmployeeHiveModel>(
+        HiveTagNames.Employee_Hive_Tag,
+      );
+      var emp = eployee.values.toList();
+      Box<InventoryItemHive> items = Hive.box<InventoryItemHive>(
+        HiveTagNames.Items_Hive_Tag,
+      );
+      var item = items.values.toList();
+      emit(state.copyWith(allLedger: s, allItems: item));
     });
   }
 }

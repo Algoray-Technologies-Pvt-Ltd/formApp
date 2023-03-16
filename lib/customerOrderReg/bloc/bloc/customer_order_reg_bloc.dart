@@ -1,7 +1,11 @@
-import 'package:bloc/bloc.dart';
+
 import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formapp/constants.dart';
 import 'package:formapp/customerOrderReg/model/customerOrderReg.dart';
-import 'package:formapp/main.dart';
+import 'package:formapp/model/Employee/EmployeeHiveModel.dart';
+import 'package:formapp/model/Ledgers/LedMasterHiveModel.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 part 'customer_order_reg_event.dart';
 part 'customer_order_reg_state.dart';
@@ -9,7 +13,17 @@ part 'customer_order_reg_state.dart';
 class CustomerOrderRegBloc
     extends Bloc<CustomerOrderRegEvent, CustomerOrderRegState> {
   CustomerOrderRegBloc()
-      : super(CustomerOrderRegState(customerOrderReg: CustomerOrderReg())) {
+      : super(CustomerOrderRegState(
+            allEmloyees: [],
+            allLedger: [],
+            customerOrderReg: CustomerOrderReg(
+                DelDate: DateTime.now(),
+                DelDueDate: DateTime.now(),
+                InvDate: DateTime.now(),
+                OrderReceivedDate: DateTime.now(),
+                PurchaseOrderDate: DateTime.now(),
+                PaymentReceivedDate: DateTime.now(),
+                QuoDate: DateTime.now()))) {
     on<RemarksEvent>((event, emit) {
       emit(state.copyWith(
           customerOrderReg:
@@ -89,7 +103,23 @@ class CustomerOrderRegBloc
           customerOrderReg: state.customerOrderReg
               ?.copyWith(PurchaseOrderNo: event.PurchaseOrderNo)));
     });
+    on<FetchCEvent>((event, emit) async {
+      Box<LedgerMasterHiveModel> ledger = Hive.box<LedgerMasterHiveModel>(
+        HiveTagNames.Ledgers_Hive_Tag,
+      );
+      var s = ledger.values.toList();
+      ledger.values.where((element) {
+        print('${element.Ledger_Name} - ${element.Group_Id}}');
+        return true;
+      }).toList();
 
+      Box<EmployeeHiveModel> eployee = Hive.box<EmployeeHiveModel>(
+        HiveTagNames.Employee_Hive_Tag,
+      );
+      var emp = eployee.values.toList();
+
+      emit(state.copyWith(allLedger: s, allEmloyees: emp));
+    });
     on<QuoNumberEvent>((event, emit) {
       emit(state.copyWith(
           customerOrderReg:

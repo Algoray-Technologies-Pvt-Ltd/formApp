@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
+import 'package:formapp/Daily_Stock_Statement/bloc/daily_stock_statement_bloc.dart';
 import 'package:formapp/contractReview/bloc/bloc/contract_review_bloc.dart';
+import 'package:formapp/enquiryCumQuatation/bloc/bloc/enquiry_cum_quatation_bloc.dart';
+import 'package:formapp/model/HiveModels/InventoryItems/InvetoryItemDataModel.dart';
 import 'package:formapp/model/Ledgers/LedMasterHiveModel.dart';
 
-class CustomerNmaeWidget extends StatefulWidget {
-  CustomerNmaeWidget({super.key});
+class DescriptionJob extends StatefulWidget {
+  const DescriptionJob({super.key});
 
   @override
-  State<CustomerNmaeWidget> createState() => _CustomerNmaeWidgetState();
+  State<DescriptionJob> createState() => _DescriptionJobState();
 }
 
 TextEditingController phoneNo = TextEditingController();
 
-class _CustomerNmaeWidgetState extends State<CustomerNmaeWidget> {
+class _DescriptionJobState extends State<DescriptionJob> {
   // @override
   // void dispose() {
   //   phoneNo.dispose();
@@ -24,37 +27,26 @@ class _CustomerNmaeWidgetState extends State<CustomerNmaeWidget> {
   Widget build(BuildContext context) {
     return Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Container(
+        child: SizedBox(
             width: 400,
             child: TypeAheadFormField(
               onSuggestionSelected: (suggestion) {
                 phoneNo.text = suggestion.toString();
                 context
-                    .read<ContractReviewBloc>()
-                    .add(CustomerNameEvent(name: phoneNo.text));
+                    .read<EnquiryCumQuatationBloc>()
+                    .add(DescriptionofJobEvent(details: suggestion.toString()));
               },
               textFieldConfiguration: TextFieldConfiguration(
                 textInputAction: TextInputAction.next,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
+                  label: Text('Description'),
+                  hintText: 'Description',
                   fillColor: Colors.white,
-                  label: Text('Customer Name'),
-                  hintText: 'Customer Name',
-                  prefixIcon: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 16 * 0.75),
-                    child: Icon(
-                      Icons.person,
-                      color: Theme.of(context)
-                          .textTheme
-                          .bodyLarge!
-                          .color!
-                          .withOpacity(0.3),
-                    ),
-                  ),
                 ),
                 controller: phoneNo,
               ),
               suggestionsCallback: (pattern) {
-                return getSuggestions(pattern, context);
+                return getSuggestionsItems(pattern, context);
               },
               itemBuilder: (context, suggestion) {
                 return ListTile(title: Text(suggestion.toString()));
@@ -65,9 +57,9 @@ class _CustomerNmaeWidgetState extends State<CustomerNmaeWidget> {
   }
 }
 
-List<String> getSuggestions(String query, BuildContext context) {
-  final List<LedgerMasterHiveModel?>? matches =
-      context.read<ContractReviewBloc>().state.allledger;
+List<String> getSuggestionsItems(String query, BuildContext context) {
+  final List<InventoryItemHive?>? matches =
+      context.read<EnquiryCumQuatationBloc>().state.allItems;
 
   if (matches == null) {
     return [];
@@ -76,9 +68,9 @@ List<String> getSuggestions(String query, BuildContext context) {
   final List<String> matchingNames = matches
       .where((item) =>
           item != null &&
-          item.Ledger_Name != null &&
-          item.Ledger_Name!.toLowerCase().contains(query.toLowerCase()))
-      .map((item) => item!.Ledger_Name!)
+          item.Item_Name != null &&
+          item.Item_Name!.toLowerCase().contains(query.toLowerCase()))
+      .map((item) => item!.Item_Name!)
       .toList();
 
   return matchingNames;

@@ -19,7 +19,7 @@ class EnquiryReviewScreen extends StatelessWidget {
         onPressed: () {
           Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
             return BlocProvider.value(
-              value: context.read<EnquiryReviewBloc>(),
+              value: context.read<EnquiryReviewBloc>()..add(FetchEvent()),
               child: CreateEnquiryReview(),
             );
           }));

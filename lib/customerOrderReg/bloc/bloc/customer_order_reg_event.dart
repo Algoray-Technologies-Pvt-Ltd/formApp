@@ -14,6 +14,8 @@ class RemarksEvent extends CustomerOrderRegEvent {
   });
 }
 
+class FetchCEvent extends CustomerOrderRegEvent {}
+
 class CoordinatorNameEvent extends CustomerOrderRegEvent {
   String CoordinatorName;
   CoordinatorNameEvent({
@@ -174,4 +176,5 @@ class FormNameEvent extends CustomerOrderRegEvent {
     required this.formName,
   });
 }
+
 class SaveEvent extends CustomerOrderRegEvent {}

@@ -119,6 +119,8 @@ class FtNumberEvent extends CustomerVisitReportEvent {
   });
 }
 
+class FetchEvent extends CustomerVisitReportEvent {}
+
 class FormNameEvent extends CustomerVisitReportEvent {
   String formName;
   FormNameEvent({

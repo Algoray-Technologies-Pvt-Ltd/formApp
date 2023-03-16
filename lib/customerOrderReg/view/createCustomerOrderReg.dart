@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formapp/customerOrderReg/bloc/bloc/customer_order_reg_bloc.dart';
+import 'package:formapp/customerOrderReg/view/widget/CoordinatorName.dart';
 import 'package:formapp/customerOrderReg/view/widget/DelDate.dart';
 import 'package:formapp/customerOrderReg/view/widget/InvDate.dart';
 import 'package:formapp/customerOrderReg/view/widget/PaymentReceivedDate.dart';
+import 'package:formapp/customerOrderReg/view/widget/customernameWidget.dart';
 import 'package:formapp/customerOrderReg/view/widget/delDueDate.dart';
 import 'package:formapp/customerOrderReg/view/widget/orderReceivedDate.dart';
 import 'package:formapp/customerOrderReg/view/widget/purchaseOrderDate.dart';
@@ -122,15 +124,7 @@ class CreateOrderReg extends StatelessWidget {
                         hintText: 'Purchase Order No',
                       ),
                       PurchaseDateCORWidget(),
-                      KTextField(
-                        onChanged: (value) {
-                          context
-                              .read<CustomerOrderRegBloc>()
-                              .add(CustomerNameEvent(CustomerName: value));
-                        },
-                        initialText: '',
-                        hintText: 'Customer Name',
-                      ),
+                      CustomerOrNmaeWidget(),
                       KTextField(
                         onChanged: (value) {
                           context
@@ -187,15 +181,9 @@ class CreateOrderReg extends StatelessWidget {
                       ),
                       InvDateCORWidget(),
                       PaymentReceivedDateCORWidget(),
+                      CoordinatorName(),
                       KTextField(
-                        onChanged: (value) {
-                          context.read<CustomerOrderRegBloc>().add(
-                              CoordinatorNameEvent(CoordinatorName: value));
-                        },
-                        initialText: '',
-                        hintText: 'Coordinator Name ',
-                      ),
-                      KTextField(
+                        multiline: true,
                         onChanged: (value) {
                           context
                               .read<CustomerOrderRegBloc>()

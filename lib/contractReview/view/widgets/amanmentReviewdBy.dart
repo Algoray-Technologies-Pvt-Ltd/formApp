@@ -6,12 +6,12 @@ import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:formapp/contractReview/bloc/bloc/contract_review_bloc.dart';
 import 'package:formapp/model/Employee/EmployeeHiveModel.dart';
 
-class ReviewedByWidget extends StatefulWidget {
+class AmandmentReviewBy extends StatefulWidget {
   @override
-  State<ReviewedByWidget> createState() => _ReviewedByWidgetState();
+  State<AmandmentReviewBy> createState() => _AmandmentReviewByState();
 }
 
-class _ReviewedByWidgetState extends State<ReviewedByWidget> {
+class _AmandmentReviewByState extends State<AmandmentReviewBy> {
   late TextEditingController textcontroller = TextEditingController();
 
   @override
@@ -25,8 +25,8 @@ class _ReviewedByWidgetState extends State<ReviewedByWidget> {
                 textInputAction: TextInputAction.next,
                 decoration: InputDecoration(
                   fillColor: Colors.white,
-                  label: Text('Reviewed By'),
-                  hintText: 'Reviewed By',
+                  label: Text('Amandment ReviewBy'),
+                  hintText: 'Amandment ReviewBy',
                   prefixIcon: Padding(
                     padding: const EdgeInsets.symmetric(vertical: 16 * 0.75),
                     child: Icon(
@@ -57,9 +57,8 @@ class _ReviewedByWidgetState extends State<ReviewedByWidget> {
               },
               onSuggestionSelected: (suggestion) {
                 textcontroller.text = suggestion.toString();
-                context
-                    .read<ContractReviewBloc>()
-                    .add(ReviewedByEvent(reviewedBy: suggestion.toString()));
+                context.read<ContractReviewBloc>().add(AmandmentReviewedByEvent(
+                    reviewedBy: suggestion.toString()));
               },
               validator: (value) =>
                   value!.isEmpty ? 'Please select a city' : null,

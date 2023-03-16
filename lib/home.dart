@@ -52,7 +52,7 @@ class HomePage extends StatelessWidget {
                   return BlocProvider(
                     lazy: false,
                     create: (context) =>
-                        ContractReviewBloc()..add(FetchCEvent()),
+                        ContractReviewBloc(),
                     child: ContractReviewScreen(),
                   );
                 }));
@@ -66,7 +66,7 @@ class HomePage extends StatelessWidget {
                   return BlocProvider(
                     lazy: false,
                     create: (context) =>
-                        CustomerComplaintRegBloc()..add(FetchEvent()),
+                        CustomerComplaintRegBloc(),
                     child: CustomerComplaintRegScreen(),
                   );
                 }));

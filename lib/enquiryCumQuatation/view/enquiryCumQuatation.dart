@@ -19,7 +19,8 @@ class EnquiryCumQuatationScreen extends StatelessWidget {
         onPressed: () {
           Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
             return BlocProvider.value(
-                value: context.read<EnquiryCumQuatationBloc>(),
+                value: context.read<EnquiryCumQuatationBloc>()
+                  ..add(FetchEvent()),
                 child: EnquiryCumQuatationCreate());
           }));
         },

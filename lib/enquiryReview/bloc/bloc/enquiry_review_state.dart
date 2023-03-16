@@ -3,18 +3,20 @@ part of 'enquiry_review_bloc.dart';
 
 class EnquiryReviewState extends Equatable {
   EnquiryReview? enquiryReview;
-  EnquiryReviewState({
-    this.enquiryReview,
-  });
+  List<LedgerMasterHiveModel>? allLedger;
+  List<EmployeeHiveModel>? allEmloyees;
+  EnquiryReviewState({this.enquiryReview, this.allLedger, this.allEmloyees});
 
   @override
-  List get props => [enquiryReview];
+  List get props => [enquiryReview, allLedger, allEmloyees];
 
-  EnquiryReviewState copyWith({
-    EnquiryReview? enquiryReview,
-  }) {
+  EnquiryReviewState copyWith(
+      {EnquiryReview? enquiryReview,
+      List<LedgerMasterHiveModel>? allLedger,
+      List<EmployeeHiveModel>? allEmloyees}) {
     return EnquiryReviewState(
-      enquiryReview: enquiryReview ?? this.enquiryReview,
-    );
+        enquiryReview: enquiryReview ?? this.enquiryReview,
+        allEmloyees: allEmloyees ?? this.allEmloyees,
+        allLedger: allLedger ?? this.allLedger);
   }
 }
