@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
+import 'package:formapp/Daily_Stock_Statement/view/widgets/description.dart';
 import 'package:formapp/contractReview/bloc/bloc/contract_review_bloc.dart';
 import 'package:formapp/model/Ledgers/LedMasterHiveModel.dart';
 
@@ -27,11 +28,10 @@ class _CustomerNmaeWidgetState extends State<CustomerNmaeWidget> {
         child: Container(
             width: 400,
             child: TypeAheadFormField(
-              onSuggestionSelected: (suggestion) {
-                phoneNo.text = suggestion.toString();
-                context
-                    .read<ContractReviewBloc>()
-                    .add(CustomerNameEvent(name: phoneNo.text));
+              onSuggestionSelected: (SuggestionItem suggestion) {
+                phoneNo.text = suggestion.name.toString();
+                context.read<ContractReviewBloc>().add(
+                    CustomerNameEvent(name: phoneNo.text, id: suggestion.id));
               },
               textFieldConfiguration: TextFieldConfiguration(
                 textInputAction: TextInputAction.next,
@@ -65,7 +65,7 @@ class _CustomerNmaeWidgetState extends State<CustomerNmaeWidget> {
   }
 }
 
-List<String> getSuggestions(String query, BuildContext context) {
+List<SuggestionItem> getSuggestions(String query, BuildContext context) {
   final List<LedgerMasterHiveModel?>? matches =
       context.read<ContractReviewBloc>().state.allledger;
 
@@ -73,12 +73,13 @@ List<String> getSuggestions(String query, BuildContext context) {
     return [];
   }
 
-  final List<String> matchingNames = matches
+  final List<SuggestionItem> matchingNames = matches
       .where((item) =>
           item != null &&
           item.Ledger_Name != null &&
           item.Ledger_Name!.toLowerCase().contains(query.toLowerCase()))
-      .map((item) => item!.Ledger_Name!)
+      .map((item) => SuggestionItem(
+          id: item!.LEDGER_ID.toString(), name: item.Ledger_Name!))
       .toList();
 
   return matchingNames;

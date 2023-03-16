@@ -107,13 +107,16 @@ class RevNumberEvent extends CustomerComplaintRegEvent {
 
 class LedNameEvent extends CustomerComplaintRegEvent {
   String name;
+  String id;
   LedNameEvent({
     required this.name,
+    required this.id,
   });
 }
 
 class FtNumberEvent extends CustomerComplaintRegEvent {
   String ftNumber;
+
   FtNumberEvent({
     required this.ftNumber,
   });

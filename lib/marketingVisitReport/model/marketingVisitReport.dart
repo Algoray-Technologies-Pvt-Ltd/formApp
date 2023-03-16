@@ -12,6 +12,7 @@ class MarketingVisitReport extends Equatable {
   DateTime? date;
   AddressBook? address;
   String? personMeet;
+  String? customerName;
   bool? enquiry;
   bool? negotation;
   bool? order;
@@ -22,23 +23,22 @@ class MarketingVisitReport extends Equatable {
   String? followupDetails;
 
   String? Remarks;
-  MarketingVisitReport({
-    this.formName,
-    this.ftNumber,
-    this.revNumber,
-    this.date,
-    this.address,
-    this.personMeet,
-    this.enquiry,
-    this.negotation,
-    this.order,
-    this.amendment,
-    this.paymentCollection,
-    this.detailsMeeting,
-    this.followupDetails,
-
-    this.Remarks,
-  });
+  MarketingVisitReport(
+      {this.formName,
+      this.ftNumber,
+      this.revNumber,
+      this.date,
+      this.address,
+      this.personMeet,
+      this.enquiry,
+      this.negotation,
+      this.order,
+      this.amendment,
+      this.paymentCollection,
+      this.detailsMeeting,
+      this.followupDetails,
+      this.Remarks,
+      this.customerName});
 
   @override
   // TODO: implement props
@@ -46,6 +46,7 @@ class MarketingVisitReport extends Equatable {
         formName,
         ftNumber,
         revNumber,
+        customerName,
         date,
         address,
         personMeet,
@@ -56,7 +57,6 @@ class MarketingVisitReport extends Equatable {
         paymentCollection,
         detailsMeeting,
         followupDetails,
-
         Remarks,
       ];
 
@@ -67,6 +67,7 @@ class MarketingVisitReport extends Equatable {
     DateTime? date,
     AddressBook? address,
     String? personMeet,
+    String? cus,
     bool? enquiry,
     bool? negotation,
     bool? order,
@@ -75,11 +76,11 @@ class MarketingVisitReport extends Equatable {
     String? detailsMeeting,
     String? followupDetails,
     String? remarks,
-
-    String? Remarks,
+    String? customerName,
   }) {
     return MarketingVisitReport(
       formName: formName ?? this.formName,
+      customerName: customerName ?? this.customerName,
       ftNumber: ftNumber ?? this.ftNumber,
       revNumber: revNumber ?? this.revNumber,
       date: date ?? this.date,
@@ -92,7 +93,6 @@ class MarketingVisitReport extends Equatable {
       paymentCollection: paymentCollection ?? this.paymentCollection,
       detailsMeeting: detailsMeeting ?? this.detailsMeeting,
       followupDetails: followupDetails ?? this.followupDetails,
-
       Remarks: Remarks ?? this.Remarks,
     );
   }
@@ -112,7 +112,6 @@ class MarketingVisitReport extends Equatable {
       'paymentCollection': paymentCollection,
       'detailsMeeting': detailsMeeting,
       'followupDetails': followupDetails,
-
       'Remarks': Remarks,
     };
   }
@@ -141,7 +140,6 @@ class MarketingVisitReport extends Equatable {
       followupDetails: map['followupDetails'] != null
           ? map['followupDetails'] as String
           : null,
-
       Remarks: map['Remarks'] != null ? map['Remarks'] as String : null,
     );
   }

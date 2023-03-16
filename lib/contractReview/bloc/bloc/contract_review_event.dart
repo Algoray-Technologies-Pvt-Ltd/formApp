@@ -17,9 +17,8 @@ class TodayDateEvent extends ContractReviewEvent {
 
 class CustomerNameEvent extends ContractReviewEvent {
   String name;
-  CustomerNameEvent({
-    required this.name,
-  });
+  String id;
+  CustomerNameEvent({required this.name, required this.id});
 }
 
 class PoRecDateEvent extends ContractReviewEvent {
@@ -164,8 +163,10 @@ class AcknowledgementDateEvent extends ContractReviewEvent {
 
 class ReviewedByEvent extends ContractReviewEvent {
   String reviewedBy;
+  String id;
   ReviewedByEvent({
     required this.reviewedBy,
+    required this.id,
   });
 }
 
@@ -178,8 +179,10 @@ class ReviewedDateEvent extends ContractReviewEvent {
 
 class ApprovelByEvent extends ContractReviewEvent {
   String approvedBy;
+  String id;
   ApprovelByEvent({
     required this.approvedBy,
+    required this.id,
   });
 }
 
@@ -192,8 +195,10 @@ class ApprovelDateEvent extends ContractReviewEvent {
 
 class ApprovedByEvent extends ContractReviewEvent {
   String approvedBy;
+  String id;
   ApprovedByEvent({
     required this.approvedBy,
+    required this.id,
   });
 }
 
@@ -227,8 +232,10 @@ class DetailsofAmandmentEvent extends ContractReviewEvent {
 
 class AmandmentReviewedByEvent extends ContractReviewEvent {
   String reviewedBy;
+  String id;
   AmandmentReviewedByEvent({
     required this.reviewedBy,
+    required this.id,
   });
 }
 
@@ -241,9 +248,8 @@ class AmandmentReviewedDateEvent extends ContractReviewEvent {
 
 class AmandmentApprovedByEvent extends ContractReviewEvent {
   String approvedBy;
-  AmandmentApprovedByEvent({
-    required this.approvedBy,
-  });
+  String id;
+  AmandmentApprovedByEvent({required this.approvedBy, required this.id});
 }
 
 class AmandmentApprovedDateEvent extends ContractReviewEvent {

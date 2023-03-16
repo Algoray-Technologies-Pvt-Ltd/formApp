@@ -29,7 +29,12 @@ class CustomerComplaintRegBloc
     on<LedNameEvent>((event, emit) {
       emit(state.copyWith(
           customerComplaintReg:
-              state.customerComplaintReg?.copyWith(name: event.name)));
+              state.customerComplaintReg?.copyWith(name: event.name,nameid: event.id)));
+    });
+    on<InformDetailsEvent>((event, emit) {
+      emit(state.copyWith(
+          customerComplaintReg: state.customerComplaintReg
+              ?.copyWith(InformDetails: event.InformDetails)));
     });
     on<InformDateEvent>((event, emit) {
       emit(state.copyWith(

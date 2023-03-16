@@ -14,6 +14,7 @@ class CustomerComplaintReg extends Equatable {
   DateTime? ComplaintDate;
   AddressBook? address;
   String? name;
+  String? nameid;
   String? NatureofComplaint;
   String? RootCause;
   String? CorrectiveAction;
@@ -32,6 +33,7 @@ class CustomerComplaintReg extends Equatable {
     this.ComplaintDate,
     this.address,
     this.name,
+    this.nameid,
     this.NatureofComplaint,
     this.RootCause,
     this.CorrectiveAction,
@@ -43,27 +45,6 @@ class CustomerComplaintReg extends Equatable {
     this.Remarks,
   });
 
-  @override
-  List get props => [
-        formName,
-        ftNumber,
-        revNumber,
-        date,
-        siNumber,
-        ComplaintDate,
-        address,
-        name,
-        NatureofComplaint,
-        RootCause,
-        CorrectiveAction,
-        PreventiveAction,
-        ActionDate,
-        Informtocustomer,
-        InformDate,
-        InformDetails,
-        Remarks,
-      ];
-
   CustomerComplaintReg copyWith({
     String? formName,
     String? ftNumber,
@@ -73,6 +54,7 @@ class CustomerComplaintReg extends Equatable {
     DateTime? ComplaintDate,
     AddressBook? address,
     String? name,
+    String? nameid,
     String? NatureofComplaint,
     String? RootCause,
     String? CorrectiveAction,
@@ -88,10 +70,11 @@ class CustomerComplaintReg extends Equatable {
       ftNumber: ftNumber ?? this.ftNumber,
       revNumber: revNumber ?? this.revNumber,
       date: date ?? this.date,
-      name: name ?? this.name,
       siNumber: siNumber ?? this.siNumber,
       ComplaintDate: ComplaintDate ?? this.ComplaintDate,
       address: address ?? this.address,
+      name: name ?? this.name,
+      nameid: nameid ?? this.nameid,
       NatureofComplaint: NatureofComplaint ?? this.NatureofComplaint,
       RootCause: RootCause ?? this.RootCause,
       CorrectiveAction: CorrectiveAction ?? this.CorrectiveAction,
@@ -104,6 +87,30 @@ class CustomerComplaintReg extends Equatable {
     );
   }
 
+  @override
+  List get props {
+    return [
+      formName,
+      ftNumber,
+      revNumber,
+      date,
+      siNumber,
+      ComplaintDate,
+      address,
+      name,
+      nameid,
+      NatureofComplaint,
+      RootCause,
+      CorrectiveAction,
+      PreventiveAction,
+      ActionDate,
+      Informtocustomer,
+      InformDate,
+      InformDetails,
+      Remarks,
+    ];
+  }
+
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'formName': formName,
@@ -113,6 +120,8 @@ class CustomerComplaintReg extends Equatable {
       'siNumber': siNumber,
       'ComplaintDate': ComplaintDate?.millisecondsSinceEpoch,
       'address': address,
+      'name': name,
+      'nameid': nameid,
       'NatureofComplaint': NatureofComplaint,
       'RootCause': RootCause,
       'CorrectiveAction': CorrectiveAction,
@@ -138,6 +147,8 @@ class CustomerComplaintReg extends Equatable {
           ? DateTime.fromMillisecondsSinceEpoch(map['ComplaintDate'] as int)
           : null,
       address: map['address'],
+      name: map['name'] != null ? map['name'] as String : null,
+      nameid: map['nameid'] != null ? map['nameid'] as String : null,
       NatureofComplaint: map['NatureofComplaint'] != null
           ? map['NatureofComplaint'] as String
           : null,

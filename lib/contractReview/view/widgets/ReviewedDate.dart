@@ -20,6 +20,7 @@ class ReviewedDateWidget extends StatelessWidget {
                           .format(bloc.state.contractReview!.ReviewedDate!)
                       : ''),
             decoration: InputDecoration(
+              fillColor: Colors.white,
               hintText: 'Review Date',
               label: Text('Review Date'),
               prefixIcon: Padding(
