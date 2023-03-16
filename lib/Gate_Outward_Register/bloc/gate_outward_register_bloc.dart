@@ -75,7 +75,7 @@ class GateOutwardRegisterBloc
     on<DescriptionEvent>((event, emit) {
       emit(state.copyWith(
           gateOutwardRegisterModel: state.gateOutwardRegisterModel
-              ?.copyWith(description: event.description)));
+              ?.copyWith(description: event.description,itemId: event.uid)));
     });
     on<QuantityEvent>((event, emit) {
       emit(state.copyWith(
@@ -90,7 +90,7 @@ class GateOutwardRegisterBloc
     on<SignatureEvent>((event, emit) {
       emit(state.copyWith(
           gateOutwardRegisterModel: state.gateOutwardRegisterModel
-              ?.copyWith(signature: event.signature)));
+              ?.copyWith(signature: event.signature,employeeId: event.uid)));
     });
     on<ReturnableOrNonReturnableEvent>((event, emit) {
       emit(state.copyWith(

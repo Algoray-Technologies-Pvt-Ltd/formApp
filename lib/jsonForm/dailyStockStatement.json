@@ -1,15 +1,16 @@
 {
     "ftNumber": null,
     "revNumber": null,
-    "date": null,
+    "date": 1678905000000,
     "pageNumber": null,
-    "stockDate": 1678127400000,
+    "stockDate": 1678905000000,
     "slNumber": null,
-    "description": "Item",
+    "description": "WHITE FOREST 1.5 KG",
+    "itemId": null,
     "openingStock": 100,
     "purchase": 200,
     "total": 300,
-    "issue": 50,
-    "closingStock": 250,
+    "issue": 250,
+    "closingStock": 200,
     "remarks": "stock check done"
 }

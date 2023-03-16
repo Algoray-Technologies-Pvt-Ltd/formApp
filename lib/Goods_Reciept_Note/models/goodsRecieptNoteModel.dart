@@ -10,11 +10,13 @@ class GoodsRecieptNoteModel extends Equatable {
   String? pageNumber;
   String? grnNumber;
   String? supplierName;
+  String? supplierId;
   DateTime? grnDate;
   String? billNumber;
   DateTime? billDate;
   String? slNumber;
-  String? materialDescriotion;
+  String? materialDescription;
+  String? itemId;
   int? orderQty;
   int? recievedQty;
   int? acceptedQty;
@@ -28,11 +30,13 @@ class GoodsRecieptNoteModel extends Equatable {
       this.pageNumber,
       this.grnNumber,
       this.supplierName,
+      this.supplierId,
       this.grnDate,
       this.billNumber,
       this.billDate,
       this.slNumber,
-      this.materialDescriotion,
+      this.materialDescription,
+      this.itemId,
       this.orderQty,
       this.acceptedQty,
       this.inspectionDetails,
@@ -47,11 +51,13 @@ class GoodsRecieptNoteModel extends Equatable {
     String? pageNumber,
     String? grnNumber,
     String? supplierName,
+    String? supplierId,
     DateTime? grnDate,
     String? billNumber,
     DateTime? billDate,
     String? slNumber,
-    String? materialDescriotion,
+    String? materialDescription,
+    String? itemId,
     int? orderQty,
     int? acceptedQty,
     String? inspectionDetails,
@@ -66,11 +72,13 @@ class GoodsRecieptNoteModel extends Equatable {
         pageNumber: pageNumber ?? this.pageNumber,
         grnNumber: grnNumber ?? this.grnNumber,
         supplierName: supplierName ?? this.supplierName,
+        supplierId: supplierId ?? this.supplierId,
         grnDate: grnDate ?? this.grnDate,
         billNumber: billNumber ?? this.billNumber,
         billDate: billDate ?? this.billDate,
         slNumber: slNumber ?? this.slNumber,
-        materialDescriotion: materialDescriotion ?? this.materialDescriotion,
+        materialDescription: materialDescription ?? this.materialDescription,
+        itemId: itemId ?? this.itemId,
         orderQty: orderQty ?? this.orderQty,
         acceptedQty: acceptedQty ?? this.acceptedQty,
         inspectionDetails: inspectionDetails ?? this.inspectionDetails,
@@ -87,11 +95,13 @@ class GoodsRecieptNoteModel extends Equatable {
         pageNumber,
         grnNumber,
         supplierName,
+        supplierId,
         grnDate,
         billNumber,
         billDate,
         slNumber,
-        materialDescriotion,
+        materialDescription,
+        itemId,
         orderQty,
         acceptedQty,
         inspectionDetails,
@@ -107,11 +117,13 @@ class GoodsRecieptNoteModel extends Equatable {
       'pageNumber': pageNumber,
       'grnNumber': grnNumber,
       'supplierName': supplierName,
+      'supplierId': supplierId,
       'grnDate': grnDate?.millisecondsSinceEpoch,
       'billNumber': billNumber,
       'billDate': billDate?.millisecondsSinceEpoch,
       'slNumber': slNumber,
-      'materialDescriotion': materialDescriotion,
+      'materialDescription': materialDescription,
+      'itemId': itemId,
       'orderQty': orderQty,
       'acceptedQty': acceptedQty,
       'inspectionDetails': inspectionDetails,
@@ -133,6 +145,8 @@ class GoodsRecieptNoteModel extends Equatable {
       grnNumber: map['grnNumber'] != null ? map['grnNumber'] as String : null,
       supplierName:
           map['supplierName'] != null ? map['supplierName'] as String : null,
+      supplierId:
+          map['supplierId'] != null ? map['supplierId'] as String : null,
       grnDate: map['grnDate'] != null
           ? DateTime.fromMillisecondsSinceEpoch(map['grnDate'] as int)
           : null,
@@ -142,9 +156,10 @@ class GoodsRecieptNoteModel extends Equatable {
           ? DateTime.fromMillisecondsSinceEpoch(map['billDate'] as int)
           : null,
       slNumber: map['slNumber'] != null ? map['slNumber'] as String : null,
-      materialDescriotion: map['materialDescriotion'] != null
-          ? map['materialDescriotion'] as String
+      materialDescription: map['materialDescription'] != null
+          ? map['materialDescription'] as String
           : null,
+      itemId: map['itemId'] != null ? map['itemId'] as String : null,
       recievedQty:
           map['recievedQty'] != null ? map['recievedQty'] as int : null,
       orderQty: map['orderQty'] != null ? map['orderQty'] as int : null,
@@ -163,5 +178,6 @@ class GoodsRecieptNoteModel extends Equatable {
   String toJson() => json.encode(toMap());
 
   factory GoodsRecieptNoteModel.fromJson(String source) =>
-      GoodsRecieptNoteModel.fromMap(json.decode(source) as Map<String, dynamic>);
+      GoodsRecieptNoteModel.fromMap(
+          json.decode(source) as Map<String, dynamic>);
 }

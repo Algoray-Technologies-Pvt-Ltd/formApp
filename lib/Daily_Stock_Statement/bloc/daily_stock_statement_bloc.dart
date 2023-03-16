@@ -51,7 +51,8 @@ class DailyStockStatementBloc
     on<DescriptionEvent>((event, emit) {
       emit(state.copyWith(
           dailyStockStatementModel: state.dailyStockStatementModel
-              ?.copyWith(description: event.description)));
+              ?.copyWith(description: event.description, itemId: event.uid)));
+
     });
     on<OpeningStockEvent>((event, emit) {
       emit(state.copyWith(

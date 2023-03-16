@@ -11,6 +11,7 @@ class DailyStockStatementModel extends Equatable {
   DateTime? stockDate;
   String? slNumber;
   String? description;
+  String? itemId;
   int? openingStock;
   int? purchase;
   int? total;
@@ -25,6 +26,7 @@ class DailyStockStatementModel extends Equatable {
     this.stockDate,
     this.slNumber,
     this.description,
+    this.itemId,
     this.openingStock,
     this.purchase,
     this.total,
@@ -41,6 +43,7 @@ class DailyStockStatementModel extends Equatable {
     DateTime? stockDate,
     String? slNumber,
     String? description,
+  String? itemId,
     int? openingStock,
     int? purchase,
     int? total,
@@ -56,6 +59,7 @@ class DailyStockStatementModel extends Equatable {
       stockDate: stockDate ?? this.stockDate,
       slNumber: slNumber ?? this.slNumber,
       description: description ?? this.description,
+      itemId: itemId ?? this.itemId,
       openingStock: openingStock ?? this.openingStock,
       purchase: purchase ?? this.purchase,
       total: total ?? this.total,
@@ -74,6 +78,7 @@ class DailyStockStatementModel extends Equatable {
         stockDate,
         slNumber,
         description,
+        itemId,
         openingStock,
         purchase,
         total,
@@ -81,7 +86,6 @@ class DailyStockStatementModel extends Equatable {
         closingStock,
         remarks
       ];
-
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -92,6 +96,7 @@ class DailyStockStatementModel extends Equatable {
       'stockDate': stockDate?.millisecondsSinceEpoch,
       'slNumber': slNumber,
       'description': description,
+      'itemId':itemId,
       'openingStock': openingStock,
       'purchase': purchase,
       'total': total,
@@ -105,21 +110,32 @@ class DailyStockStatementModel extends Equatable {
     return DailyStockStatementModel(
       ftNumber: map['ftNumber'] != null ? map['ftNumber'] as String : null,
       revNumber: map['revNumber'] != null ? map['revNumber'] as String : null,
-      date: map['date'] != null ? DateTime.fromMillisecondsSinceEpoch(map['date'] as int) : null,
-      pageNumber: map['pageNumber'] != null ? map['pageNumber'] as String : null,
-      stockDate: map['stockDate'] != null ? DateTime.fromMillisecondsSinceEpoch(map['stockDate'] as int) : null,
+      date: map['date'] != null
+          ? DateTime.fromMillisecondsSinceEpoch(map['date'] as int)
+          : null,
+      pageNumber:
+          map['pageNumber'] != null ? map['pageNumber'] as String : null,
+      stockDate: map['stockDate'] != null
+          ? DateTime.fromMillisecondsSinceEpoch(map['stockDate'] as int)
+          : null,
       slNumber: map['slNumber'] != null ? map['slNumber'] as String : null,
-      description: map['description'] != null ? map['description'] as String : null,
-      openingStock: map['openingStock'] != null ? map['openingStock'] as int : null,
+      description:
+          map['description'] != null ? map['description'] as String : null,
+          itemId: map['itemId']!=null? map['itemId']as String : null,
+      openingStock:
+          map['openingStock'] != null ? map['openingStock'] as int : null,
       purchase: map['purchase'] != null ? map['purchase'] as int : null,
       total: map['total'] != null ? map['total'] as int : null,
       issue: map['issue'] != null ? map['issue'] as int : null,
-      closingStock: map['closingStock'] != null ? map['closingStock'] as int : null,
+      closingStock:
+          map['closingStock'] != null ? map['closingStock'] as int : null,
       remarks: map['remarks'] != null ? map['remarks'] as String : null,
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory DailyStockStatementModel.fromJson(String source) => DailyStockStatementModel.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory DailyStockStatementModel.fromJson(String source) =>
+      DailyStockStatementModel.fromMap(
+          json.decode(source) as Map<String, dynamic>);
 }

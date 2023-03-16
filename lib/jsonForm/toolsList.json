@@ -1,12 +1,13 @@
 {
   "ftNumber": null,
   "revNumber": null,
-  "date": null,
-  "pageNumber": null,
-  "slNumber": "5",
-  "description": "item",
-  "size": "10",
+  "date": 1678905000000,
+  "pageNumber": 1,
+  "slNumber": 1,
+  "description": "KIT KAT 50",
+  "itemId": null,
+  "size": "15",
   "quantity": 50,
   "make": null,
-  "remarks": "new tool"
+  "remarks": "  new product"
 }

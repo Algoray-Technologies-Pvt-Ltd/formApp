@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:formapp/model/HiveModels/InventoryItems/InvetoryItemDataModel.dart';
 
+import '../../../Daily_Stock_Statement/view/widgets/description.dart';
 import '../../bloc/gate_outward_register_bloc.dart';
 
 class GateOutwardDescription extends StatefulWidget {
@@ -30,9 +31,8 @@ class _GateOutwardDescriptionState extends State<GateOutwardDescription> {
             child: TypeAheadFormField(
               onSuggestionSelected: (suggestion) {
                 desc.text = suggestion.toString();
-                context
-                    .read<GateOutwardRegisterBloc>()
-                    .add(DescriptionEvent(description: desc.text));
+                context.read<GateOutwardRegisterBloc>().add(DescriptionEvent(
+                    description: desc.text, uid: suggestion.id));
               },
               textFieldConfiguration: TextFieldConfiguration(
                 textInputAction: TextInputAction.next,
@@ -47,7 +47,7 @@ class _GateOutwardDescriptionState extends State<GateOutwardDescription> {
                 return getSuggestionsItems(pattern, context);
               },
               itemBuilder: (context, suggestion) {
-                return ListTile(title: Text(suggestion.toString()));
+                return ListTile(title: Text(suggestion.name));
               },
 
               // onSaved: (value) => phoneNo.text = value!,
@@ -55,7 +55,7 @@ class _GateOutwardDescriptionState extends State<GateOutwardDescription> {
   }
 }
 
-List<String> getSuggestionsItems(String query, BuildContext context) {
+List<SuggestionItem> getSuggestionsItems(String query, BuildContext context) {
   final List<InventoryItemHive?>? matches =
       context.read<GateOutwardRegisterBloc>().state.allItems;
 
@@ -63,12 +63,13 @@ List<String> getSuggestionsItems(String query, BuildContext context) {
     return [];
   }
 
-  final List<String> matchingNames = matches
+  final List<SuggestionItem> matchingNames = matches
       .where((item) =>
           item != null &&
           item.Item_Name != null &&
           item.Item_Name!.toLowerCase().contains(query.toLowerCase()))
-      .map((item) => item!.Item_Name!)
+      .map((item) =>
+          SuggestionItem(id: item!.Item_ID.toString(), name: item.Item_Name!))
       .toList();
 
   return matchingNames;

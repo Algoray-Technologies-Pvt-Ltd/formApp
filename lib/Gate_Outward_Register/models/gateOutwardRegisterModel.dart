@@ -16,9 +16,11 @@ class GateOutWardRegisterModel extends Equatable {
   String? modeOfTransport;
   String? vehicleNumber;
   String? description;
+  String? itemId;
   int? quantity;
   String? purpose;
   String? signature;
+  String? employeeId;
   String? returnableOrNonReturnable;
   String? remarks;
   GateOutWardRegisterModel({
@@ -34,9 +36,11 @@ class GateOutWardRegisterModel extends Equatable {
     this.modeOfTransport,
     this.vehicleNumber,
     this.description,
+    this.itemId,
     this.quantity,
     this.purpose,
     this.signature,
+    this.employeeId,
     this.returnableOrNonReturnable,
     this.remarks,
   });
@@ -55,9 +59,11 @@ class GateOutWardRegisterModel extends Equatable {
         modeOfTransport,
         vehicleNumber,
         description,
+        itemId,
         quantity,
         purpose,
         signature,
+        employeeId,
         returnableOrNonReturnable,
         remarks
       ];
@@ -75,9 +81,12 @@ class GateOutWardRegisterModel extends Equatable {
     String? modeOfTransport,
     String? vehicleNumber,
     String? description,
+  String? itemId,
     int? quantity,
     String? purpose,
     String? signature,
+  String? employeeId,
+
     String? returnableOrNonReturnable,
     String? remarks,
   }) {
@@ -94,9 +103,11 @@ class GateOutWardRegisterModel extends Equatable {
       modeOfTransport: modeOfTransport ?? this.modeOfTransport,
       vehicleNumber: vehicleNumber ?? this.vehicleNumber,
       description: description ?? this.description,
+      itemId: itemId ?? this.itemId,
       quantity: quantity ?? this.quantity,
       purpose: purpose ?? this.purpose,
       signature: signature ?? this.signature,
+      employeeId: employeeId ?? this.employeeId,
       returnableOrNonReturnable:
           returnableOrNonReturnable ?? this.returnableOrNonReturnable,
       remarks: remarks ?? this.remarks,
@@ -117,9 +128,11 @@ class GateOutWardRegisterModel extends Equatable {
       'modeOfTransport': modeOfTransport,
       'vehicleNumber': vehicleNumber,
       'description': description,
+      'itemId':itemId,
       'quantity': quantity,
       'purpose': purpose,
       'signature': signature,
+      'employeeId':employeeId,
       'returnableOrNonReturnable': returnableOrNonReturnable,
       'remarks': remarks,
     };
@@ -155,9 +168,11 @@ class GateOutWardRegisterModel extends Equatable {
           map['vehicleNumber'] != null ? map['vehicleNumber'] as String : null,
       description:
           map['description'] != null ? map['description'] as String : null,
+          itemId: map['itemId'] != null ? map['itemId']as String: null,
       quantity: map['quantity'] != null ? map['quantity'] as int : null,
       purpose: map['purpose'] != null ? map['purpose'] as String : null,
       signature: map['signature'] != null ? map['signature'] as String : null,
+      employeeId: map['employeeId']!=null?map['employeeId']as String : null,
       returnableOrNonReturnable: map['returnableOrNonReturnable'],
       remarks: map['remarks'] != null ? map['remarks'] as String : null,
     );

@@ -4,6 +4,7 @@ import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:formapp/Issue&Return_Register/bloc/issue_and_return_register_bloc.dart';
 import 'package:formapp/model/HiveModels/InventoryItems/InvetoryItemDataModel.dart';
 
+import '../../../Daily_Stock_Statement/view/widgets/description.dart';
 
 class IssueCumDescription extends StatefulWidget {
   const IssueCumDescription({super.key});
@@ -30,9 +31,9 @@ class _IssueCumDescriptionState extends State<IssueCumDescription> {
             child: TypeAheadFormField(
               onSuggestionSelected: (suggestion) {
                 desc.text = suggestion.toString();
-                context
-                    .read<IssueAndReturnRegisterBloc>()
-                    .add(MaterialDescriotionEvent(materialDescriotion: desc.text));
+                context.read<IssueAndReturnRegisterBloc>().add(
+                    MaterialDescriotionEvent(
+                        materialDescriotion: desc.text, uid: suggestion.id));
               },
               textFieldConfiguration: TextFieldConfiguration(
                 textInputAction: TextInputAction.next,
@@ -47,7 +48,7 @@ class _IssueCumDescriptionState extends State<IssueCumDescription> {
                 return getSuggestionsItems(pattern, context);
               },
               itemBuilder: (context, suggestion) {
-                return ListTile(title: Text(suggestion.toString()));
+                return ListTile(title: Text(suggestion.name));
               },
 
               // onSaved: (value) => phoneNo.text = value!,
@@ -55,7 +56,7 @@ class _IssueCumDescriptionState extends State<IssueCumDescription> {
   }
 }
 
-List<String> getSuggestionsItems(String query, BuildContext context) {
+List<SuggestionItem> getSuggestionsItems(String query, BuildContext context) {
   final List<InventoryItemHive?>? matches =
       context.read<IssueAndReturnRegisterBloc>().state.allItems;
 
@@ -63,12 +64,13 @@ List<String> getSuggestionsItems(String query, BuildContext context) {
     return [];
   }
 
-  final List<String> matchingNames = matches
+  final List<SuggestionItem> matchingNames = matches
       .where((item) =>
           item != null &&
           item.Item_Name != null &&
           item.Item_Name!.toLowerCase().contains(query.toLowerCase()))
-      .map((item) => item!.Item_Name!)
+      .map((item) =>
+          SuggestionItem(id: item!.Item_ID.toString(), name: item.Item_Name!))
       .toList();
 
   return matchingNames;

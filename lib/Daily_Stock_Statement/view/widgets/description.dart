@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:formapp/Daily_Stock_Statement/bloc/daily_stock_statement_bloc.dart';
-import 'package:formapp/contractReview/bloc/bloc/contract_review_bloc.dart';
 import 'package:formapp/model/HiveModels/InventoryItems/InvetoryItemDataModel.dart';
-import 'package:formapp/model/Ledgers/LedMasterHiveModel.dart';
 
 class Description extends StatefulWidget {
   const Description({super.key});
@@ -31,9 +29,8 @@ class _DescriptionState extends State<Description> {
             child: TypeAheadFormField(
               onSuggestionSelected: (suggestion) {
                 phoneNo.text = suggestion.toString();
-                context
-                    .read<DailyStockStatementBloc>()
-                    .add(DescriptionEvent(description: phoneNo.text));
+                context.read<DailyStockStatementBloc>().add(DescriptionEvent(
+                    description: phoneNo.text, uid: suggestion.id));
               },
               textFieldConfiguration: TextFieldConfiguration(
                 textInputAction: TextInputAction.next,
@@ -48,7 +45,7 @@ class _DescriptionState extends State<Description> {
                 return getSuggestionsItems(pattern, context);
               },
               itemBuilder: (context, suggestion) {
-                return ListTile(title: Text(suggestion.toString()));
+                return ListTile(title: Text(suggestion.name));
               },
 
               // onSaved: (value) => phoneNo.text = value!,
@@ -56,7 +53,7 @@ class _DescriptionState extends State<Description> {
   }
 }
 
-List<String> getSuggestionsItems(String query, BuildContext context) {
+List<SuggestionItem> getSuggestionsItems(String query, BuildContext context) {
   final List<InventoryItemHive?>? matches =
       context.read<DailyStockStatementBloc>().state.allItems;
 
@@ -64,13 +61,26 @@ List<String> getSuggestionsItems(String query, BuildContext context) {
     return [];
   }
 
-  final List<String> matchingNames = matches
+  final List<SuggestionItem> matchingNames = matches
       .where((item) =>
           item != null &&
           item.Item_Name != null &&
           item.Item_Name!.toLowerCase().contains(query.toLowerCase()))
-      .map((item) => item!.Item_Name!)
+      .map((item) => SuggestionItem(
+          id: item!.Item_ID.toString(), name: item.Item_Name!))
       .toList();
 
   return matchingNames;
+}
+
+class SuggestionItem {
+  final String id;
+  final String name;
+
+  SuggestionItem({required this.id, required this.name});
+
+  @override
+  String toString() {
+    return name;
+  }
 }

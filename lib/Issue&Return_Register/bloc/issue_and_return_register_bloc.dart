@@ -44,7 +44,7 @@ class IssueAndReturnRegisterBloc
     on<MaterialDescriotionEvent>((event, emit) {
       emit(state.copyWith(
           issueAndReturnRegisterModel: state.issueAndReturnRegisterModel
-              ?.copyWith(materialDescription: event.materialDescriotion)));
+              ?.copyWith(materialDescription: event.materialDescriotion,itemId: event.uid)));
     });
     on<IssueDateEvent>((event, emit) {
       emit(state.copyWith(

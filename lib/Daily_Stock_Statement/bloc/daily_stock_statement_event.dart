@@ -52,9 +52,8 @@ class SlNumberEvent extends DailyStockStatementEvent {
 
 class DescriptionEvent extends DailyStockStatementEvent {
   String description;
-  DescriptionEvent({
-    required this.description,
-  });
+  String uid;
+  DescriptionEvent({required this.description, required this.uid});
 }
 
 class OpeningStockEvent extends DailyStockStatementEvent {
@@ -99,7 +98,6 @@ class RemarksEvent extends DailyStockStatementEvent {
   });
 }
 
-class FetchingDailyStockEvent extends DailyStockStatementEvent{}
+class FetchingDailyStockEvent extends DailyStockStatementEvent {}
 
-class SaveEvent extends DailyStockStatementEvent{}
-
+class SaveEvent extends DailyStockStatementEvent {}

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
+import '../../../Daily_Stock_Statement/view/widgets/description.dart';
 import '../../../model/Employee/EmployeeHiveModel.dart';
 import '../../bloc/gate_outward_register_bloc.dart';
 
@@ -31,7 +32,7 @@ class _SignatureState extends State<Signature> {
                 employee.text = suggestion.toString();
                 context
                     .read<GateOutwardRegisterBloc>()
-                    .add(SignatureEvent(signature: employee.text));
+                    .add(SignatureEvent(signature: employee.text,uid: suggestion.id));
               },
               textFieldConfiguration: TextFieldConfiguration(
                 textInputAction: TextInputAction.next,
@@ -46,7 +47,7 @@ class _SignatureState extends State<Signature> {
                 return getSuggestionsItems(pattern, context);
               },
               itemBuilder: (context, suggestion) {
-                return ListTile(title: Text(suggestion.toString()));
+                return ListTile(title: Text(suggestion.name));
               },
 
               // onSaved: (value) => phoneNo.text = value!,
@@ -54,7 +55,7 @@ class _SignatureState extends State<Signature> {
   }
 }
 
-List<String> getSuggestionsItems(String query, BuildContext context) {
+List<SuggestionItem> getSuggestionsItems(String query, BuildContext context) {
   final List<EmployeeHiveModel?>? matches =
       context.read<GateOutwardRegisterBloc>().state.allEmployees;
 
@@ -62,13 +63,15 @@ List<String> getSuggestionsItems(String query, BuildContext context) {
     return [];
   }
 
-  final List<String> matchingNames = matches
+  final List<SuggestionItem> matchingNames = matches
       .where((item) =>
           item != null &&
           item.UserName != null &&
           item.UserName!.toLowerCase().contains(query.toLowerCase()))
-      .map((item) => item!.UserName!)
+      .map((item) => SuggestionItem(
+          id: item!.id.toString(), name: item.UserName!))
       .toList();
+
 
   return matchingNames;
 }

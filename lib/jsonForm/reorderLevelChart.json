@@ -1,11 +1,12 @@
 {
   "ftNumber": null,
   "revNumber": null,
-  "date": null,
+  "date": 1678905000000,
   "pageNumber": null,
   "slNumber": null,
-  "description": "Item",
-  "minimum": "10",
-  "maximum": "50",
+  "description": "SNIKERS RS20",
+  "itemId": null,
+  "minimum": "50",
+  "maximum": "100",
   "remarks": "Re- Order"
 }

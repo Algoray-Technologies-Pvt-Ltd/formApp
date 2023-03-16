@@ -43,7 +43,7 @@ class ReOrderLevelChartBloc
     on<DescriptionEvent>((event, emit) {
       emit(state.copyWith(
           reorderLevelModel: state.reorderLevelModel
-              ?.copyWith(description: event.description)));
+              ?.copyWith(description: event.description,itemId: event.uid)));
     });
     on<MinimumEvent>((event, emit) {
       emit(state.copyWith(

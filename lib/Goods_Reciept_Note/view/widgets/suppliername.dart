@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:formapp/Goods_Reciept_Note/bloc/goods_reciept_note_bloc.dart';
-import 'package:formapp/contractReview/bloc/bloc/contract_review_bloc.dart';
 import 'package:formapp/model/Ledgers/LedMasterHiveModel.dart';
+
+import '../../../Daily_Stock_Statement/view/widgets/description.dart';
 
 class SupplierName extends StatefulWidget {
   SupplierName({super.key});
@@ -31,8 +32,8 @@ class _SupplierNameState extends State<SupplierName> {
               onSuggestionSelected: (suggestion) {
                 ledger.text = suggestion.toString();
                 context
-                    .read<ContractReviewBloc>()
-                    .add(CustomerNameEvent(name: ledger.text));
+                    .read<GoodsRecieptNoteBloc>()
+                    .add(SupplierNameEvent(supplierName: ledger.text,uid: suggestion.id));
               },
               textFieldConfiguration: TextFieldConfiguration(
                 textInputAction: TextInputAction.next,
@@ -58,7 +59,7 @@ class _SupplierNameState extends State<SupplierName> {
                 return getSuggestions(pattern, context);
               },
               itemBuilder: (context, suggestion) {
-                return ListTile(title: Text(suggestion.toString()));
+                return ListTile(title: Text(suggestion.name));
               },
 
               // onSaved: (value) => phoneNo.text = value!,
@@ -66,7 +67,7 @@ class _SupplierNameState extends State<SupplierName> {
   }
 }
 
-List<String> getSuggestions(String query, BuildContext context) {
+List<SuggestionItem> getSuggestions(String query, BuildContext context) {
   final List<LedgerMasterHiveModel?>? matches =
       context.read<GoodsRecieptNoteBloc>().state.allledger;
 
@@ -74,12 +75,13 @@ List<String> getSuggestions(String query, BuildContext context) {
     return [];
   }
 
-  final List<String> matchingNames = matches
+  final List<SuggestionItem> matchingNames = matches
       .where((item) =>
           item != null &&
           item.Ledger_Name != null &&
           item.Ledger_Name!.toLowerCase().contains(query.toLowerCase()))
-      .map((item) => item!.Ledger_Name!)
+      .map((item) =>SuggestionItem(
+          id: item!.LEDGER_ID.toString(), name: item.Ledger_Name!))
       .toList();
 
   return matchingNames;
