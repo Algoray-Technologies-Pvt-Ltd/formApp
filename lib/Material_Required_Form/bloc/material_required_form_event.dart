@@ -51,8 +51,11 @@ class PoSlNumberEvent extends MaterialRequiredFormEvent {
 
 class CustomerNameEvent extends MaterialRequiredFormEvent {
   String customerName;
+  String uid;
+
   CustomerNameEvent({
     required this.customerName,
+    required this.uid,
   });
 }
 
@@ -72,8 +75,10 @@ class SlNumberEvent extends MaterialRequiredFormEvent {
 
 class MaterialDescriptionEvent extends MaterialRequiredFormEvent {
   String materialDescription;
+  String uid;
   MaterialDescriptionEvent({
     required this.materialDescription,
+    required this.uid,
   });
 }
 
@@ -107,8 +112,10 @@ class RemarksEvent extends MaterialRequiredFormEvent {
 
 class RequisitionedByEvent extends MaterialRequiredFormEvent {
   String requisitionedBy;
+  String uid;
   RequisitionedByEvent({
     required this.requisitionedBy,
+    required this.uid,
   });
 }
 

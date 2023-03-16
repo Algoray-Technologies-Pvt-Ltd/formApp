@@ -44,8 +44,10 @@ class SlNumberEvent extends IssueAndReturnRegisterEvent {
 
 class MaterialDescriotionEvent extends IssueAndReturnRegisterEvent {
   String materialDescriotion;
+  String uid;
   MaterialDescriotionEvent({
     required this.materialDescriotion,
+    required this.uid,
   });
 }
 

@@ -10,6 +10,7 @@ class ReorderLevelModel extends Equatable {
   String? pageNumber;
   String? slNumber;
   String? description;
+  String? itemId;
   String? minimum;
   String? maximum;
   String? remarks;
@@ -20,6 +21,7 @@ class ReorderLevelModel extends Equatable {
     this.pageNumber,
     this.slNumber,
     this.description,
+    this.itemId,
     this.minimum,
     this.maximum,
     this.remarks,
@@ -33,6 +35,7 @@ class ReorderLevelModel extends Equatable {
         pageNumber,
         slNumber,
         description,
+        itemId,
         minimum,
         maximum,
         remarks
@@ -45,6 +48,7 @@ class ReorderLevelModel extends Equatable {
     String? pageNumber,
     String? slNumber,
     String? description,
+    String? itemId,
     String? minimum,
     String? maximum,
     String? remarks,
@@ -56,6 +60,7 @@ class ReorderLevelModel extends Equatable {
       pageNumber: pageNumber ?? this.pageNumber,
       slNumber: slNumber ?? this.slNumber,
       description: description ?? this.description,
+      itemId: itemId ?? this.itemId,
       minimum: minimum ?? this.minimum,
       maximum: maximum ?? this.maximum,
       remarks: remarks ?? this.remarks,
@@ -70,6 +75,7 @@ class ReorderLevelModel extends Equatable {
       'pageNumber': pageNumber,
       'slNumber': slNumber,
       'description': description,
+      'itemId': itemId,
       'minimum': minimum,
       'maximum': maximum,
       'remarks': remarks,
@@ -80,10 +86,15 @@ class ReorderLevelModel extends Equatable {
     return ReorderLevelModel(
       ftNumber: map['ftNumber'] != null ? map['ftNumber'] as String : null,
       revNumber: map['revNumber'] != null ? map['revNumber'] as String : null,
-      date: map['date'] != null ? DateTime.fromMillisecondsSinceEpoch(map['date'] as int) : null,
-      pageNumber: map['pageNumber'] != null ? map['pageNumber'] as String : null,
+      date: map['date'] != null
+          ? DateTime.fromMillisecondsSinceEpoch(map['date'] as int)
+          : null,
+      pageNumber:
+          map['pageNumber'] != null ? map['pageNumber'] as String : null,
       slNumber: map['slNumber'] != null ? map['slNumber'] as String : null,
-      description: map['description'] != null ? map['description'] as String : null,
+      description:
+          map['description'] != null ? map['description'] as String : null,
+      itemId: map['itemId'] != null ? map['itemId'] as String : null,
       minimum: map['minimum'] != null ? map['minimum'] as String : null,
       maximum: map['maximum'] != null ? map['maximum'] as String : null,
       remarks: map['remarks'] != null ? map['remarks'] as String : null,
@@ -92,5 +103,6 @@ class ReorderLevelModel extends Equatable {
 
   String toJson() => json.encode(toMap());
 
-  factory ReorderLevelModel.fromJson(String source) => ReorderLevelModel.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory ReorderLevelModel.fromJson(String source) =>
+      ReorderLevelModel.fromMap(json.decode(source) as Map<String, dynamic>);
 }

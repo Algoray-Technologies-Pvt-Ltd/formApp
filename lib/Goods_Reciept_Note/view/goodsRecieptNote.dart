@@ -172,7 +172,7 @@ class GoodsReciepDataTable extends StatelessWidget {
                   DataCell(Text(data.billNumber!)),
                   DataCell(Text(data.billDate.toString())),
                   DataCell(Text(data.slNumber.toString())),
-                  DataCell(Text(data.materialDescriotion!)),
+                  DataCell(Text(data.materialDescription!)),
                   DataCell(Text(data.orderQty.toString())),
                   DataCell(Text(data.recievedQty.toString())),
                   DataCell(Text(data.acceptedQty.toString())),

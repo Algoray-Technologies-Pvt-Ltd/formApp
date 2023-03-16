@@ -41,7 +41,7 @@ class ToolsListBloc extends Bloc<ToolsListEvent, ToolsListState> {
     on<DescriptionEvent>((event, emit) {
       emit(state.copyWith(
           toolsListModel:
-              state.toolsListModel?.copyWith(description: event.description)));
+              state.toolsListModel?.copyWith(description: event.description,itemId: event.uid)));
     });
     on<SizeEvent>((event, emit) {
       emit(state.copyWith(

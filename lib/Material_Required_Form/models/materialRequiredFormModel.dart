@@ -11,16 +11,21 @@ class MaterialrequiredFormModel extends Equatable {
   String? PONumber;
   String? poSlNumber;
   String? customerName;
+  String? customerId;
   DateTime? materialrequiredDate;
   String? slNumber;
   String? materialDescription;
+  String? itemId;
   int? inHand;
   int? requiredQuantity;
   int? issuedQuantity;
   String? remarks;
   String? requisitionedBy;
+  String? employeeId;
   String? skSign;
+  DateTime? skSignDateTime;
   String? peSign;
+  DateTime? peSignDateTime;
   MaterialrequiredFormModel({
     this.ftNumber,
     this.revNumber,
@@ -29,16 +34,21 @@ class MaterialrequiredFormModel extends Equatable {
     this.PONumber,
     this.poSlNumber,
     this.customerName,
+    this.customerId,
     this.materialrequiredDate,
     this.slNumber,
     this.materialDescription,
+    this.itemId,
     this.inHand,
     this.requiredQuantity,
     this.issuedQuantity,
     this.remarks,
     this.requisitionedBy,
+    this.employeeId,
     this.skSign,
+    this.skSignDateTime,
     this.peSign,
+    this.peSignDateTime,
   });
 
   @override
@@ -50,16 +60,21 @@ class MaterialrequiredFormModel extends Equatable {
         PONumber,
         poSlNumber,
         customerName,
+        customerId,
         materialrequiredDate,
         slNumber,
         materialDescription,
+        itemId,
         inHand,
         issuedQuantity,
         requiredQuantity,
         remarks,
         requisitionedBy,
+        employeeId,
         skSign,
-        peSign
+        skSignDateTime,
+        peSign,
+        peSignDateTime,
       ];
 
   MaterialrequiredFormModel copyWith({
@@ -70,16 +85,21 @@ class MaterialrequiredFormModel extends Equatable {
     String? PONumber,
     String? poSlNumber,
     String? customerName,
+    String? customerId,
     DateTime? materialrequiredDate,
     String? slNumber,
     String? materialDescription,
+    String? itemId,
     int? inHand,
     int? requiredQuantity,
     int? issuedQuantity,
     String? remarks,
     String? requisitionedBy,
+    String? employeeId,
     String? skSign,
+    DateTime? skSignDateTime,
     String? peSign,
+    DateTime? peSignDateTime,
   }) {
     return MaterialrequiredFormModel(
       ftNumber: ftNumber ?? this.ftNumber,
@@ -89,16 +109,21 @@ class MaterialrequiredFormModel extends Equatable {
       PONumber: PONumber ?? this.PONumber,
       poSlNumber: poSlNumber ?? this.poSlNumber,
       customerName: customerName ?? this.customerName,
+      customerId: customerId ?? this.customerId,
       materialrequiredDate: materialrequiredDate ?? this.materialrequiredDate,
       slNumber: slNumber ?? this.slNumber,
       materialDescription: materialDescription ?? this.materialDescription,
+      itemId: itemId ?? this.itemId,
       inHand: inHand ?? this.inHand,
       requiredQuantity: requiredQuantity ?? this.requiredQuantity,
       issuedQuantity: issuedQuantity ?? this.issuedQuantity,
       remarks: remarks ?? this.remarks,
       requisitionedBy: requisitionedBy ?? this.requisitionedBy,
+      employeeId: employeeId ?? this.employeeId,
       skSign: skSign ?? this.skSign,
+      skSignDateTime: skSignDateTime ?? this.skSignDateTime,
       peSign: peSign ?? this.peSign,
+      peSignDateTime: peSignDateTime ?? this.peSignDateTime,
     );
   }
 
@@ -111,16 +136,21 @@ class MaterialrequiredFormModel extends Equatable {
       'PONumber': PONumber,
       'poSlNumber': poSlNumber,
       'customerName': customerName,
+      'customerId': customerId,
       'materialrequiredDate': materialrequiredDate?.millisecondsSinceEpoch,
       'slNumber': slNumber,
       'materialDescription': materialDescription,
+      'itemId': itemId,
       'inHand': inHand,
       'requiredQuantity': requiredQuantity,
       'issuedQuantity': issuedQuantity,
       'remarks': remarks,
       'requisitionedBy': requisitionedBy,
+      'employeeId':employeeId,
       'skSign': skSign,
+      'skSignDateTime': skSignDateTime,
       'peSign': peSign,
+      'peSignDateTime': peSignDateTime,
     };
   }
 
@@ -138,6 +168,8 @@ class MaterialrequiredFormModel extends Equatable {
           map['poSlNumber'] != null ? map['poSlNumber'] as String : null,
       customerName:
           map['customerName'] != null ? map['customerName'] as String : null,
+      customerId:
+          map['customerId'] != null ? map['customerId'] as String : null,
       materialrequiredDate: map['materialrequiredDate'] != null
           ? DateTime.fromMillisecondsSinceEpoch(
               map['materialrequiredDate'] as int)
@@ -146,6 +178,7 @@ class MaterialrequiredFormModel extends Equatable {
       materialDescription: map['materialDescription'] != null
           ? map['materialDescription'] as String
           : null,
+      itemId: map['itemId'] != null ? map['itemId'] as String : null,
       inHand: map['inHand'] != null ? map['inHand'] as int : null,
       requiredQuantity: map['requiredQuantity'] != null
           ? map['requiredQuantity'] as int
@@ -156,8 +189,15 @@ class MaterialrequiredFormModel extends Equatable {
       requisitionedBy: map['requisitionedBy'] != null
           ? map['requisitionedBy'] as String
           : null,
+          employeeId: map['employeeId'] != null ? map['employeeId'] as String : null,
       skSign: map['skSign'] != null ? map['skSign'] as String : null,
+      skSignDateTime: map['skSignDateTime'] != null
+          ? DateTime.fromMillisecondsSinceEpoch(map['skSignDateTime'] as int)
+          : null,
       peSign: map['peSign'] != null ? map['peSign'] as String : null,
+      peSignDateTime: map['peSignDateTime'] != null
+          ? DateTime.fromMillisecondsSinceEpoch(map['peSignDateTime'] as int)
+          : null,
     );
   }
 

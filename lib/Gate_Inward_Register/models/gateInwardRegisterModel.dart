@@ -16,9 +16,11 @@ class GateInwardRegisterModel extends Equatable {
   String? modeOfTransport;
   String? vehicleNumber;
   String? description;
+  String? itemId;
   int? quantity;
   String? purpose;
   String? checkedBy;
+  String? checkerId;
   String? returnableOrNonReturnable;
   String? remarks;
   GateInwardRegisterModel({
@@ -34,9 +36,11 @@ class GateInwardRegisterModel extends Equatable {
     this.modeOfTransport,
     this.vehicleNumber,
     this.description,
+    this.itemId,
     this.quantity,
     this.purpose,
     this.checkedBy,
+    this.checkerId,
     this.returnableOrNonReturnable,
     this.remarks,
   });
@@ -55,9 +59,11 @@ class GateInwardRegisterModel extends Equatable {
         modeOfTransport,
         vehicleNumber,
         description,
+        itemId,
         quantity,
         purpose,
         checkedBy,
+        checkerId,
         returnableOrNonReturnable,
         remarks
       ];
@@ -75,9 +81,11 @@ class GateInwardRegisterModel extends Equatable {
     String? modeOfTransport,
     String? vehicleNumber,
     String? description,
+    String? itemId,
     int? quantity,
     String? purpose,
     String? checkedBy,
+    String? checkerId,
     String? returnableOrNonReturnable,
     String? remarks,
   }) {
@@ -94,10 +102,13 @@ class GateInwardRegisterModel extends Equatable {
       modeOfTransport: modeOfTransport ?? this.modeOfTransport,
       vehicleNumber: vehicleNumber ?? this.vehicleNumber,
       description: description ?? this.description,
+      itemId: itemId ?? this.itemId,
       quantity: quantity ?? this.quantity,
       purpose: purpose ?? this.purpose,
       checkedBy: checkedBy ?? this.checkedBy,
-      returnableOrNonReturnable: returnableOrNonReturnable ?? this.returnableOrNonReturnable,
+      checkerId: checkerId ?? this.checkerId,
+      returnableOrNonReturnable:
+          returnableOrNonReturnable ?? this.returnableOrNonReturnable,
       remarks: remarks ?? this.remarks,
     );
   }
@@ -116,9 +127,11 @@ class GateInwardRegisterModel extends Equatable {
       'modeOfTransport': modeOfTransport,
       'vehicleNumber': vehicleNumber,
       'description': description,
+      'itemId': itemId,
       'quantity': quantity,
       'purpose': purpose,
       'checkedBy': checkedBy,
+      'checkerId': checkerId,
       'returnableOrNonReturnable': returnableOrNonReturnable,
       'remarks': remarks,
     };
@@ -128,19 +141,37 @@ class GateInwardRegisterModel extends Equatable {
     return GateInwardRegisterModel(
       ftNumber: map['ftNumber'] != null ? map['ftNumber'] as String : null,
       revNumber: map['revNumber'] != null ? map['revNumber'] as String : null,
-      date: map['date'] != null ? DateTime.fromMillisecondsSinceEpoch(map['date'] as int) : null,
-      pageNumber: map['pageNumber'] != null ? map['pageNumber'] as String : null,
-      gateInwardNumber: map['gateInwardNumber'] != null ? map['gateInwardNumber'] as String : null,
-      gateInwardDateTime: map['gateInwardDateTime'] != null ? DateTime.fromMillisecondsSinceEpoch(map['gateInwardDateTime'] as int) : null,
-      gatePassNumber: map['gatePassNumber'] != null ? map['gatePassNumber'] as String : null,
-      gatePassDate: map['gatePassDate'] != null ? DateTime.fromMillisecondsSinceEpoch(map['gatePassDate'] as int) : null,
+      date: map['date'] != null
+          ? DateTime.fromMillisecondsSinceEpoch(map['date'] as int)
+          : null,
+      pageNumber:
+          map['pageNumber'] != null ? map['pageNumber'] as String : null,
+      gateInwardNumber: map['gateInwardNumber'] != null
+          ? map['gateInwardNumber'] as String
+          : null,
+      gateInwardDateTime: map['gateInwardDateTime'] != null
+          ? DateTime.fromMillisecondsSinceEpoch(
+              map['gateInwardDateTime'] as int)
+          : null,
+      gatePassNumber: map['gatePassNumber'] != null
+          ? map['gatePassNumber'] as String
+          : null,
+      gatePassDate: map['gatePassDate'] != null
+          ? DateTime.fromMillisecondsSinceEpoch(map['gatePassDate'] as int)
+          : null,
       from: map['from'] != null ? map['from'] as String : null,
-      modeOfTransport: map['modeOfTransport'] != null ? map['modeOfTransport'] as String : null,
-      vehicleNumber: map['vehicleNumber'] != null ? map['vehicleNumber'] as String : null,
-      description: map['description'] != null ? map['description'] as String : null,
+      modeOfTransport: map['modeOfTransport'] != null
+          ? map['modeOfTransport'] as String
+          : null,
+      vehicleNumber:
+          map['vehicleNumber'] != null ? map['vehicleNumber'] as String : null,
+      description:
+          map['description'] != null ? map['description'] as String : null,
+      itemId: map['itemId'] != null ? map['itemId'] as String : null,
       quantity: map['quantity'] != null ? map['quantity'] as int : null,
       purpose: map['purpose'] != null ? map['purpose'] as String : null,
       checkedBy: map['checkedBy'] != null ? map['checkedBy'] as String : null,
+      checkerId: map['checkerId'] != null ? map['checkerId'] as String : null,
       returnableOrNonReturnable: map['returnableOrNonReturnable'],
       remarks: map['remarks'] != null ? map['remarks'] as String : null,
     );
@@ -148,5 +179,7 @@ class GateInwardRegisterModel extends Equatable {
 
   String toJson() => json.encode(toMap());
 
-  factory GateInwardRegisterModel.fromJson(String source) => GateInwardRegisterModel.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory GateInwardRegisterModel.fromJson(String source) =>
+      GateInwardRegisterModel.fromMap(
+          json.decode(source) as Map<String, dynamic>);
 }

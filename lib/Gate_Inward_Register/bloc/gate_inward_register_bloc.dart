@@ -75,7 +75,7 @@ class GateInwardRegisterBloc
     on<DescriptionEvent>((event, emit) {
       emit(state.copyWith(
           gateInwardRegisterModel: state.gateInwardRegisterModel
-              ?.copyWith(description: event.description)));
+              ?.copyWith(description: event.description,itemId: event.uid)));
     });
     on<QuantityEvent>((event, emit) {
       emit(state.copyWith(
@@ -90,7 +90,7 @@ class GateInwardRegisterBloc
     on<CheckedByEvent>((event, emit) {
       emit(state.copyWith(
           gateInwardRegisterModel: state.gateInwardRegisterModel
-              ?.copyWith(checkedBy: event.checkedBy)));
+              ?.copyWith(checkedBy: event.checkedBy,checkerId: event.uid)));
     });
     on<ReturnableOrNonReturnableEvent>((event, emit) {
       emit(state.copyWith(
@@ -124,11 +124,11 @@ class GateInwardRegisterBloc
 
       emit(state.copyWith(status: Status.ready, allItems: s, allEmployees: e));
     });
-    // on<SaveEvent>((event, emit) {
-    //   var s = state.gateInwardRegisterModel!.toJson();
-    //   print('*************');
-    //   print(s);
-    //   print('*************');
-    // });
+    on<SaveEvent>((event, emit) {
+      var s = state.gateInwardRegisterModel!.toJson();
+      print('*************');
+      print(s);
+      print('*************');
+    });
   }
 }

@@ -10,6 +10,7 @@ class ToolsListModel extends Equatable {
   String? pageNumber;
   String? slNumber;
   String? description;
+  String? itemId;
   String? size;
   int? quantity;
   String? make;
@@ -21,6 +22,7 @@ class ToolsListModel extends Equatable {
     this.pageNumber,
     this.slNumber,
     this.description,
+    this.itemId,
     this.size,
     this.quantity,
     this.make,
@@ -35,6 +37,7 @@ class ToolsListModel extends Equatable {
         pageNumber,
         slNumber,
         description,
+        itemId,
         size,
         quantity,
         make,
@@ -49,6 +52,7 @@ class ToolsListModel extends Equatable {
       'pageNumber': pageNumber,
       'slNumber': slNumber,
       'description': description,
+      'itemId': itemId,
       'size': size,
       'quantity': quantity,
       'make': make,
@@ -68,6 +72,7 @@ class ToolsListModel extends Equatable {
       slNumber: map['slNumber'] != null ? map['slNumber'] as String : null,
       description:
           map['description'] != null ? map['description'] as String : null,
+      itemId: map['itemId'] != null ? map['itemId'] as String : null,
       size: map['size'] != null ? map['size'] as String : null,
       quantity: map['quantity'] != null ? map['quantity'] as int : null,
       make: map['make'] != null ? map['make'] as String : null,
@@ -87,6 +92,7 @@ class ToolsListModel extends Equatable {
     String? pageNumber,
     String? slNumber,
     String? description,
+    String? itemId,
     String? size,
     int? quantity,
     String? make,
@@ -99,6 +105,7 @@ class ToolsListModel extends Equatable {
       pageNumber: pageNumber ?? this.pageNumber,
       slNumber: slNumber ?? this.slNumber,
       description: description ?? this.description,
+      itemId: itemId ?? this.itemId,
       size: size ?? this.size,
       quantity: quantity ?? this.quantity,
       make: make ?? this.make,

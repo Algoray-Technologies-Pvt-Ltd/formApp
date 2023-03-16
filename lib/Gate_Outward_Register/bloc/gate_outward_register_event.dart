@@ -86,8 +86,10 @@ class VehicleNumberEvent extends GateOutwardRegisterEvent {
 
 class DescriptionEvent extends GateOutwardRegisterEvent {
   String description;
+  String uid;
   DescriptionEvent({
     required this.description,
+    required this.uid,
   });
 }
 
@@ -107,8 +109,10 @@ class PurposeEvent extends GateOutwardRegisterEvent {
 
 class SignatureEvent extends GateOutwardRegisterEvent {
   String signature;
+  String uid;
   SignatureEvent({
     required this.signature,
+    required this.uid,
   });
 }
 

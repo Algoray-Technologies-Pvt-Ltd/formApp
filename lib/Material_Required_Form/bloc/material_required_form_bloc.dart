@@ -51,7 +51,7 @@ class MaterialRequiredFormBloc
     on<CustomerNameEvent>((event, emit) async {
       emit(state.copyWith(
           materialrequiredFormModel: state.materialrequiredFormModel
-              ?.copyWith(customerName: event.customerName)));
+              ?.copyWith(customerName: event.customerName,customerId: event.uid)));
     });
     on<MaterialrequiredDateEvent>((event, emit) {
       emit(state.copyWith(
@@ -66,7 +66,7 @@ class MaterialRequiredFormBloc
     on<MaterialDescriptionEvent>((event, emit) {
       emit(state.copyWith(
           materialrequiredFormModel: state.materialrequiredFormModel
-              ?.copyWith(materialDescription: event.materialDescription)));
+              ?.copyWith(materialDescription: event.materialDescription,itemId: event.uid)));
     });
     on<InHandEvent>((event, emit) {
       emit(state.copyWith(
@@ -91,7 +91,7 @@ class MaterialRequiredFormBloc
     on<RequisitionedByEvent>((event, emit) {
       emit(state.copyWith(
           materialrequiredFormModel: state.materialrequiredFormModel
-              ?.copyWith(requisitionedBy: event.requisitionedBy)));
+              ?.copyWith(requisitionedBy: event.requisitionedBy,employeeId: event.uid)));
     });
     on<SkSignEvent>((event, emit) {
       emit(state.copyWith(

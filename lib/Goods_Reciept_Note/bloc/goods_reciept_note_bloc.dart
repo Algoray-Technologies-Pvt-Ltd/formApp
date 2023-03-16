@@ -42,7 +42,7 @@ class GoodsRecieptNoteBloc
     on<SupplierNameEvent>((event, emit) {
       emit(state.copyWith(
           grnModel:
-              state.grnModel?.copyWith(supplierName: event.supplierName)));
+              state.grnModel?.copyWith(supplierName: event.supplierName,supplierId: event.uid)));
     });
     on<GrnDateEvent>((event, emit) {
       emit(state.copyWith(
@@ -63,7 +63,7 @@ class GoodsRecieptNoteBloc
     on<MaterialDescriotionEvent>((event, emit) {
       emit(state.copyWith(
           grnModel: state.grnModel
-              ?.copyWith(materialDescriotion: event.materialDescriotion)));
+              ?.copyWith(materialDescription: event.materialDescriotion,itemId: event.uid)));
     });
     on<OrderQtyEvent>((event, emit) {
       emit(state.copyWith(

@@ -10,12 +10,14 @@ class IssueAndReturnRegisterModel extends Equatable {
   String? pageNumber;
   String? slNumber;
   String? materialDescription;
+  String? itemId;
   DateTime? issueDate;
   int? issueQuantity;
   String? issueTo;
   DateTime? returnDate;
   int? returnQuantity;
   String? returnBy;
+  String? employeeId;
   String? remarks;
   IssueAndReturnRegisterModel({
     this.ftNumber,
@@ -24,12 +26,14 @@ class IssueAndReturnRegisterModel extends Equatable {
     this.pageNumber,
     this.slNumber,
     this.materialDescription,
+    this.itemId,
     this.issueDate,
     this.issueQuantity,
     this.issueTo,
     this.returnDate,
     this.returnQuantity,
     this.returnBy,
+    this.employeeId,
     this.remarks,
   });
 
@@ -41,12 +45,14 @@ class IssueAndReturnRegisterModel extends Equatable {
         pageNumber,
         slNumber,
         materialDescription,
+        itemId,
         issueDate,
         issueQuantity,
         issueTo,
         returnDate,
         returnQuantity,
         returnBy,
+        employeeId,
         remarks
       ];
 
@@ -57,12 +63,14 @@ class IssueAndReturnRegisterModel extends Equatable {
     String? pageNumber,
     String? slNumber,
     String? materialDescription,
+    String? itemId,
     DateTime? issueDate,
     int? issueQuantity,
     String? issueTo,
     DateTime? returnDate,
     int? returnQuantity,
     String? returnBy,
+    String? employeeId,
     String? remarks,
   }) {
     return IssueAndReturnRegisterModel(
@@ -72,12 +80,14 @@ class IssueAndReturnRegisterModel extends Equatable {
       pageNumber: pageNumber ?? this.pageNumber,
       slNumber: slNumber ?? this.slNumber,
       materialDescription: materialDescription ?? this.materialDescription,
+      itemId: itemId ?? this.itemId,
       issueDate: issueDate ?? this.issueDate,
       issueQuantity: issueQuantity ?? this.issueQuantity,
       issueTo: issueTo ?? this.issueTo,
       returnDate: returnDate ?? this.returnDate,
       returnQuantity: returnQuantity ?? this.returnQuantity,
       returnBy: returnBy ?? this.returnBy,
+      employeeId: employeeId ?? this.employeeId,
       remarks: remarks ?? this.remarks,
     );
   }
@@ -90,12 +100,14 @@ class IssueAndReturnRegisterModel extends Equatable {
       'pageNumber': pageNumber,
       'slNumber': slNumber,
       'materialDescription': materialDescription,
+      'itemId': itemId,
       'issueDate': issueDate?.millisecondsSinceEpoch,
       'issueQuantity': issueQuantity,
       'issueTo': issueTo,
       'returnDate': returnDate?.millisecondsSinceEpoch,
       'returnQuantity': returnQuantity,
       'returnBy': returnBy,
+      'employeeId': employeeId,
       'remarks': remarks,
     };
   }
@@ -113,6 +125,7 @@ class IssueAndReturnRegisterModel extends Equatable {
       materialDescription: map['materialDescription'] != null
           ? map['materialDescription'] as String
           : null,
+      itemId: map['itemId'] != null ? map['itemId'] as String : null,
       issueDate: map['issueDate'] != null
           ? DateTime.fromMillisecondsSinceEpoch(map['issueDate'] as int)
           : null,
@@ -125,6 +138,8 @@ class IssueAndReturnRegisterModel extends Equatable {
       returnQuantity:
           map['returnQuantity'] != null ? map['returnQuantity'] as int : null,
       returnBy: map['returnBy'] != null ? map['returnBy'] as String : null,
+      employeeId:
+          map['employeeId'] != null ? map['employeeId'] as String : null,
       remarks: map['remarks'] != null ? map['remarks'] as String : null,
     );
   }

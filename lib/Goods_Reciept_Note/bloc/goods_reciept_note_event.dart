@@ -44,8 +44,10 @@ class GrnNumberEvent extends GoodsRecieptNoteEvent {
 
 class SupplierNameEvent extends GoodsRecieptNoteEvent {
   String supplierName;
+  String uid;
   SupplierNameEvent({
     required this.supplierName,
+    required this.uid,
   });
 }
 
@@ -79,8 +81,10 @@ class SlNumberEvent extends GoodsRecieptNoteEvent {
 
 class MaterialDescriotionEvent extends GoodsRecieptNoteEvent {
   String materialDescriotion;
+  String uid;
   MaterialDescriotionEvent({
     required this.materialDescriotion,
+    required this.uid,
   });
 }
 

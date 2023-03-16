@@ -44,8 +44,10 @@ class SlNumberEvent extends ReOrderLevelChartEvent {
 
 class DescriptionEvent extends ReOrderLevelChartEvent {
   String description;
+  String uid;
   DescriptionEvent({
     required this.description,
+    required this.uid,
   });
 }
 

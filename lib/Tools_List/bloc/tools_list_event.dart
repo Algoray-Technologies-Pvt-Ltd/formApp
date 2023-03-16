@@ -44,8 +44,10 @@ class SlNumberEvent extends ToolsListEvent {
 
 class DescriptionEvent extends ToolsListEvent {
   String description;
+  String uid;
   DescriptionEvent({
     required this.description,
+    required this.uid,
   });
 }
 
