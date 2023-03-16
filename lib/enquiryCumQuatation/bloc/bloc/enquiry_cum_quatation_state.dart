@@ -3,19 +3,20 @@ part of 'enquiry_cum_quatation_bloc.dart';
 
 class EnquiryCumQuatationState extends Equatable {
   EnquiryCumQuatation? enquiryCumQuatation;
-  EnquiryCumQuatationState({
-    this.enquiryCumQuatation,
-  });
+  List<LedgerMasterHiveModel>? allLedger;
+  List<InventoryItemHive>? allItems;
+  EnquiryCumQuatationState(
+      {this.enquiryCumQuatation, this.allLedger, this.allItems});
   @override
-  List get props => [enquiryCumQuatation];
+  List get props => [enquiryCumQuatation, allLedger, allItems];
 
-  EnquiryCumQuatationState copyWith({
-    EnquiryCumQuatation? enquiryCumQuatation,
-  }) {
+  EnquiryCumQuatationState copyWith(
+      {EnquiryCumQuatation? enquiryCumQuatation,
+      List<InventoryItemHive>? allItems,
+      List<LedgerMasterHiveModel>? allLedger}) {
     return EnquiryCumQuatationState(
-      enquiryCumQuatation: enquiryCumQuatation ?? this.enquiryCumQuatation,
-    );
+        enquiryCumQuatation: enquiryCumQuatation ?? this.enquiryCumQuatation,
+        allItems: allItems ?? this.allItems,
+        allLedger: allLedger ?? this.allLedger);
   }
 }
-
-

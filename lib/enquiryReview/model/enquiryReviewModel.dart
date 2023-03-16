@@ -9,7 +9,9 @@ class EnquiryReview extends Equatable {
   String? formName;
   String? ftNumber;
   String? revNumber;
+
   DateTime? date;
+  String? customerName;
   AddressBook? address;
   DateTime? recDate;
   int? enquiryNo;
@@ -33,6 +35,7 @@ class EnquiryReview extends Equatable {
   EnquiryReview({
     this.formName,
     this.ftNumber,
+    this.customerName,
     this.revNumber,
     this.date,
     this.address,
@@ -157,6 +160,7 @@ class EnquiryReview extends Equatable {
         revNumber,
         date,
         address,
+        customerName,
         recDate,
         enquiryNo,
         enquiryDate,
@@ -181,6 +185,7 @@ class EnquiryReview extends Equatable {
     String? formName,
     String? ftNumber,
     String? revNumber,
+    String? customerName,
     DateTime? date,
     AddressBook? address,
     DateTime? recDate,
@@ -205,6 +210,7 @@ class EnquiryReview extends Equatable {
     return EnquiryReview(
       formName: formName ?? this.formName,
       ftNumber: ftNumber ?? this.ftNumber,
+      customerName: customerName ?? this.customerName,
       revNumber: revNumber ?? this.revNumber,
       date: date ?? this.date,
       address: address ?? this.address,

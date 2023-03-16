@@ -4,6 +4,7 @@ import 'package:formapp/main.dart';
 import 'package:formapp/marketingVisitReport/bloc/bloc/marketing_visit_report_bloc.dart';
 import 'package:formapp/marketingVisitReport/view/widget/CheckBoxFeilds.dart';
 import 'package:formapp/marketingVisitReport/view/widget/customerName.dart';
+import 'package:formapp/marketingVisitReport/view/widget/personMeet.dart';
 import 'package:formapp/widgets/ktextFeild.dart';
 
 import '../../widgets/KAutoText.dart';
@@ -97,15 +98,7 @@ class MarketVisitReportCreate extends StatelessWidget {
                     width: MediaQuery.of(context).size.width,
                     child: Wrap(children: [
                       CustomerMvNmaeWidget(),
-                      KTextField(
-                        onChanged: (value) {
-                          context
-                              .read<MarketingVisitReportBloc>()
-                              .add(PersonMeetEvent(personMeet: value));
-                        },
-                        initialText: '',
-                        hintText: 'Person Meet',
-                      ),
+                    PersonMeetFeild(),
                       EnquiryNegotationApprovalWidget(),
                       AmendmentPaymentWidget(),
                       KTextField(

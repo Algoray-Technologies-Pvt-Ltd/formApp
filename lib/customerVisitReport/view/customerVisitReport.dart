@@ -19,7 +19,8 @@ class customerVisitReportScreen extends StatelessWidget {
         onPressed: () {
           Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
             return BlocProvider.value(
-                value: context.read<CustomerVisitReportBloc>(),
+                value: context.read<CustomerVisitReportBloc>()
+                  ..add(FetchEvent()),
                 child: CustomerVisitReportCreate());
           }));
         },

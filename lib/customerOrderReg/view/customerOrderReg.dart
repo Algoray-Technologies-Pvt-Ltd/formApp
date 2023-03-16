@@ -19,7 +19,7 @@ class CustomerOrderRegScreen extends StatelessWidget {
         onPressed: () {
           Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
             return BlocProvider.value(
-                value: context.read<CustomerOrderRegBloc>(),
+                value: context.read<CustomerOrderRegBloc>()..add(FetchCEvent()),
                 child: CreateOrderReg());
           }));
         },

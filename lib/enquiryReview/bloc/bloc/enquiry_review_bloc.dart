@@ -1,14 +1,27 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:formapp/constants.dart';
 import 'package:formapp/enquiryReview/model/enquiryReviewModel.dart';
 import 'package:formapp/main.dart';
+import 'package:formapp/model/Employee/EmployeeHiveModel.dart';
+import 'package:formapp/model/Ledgers/LedMasterHiveModel.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 part 'enquiry_review_event.dart';
 part 'enquiry_review_state.dart';
 
 class EnquiryReviewBloc extends Bloc<EnquiryReviewEvent, EnquiryReviewState> {
   EnquiryReviewBloc()
-      : super(EnquiryReviewState(enquiryReview: EnquiryReview())) {
+      : super(EnquiryReviewState(
+            enquiryReview: EnquiryReview(
+                recDate: DateTime.now(),
+                AmandmentDate: DateTime.now(),
+                enquiryDate: DateTime.now(),
+                OfferDueDate: DateTime.now(),
+                ApprovelDate: DateTime.now(),
+                ReviewedDate: DateTime.now(),
+                AmandmentApprovedDate: DateTime.now(),
+                AmandmentReviewDate: DateTime.now()))) {
     on<ProductDescriptionEvent>((event, emit) {
       emit(state.copyWith(
           enquiryReview: state.enquiryReview
@@ -137,11 +150,34 @@ class EnquiryReviewBloc extends Bloc<EnquiryReviewEvent, EnquiryReviewState> {
           enquiryReview:
               state.enquiryReview?.copyWith(formName: event.formName)));
     });
+    on<CustomerNameEvent>((event, emit) {
+      emit(state.copyWith(
+          enquiryReview:
+              state.enquiryReview?.copyWith(customerName: event.CustomerName)));
+    });
     on<SaveEvent>((event, emit) {
       var s = state.enquiryReview?.toJson();
       print('********************');
       print(s);
       print('********************');
+    });
+    on<FetchEvent>((event, emit) async {
+      Box<LedgerMasterHiveModel> ledger = Hive.box<LedgerMasterHiveModel>(
+        HiveTagNames.Ledgers_Hive_Tag,
+      );
+      var s = ledger.values.toList();
+      ledger.values.where((element) {
+        print('${element.Ledger_Name} - ${element.Group_Id}}');
+        return true;
+      }).toList();
+
+      print('#######################');
+      Box<EmployeeHiveModel> eployee = Hive.box<EmployeeHiveModel>(
+        HiveTagNames.Employee_Hive_Tag,
+      );
+      var emp = eployee.values.toList();
+
+      emit(state.copyWith(allLedger: s, allEmloyees: emp));
     });
   }
 }

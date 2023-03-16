@@ -17,7 +17,19 @@ class ContractReviewBloc
           allledger: [],
           allEmloyees: [],
           status: ContractReviewStatus.init,
-          contractReview: ContractReview(date: DateTime.now()),
+          contractReview: ContractReview(
+              date: DateTime.now(),
+              POrecDate: DateTime.now(),
+              PODate: DateTime.now(),
+              poDueDate: DateTime.now(),
+              ReviewedDate: DateTime.now(),
+              ApprovedByDate: DateTime.now(),
+              AmandmentDate: DateTime.now(),
+              AcknowledgementDate: DateTime.now(),
+              ApprovelByDate: DateTime.now(),
+              AmandmentReviewDate: DateTime.now(),
+              AmandmentApprovedDate: DateTime.now(),
+              enquiryDate: DateTime.now()),
         )) {
     on<TodayDateEvent>((event, emit) {
       emit(state.copyWith(

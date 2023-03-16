@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formapp/customerVisitReport/bloc/bloc/customerVisitReport_bloc.dart';
+import 'package:formapp/customerVisitReport/view/widget/coOrdinator.dart';
+import 'package:formapp/customerVisitReport/view/widget/customernameWidget.dart';
 import 'package:formapp/customerVisitReport/view/widget/tickFeilds.dart';
 import 'package:formapp/main.dart';
 import 'package:formapp/widgets/ktextFeild.dart';
@@ -95,24 +97,8 @@ class CustomerVisitReportCreate extends StatelessWidget {
                     alignment: Alignment.center,
                     width: MediaQuery.of(context).size.width,
                     child: Wrap(children: [
-                      KTextField(
-                        onChanged: (value) {
-                          context
-                              .read<CustomerVisitReportBloc>()
-                              .add(CustomerEvent(customer: value));
-                        },
-                        initialText: '',
-                        hintText: 'Customer Name',
-                      ),
-                      KTextField(
-                        onChanged: (value) {
-                          context
-                              .read<CustomerVisitReportBloc>()
-                              .add(CoordinatorEvent(coordinator: value));
-                        },
-                        initialText: '',
-                        hintText: 'Co-ordinator',
-                      ),
+                      CustomerVisitReNmaeWidget(),CoordinatorFeild(),
+                
                       EnquiryApprovalWidget(),
                       OrderAuditWidget(),
                       KTextField(

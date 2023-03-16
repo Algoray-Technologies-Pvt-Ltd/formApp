@@ -3,6 +3,7 @@ import 'package:equatable/equatable.dart';
 import 'package:formapp/constants.dart';
 import 'package:formapp/main.dart';
 import 'package:formapp/marketingVisitReport/model/marketingVisitReport.dart';
+import 'package:formapp/model/Employee/EmployeeHiveModel.dart';
 import 'package:formapp/model/Ledgers/LedMasterHiveModel.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -103,8 +104,13 @@ class MarketingVisitReportBloc
       Box<LedgerMasterHiveModel> ledger = Hive.box<LedgerMasterHiveModel>(
         HiveTagNames.Ledgers_Hive_Tag,
       );
+      Box<EmployeeHiveModel> eployee = Hive.box<EmployeeHiveModel>(
+        HiveTagNames.Employee_Hive_Tag,
+      );
+      var emp = eployee.values.toList();
+
       var s = ledger.values.toList();
-      emit(state.copyWith(allledger: s));
+      emit(state.copyWith(allledger: s, allEmloyees: emp));
       print('*<<<>>><<>>>>>*' + state.allledger.toString());
       print(state.allledger);
     });

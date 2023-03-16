@@ -3,17 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 
-import 'package:formapp/contractReview/bloc/bloc/contract_review_bloc.dart';
+import 'package:formapp/enquiryReview/bloc/bloc/enquiry_review_bloc.dart';
+
 import 'package:formapp/model/Employee/EmployeeHiveModel.dart';
 
-class ReviewedByWidget extends StatefulWidget {
+class ReviewedByName extends StatefulWidget {
   @override
-  State<ReviewedByWidget> createState() => _ReviewedByWidgetState();
+  State<ReviewedByName> createState() => _ReviewedByNameState();
 }
 
-class _ReviewedByWidgetState extends State<ReviewedByWidget> {
-  late TextEditingController textcontroller = TextEditingController();
+TextEditingController textcontroller = TextEditingController();
 
+class _ReviewedByNameState extends State<ReviewedByName> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -58,7 +59,7 @@ class _ReviewedByWidgetState extends State<ReviewedByWidget> {
               onSuggestionSelected: (suggestion) {
                 textcontroller.text = suggestion.toString();
                 context
-                    .read<ContractReviewBloc>()
+                    .read<EnquiryReviewBloc>()
                     .add(ReviewedByEvent(reviewedBy: suggestion.toString()));
               },
               validator: (value) =>
@@ -70,7 +71,7 @@ class _ReviewedByWidgetState extends State<ReviewedByWidget> {
 
 List<String> getSuggestionsEmployee(String query, BuildContext context) {
   final List<EmployeeHiveModel?>? matches =
-      context.read<ContractReviewBloc>().state.allEmloyees;
+      context.read<EnquiryReviewBloc>().state.allEmloyees;
 
   if (matches == null) {
     return [];

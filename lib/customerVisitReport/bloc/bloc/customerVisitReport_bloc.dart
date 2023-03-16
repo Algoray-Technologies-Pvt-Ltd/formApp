@@ -1,7 +1,11 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:formapp/constants.dart';
 import 'package:formapp/customerVisitReport/model/customerVisitReportmodel.dart';
 import 'package:formapp/main.dart';
+import 'package:formapp/model/Employee/EmployeeHiveModel.dart';
+import 'package:formapp/model/Ledgers/LedMasterHiveModel.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 part 'customerVisitReport_event.dart';
 part 'customerVisitReport_state.dart';
@@ -10,7 +14,7 @@ class CustomerVisitReportBloc
     extends Bloc<CustomerVisitReportEvent, CustomerVisitReportState> {
   CustomerVisitReportBloc()
       : super(CustomerVisitReportState(
-            customerVisitReport: CustomerVisitReport())) {
+            allledger: [], customerVisitReport: CustomerVisitReport())) {
     on<RemarksEvent>((event, emit) {
       emit(state.copyWith(
           customerVisitReport:
@@ -98,6 +102,20 @@ class CustomerVisitReportBloc
       print('********************');
       print(s);
       print('********************');
+    });
+    on<FetchEvent>((event, emit) async {
+      Box<LedgerMasterHiveModel> ledger = Hive.box<LedgerMasterHiveModel>(
+        HiveTagNames.Ledgers_Hive_Tag,
+      );
+      Box<EmployeeHiveModel> eployee = Hive.box<EmployeeHiveModel>(
+        HiveTagNames.Employee_Hive_Tag,
+      );
+      var emp = eployee.values.toList();
+
+      var s = ledger.values.toList();
+      emit(state.copyWith(allledger: s, allEmloyees: emp));
+      print('*<<<>>><<>>>>>*' + state.allledger.toString());
+      print(state.allledger);
     });
   }
 }

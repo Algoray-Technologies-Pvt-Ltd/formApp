@@ -20,7 +20,8 @@ class CustomerComplaintRegScreen extends StatelessWidget {
         onPressed: () {
           Navigator.of(context).push(MaterialPageRoute(builder: (contex) {
             return BlocProvider.value(
-              value: context.read<CustomerComplaintRegBloc>(),
+              value: context.read<CustomerComplaintRegBloc>()
+                ..add(FetchEvent()),
               child: CreateComplainrReg(),
             );
           }));

@@ -3,17 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 
-import 'package:formapp/contractReview/bloc/bloc/contract_review_bloc.dart';
+import 'package:formapp/enquiryReview/bloc/bloc/enquiry_review_bloc.dart';
+
 import 'package:formapp/model/Employee/EmployeeHiveModel.dart';
 
-class ReviewedByWidget extends StatefulWidget {
+class ApproveddByName extends StatefulWidget {
   @override
-  State<ReviewedByWidget> createState() => _ReviewedByWidgetState();
+  State<ApproveddByName> createState() => _ApproveddByNameState();
 }
 
-class _ReviewedByWidgetState extends State<ReviewedByWidget> {
-  late TextEditingController textcontroller = TextEditingController();
+TextEditingController textcontroller = TextEditingController();
 
+class _ApproveddByNameState extends State<ApproveddByName> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -25,8 +26,8 @@ class _ReviewedByWidgetState extends State<ReviewedByWidget> {
                 textInputAction: TextInputAction.next,
                 decoration: InputDecoration(
                   fillColor: Colors.white,
-                  label: Text('Reviewed By'),
-                  hintText: 'Reviewed By',
+                  label: Text(' Approved By '),
+                  hintText: ' Approved By ',
                   prefixIcon: Padding(
                     padding: const EdgeInsets.symmetric(vertical: 16 * 0.75),
                     child: Icon(
@@ -57,9 +58,8 @@ class _ReviewedByWidgetState extends State<ReviewedByWidget> {
               },
               onSuggestionSelected: (suggestion) {
                 textcontroller.text = suggestion.toString();
-                context
-                    .read<ContractReviewBloc>()
-                    .add(ReviewedByEvent(reviewedBy: suggestion.toString()));
+                context.read<EnquiryReviewBloc>().add(
+                    AmandmentApprovedByEvent(Amandment: suggestion.toString()));
               },
               validator: (value) =>
                   value!.isEmpty ? 'Please select a city' : null,
@@ -70,7 +70,7 @@ class _ReviewedByWidgetState extends State<ReviewedByWidget> {
 
 List<String> getSuggestionsEmployee(String query, BuildContext context) {
   final List<EmployeeHiveModel?>? matches =
-      context.read<ContractReviewBloc>().state.allEmloyees;
+      context.read<EnquiryReviewBloc>().state.allEmloyees;
 
   if (matches == null) {
     return [];

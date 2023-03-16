@@ -125,7 +125,7 @@ class CreateComplainrReg extends StatelessWidget {
                               .add(RootCauseEvent(RootCause: value));
                         },
                         initialText: '',
-                        hintText: 'Root Case',
+                        hintText: 'Root Cause',
                       ),
                       KTextField(
                         onChanged: (value) {

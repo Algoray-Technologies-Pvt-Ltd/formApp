@@ -26,7 +26,7 @@ class ContractReviewScreen extends StatelessWidget {
 
           Navigator.of(context).push(MaterialPageRoute(builder: (contex) {
             return BlocProvider.value(
-              value: context.read<ContractReviewBloc>(),
+              value: context.read<ContractReviewBloc>()..add(FetchCEvent()),
               child: CreateContractReview(),
             );
           }));

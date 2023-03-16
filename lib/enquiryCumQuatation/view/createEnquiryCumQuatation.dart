@@ -3,6 +3,8 @@ import 'package:formapp/enquiryCumQuatation/view/widget/EnqDate.dart';
 import 'package:formapp/enquiryCumQuatation/view/widget/EnqRecDate.dart';
 import 'package:formapp/enquiryCumQuatation/view/widget/OrderRecivedDate.dart';
 import 'package:formapp/enquiryCumQuatation/view/widget/QuoDueDate.dart';
+import 'package:formapp/enquiryCumQuatation/view/widget/allitemsFeild.dart';
+import 'package:formapp/enquiryCumQuatation/view/widget/customernameWidget.dart';
 import 'package:formapp/enquiryCumQuatation/view/widget/quoDate.dart';
 import 'package:formapp/main.dart';
 import 'package:formapp/widgets/ktextFeild.dart';
@@ -128,24 +130,8 @@ class EnquiryCumQuatationCreate extends StatelessWidget {
                         initialText: '',
                         hintText: 'Coordinator Name',
                       ),
-                      KTextField(
-                        onChanged: (value) {
-                          context
-                              .read<EnquiryCumQuatationBloc>()
-                              .add(CustomerNameEvent(CustomerName: value));
-                        },
-                        initialText: '',
-                        hintText: 'Customer Name',
-                      ),
-                      KTextField(
-                        onChanged: (value) {
-                          context
-                              .read<EnquiryCumQuatationBloc>()
-                              .add(DescriptionofJobEvent(details: value));
-                        },
-                        initialText: '',
-                        hintText: 'Description of Job',
-                      ),
+                      CustomerEcqReNmaeWidget(),
+                      DescriptionJob(),
                       KTextField(
                         onChanged: (value) {
                           context
@@ -167,6 +153,7 @@ class EnquiryCumQuatationCreate extends StatelessWidget {
                       QuotationDateECQWidget(),
                       QuotationDueDateECQWidget(),
                       KTextField(
+                        multiline: true,
                         onChanged: (value) {
                           context
                               .read<EnquiryCumQuatationBloc>()
@@ -177,6 +164,7 @@ class EnquiryCumQuatationCreate extends StatelessWidget {
                       ),
                       OrderRecivedDateECQWidget(),
                       KTextField(
+                        multiline: true,
                         onChanged: (value) {
                           context
                               .read<EnquiryCumQuatationBloc>()

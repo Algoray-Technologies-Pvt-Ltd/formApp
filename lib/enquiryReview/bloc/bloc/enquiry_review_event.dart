@@ -119,10 +119,19 @@ class EnquiryNOEvent extends EnquiryReviewEvent {
   });
 }
 
+class FetchEvent extends EnquiryReviewEvent {}
+
 class EnquiryDateEvent extends EnquiryReviewEvent {
   DateTime date;
   EnquiryDateEvent({
     required this.date,
+  });
+}
+
+class CustomerNameEvent extends EnquiryReviewEvent {
+  String CustomerName;
+  CustomerNameEvent({
+    required this.CustomerName,
   });
 }
 
