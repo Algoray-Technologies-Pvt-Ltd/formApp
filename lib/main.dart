@@ -13,6 +13,9 @@ import 'model/HiveModels/UOM/UOMHiveModel.dart';
 const primaryColor = Color.fromRGBO(32, 115, 152, 1);
 String hivekey = 'formApp';
 
+
+
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
@@ -25,7 +28,6 @@ void main() async {
   await Hive.openBox<LedgerMasterHiveModel>(HiveTagNames.Ledgers_Hive_Tag);
   await Hive.openBox<InventoryItemHive>(HiveTagNames.Items_Hive_Tag);
   await Hive.openBox<EmployeeHiveModel>(HiveTagNames.Employee_Hive_Tag);
-
 
   runApp(const MyApp());
 }
