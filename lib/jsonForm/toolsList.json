@@ -1,13 +1,13 @@
 {
-  "ftNumber": null,
-  "revNumber": null,
+  "ftNumber": 4,
+  "revNumber": 2,
   "date": 1678905000000,
   "pageNumber": 1,
   "slNumber": 1,
-  "description": "KIT KAT 50",
-  "itemId": null,
-  "size": "15",
-  "quantity": 50,
-  "make": null,
-  "remarks": "  new product"
+  "description": "bubbly",
+  "itemId": "0A29A40A1015",
+   "size": "25",
+  "quantity": 100,
+  "make": "cake",
+  "remarks": "new product"
 }

@@ -1,12 +1,12 @@
 {
-  "ftNumber": null,
-  "revNumber": null,
+  "ftNumber": 4,
+  "revNumber": 2,
   "date": 1678905000000,
-  "pageNumber": null,
-  "slNumber": null,
-  "description": "SNIKERS RS20",
-  "itemId": null,
+  "pageNumber": 1,
+  "slNumber": 1,
+  "description": "KIT KAT 100",
+  "itemId": "0A29A40A700",
   "minimum": "50",
   "maximum": "100",
-  "remarks": "Re- Order"
+  "remarks": "Re Order"
 }

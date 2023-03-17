@@ -179,6 +179,7 @@ class CreateGateInwardRegister extends StatelessWidget {
                         //   hintText: 'Checked By',
                         // ),
                         ReturnableOrNonReturnable(),
+                        
                         KTextField(
                           onChanged: (value) {
                             context

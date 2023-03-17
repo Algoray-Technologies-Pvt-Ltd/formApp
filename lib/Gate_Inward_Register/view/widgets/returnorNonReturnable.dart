@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formapp/Gate_Inward_Register/bloc/gate_inward_register_bloc.dart';
 
 enum PaymentMethod { returnable, nonReturnable }
 
@@ -36,6 +38,9 @@ class _ReturnableOrNonReturnableState extends State<ReturnableOrNonReturnable> {
                   setState(() {
                     _selectedPaymentMethod = value;
                   });
+                  context.read<GateInwardRegisterBloc>().add(
+                      ReturnableOrNonReturnableEvent(
+                          returnableOrNonReturnable: true));
                 },
               ),
               const Text('Returnable'),
@@ -49,6 +54,9 @@ class _ReturnableOrNonReturnableState extends State<ReturnableOrNonReturnable> {
                   setState(() {
                     _selectedPaymentMethod = value;
                   });
+                  context.read<GateInwardRegisterBloc>().add(
+                      ReturnableOrNonReturnableEvent(
+                          returnableOrNonReturnable: false));
                 },
               ),
               const Text('Non-Returnable'),

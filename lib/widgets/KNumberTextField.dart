@@ -52,7 +52,7 @@ class _KNumberTextFieldState extends State<KNumberTextField> {
 
   @override
   Widget build(BuildContext context) {
-    print('t :${widget.initialText}   Current Tezt : ${textcontroller.text}');
+
     if (widget.initialText.isEmpty) textcontroller.clear();
     return Padding(
       padding: const EdgeInsets.all(8.0),

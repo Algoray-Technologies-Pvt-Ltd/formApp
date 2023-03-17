@@ -21,7 +21,7 @@ class GateInwardRegisterModel extends Equatable {
   String? purpose;
   String? checkedBy;
   String? checkerId;
-  String? returnableOrNonReturnable;
+  bool? returnableOrNonReturnable;
   String? remarks;
   GateInwardRegisterModel({
     this.ftNumber,
@@ -86,7 +86,7 @@ class GateInwardRegisterModel extends Equatable {
     String? purpose,
     String? checkedBy,
     String? checkerId,
-    String? returnableOrNonReturnable,
+    bool? returnableOrNonReturnable,
     String? remarks,
   }) {
     return GateInwardRegisterModel(

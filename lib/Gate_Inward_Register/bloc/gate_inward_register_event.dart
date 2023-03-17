@@ -117,7 +117,7 @@ class CheckedByEvent extends GateInwardRegisterEvent {
 }
 
 class ReturnableOrNonReturnableEvent extends GateInwardRegisterEvent {
-  String returnableOrNonReturnable;
+  bool returnableOrNonReturnable;
   ReturnableOrNonReturnableEvent({
     required this.returnableOrNonReturnable,
   });

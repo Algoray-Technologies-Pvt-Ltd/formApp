@@ -1,16 +1,16 @@
 {
-    "ftNumber": null,
-    "revNumber": null,
+    "ftNumber": 4,
+    "revNumber": 2,
     "date": 1678905000000,
-    "pageNumber": null,
+    "pageNumber": 1,
     "stockDate": 1678905000000,
-    "slNumber": null,
-    "description": "WHITE FOREST 1.5 KG",
-    "itemId": null,
+    "slNumber": 1,
+    "description": "EGG LESS 500GM",
+    "itemId": "0A118A121A855",
     "openingStock": 100,
     "purchase": 200,
-    "total": 300,
-    "issue": 250,
-    "closingStock": 200,
-    "remarks": "stock check done"
+    "total": 250,
+    "issue": 150,
+    "closingStock": 100,
+    "remarks": "stock check"
 }

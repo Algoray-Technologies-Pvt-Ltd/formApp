@@ -1,8 +1,8 @@
 {
-    "ftNumber": null,
-    "revNumber": null,
+    "ftNumber": 4,
+    "revNumber": 2,
     "date": 1678905000000,
-    "pageNumber": null,
+    "pageNumber": 1,
     "gateOutwardNumber": "5",
     "gateOutwardDateTime": 1678905000000,
     "gatePassNumber": "2",
@@ -11,11 +11,11 @@
     "modeOfTransport": "Auto",
     "vehicleNumber": "KL11AX2525",
     "description": "RAINBOW CAKE 1.5 KG",
-    "itemId": null,
+    "itemId": "0A29A34A779",
     "quantity": 100,
     "purpose": "Delivery",
     "signature": "user",
-    "employeeId": null,
-    "returnableOrNonReturnable": null,
+    "employeeId": "36",
+    "returnableOrNonReturnable": false,
     "remarks": "Delivery"
 }
