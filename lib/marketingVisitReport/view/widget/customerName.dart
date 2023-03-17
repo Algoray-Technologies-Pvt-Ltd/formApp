@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
-import 'package:formapp/contractReview/bloc/bloc/contract_review_bloc.dart';
-import 'package:formapp/contractReview/model/contractReviewmodel.dart';
-import 'package:formapp/customerComplaintReg/bloc/bloc/customer_complaint_reg_bloc.dart';
+
 import 'package:formapp/marketingVisitReport/bloc/bloc/marketing_visit_report_bloc.dart';
 import 'package:formapp/model/Ledgers/LedMasterHiveModel.dart';
-import 'package:formapp/model/allLedgerModel.dart';
 
 class CustomerMvNmaeWidget extends StatefulWidget {
   CustomerMvNmaeWidget({super.key});
@@ -34,8 +31,8 @@ class _CustomerMvNmaeWidgetState extends State<CustomerMvNmaeWidget> {
               onSuggestionSelected: (suggestion) {
                 phoneNo.text = suggestion.toString();
                 context
-                    .read<CustomerComplaintRegBloc>()
-                    .add(LedNameEvent(name: phoneNo.text));
+                    .read<MarketingVisitReportBloc>()
+                    .add(CustomerNameEvent(CustomerName: phoneNo.text));
               },
               textFieldConfiguration: TextFieldConfiguration(
                 textInputAction: TextInputAction.next,

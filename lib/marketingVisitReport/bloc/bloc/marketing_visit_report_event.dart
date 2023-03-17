@@ -14,6 +14,13 @@ class RemarksEvent extends MarketingVisitReportEvent {
   });
 }
 
+class CustomerNameEvent extends MarketingVisitReportEvent {
+  String CustomerName;
+  CustomerNameEvent({
+    required this.CustomerName,
+  });
+}
+
 class FollowupDetailsEvent extends MarketingVisitReportEvent {
   String followupDetails;
   FollowupDetailsEvent({

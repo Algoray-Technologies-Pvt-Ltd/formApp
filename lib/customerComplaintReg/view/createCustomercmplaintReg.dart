@@ -20,7 +20,7 @@ class CreateComplainrReg extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         backgroundColor: primaryColor,
         onPressed: () {
-          // context.read<CustomerComplaintRegBloc>().add(SaveEvent());
+          context.read<CustomerComplaintRegBloc>().add(SaveEvent());
           Navigator.of(context).pop();
         },
         child: const Icon(Icons.save),

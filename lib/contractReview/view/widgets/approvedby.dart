@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
+import 'package:formapp/Daily_Stock_Statement/view/widgets/description.dart';
 
 import 'package:formapp/contractReview/bloc/bloc/contract_review_bloc.dart';
 import 'package:formapp/model/Employee/EmployeeHiveModel.dart';
@@ -57,9 +58,8 @@ class _ApprovedWidgetState extends State<ApprovedWidget> {
               },
               onSuggestionSelected: (suggestion) {
                 textcontroller.text = suggestion.toString();
-                context
-                    .read<ContractReviewBloc>()
-                    .add(ApprovedByEvent(approvedBy: suggestion.toString()));
+                context.read<ContractReviewBloc>().add(ApprovedByEvent(
+                    approvedBy: suggestion.toString(), id: suggestion.id));
               },
               validator: (value) =>
                   value!.isEmpty ? 'Please select a city' : null,
@@ -68,7 +68,8 @@ class _ApprovedWidgetState extends State<ApprovedWidget> {
   }
 }
 
-List<String> getSuggestionsEmployee(String query, BuildContext context) {
+List<SuggestionItem> getSuggestionsEmployee(
+    String query, BuildContext context) {
   final List<EmployeeHiveModel?>? matches =
       context.read<ContractReviewBloc>().state.allEmloyees;
 
@@ -76,13 +77,14 @@ List<String> getSuggestionsEmployee(String query, BuildContext context) {
     return [];
   }
 
-  final List<String> matchingNames = matches
+  final List<SuggestionItem> matchingNames = matches
       .where((item) =>
           item != null &&
           item.UserName != null &&
           item.UserName != "" &&
           item.UserName!.toLowerCase().contains(query.toLowerCase()))
-      .map((item) => item!.UserName!)
+      .map((item) =>
+          SuggestionItem(id: item!.Employee_ID!, name: item.UserName!))
       .toList();
 
   return matchingNames;

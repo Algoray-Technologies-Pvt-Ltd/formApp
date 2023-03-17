@@ -5,17 +5,21 @@ class CustomerOrderRegState extends Equatable {
   CustomerOrderReg? customerOrderReg;
   List<LedgerMasterHiveModel>? allLedger;
   List<EmployeeHiveModel>? allEmloyees;
+  List<InventoryItemHive>? allitems;
+
   CustomerOrderRegState(
-      {this.customerOrderReg, this.allEmloyees, this.allLedger});
+      {this.customerOrderReg, this.allEmloyees, this.allLedger, this.allitems});
   @override
-  List get props => [customerOrderReg, allEmloyees, allLedger];
+  List get props => [customerOrderReg, allEmloyees, allLedger, allitems];
 
   CustomerOrderRegState copyWith(
       {CustomerOrderReg? customerOrderReg,
+      List<InventoryItemHive>? allitems,
       List<LedgerMasterHiveModel>? allLedger,
       List<EmployeeHiveModel>? allEmloyees}) {
     return CustomerOrderRegState(
         customerOrderReg: customerOrderReg ?? this.customerOrderReg,
+        allitems: allitems ?? this.allitems,
         allEmloyees: allEmloyees ?? this.allEmloyees,
         allLedger: allLedger ?? this.allLedger);
   }

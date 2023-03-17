@@ -38,6 +38,11 @@ class MarketingVisitReportBloc
           marketingVisitReport: state.marketingVisitReport
               ?.copyWith(paymentCollection: event.paymentCollection)));
     });
+    on<CustomerNameEvent>((event, emit) {
+      emit(state.copyWith(
+          marketingVisitReport: state.marketingVisitReport
+              ?.copyWith(customerName: event.CustomerName)));
+    });
 
     on<AmendmentEvent>((event, emit) {
       emit(state.copyWith(

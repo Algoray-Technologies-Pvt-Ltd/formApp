@@ -15,7 +15,9 @@ class CustomerOrderReg extends Equatable {
   int? PurchaseOrderNo;
   DateTime? PurchaseOrderDate;
   String? CustomerName;
+  String? CustomerNameid;
   String? DescriptionofJob;
+  String? DescriptionofJobId;
   int? OrderQty;
   double? totalValue;
   double? Tax;
@@ -26,6 +28,7 @@ class CustomerOrderReg extends Equatable {
   DateTime? InvDate;
   DateTime? PaymentReceivedDate;
   String? CoordinatorName;
+  String? CoordinatorNameId;
   String? Remarks;
   CustomerOrderReg({
     this.formName,
@@ -39,7 +42,9 @@ class CustomerOrderReg extends Equatable {
     this.PurchaseOrderNo,
     this.PurchaseOrderDate,
     this.CustomerName,
+    this.CustomerNameid,
     this.DescriptionofJob,
+    this.DescriptionofJobId,
     this.OrderQty,
     this.totalValue,
     this.Tax,
@@ -50,11 +55,15 @@ class CustomerOrderReg extends Equatable {
     this.InvDate,
     this.PaymentReceivedDate,
     this.CoordinatorName,
+    this.CoordinatorNameId,
     this.Remarks,
   });
 
   @override
   List get props => [
+        CustomerNameid,
+        DescriptionofJobId,
+        CoordinatorNameId,
         formName,
         ftNumber,
         revNumber,
@@ -81,6 +90,9 @@ class CustomerOrderReg extends Equatable {
       ];
 
   CustomerOrderReg copyWith({
+    String? CoordinatorNameId,
+    String? DescriptionofJobId,
+    String? CustomerNameid,
     String? formName,
     String? ftNumber,
     String? revNumber,
@@ -106,6 +118,9 @@ class CustomerOrderReg extends Equatable {
     String? Remarks,
   }) {
     return CustomerOrderReg(
+      CustomerNameid: CustomerNameid ?? this.CustomerNameid,
+      DescriptionofJobId: DescriptionofJobId ?? this.DescriptionofJobId,
+      CoordinatorNameId: CoordinatorNameId ?? this.CoordinatorNameId,
       formName: formName ?? this.formName,
       ftNumber: ftNumber ?? this.ftNumber,
       revNumber: revNumber ?? this.revNumber,
@@ -132,9 +147,11 @@ class CustomerOrderReg extends Equatable {
     );
   }
 
-
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'CustomerNameid': CustomerNameid,
+      'DescriptionofJobId': DescriptionofJobId,
+      'CoordinatorNameId': CoordinatorNameId,
       'formName': formName,
       'ftNumber': ftNumber,
       'revNumber': revNumber,
@@ -163,33 +180,68 @@ class CustomerOrderReg extends Equatable {
 
   factory CustomerOrderReg.fromMap(Map<String, dynamic> map) {
     return CustomerOrderReg(
+      DescriptionofJobId: map['DescriptionofJobId'] != null
+          ? map['DescriptionofJobId'] as String
+          : null,
+      CoordinatorNameId: map['CoordinatorNameId'] != null
+          ? map['CoordinatorNameId'] as String
+          : null,
+      CustomerNameid: map['CustomerNameid'] != null
+          ? map['CustomerNameid'] as String
+          : null,
       formName: map['formName'] != null ? map['formName'] as String : null,
       ftNumber: map['ftNumber'] != null ? map['ftNumber'] as String : null,
       revNumber: map['revNumber'] != null ? map['revNumber'] as String : null,
-      date: map['date'] != null ? DateTime.fromMillisecondsSinceEpoch(map['date'] as int) : null,
+      date: map['date'] != null
+          ? DateTime.fromMillisecondsSinceEpoch(map['date'] as int)
+          : null,
       siNumber: map['siNumber'] != null ? map['siNumber'] as int : null,
-      OrderReceivedDate: map['OrderReceivedDate'] != null ? DateTime.fromMillisecondsSinceEpoch(map['OrderReceivedDate'] as int) : null,
-      QuoDate: map['QuoDate'] != null ? DateTime.fromMillisecondsSinceEpoch(map['QuoDate'] as int) : null,
+      OrderReceivedDate: map['OrderReceivedDate'] != null
+          ? DateTime.fromMillisecondsSinceEpoch(map['OrderReceivedDate'] as int)
+          : null,
+      QuoDate: map['QuoDate'] != null
+          ? DateTime.fromMillisecondsSinceEpoch(map['QuoDate'] as int)
+          : null,
       QuoNumber: map['QuoNumber'] != null ? map['QuoNumber'] as int : null,
-      PurchaseOrderNo: map['PurchaseOrderNo'] != null ? map['PurchaseOrderNo'] as int : null,
-      PurchaseOrderDate: map['PurchaseOrderDate'] != null ? DateTime.fromMillisecondsSinceEpoch(map['PurchaseOrderDate'] as int) : null,
-      CustomerName: map['CustomerName'] != null ? map['CustomerName'] as String : null,
-      DescriptionofJob: map['DescriptionofJob'] != null ? map['DescriptionofJob'] as String : null,
+      PurchaseOrderNo:
+          map['PurchaseOrderNo'] != null ? map['PurchaseOrderNo'] as int : null,
+      PurchaseOrderDate: map['PurchaseOrderDate'] != null
+          ? DateTime.fromMillisecondsSinceEpoch(map['PurchaseOrderDate'] as int)
+          : null,
+      CustomerName:
+          map['CustomerName'] != null ? map['CustomerName'] as String : null,
+      DescriptionofJob: map['DescriptionofJob'] != null
+          ? map['DescriptionofJob'] as String
+          : null,
       OrderQty: map['OrderQty'] != null ? map['OrderQty'] as int : null,
-      totalValue: map['totalValue'] != null ? map['totalValue'] as double : null,
+      totalValue:
+          map['totalValue'] != null ? map['totalValue'] as double : null,
       Tax: map['Tax'] != null ? map['Tax'] as double : null,
-      DelDueDate: map['DelDueDate'] != null ? DateTime.fromMillisecondsSinceEpoch(map['DelDueDate'] as int) : null,
-      QtySupplied: map['QtySupplied'] != null ? map['QtySupplied'] as int : null,
-      DelDate: map['DelDate'] != null ? DateTime.fromMillisecondsSinceEpoch(map['DelDate'] as int) : null,
+      DelDueDate: map['DelDueDate'] != null
+          ? DateTime.fromMillisecondsSinceEpoch(map['DelDueDate'] as int)
+          : null,
+      QtySupplied:
+          map['QtySupplied'] != null ? map['QtySupplied'] as int : null,
+      DelDate: map['DelDate'] != null
+          ? DateTime.fromMillisecondsSinceEpoch(map['DelDate'] as int)
+          : null,
       InvNo: map['InvNo'] != null ? map['InvNo'] as int : null,
-      InvDate: map['InvDate'] != null ? DateTime.fromMillisecondsSinceEpoch(map['InvDate'] as int) : null,
-      PaymentReceivedDate: map['PaymentReceivedDate'] != null ? DateTime.fromMillisecondsSinceEpoch(map['PaymentReceivedDate'] as int) : null,
-      CoordinatorName: map['CoordinatorName'] != null ? map['CoordinatorName'] as String : null,
+      InvDate: map['InvDate'] != null
+          ? DateTime.fromMillisecondsSinceEpoch(map['InvDate'] as int)
+          : null,
+      PaymentReceivedDate: map['PaymentReceivedDate'] != null
+          ? DateTime.fromMillisecondsSinceEpoch(
+              map['PaymentReceivedDate'] as int)
+          : null,
+      CoordinatorName: map['CoordinatorName'] != null
+          ? map['CoordinatorName'] as String
+          : null,
       Remarks: map['Remarks'] != null ? map['Remarks'] as String : null,
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory CustomerOrderReg.fromJson(String source) => CustomerOrderReg.fromMap(json.decode(source) as Map<String, dynamic>);
- }
+  factory CustomerOrderReg.fromJson(String source) =>
+      CustomerOrderReg.fromMap(json.decode(source) as Map<String, dynamic>);
+}

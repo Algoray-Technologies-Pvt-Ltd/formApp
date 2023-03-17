@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
+import 'package:formapp/Daily_Stock_Statement/view/widgets/description.dart';
 import 'package:formapp/customerOrderReg/bloc/bloc/customer_order_reg_bloc.dart';
 
 import 'package:formapp/model/Ledgers/LedMasterHiveModel.dart';
@@ -9,8 +10,7 @@ class CustomerOrNmaeWidget extends StatefulWidget {
   CustomerOrNmaeWidget({super.key});
 
   @override
-  State<CustomerOrNmaeWidget> createState() =>
-      _CustomerOrNmaeWidgetState();
+  State<CustomerOrNmaeWidget> createState() => _CustomerOrNmaeWidgetState();
 }
 
 TextEditingController phoneNo = TextEditingController();
@@ -31,8 +31,9 @@ class _CustomerOrNmaeWidgetState extends State<CustomerOrNmaeWidget> {
             child: TypeAheadFormField(
               onSuggestionSelected: (suggestion) {
                 phoneNo.text = suggestion.toString();
-                context.read<CustomerOrderRegBloc>().add(
-                    CustomerNameEvent(CustomerName: suggestion.toString()));
+                context.read<CustomerOrderRegBloc>().add(CustomerNameEvent(
+                    CustomerName: suggestion.name.toString(),
+                    id: suggestion.id));
               },
               textFieldConfiguration: TextFieldConfiguration(
                 textInputAction: TextInputAction.next,
@@ -66,7 +67,8 @@ class _CustomerOrNmaeWidgetState extends State<CustomerOrNmaeWidget> {
   }
 }
 
-getSuggestionscustomerEQrReReg(String query, BuildContext context) {
+List<SuggestionItem> getSuggestionscustomerEQrReReg(
+    String query, BuildContext context) {
   final List<LedgerMasterHiveModel?>? matches =
       context.read<CustomerOrderRegBloc>().state.allLedger;
 
@@ -74,12 +76,13 @@ getSuggestionscustomerEQrReReg(String query, BuildContext context) {
     return [];
   }
 
-  final List<String> matchingNames = matches
+  final List<SuggestionItem> matchingNames = matches
       .where((item) =>
           item != null &&
           item.Ledger_Name != null &&
           item.Ledger_Name!.toLowerCase().contains(query.toLowerCase()))
-      .map((item) => item!.Ledger_Name!)
+      .map((item) => SuggestionItem(
+          id: item!.LEDGER_ID.toString(), name: item.Ledger_Name!))
       .toList();
 
   return matchingNames;
