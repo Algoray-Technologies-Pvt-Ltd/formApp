@@ -7,6 +7,7 @@ import 'package:formapp/customerOrderReg/view/widget/InvDate.dart';
 import 'package:formapp/customerOrderReg/view/widget/PaymentReceivedDate.dart';
 import 'package:formapp/customerOrderReg/view/widget/customernameWidget.dart';
 import 'package:formapp/customerOrderReg/view/widget/delDueDate.dart';
+import 'package:formapp/customerOrderReg/view/widget/jobDescription.dart';
 import 'package:formapp/customerOrderReg/view/widget/orderReceivedDate.dart';
 import 'package:formapp/customerOrderReg/view/widget/purchaseOrderDate.dart';
 import 'package:formapp/customerOrderReg/view/widget/quoDate.dart';
@@ -125,6 +126,7 @@ class CreateOrderReg extends StatelessWidget {
                       ),
                       PurchaseDateCORWidget(),
                       CustomerOrNmaeWidget(),
+                      CorDescription(),
                       KTextField(
                         onChanged: (value) {
                           context

@@ -18,7 +18,9 @@ class FetchCEvent extends CustomerOrderRegEvent {}
 
 class CoordinatorNameEvent extends CustomerOrderRegEvent {
   String CoordinatorName;
+  String id;
   CoordinatorNameEvent({
+    required this.id,
     required this.CoordinatorName,
   });
 }
@@ -95,15 +97,19 @@ class OrderQtyEvent extends CustomerOrderRegEvent {
 
 class DescriptionofJobEvent extends CustomerOrderRegEvent {
   String DescriptionofJob;
+  String id;
   DescriptionofJobEvent({
+    required this.id,
     required this.DescriptionofJob,
   });
 }
 
 class CustomerNameEvent extends CustomerOrderRegEvent {
   String CustomerName;
+  String id;
   CustomerNameEvent({
     required this.CustomerName,
+    required this.id,
   });
 }
 

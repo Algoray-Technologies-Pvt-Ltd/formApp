@@ -1,9 +1,9 @@
-
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formapp/constants.dart';
 import 'package:formapp/customerOrderReg/model/customerOrderReg.dart';
 import 'package:formapp/model/Employee/EmployeeHiveModel.dart';
+import 'package:formapp/model/HiveModels/InventoryItems/InvetoryItemDataModel.dart';
 import 'package:formapp/model/Ledgers/LedMasterHiveModel.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -31,8 +31,9 @@ class CustomerOrderRegBloc
     });
     on<CoordinatorNameEvent>((event, emit) {
       emit(state.copyWith(
-          customerOrderReg: state.customerOrderReg
-              ?.copyWith(CoordinatorName: event.CoordinatorName)));
+          customerOrderReg: state.customerOrderReg?.copyWith(
+              CoordinatorName: event.CoordinatorName,
+              CoordinatorNameId: event.id)));
     });
     on<PaymentReceivedDateEvent>((event, emit) {
       emit(state.copyWith(
@@ -82,14 +83,15 @@ class CustomerOrderRegBloc
     });
     on<DescriptionofJobEvent>((event, emit) {
       emit(state.copyWith(
-          customerOrderReg: state.customerOrderReg
-              ?.copyWith(DescriptionofJob: event.DescriptionofJob)));
+          customerOrderReg: state.customerOrderReg?.copyWith(
+              DescriptionofJob: event.DescriptionofJob,
+              DescriptionofJobId: event.id)));
     });
 
     on<CustomerNameEvent>((event, emit) {
       emit(state.copyWith(
-          customerOrderReg: state.customerOrderReg
-              ?.copyWith(CustomerName: event.CustomerName)));
+          customerOrderReg: state.customerOrderReg?.copyWith(
+              CustomerName: event.CustomerName, CustomerNameid: event.id)));
     });
 
     on<PurchaseOrderDate>((event, emit) {
@@ -117,8 +119,11 @@ class CustomerOrderRegBloc
         HiveTagNames.Employee_Hive_Tag,
       );
       var emp = eployee.values.toList();
-
-      emit(state.copyWith(allLedger: s, allEmloyees: emp));
+      Box<InventoryItemHive> items = Hive.box<InventoryItemHive>(
+        HiveTagNames.Items_Hive_Tag,
+      );
+      var inve = items.values.toList();
+      emit(state.copyWith(allLedger: s, allEmloyees: emp, allitems: inve));
     });
     on<QuoNumberEvent>((event, emit) {
       emit(state.copyWith(
